@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<extension
+         name="OpenStack Element Creators"
+         point="org.eclipse.camf.core.cloudElementCreator">
+      <creator
+            class="org.eclipse.camf.connectors.openstack.OpenStackCloudProviderCreator"
+            id="org.eclipse.camf.connectors.openstack.openstackCloudProviderCreator"
+            name="OpenStack Cloud Provider"
+            wizard="org.eclipse.camf.connectors.openstack.ui.wizards.openstackCloudProviderWizard">
+         <source
+               class="org.eclipse.core.filesystem.IFileStore"
+               matcher="org.eclipse.camf.connectors.openstack.OpenStackCloudProviderCreator">
+         </source>
+         <target
+               class="org.eclipse.camf.connectors.openstack.OpenStackCloudProvider"
+               name="OpenStack">
+         </target>
+      </creator>
+      <creator
+            class="org.eclipse.camf.connectors.openstack.OpenStackDeploymentServiceCreator"
+            id="org.eclipse.camf.connectors.openstack.OpenStackDeploymentServiceCreator"
+            name="OpenStack Application Deployment Service">
+         <target
+               class="org.eclipse.camf.connectors.openstack.OpenStackApplicationDeploymentService"
+               name="OpenStack Deployment Service">
+         </target>
+         <source
+               class="java.net.URI">
+         </source>
+         <source
+               class="org.eclipse.core.filesystem.IFileStore">
+         </source>
+      </creator>
+   </extension>
+   <extension
+         point="org.eclipse.camf.core.authTokens">
+      <token
+            description="org.eclipse.camf.connectors.openstack.auth.OpenStackAuthTokenDescription"
+            id="org.eclipse.camf.connectors.openstack.authToken"
+            name="OpenStack Credentials"
+            wizard="org.eclipse.camf.connectors.openstack.ui.wizards.openstackAuthTokenWizard">
+      </token>
+   </extension>
+</plugin>
