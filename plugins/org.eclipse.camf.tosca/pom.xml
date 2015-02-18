@@ -6,6 +6,6 @@
   	<version>1.0.0-SNAPSHOT</version>
   	<artifactId>parent</artifactId>
   	<groupId>org.eclipse.camf.tycho</groupId>
-  	<relativePath>../../eu.celar.tycho</relativePath>
+  	<relativePath>../org.eclipse.camf.tycho</relativePath>
   </parent>
 </project>
