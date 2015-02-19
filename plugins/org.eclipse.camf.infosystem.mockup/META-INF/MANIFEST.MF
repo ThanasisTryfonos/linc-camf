@@ -32,8 +32,6 @@ Export-Package: org.eclipse.camf.infosystem.mockup.info;
    org.eclipse.core.filesystem,
    org.eclipse.camf.core.model,
    org.eclipse.core.resources"
-Bundle-ClassPath: lib/mysql-connector-java-5.1.22-bin.jar,
- .
 Import-Package: 
  org.apache.commons.logging,
  org.apache.http;version="4.1.4",
