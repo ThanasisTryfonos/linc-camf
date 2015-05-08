@@ -13,26 +13,28 @@
  *    Mathias Stuempert - initial API and implementation
  *    Szymon Mueller
  *    Nicholas Loulloudes - code adapter for CELAR Project, 2013
+ *    Andreas Kastanas - added json deployment string
  *****************************************************************************/
 
 package org.eclipse.camf.core;
 
-
 /**
- * Preference Constants that will be used throughout the
- * c-Eclipse framework.
+ * Preference Constants that will be used throughout the c-Eclipse framework.
  */
 public class PreferenceConstants {
-  
-  /**
-   * The id for the defined Cloud Providers .
-   */
-  public static final String DEFINED_CPS_ID
-    = "cps"; //$NON-NLS-1$
-  
-  /**
-   * The id for the name of the default Cloud Provider.
-   */
-  public static final String DEFAULT_CLOUD_PROVIDER_ID
-    = "def_cp"; //$NON-NLS-1$
+
+	/**
+	 * The id for the defined Cloud Providers .
+	 */
+	public static final String DEFINED_CPS_ID = "cps"; //$NON-NLS-1$
+
+	/**
+	 * The id for the name of the default Cloud Provider.
+	 */
+	public static final String DEFAULT_CLOUD_PROVIDER_ID = "def_cp"; //$NON-NLS-1$
+
+	/**
+	 * The JSON deployment string
+	 */
+	public static final String DEPLOYMENTS = "deps";
 }

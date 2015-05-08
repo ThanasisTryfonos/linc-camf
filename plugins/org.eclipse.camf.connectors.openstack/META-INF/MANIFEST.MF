@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  jclouds-compute,
  openstack-keystone,
  openstack-nova,
- openstack-neutron-custom;bundle-version="1.8.0"
+ openstack-neutron-custom;bundle-version="1.8.0",
+ org.json;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.inject,
@@ -23,6 +24,7 @@ Import-Package: com.google.inject,
  org.eclipse.camf.core.model,
  org.eclipse.camf.core.model.impl,
  org.eclipse.camf.core.reporting,
+ org.eclipse.camf.infosystem.model.base,
  org.eclipse.camf.tosca.core,
  org.eclipse.core.filesystem
 Export-Package: org.eclipse.camf.connectors.openstack;

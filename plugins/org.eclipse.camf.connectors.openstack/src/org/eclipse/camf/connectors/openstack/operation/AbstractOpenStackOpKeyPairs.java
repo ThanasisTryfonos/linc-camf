@@ -11,6 +11,7 @@
  *
  * Contributors:
  * 	Nicholas Loulloudes - initial API and implementation
+ *  Andreas Kastanas - added proper comments
  *******************************************************************************/
 package org.eclipse.camf.connectors.openstack.operation;
 
@@ -21,7 +22,7 @@ import org.jclouds.openstack.nova.v2_0.domain.KeyPair;
 
 /**
  * This base class provides some common functionality for classes wanting to
- * fetch the list or available AMIs.
+ * fetch the list of available KeyPairs.
  * 
  * @author Nicholas Loulloudes
  */

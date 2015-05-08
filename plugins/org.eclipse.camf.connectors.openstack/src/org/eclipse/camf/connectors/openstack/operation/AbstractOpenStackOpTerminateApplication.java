@@ -10,57 +10,51 @@
  * project number: FP7-317790  http://www.celarcloud.eu
  *
  * Contributors:
- * 	Nicholas Loulloudes - initial API and implementation
- *  Andreas Kastanas - added proper comments
+ * 	Andreas Kastanas - initial API and implementation
  *******************************************************************************/
 package org.eclipse.camf.connectors.openstack.operation;
 
-import java.util.List;
-
-import org.jclouds.openstack.neutron.v2.domain.Network;
-
-
 
 /**
- * This base class provides some common functionality for classes wanting to
- * fetch the list of available Networks.
- * 
- * @author Nicholas Loulloudes
+ * @author Andreas Kastanas
+ *
  */
-public abstract class AbstractOpenStackOpDescribeNetworks implements IOperation {
-
-  /** The resulting list of AMIs */
-  private List<Network> result;
-
+public abstract class AbstractOpenStackOpTerminateApplication implements IOperation {
+  
   /** Any exception which came up during the inquiry. */
   private Exception exception;
+  
+  private Object result;
 
+  /* (non-Javadoc)
+   * @see java.lang.Runnable#run()
+   */
+  @Override
   abstract public void run();
 
-  public List<Network> getResult() {
-    return this.result;
+  /* (non-Javadoc)
+   * @see org.eclipse.camf.connectors.aws.operation.IOperation#getResult()
+   */
+  @Override
+  public Object getResult() {
+    // TODO Auto-generated method stub
+    return null;
   }
 
+  /* (non-Javadoc)
+   * @see org.eclipse.camf.connectors.aws.operation.IOperation#getException()
+   */
+  @Override
   public Exception getException() {
+    // TODO Auto-generated method stub
     return this.exception;
   }
-
-  /**
-   * A setter for {@link #result}.
-   * 
-   * @param describeImagesByOwner the param to set
-   */
-  protected void setResult( final List<Network> describeNetworks )
-  {
-    this.result = describeNetworks;
-  }
-
-  /**
-   * A setter for {@link #exception}.
-   * 
-   * @param ex the exception to set
-   */
+  
   protected void setException( final Exception ex ) {
     this.exception = ex;
+  }
+  
+  protected void setResult (final Object result) {
+    this.result = result;
   }
 }

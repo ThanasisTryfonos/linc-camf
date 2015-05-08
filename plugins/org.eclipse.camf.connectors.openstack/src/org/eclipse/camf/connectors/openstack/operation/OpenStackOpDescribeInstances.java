@@ -10,8 +10,7 @@
  * project number: FP7-317790  http://www.celarcloud.eu
  *
  * Contributors:
- * 	Nicholas Loulloudes - initial API and implementation
- *  Andreas Kastanas - added proper comments
+ * 	Andreas Kastanas - initial API and implementation
  *******************************************************************************/
 package org.eclipse.camf.connectors.openstack.operation;
 
@@ -20,26 +19,26 @@ import java.util.Set;
 
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
 import org.jclouds.compute.ComputeService;
-import org.jclouds.openstack.nova.v2_0.domain.KeyPair;
-import org.jclouds.openstack.nova.v2_0.extensions.KeyPairApi;
+import org.jclouds.compute.domain.ComputeMetadata;
 
 /**
- * This {@link IOperation} implementation uses the {@link nova} to send a query
- * to OpenStack. It fetches all available Key Pairs.
+ * This {@link IOperation} implementation uses the {@link ComputeService} to
+ * send a query to OpenStack. It fetches all running instances.
  * 
- * @author Nicholas Loulloudes
+ * @author Andreas Kastanas
  */
-public class OpenStackOpDescribeKeyPairs extends AbstractOpenStackOpKeyPairs {
+public class OpenStackOpDescribeInstances extends AbstractOpenStackOpInstances {
 
-	private final KeyPairApi keyApi;
+	private final ComputeService computeAPI;
 
 	/**
-	 * Creates a new {@link OpenStackOpDescribeKeyPairs} to fetch available data
+	 * Creates a new {@link OpenStackOpDescribeInstances} to fetch available
+	 * data.
 	 * 
 	 */
 
-	public OpenStackOpDescribeKeyPairs() {
-		this.keyApi = OpenStackClient.getInstance().getKeyPairApi();
+	public OpenStackOpDescribeInstances() {
+		this.computeAPI = OpenStackClient.getInstance().getComputeService();
 	}
 
 	@Override
@@ -48,13 +47,12 @@ public class OpenStackOpDescribeKeyPairs extends AbstractOpenStackOpKeyPairs {
 		setException(null);
 		try {
 
-			Set<KeyPair> keypairs = this.keyApi.list().toSet();
+			Set<? extends ComputeMetadata> instances = this.computeAPI
+					.listNodes();
 
-			setResult(new ArrayList<KeyPair>(keypairs));
+			setResult(new ArrayList<ComputeMetadata>(instances));
 		} catch (Exception ex) {
 			setException(ex);
 		}
-
 	}
-
 }

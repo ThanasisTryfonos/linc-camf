@@ -33,250 +33,288 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static InfoSystemFactory init()
   {
-    try
-    {
-      InfoSystemFactory theInfoSystemFactory = (InfoSystemFactory)EPackage.Registry.INSTANCE.getEFactory(InfoSystemPackage.eNS_URI);
-      if (theInfoSystemFactory != null)
-      {
-        return theInfoSystemFactory;
-      }
-    }
-    catch (Exception exception)
-    {
-      EcorePlugin.INSTANCE.log(exception);
-    }
-    return new InfoSystemFactoryImpl();
-  }
+		try {
+			InfoSystemFactory theInfoSystemFactory = (InfoSystemFactory)EPackage.Registry.INSTANCE.getEFactory(InfoSystemPackage.eNS_URI);
+			if (theInfoSystemFactory != null) {
+				return theInfoSystemFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new InfoSystemFactoryImpl();
+	}
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public InfoSystemFactoryImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EObject create(EClass eClass)
   {
-    switch (eClass.getClassifierID())
-    {
-      case InfoSystemPackage.MONITORING_PROBE: return createMonitoringProbe();
-      case InfoSystemPackage.RESIZING_ACTION: return createResizingAction();
-      case InfoSystemPackage.SOFTWARE_DEPENDENCY: return createSoftwareDependency();
-      case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE: return createVirtualMachineImage();
-      case InfoSystemPackage.USER_APPLICATION: return createUserApplication();
-      case InfoSystemPackage.KEY_PAIR: return createKeyPair();
-      case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_FLAVOR: return createVirtualMachineImageFlavor();
-      case InfoSystemPackage.VIRTUAL_NETWORK: return createVirtualNetwork();
-      default:
-        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eClass.getClassifierID()) {
+			case InfoSystemPackage.MONITORING_PROBE: return createMonitoringProbe();
+			case InfoSystemPackage.RESIZING_ACTION: return createResizingAction();
+			case InfoSystemPackage.SOFTWARE_DEPENDENCY: return createSoftwareDependency();
+			case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE: return createVirtualMachineImage();
+			case InfoSystemPackage.USER_APPLICATION: return createUserApplication();
+			case InfoSystemPackage.KEY_PAIR: return createKeyPair();
+			case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_FLAVOR: return createVirtualMachineImageFlavor();
+			case InfoSystemPackage.VIRTUAL_NETWORK: return createVirtualNetwork();
+			case InfoSystemPackage.VIRTUAL_INSTANCE: return createVirtualInstance();
+			case InfoSystemPackage.SECURITY_GROUP: return createSecurityGroup();
+			case InfoSystemPackage.DEPLOYMENT: return createDeployment();
+			case InfoSystemPackage.MODULE: return createModule();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object createFromString(EDataType eDataType, String initialValue)
   {
-    switch (eDataType.getClassifierID())
-    {
-      case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_TYPE:
-        return createVirtualMachineImageTypeFromString(eDataType, initialValue);
-      case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_TYPE_OBJECT:
-        return createVirtualMachineImageTypeObjectFromString(eDataType, initialValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eDataType.getClassifierID()) {
+			case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_TYPE:
+				return createVirtualMachineImageTypeFromString(eDataType, initialValue);
+			case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_TYPE_OBJECT:
+				return createVirtualMachineImageTypeObjectFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String convertToString(EDataType eDataType, Object instanceValue)
   {
-    switch (eDataType.getClassifierID())
-    {
-      case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_TYPE:
-        return convertVirtualMachineImageTypeToString(eDataType, instanceValue);
-      case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_TYPE_OBJECT:
-        return convertVirtualMachineImageTypeObjectToString(eDataType, instanceValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eDataType.getClassifierID()) {
+			case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_TYPE:
+				return convertVirtualMachineImageTypeToString(eDataType, instanceValue);
+			case InfoSystemPackage.VIRTUAL_MACHINE_IMAGE_TYPE_OBJECT:
+				return convertVirtualMachineImageTypeObjectToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public MonitoringProbe createMonitoringProbe()
   {
-    MonitoringProbeImpl monitoringProbe = new MonitoringProbeImpl();
-    return monitoringProbe;
-  }
+		MonitoringProbeImpl monitoringProbe = new MonitoringProbeImpl();
+		return monitoringProbe;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ResizingAction createResizingAction()
   {
-    ResizingActionImpl resizingAction = new ResizingActionImpl();
-    return resizingAction;
-  }
+		ResizingActionImpl resizingAction = new ResizingActionImpl();
+		return resizingAction;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public SoftwareDependency createSoftwareDependency()
   {
-    SoftwareDependencyImpl softwareDependency = new SoftwareDependencyImpl();
-    return softwareDependency;
-  }
+		SoftwareDependencyImpl softwareDependency = new SoftwareDependencyImpl();
+		return softwareDependency;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public VirtualMachineImage createVirtualMachineImage()
   {
-    VirtualMachineImageImpl virtualMachineImage = new VirtualMachineImageImpl();
-    return virtualMachineImage;
-  }
+		VirtualMachineImageImpl virtualMachineImage = new VirtualMachineImageImpl();
+		return virtualMachineImage;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public UserApplication createUserApplication()
   {
-    UserApplicationImpl userApplication = new UserApplicationImpl();
-    return userApplication;
-  }
+		UserApplicationImpl userApplication = new UserApplicationImpl();
+		return userApplication;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public KeyPair createKeyPair()
   {
-    KeyPairImpl keyPair = new KeyPairImpl();
-    return keyPair;
-  }
+		KeyPairImpl keyPair = new KeyPairImpl();
+		return keyPair;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public VirtualMachineImageFlavor createVirtualMachineImageFlavor()
   {
-    VirtualMachineImageFlavorImpl virtualMachineImageFlavor = new VirtualMachineImageFlavorImpl();
-    return virtualMachineImageFlavor;
-  }
+		VirtualMachineImageFlavorImpl virtualMachineImageFlavor = new VirtualMachineImageFlavorImpl();
+		return virtualMachineImageFlavor;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public VirtualNetwork createVirtualNetwork()
   {
-    VirtualNetworkImpl virtualNetwork = new VirtualNetworkImpl();
-    return virtualNetwork;
-  }
+		VirtualNetworkImpl virtualNetwork = new VirtualNetworkImpl();
+		return virtualNetwork;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VirtualInstance createVirtualInstance() {
+		VirtualInstanceImpl virtualInstance = new VirtualInstanceImpl();
+		return virtualInstance;
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SecurityGroup createSecurityGroup() {
+		SecurityGroupImpl securityGroup = new SecurityGroupImpl();
+		return securityGroup;
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Deployment createDeployment() {
+		DeploymentImpl deployment = new DeploymentImpl();
+		return deployment;
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Module createModule() {
+		ModuleImpl module = new ModuleImpl();
+		return module;
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public VirtualMachineImageType createVirtualMachineImageTypeFromString(EDataType eDataType, String initialValue)
   {
-    VirtualMachineImageType result = VirtualMachineImageType.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
+		VirtualMachineImageType result = VirtualMachineImageType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String convertVirtualMachineImageTypeToString(EDataType eDataType, Object instanceValue)
   {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
+		return instanceValue == null ? null : instanceValue.toString();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public VirtualMachineImageType createVirtualMachineImageTypeObjectFromString(EDataType eDataType, String initialValue)
   {
-    return createVirtualMachineImageTypeFromString(InfoSystemPackage.Literals.VIRTUAL_MACHINE_IMAGE_TYPE, initialValue);
-  }
+		return createVirtualMachineImageTypeFromString(InfoSystemPackage.Literals.VIRTUAL_MACHINE_IMAGE_TYPE, initialValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String convertVirtualMachineImageTypeObjectToString(EDataType eDataType, Object instanceValue)
   {
-    return convertVirtualMachineImageTypeToString(InfoSystemPackage.Literals.VIRTUAL_MACHINE_IMAGE_TYPE, instanceValue);
-  }
+		return convertVirtualMachineImageTypeToString(InfoSystemPackage.Literals.VIRTUAL_MACHINE_IMAGE_TYPE, instanceValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public InfoSystemPackage getInfoSystemPackage()
   {
-    return (InfoSystemPackage)getEPackage();
-  }
+		return (InfoSystemPackage)getEPackage();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @deprecated
-   * @generated
-   */
+	 * @deprecated
+	 * @generated
+	 */
   @Deprecated
   public static InfoSystemPackage getPackage()
   {
-    return InfoSystemPackage.eINSTANCE;
-  }
+		return InfoSystemPackage.eINSTANCE;
+	}
 
 } //InfoSystemFactoryImpl

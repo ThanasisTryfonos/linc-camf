@@ -11,6 +11,7 @@
  *
  * Contributors:
  * 	Nicholas Loulloudes - initial API and implementation
+ *  Andreas Kastanas - added proper comments, changed API to receive more details
  *******************************************************************************/
 package org.eclipse.camf.connectors.openstack.operation;
 
@@ -19,28 +20,29 @@ import java.util.Set;
 
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
 import org.jclouds.compute.ComputeService;
+import org.jclouds.openstack.nova.v2_0.domain.Flavor;
 import org.jclouds.openstack.nova.v2_0.features.FlavorApi;
-import org.jclouds.openstack.v2_0.domain.Resource;
 
 /**
- * This {@link IOperation} implementation uses the {@link ComputeService} to send a query
- * to the Amazon Webservice. It fetches all executable amazon machine images,
- * which we can be execute
+ * This {@link IOperation} implementation uses the {@link nova} to send a query
+ * to OpenStack. It fetches all available flavors.
  * 
  * @author Nicholas Loulloudes
+ * @author Andreas Kastanas - change API to get more details for each flavor
  */
 public class OpenStackOpDescribeFlavors extends AbstractOpenStackOpFlavors {
 
-  private final FlavorApi flavorApi;
-  /**
-   * Creates a new {@link OpenStackOpDescribeFlavors} with the given owners as
-   * parameter.
-   * 
-   */
-  public OpenStackOpDescribeFlavors() {
-    this.flavorApi = OpenStackClient.getInstance().getFlavorApi();
-  }
- 
+	private final FlavorApi flavorApi;
+
+	/**
+	 * Creates a new {@link OpenStackOpDescribeFlavors} to fetch available data
+	 * 
+	 * 
+	 */
+
+	public OpenStackOpDescribeFlavors() {
+		this.flavorApi = OpenStackClient.getInstance().getFlavorApi();
+	}
 
 	@Override
 	public void run() {
@@ -48,9 +50,10 @@ public class OpenStackOpDescribeFlavors extends AbstractOpenStackOpFlavors {
 		setException(null);
 		try {
 
-			Set<Resource> flavors = this.flavorApi.list().concat().toSet();
+			Set<Flavor> flavors = this.flavorApi.listInDetail().concat()
+					.toSet();
 
-			setResult(new ArrayList<Resource>(flavors));
+			setResult(new ArrayList<Flavor>(flavors));
 		} catch (Exception ex) {
 			setException(ex);
 		}

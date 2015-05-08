@@ -11,6 +11,7 @@
  *
  * Contributors:
  * 	Nicholas Loulloudes - initial API and implementation
+ *  Andreas Kastanas - added proper comments, removed unnecessary import
  *******************************************************************************/
 package org.eclipse.camf.connectors.openstack.operation;
 
@@ -18,45 +19,41 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
-import org.jclouds.compute.ComputeService;
 import org.jclouds.openstack.neutron.v2.NeutronApi;
 import org.jclouds.openstack.neutron.v2.domain.Network;
 import org.jclouds.openstack.neutron.v2.features.NetworkApi;
 
 /**
- * This {@link IOperation} implementation uses the {@link ComputeService} to
- * send a query to OpenStack. It fetches all executable amazon machine images,
- * which we can be execute
+ * This {@link IOperation} implementation uses the {@link NeutronAPI} to send a
+ * query to OpenStack. It fetches all available Networks.
  * 
  * @author Nicholas Loulloudes
  */
-public class OpenStackOpDescribeNetworks extends AbstractOpenStackOpDescribeNetworks {
-  
-  
-  private final NeutronApi neutronApi;  
-  
-  /**
-   * Creates a new {@link OpenStackOpDescribeNetworks} with the given owners as
-   * parameter.
-   * 
-   * @param computeService the {@link ComputeService} to obtain data from
-   */
-  public OpenStackOpDescribeNetworks() {
-    this.neutronApi = OpenStackClient.getInstance().getNetworkApi();
-  }
- 
+public class OpenStackOpDescribeNetworks extends
+		AbstractOpenStackOpDescribeNetworks {
 
-  @Override
-  public void run() {
-    setResult( null );
-    setException( null );
-    try {
-      NetworkApi network = this.neutronApi.getNetworkApi( "regionOne" );
-      Set<Network> netSet = network.list().concat().toSet();
-      setResult( new ArrayList<Network>( netSet ) );
-    } catch( Exception ex ) {
-      setException( ex );
-    }
-  }
+	private final NetworkApi networkApi;
+
+	/**
+	 * Creates a new {@link OpenStackOpDescribeNetworks} to fetch available
+	 * networks.
+	 * 
+	 */
+
+	public OpenStackOpDescribeNetworks() {
+		this.networkApi = OpenStackClient.getInstance().getNetworkApi();
+	}
+
+	@Override
+	public void run() {
+		setResult(null);
+		setException(null);
+		try {
+			Set<Network> netSet = this.networkApi.list().concat().toSet();
+			setResult(new ArrayList<Network>(netSet));
+		} catch (Exception ex) {
+			setException(ex);
+		}
+	}
 
 }

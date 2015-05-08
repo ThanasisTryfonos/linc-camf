@@ -33,251 +33,310 @@ import org.eclipse.emf.ecore.EObject;
 public class InfoSystemAdapterFactory extends AdapterFactoryImpl
 {
   /**
-   * The cached model package.
-   * <!-- begin-user-doc -->
+	 * The cached model package.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected static InfoSystemPackage modelPackage;
 
   /**
-   * Creates an instance of the adapter factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the adapter factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public InfoSystemAdapterFactory()
   {
-    if (modelPackage == null)
-    {
-      modelPackage = InfoSystemPackage.eINSTANCE;
-    }
-  }
+		if (modelPackage == null) {
+			modelPackage = InfoSystemPackage.eINSTANCE;
+		}
+	}
 
   /**
-   * Returns whether this factory is applicable for the type of the object.
-   * <!-- begin-user-doc -->
+	 * Returns whether this factory is applicable for the type of the object.
+	 * <!-- begin-user-doc -->
    * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
    * <!-- end-user-doc -->
-   * @return whether this factory is applicable for the type of the object.
-   * @generated
-   */
+	 * @return whether this factory is applicable for the type of the object.
+	 * @generated
+	 */
   @Override
   public boolean isFactoryForType(Object object)
   {
-    if (object == modelPackage)
-    {
-      return true;
-    }
-    if (object instanceof EObject)
-    {
-      return ((EObject)object).eClass().getEPackage() == modelPackage;
-    }
-    return false;
-  }
+		if (object == modelPackage) {
+			return true;
+		}
+		if (object instanceof EObject) {
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
+		}
+		return false;
+	}
 
   /**
-   * The switch that delegates to the <code>createXXX</code> methods.
-   * <!-- begin-user-doc -->
+	 * The switch that delegates to the <code>createXXX</code> methods.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected InfoSystemSwitch<Adapter> modelSwitch =
-    new InfoSystemSwitch<Adapter>()
-    {
-      @Override
-      public Adapter caseMonitoringProbe(MonitoringProbe object)
-      {
-        return createMonitoringProbeAdapter();
-      }
-      @Override
-      public Adapter caseResizingAction(ResizingAction object)
-      {
-        return createResizingActionAdapter();
-      }
-      @Override
-      public Adapter caseSoftwareDependency(SoftwareDependency object)
-      {
-        return createSoftwareDependencyAdapter();
-      }
-      @Override
-      public Adapter caseVirtualMachineImage(VirtualMachineImage object)
-      {
-        return createVirtualMachineImageAdapter();
-      }
-      @Override
-      public Adapter caseUserApplication(UserApplication object)
-      {
-        return createUserApplicationAdapter();
-      }
-      @Override
-      public Adapter caseKeyPair(KeyPair object)
-      {
-        return createKeyPairAdapter();
-      }
-      @Override
-      public Adapter caseVirtualMachineImageFlavor(VirtualMachineImageFlavor object)
-      {
-        return createVirtualMachineImageFlavorAdapter();
-      }
-      @Override
-      public Adapter caseVirtualNetwork(VirtualNetwork object)
-      {
-        return createVirtualNetworkAdapter();
-      }
-      @Override
-      public Adapter defaultCase(EObject object)
-      {
-        return createEObjectAdapter();
-      }
-    };
+    new InfoSystemSwitch<Adapter>() {
+			@Override
+			public Adapter caseMonitoringProbe(MonitoringProbe object) {
+				return createMonitoringProbeAdapter();
+			}
+			@Override
+			public Adapter caseResizingAction(ResizingAction object) {
+				return createResizingActionAdapter();
+			}
+			@Override
+			public Adapter caseSoftwareDependency(SoftwareDependency object) {
+				return createSoftwareDependencyAdapter();
+			}
+			@Override
+			public Adapter caseVirtualMachineImage(VirtualMachineImage object) {
+				return createVirtualMachineImageAdapter();
+			}
+			@Override
+			public Adapter caseUserApplication(UserApplication object) {
+				return createUserApplicationAdapter();
+			}
+			@Override
+			public Adapter caseKeyPair(KeyPair object) {
+				return createKeyPairAdapter();
+			}
+			@Override
+			public Adapter caseVirtualMachineImageFlavor(VirtualMachineImageFlavor object) {
+				return createVirtualMachineImageFlavorAdapter();
+			}
+			@Override
+			public Adapter caseVirtualNetwork(VirtualNetwork object) {
+				return createVirtualNetworkAdapter();
+			}
+			@Override
+			public Adapter caseVirtualInstance(VirtualInstance object) {
+				return createVirtualInstanceAdapter();
+			}
+			@Override
+			public Adapter caseSecurityGroup(SecurityGroup object) {
+				return createSecurityGroupAdapter();
+			}
+			@Override
+			public Adapter caseDeployment(Deployment object) {
+				return createDeploymentAdapter();
+			}
+			@Override
+			public Adapter caseModule(Module object) {
+				return createModuleAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
 
   /**
-   * Creates an adapter for the <code>target</code>.
-   * <!-- begin-user-doc -->
+	 * Creates an adapter for the <code>target</code>.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param target the object to adapt.
-   * @return the adapter for the <code>target</code>.
-   * @generated
-   */
+	 * @param target the object to adapt.
+	 * @return the adapter for the <code>target</code>.
+	 * @generated
+	 */
   @Override
   public Adapter createAdapter(Notifier target)
   {
-    return modelSwitch.doSwitch((EObject)target);
-  }
+		return modelSwitch.doSwitch((EObject)target);
+	}
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe <em>Monitoring Probe</em>}'.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe <em>Monitoring Probe</em>}'.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.camf.infosystem.model.base.MonitoringProbe
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.MonitoringProbe
+	 * @generated
+	 */
   public Adapter createMonitoringProbeAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.ResizingAction <em>Resizing Action</em>}'.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.ResizingAction <em>Resizing Action</em>}'.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.camf.infosystem.model.base.ResizingAction
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.ResizingAction
+	 * @generated
+	 */
   public Adapter createResizingActionAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.SoftwareDependency <em>Software Dependency</em>}'.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.SoftwareDependency <em>Software Dependency</em>}'.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.camf.infosystem.model.base.SoftwareDependency
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.SoftwareDependency
+	 * @generated
+	 */
   public Adapter createSoftwareDependencyAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage <em>Virtual Machine Image</em>}'.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage <em>Virtual Machine Image</em>}'.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage
+	 * @generated
+	 */
   public Adapter createVirtualMachineImageAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.UserApplication <em>User Application</em>}'.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.UserApplication <em>User Application</em>}'.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.camf.infosystem.model.base.UserApplication
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.UserApplication
+	 * @generated
+	 */
   public Adapter createUserApplicationAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.KeyPair <em>Key Pair</em>}'.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.KeyPair <em>Key Pair</em>}'.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.camf.infosystem.model.base.KeyPair
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.KeyPair
+	 * @generated
+	 */
   public Adapter createKeyPairAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor <em>Virtual Machine Image Flavor</em>}'.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor <em>Virtual Machine Image Flavor</em>}'.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor
+	 * @generated
+	 */
   public Adapter createVirtualMachineImageFlavorAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.VirtualNetwork <em>Virtual Network</em>}'.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.VirtualNetwork <em>Virtual Network</em>}'.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualNetwork
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.VirtualNetwork
+	 * @generated
+	 */
   public Adapter createVirtualNetworkAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Creates a new adapter for the default case.
-   * <!-- begin-user-doc -->
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance <em>Virtual Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.VirtualInstance
+	 * @generated
+	 */
+	public Adapter createVirtualInstanceAdapter() {
+		return null;
+	}
+
+		/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.SecurityGroup <em>Security Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.SecurityGroup
+	 * @generated
+	 */
+	public Adapter createSecurityGroupAdapter() {
+		return null;
+	}
+
+		/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.Deployment <em>Deployment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.Deployment
+	 * @generated
+	 */
+	public Adapter createDeploymentAdapter() {
+		return null;
+	}
+
+		/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.Module <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.infosystem.model.base.Module
+	 * @generated
+	 */
+	public Adapter createModuleAdapter() {
+		return null;
+	}
+
+		/**
+	 * Creates a new adapter for the default case.
+	 * <!-- begin-user-doc -->
    * This default implementation returns null.
    * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @generated
-   */
+	 * @return the new adapter.
+	 * @generated
+	 */
   public Adapter createEObjectAdapter()
   {
-    return null;
-  }
+		return null;
+	}
 
 } //InfoSystemAdapterFactory

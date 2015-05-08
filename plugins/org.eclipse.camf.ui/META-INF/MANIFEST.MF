@@ -25,7 +25,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.camf.connectors.openstack
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.camf.tosca.core,
+Import-Package: org.eclipse.camf.infosystem.model.base,
+ org.eclipse.camf.tosca.core,
  org.eclipse.ui.actions,
  org.eclipse.ui.console
 Export-Package: org.eclipse.camf.ui,

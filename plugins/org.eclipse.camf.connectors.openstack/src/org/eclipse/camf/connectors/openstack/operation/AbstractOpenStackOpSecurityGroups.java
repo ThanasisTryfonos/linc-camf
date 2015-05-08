@@ -10,33 +10,31 @@
  * project number: FP7-317790  http://www.celarcloud.eu
  *
  * Contributors:
- * 	Nicholas Loulloudes - initial API and implementation
- *  Andreas Kastanas - added proper comments, change API to retrieve more details
+ * 	Andreas Kastanas - initial API and implementation
  *******************************************************************************/
 package org.eclipse.camf.connectors.openstack.operation;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.jclouds.openstack.nova.v2_0.domain.Flavor;
+import org.jclouds.openstack.nova.v2_0.domain.SecurityGroup;
 
 /**
  * This base class provides some common functionality for classes wanting to
- * fetch the list of available VM flavors.
- * 
- * @author Nicholas Loulloudes
+ * fetch the list of available SecurityGroups.
+ *
+ * @author Andreas Kastanas
  */
-public abstract class AbstractOpenStackOpFlavors implements IOperation {
+public abstract class AbstractOpenStackOpSecurityGroups implements IOperation {
 
-	/** The resulting list of Flavors */
-	private List<Flavor> result;
+	/** The resulting list of Instances */
+	private List<SecurityGroup> result;
 
 	/** Any exception which came up during the inquiry. */
 	private Exception exception;
 
 	abstract public void run();
 
-	public List<Flavor> getResult() {
+	public List<SecurityGroup> getResult() {
 		return this.result;
 	}
 
@@ -47,11 +45,11 @@ public abstract class AbstractOpenStackOpFlavors implements IOperation {
 	/**
 	 * A setter for {@link #result}.
 	 * 
-	 * @param describeImagesByOwner
+	 * @param describedInstances
 	 *            the param to set
 	 */
-	protected void setResult(final ArrayList<Flavor> arrayList) {
-		this.result = arrayList;
+	protected void setResult(final List<SecurityGroup> describedSecurityGroups) {
+		this.result = describedSecurityGroups;
 	}
 
 	/**
