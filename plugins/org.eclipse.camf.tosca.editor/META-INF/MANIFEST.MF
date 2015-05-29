@@ -34,7 +34,8 @@ Import-Package: org.eclipse.camf.core.reporting,
  org.eclipse.camf.infosystem.mockup.info,
  org.eclipse.core.filesystem,
  org.eclipse.core.internal.filesystem.local,
- org.eclipse.ui.part
+ org.eclipse.ui.part,
+ org.json
 Export-Package: org.eclipse.camf.tosca.editor,
  org.eclipse.camf.tosca.editor.diagram,
  org.eclipse.camf.tosca.editor.dialog,

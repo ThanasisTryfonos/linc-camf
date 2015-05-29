@@ -52,19 +52,14 @@ import org.example.sybl.ToEnforceType1;
 
 public class ElasticityConstraintDialog extends Dialog {
 
-  protected Text typeText;
-  protected Text valueText;
-  protected boolean editMode = false;
-  protected boolean addMode = false;
-  protected String newType;
-  protected String elasticityRequirement;
-  private CCombo cmbGlobalElasticityReq;
-  private CCombo cmbOperator;
-  private String component;
-  private String constraintLeft;
-  private String constraintRight;
-  private String constraintOperator;
-
+	 protected Text typeText;
+	  protected Text valueText;
+	  protected boolean editMode = false;
+	  protected boolean addMode = false;
+	  protected String newType;
+	  protected String elasticityRequirement;
+	  private CCombo cmbGlobalElasticityReq;
+	  private CCombo cmbOperator;
   
   /**
    * @param parentShell
@@ -74,7 +69,6 @@ public class ElasticityConstraintDialog extends Dialog {
     super( parentShell );
     this.elasticityRequirement = null;
     this.addMode = true;
-    this.component = component;
   }
 
   @Override
@@ -101,33 +95,28 @@ public class ElasticityConstraintDialog extends Dialog {
     this.cmbGlobalElasticityReq.setEnabled( true );
     gd = new GridData( 212, 20 );
     this.cmbGlobalElasticityReq.setLayoutData( gd );
-    
     ArrayList<MonitoringProbe> mps = getMetrics();
-    
-    for (MonitoringProbe mp : mps){
+    for( MonitoringProbe mp : mps ) {
       String metricsString = mp.getDescription();
-      if (metricsString.equals( "" )==false){
-        metricsString = metricsString.substring( 2, metricsString.length()-2 );
+      if( metricsString.equals( "" ) == false ) {
+        metricsString = metricsString.substring( 2, metricsString.length() - 2 );
         metricsString = metricsString.replace( "\"", "" );
-      String[] metrics = metricsString.split( "," );
-      for (String metric : metrics)
-        this.cmbGlobalElasticityReq.add(metric);
-      }
-      else{
-        this.cmbGlobalElasticityReq.add(mp.getName());
+        String[] metrics = metricsString.split( "," );
+        for( String metric : metrics )
+          this.cmbGlobalElasticityReq.add( metric );
+      } else {
+        this.cmbGlobalElasticityReq.add( mp.getName() );
       }
     }
     this.cmbGlobalElasticityReq.add( "CostPerHour ($)" );
-
+    this.cmbGlobalElasticityReq.add( "Response Time" );
     Composite valueComposite = new Composite( composite, SWT.NONE );
     gLayout = new GridLayout( 3, false );
     valueComposite.setLayout( gLayout );
-    
     Label valueLabel = new Label( valueComposite, SWT.LEAD );
     valueLabel.setText( "Value" ); //$NON-NLS-1$
     gd = new GridData( 50, 20 );
     valueLabel.setLayoutData( gd );
-    
     // Combo - Operator
     this.cmbOperator = new CCombo( valueComposite, SWT.BORDER );
     this.cmbOperator.setEnabled( true );
@@ -135,92 +124,55 @@ public class ElasticityConstraintDialog extends Dialog {
     this.cmbOperator.setLayoutData( gd );
     this.cmbOperator.add( "=" ); //$NON-NLS-1$
     this.cmbOperator.add( "<" ); //$NON-NLS-1$
-    this.cmbOperator.add( ">" );  //$NON-NLS-1$
-    this.cmbOperator.setText( this.cmbOperator.getItem( 0 ) );  
-    
+    this.cmbOperator.add( ">" ); //$NON-NLS-1$
+    this.cmbOperator.setText( this.cmbOperator.getItem( 0 ) );
     this.valueText = new Text( valueComposite, SWT.BORDER );
     gd = new GridData( 154, 20 );
-    this.valueText.setLayoutData( gd ); 
-
+    this.valueText.setLayoutData( gd );
     return composite;
   }
 
-  public ArrayList<MonitoringProbe> getMetrics(){
-    
-    ArrayList<MonitoringProbe> mps = MockUpInfoSystem.getInstance()
-        .getMonitoringProbes();
-        
-        ArrayList<MonitoringProbe> mpsCopy = ( ArrayList<MonitoringProbe> )mps.clone();
-        
-    IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
-    IProject monitoringProbesProject = workspaceRoot.getProject( "MonitoringProbe" );
+  public ArrayList<MonitoringProbe> getMetrics() {
+	    ArrayList<MonitoringProbe> mps = MockUpInfoSystem.getInstance()
+	      .getMonitoringProbes();
+	    @SuppressWarnings("unchecked")
+	    ArrayList<MonitoringProbe> mpsCopy = ( ArrayList<MonitoringProbe> )mps.clone();
+	    IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+	    IProject monitoringProbesProject = workspaceRoot.getProject( "MonitoringProbe" );
+	    if( monitoringProbesProject.exists() ) {
+	      IFolder srcFolder = monitoringProbesProject.getFolder( "src" );
+	      IResource[] artifactsResource = null;
+	      try {
+	        artifactsResource = srcFolder.members();
+	      } catch( CoreException e ) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	      }
+	      for( IResource tempResource : artifactsResource ) {
+	        if( tempResource instanceof IFile ) {
+	          MonitoringProbe mp = InfoSystemFactory.eINSTANCE.createMonitoringProbe();
+	          mp.setUID( tempResource.getName().replaceFirst( ".java", "" ) );
+	          mp.setName( tempResource.getName().replaceFirst( ".java", "" ) );
+	          mp.setDescription( "" );
+	          // add new probe to monitoring list
+	          mpsCopy.add( 0, mp );
+	        }
+	      }
+	    }
+	    return mpsCopy;
+	  }
 
-    if( monitoringProbesProject.exists() ) {
-      IFolder srcFolder = monitoringProbesProject.getFolder( "src" );
-      IResource[] artifactsResource = null;
-      try {
-        artifactsResource = srcFolder.members();
-      } catch( CoreException e ) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      for( IResource tempResource : artifactsResource ) {
-        if( tempResource instanceof IFile ) {
-          MonitoringProbe mp = InfoSystemFactory.eINSTANCE.createMonitoringProbe();
-          mp.setUID( tempResource.getName().replaceFirst( ".java", "" ));
-          mp.setName( tempResource.getName().replaceFirst( ".java", "" ));
-          mp.setDescription( "" );
-          mp.setURL( "" );
-          // add new probe to monitoring list
-          mpsCopy.add( 0, mp );
-        }
-      }
-    }
-    
-    return mpsCopy;
-  }
-  
-  public String getElasticityConstraint() {
-    return ElasticityConstraintDialog.this.elasticityRequirement;
-  }
-  
-  public SyblElasticityRequirementsDescription getSYBLConstraint(){
+	  public String getElasticityConstraint() {
+	    return ElasticityConstraintDialog.this.elasticityRequirement;
+	  }
 
-    SyblElasticityRequirementsDescription serd = SyblFactory.eINSTANCE.createSyblElasticityRequirementsDescription();
-    
-    Constraint propertiesConstraint = SyblFactory.eINSTANCE.createConstraint();
-    ToEnforceType1 constraintToEnforce = SyblFactory.eINSTANCE.createToEnforceType1();
-    propertiesConstraint.setId( "hi" );
-    propertiesConstraint.setToEnforce( constraintToEnforce );
-    
-    BinaryRestriction br = SyblFactory.eINSTANCE.createBinaryRestriction();
-    br.setType( this.constraintOperator );
-    LeftHandSideType constraintLeft = SyblFactory.eINSTANCE.createLeftHandSideType();
-    constraintLeft.setMetric( this.constraintLeft );
-    br.setLeftHandSide( constraintLeft );
-    RightHandSideType constraintRight = SyblFactory.eINSTANCE.createRightHandSideType();
-    constraintRight.setNumber( this.constraintRight );
-    br.setRightHandSide( constraintRight );
-    constraintToEnforce.getBinaryRestrictionsConjunction().add( br );
-    
-    SYBLSpecificationType sst = SyblFactory.eINSTANCE.createSYBLSpecificationType();
-    sst.getConstraint().add( propertiesConstraint );
-    serd.getSYBLSpecification().add( sst );
-    
-    return serd;
-  }
-
-  @SuppressWarnings("boxing")
-  @Override
-  protected void okPressed() {
- 
-    ElasticityConstraintDialog.this.constraintLeft = this.cmbGlobalElasticityReq.getText();
-    ElasticityConstraintDialog.this.constraintRight = this.valueText.getText();
-    ElasticityConstraintDialog.this.constraintOperator = this.cmbOperator.getText();
-    
-    ElasticityConstraintDialog.this.elasticityRequirement = this.cmbGlobalElasticityReq.getText() + this.cmbOperator.getText() + this.valueText.getText();
-                                                                                             
-    super.okPressed();
-  }
+	  @SuppressWarnings("boxing")
+	  @Override
+	  protected void okPressed() {
+	    ElasticityConstraintDialog.this.elasticityRequirement = this.cmbGlobalElasticityReq.getText()
+	                                                            + this.cmbOperator.getText()
+	                                                            + this.valueText.getText();
+	    super.okPressed();
+	  }
 }
 

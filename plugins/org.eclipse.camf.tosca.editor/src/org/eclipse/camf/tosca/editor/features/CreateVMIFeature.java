@@ -157,46 +157,54 @@ public class CreateVMIFeature extends AbstractCreateFeature {
     };
   }
   
-  private void createArtifactTemplate(String nodeName, String description, String imageId){
-    
-    //Create Artifact Template
-    final TArtifactTemplate artifactTemplate = ToscaFactory.eINSTANCE.createTArtifactTemplate();
-    
-    //Create Image Artifact Properties
-    ImageArtifactPropertiesType imageProperties = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createImageArtifactPropertiesType();
-    imageProperties.setDescription( description );
-    
-    if (imageId!=null){
-      imageProperties.setId( imageId );
-    }
-    
-    // Set the Properties of the Policy Template    
-    PropertiesType properties = ToscaFactory.eINSTANCE.createPropertiesType();   
-    
-    // Add the SYBL Policy to the FeatureMap of the Policy's Properties element
-    Entry e = FeatureMapUtil.createEntry(     Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getDocumentRoot_ImageArtifactProperties(),  imageProperties );
-    properties.getAny().add( e );   
-    
-    artifactTemplate.setProperties( properties );
-    
-    artifactTemplate.setId( nodeName + "Image" );
-    
-    // Add the new Artifact Template to the TOSCA Definitions element
-    
-    final ToscaModelLayer model = ModelHandler.getModel( EcoreUtil.getURI( getDiagram() ) );
-    
-    DefinitionsType definitions = model.getDocumentRoot().getDefinitions();
-       
-    TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( definitions );
-    editingDomain.getCommandStack()
-      .execute( new RecordingCommand( editingDomain ) {
+  private void createArtifactTemplate(String description, String artifactRef, String imageId){
+	    
+	    final ToscaModelLayer model = ModelHandler.getModel( EcoreUtil.getURI( getDiagram() ) );
+	    
+	    for (TArtifactTemplate tempArtifactTemplate : model.getDocumentRoot()
+	        .getDefinitions()
+	        .getArtifactTemplate()){
+	      if (tempArtifactTemplate.getId().equals( imageId ))
+	        return;
+	    }
+	  
+	    //Create Artifact Template
+	    final TArtifactTemplate artifactTemplate = ToscaFactory.eINSTANCE.createTArtifactTemplate();
+	    
+	    //Create Image Artifact Properties
+	    ImageArtifactPropertiesType imageProperties = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createImageArtifactPropertiesType();
+	    imageProperties.setDescription( description );
+	    
+	    if (imageId!=null){
+	      imageProperties.setId( imageId );
+	    }
+	    
+	    // Set the Properties of the Policy Template    
+	    PropertiesType properties = ToscaFactory.eINSTANCE.createPropertiesType();   
+	    
+	    // Add the SYBL Policy to the FeatureMap of the Policy's Properties element
+	    Entry e = FeatureMapUtil.createEntry(     Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getDocumentRoot_ImageArtifactProperties(),  imageProperties );
+	    properties.getAny().add( e );   
+	    
+	    artifactTemplate.setProperties( properties );
+	 
+	    //artifactTemplate.setId( imageId );
+	    artifactTemplate.setId( artifactRef );
+	    
+	    // Add the new Artifact Template to the TOSCA Definitions element
+	    
+	    DefinitionsType definitions = model.getDocumentRoot().getDefinitions();
+	       
+	    TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( definitions );
+	    editingDomain.getCommandStack()
+	      .execute( new RecordingCommand( editingDomain ) {
 
-        @Override
-        protected void doExecute() {
-          model.getDocumentRoot().getDefinitions().getArtifactTemplate().add( artifactTemplate );
-          
-        }
-      } );
+	        @Override
+	        protected void doExecute() {
+	          model.getDocumentRoot().getDefinitions().getArtifactTemplate().add( artifactTemplate );
+	          
+	        }
+	      } );
 
-  }
+	  }
 }

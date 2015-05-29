@@ -36,6 +36,7 @@ import org.eclipse.camf.infosystem.model.base.UserApplication;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImageType;
 import org.eclipse.camf.infosystem.model.base.VirtualNetwork;
+import org.eclipse.camf.tosca.TArtifactTemplate;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.TNodeTemplate;
 import org.eclipse.camf.tosca.ToscaFactory;
@@ -54,6 +55,7 @@ import org.eclipse.camf.tosca.editor.features.RenameCompositeComponentFeature;
 import org.eclipse.camf.tosca.elasticity.TNodeTemplateExtension;
 import org.eclipse.camf.tosca.elasticity.TServiceTemplateExtension;
 import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsFactory;
+import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -95,15 +97,25 @@ import org.eclipse.graphiti.tb.IContextButtonPadData;
 import org.eclipse.graphiti.tb.IContextMenuEntry;
 import org.eclipse.graphiti.tb.IDecorator;
 import org.eclipse.graphiti.tb.ImageDecorator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
 
-  MockUpInfoSystem mockUpInfoSystemInstance; 
-
+	MockUpInfoSystem mockUpInfoSystemInstance; 
+	  
+	private String typesPrefix = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getNsPrefix();
   
-  public ToscaToolBehaviorProvider( final IDiagramTypeProvider dtp ) {
-    super( dtp );
-  }
+	private String typesNamespace = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getNsURI();
+  
+	private String imageType = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getImageArtifactPropertiesType().getName();
+
+	private String scriptArtifactType = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getScriptArtifactPropertiesType().getName();
+  
+	public ToscaToolBehaviorProvider( final IDiagramTypeProvider dtp ) {
+		super( dtp );
+	}
 
   @Override
   public IContextButtonPadData getContextButtonPad( IPictogramElementContext context )
@@ -142,31 +154,31 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
   /**
    * 
    */
-  private void fetchResources() {
-    Job job = new Job( "Resource Fetching" ) { //$NON-NLS-1$
-
-      @Override
-      protected IStatus run( final IProgressMonitor monitor ) {
-        monitor.beginTask( "Fetching Resources from Cloud Provider", 100 );
-        MockUpInfoSystem.getInstance();
-        for( int i = 0; i < 5; i++ ) {
-          try {
-            // sleep a second
-            TimeUnit.SECONDS.sleep( 1 );
-            monitor.subTask( "Resource bundle #" + i );
-            // report that 20 additional units are done
-            monitor.worked( 20 );
-          } catch( InterruptedException e1 ) {
-            e1.printStackTrace();
-            return Status.CANCEL_STATUS;
-          }
-        }
-        System.out.println( "Called save" );
-        return Status.OK_STATUS;
-      }
-    };
-    job.schedule();
-  }
+//  private void fetchResources() {
+//    Job job = new Job( "Resource Fetching" ) { //$NON-NLS-1$
+//
+//      @Override
+//      protected IStatus run( final IProgressMonitor monitor ) {
+//        monitor.beginTask( "Fetching Resources from Cloud Provider", 100 );
+//        MockUpInfoSystem.getInstance();
+//        for( int i = 0; i < 5; i++ ) {
+//          try {
+//            // sleep a second
+//            TimeUnit.SECONDS.sleep( 1 );
+//            monitor.subTask( "Resource bundle #" + i );
+//            // report that 20 additional units are done
+//            monitor.worked( 20 );
+//          } catch( InterruptedException e1 ) {
+//            e1.printStackTrace();
+//            return Status.CANCEL_STATUS;
+//          }
+//        }
+//        System.out.println( "Called save" );
+//        return Status.OK_STATUS;
+//      }
+//    };
+//    job.schedule();
+//  }
 
   // Creates the Palette. Palette entries are retrieved from an SQL database.
   @Override
@@ -329,6 +341,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                          appCompCF.getCreateLargeImageId(),
                                                                                          appCompCF );
           stackEntry.addCreationToolEntry( objectCreationToolEntry );
+          break;
         }
       }
     }
@@ -354,6 +367,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                        groupCF.getCreateLargeImageId(),
                                                                                        groupCF );
         stackEntry.addCreationToolEntry( objectCreationToolEntry );
+        break;
       }
     }
   }
@@ -399,10 +413,14 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
           if( cf instanceof CreateSoftwareDependencyFeature ) {
             CreateSoftwareDependencyFeature sdCF = ( CreateSoftwareDependencyFeature )cf;
  
-            TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
-            deploymentArtifact.setName( script.getName() );
-            deploymentArtifact.setArtifactType( new QName( "SD" ) );
-            sdCF.setContextObject( deploymentArtifact );
+            
+            TArtifactTemplate artifactTemplate = ToscaFactory.eINSTANCE.createTArtifactTemplate();
+            artifactTemplate.setName( "SD"+script.getName() );
+            artifactTemplate.setId( script.getName() );
+            artifactTemplate.setType( new QName( typesNamespace, scriptArtifactType, typesPrefix ) );
+            sdCF.setContextObject( artifactTemplate );
+                        
+            
             // add new stack entry to new compartment
             IToolEntry entry = new ObjectCreationToolEntry( script.getName(),
                                                             script.getDescription(),
@@ -410,6 +428,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                             null,
                                                             sdCF );
             compartmentEntry.addToolEntry( entry );
+            break;
           }
         }
       }
@@ -511,9 +530,6 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
         }
       }
       
-      // Now check the InfoService for additional KeyPairs
-      keyPairList.addAll( this.mockUpInfoSystemInstance.getKeyPairs() );
-      
       // add new compartment at the end of the existing compartments
       PaletteCompartmentEntry compartmentEntry = new PaletteCompartmentEntry( "Key Pairs", null ); //$NON-NLS-1$
       ret.add( compartmentEntry );
@@ -537,6 +553,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                             null,
                                                             kpCF );
             compartmentEntry.addToolEntry( entry );
+            break;
           }
         }
       }
@@ -596,9 +613,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
             /* ... */
         }
           String imageId = out.toString();
-          
-          /////////////////////////////////////////////////////
-          
+                    
           VirtualMachineImage vmi = InfoSystemFactory.eINSTANCE.createVirtualMachineImage();
           vmi.setUID( imageId );
           vmi.setName( tempResource.getName() );
@@ -629,7 +644,8 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
           TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
           deploymentArtifact.setName( vmi.getUID() );
           deploymentArtifact.setArtifactRef( new QName(vmi.getUID()) );
-          deploymentArtifact.setArtifactType( new QName( "VMI" ) );
+          //deploymentArtifact.setArtifactType( new QName( "VMI" ) );
+          deploymentArtifact.setArtifactType( new QName( typesNamespace, imageType, typesPrefix ));
           vmiCF.setContextObject( deploymentArtifact );
 
           ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( vmi.getUID(),
@@ -638,21 +654,157 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                          vmiCF.getCreateLargeImageId(),
                                                                                          vmiCF );
           stackEntry.addCreationToolEntry( objectCreationToolEntry );
+          break;
         }
       }
-      
-    // add all create-connection-features to the new stack-entry    
-    ICreateConnectionFeature[] createConnectionFeatures = featureProvider.getCreateConnectionFeatures();
-    for( ICreateConnectionFeature connFeat : createConnectionFeatures ) {
-      ConnectionCreationToolEntry connectionCreationToolEntry = new ConnectionCreationToolEntry( vmi.getName(),
-                                                                                                 connFeat.getName(),
-                                                                                                 connFeat.getCreateImageId(),
-                                                                                                 connFeat.getCreateLargeImageId() );
-      connectionCreationToolEntry.addCreateConnectionFeature( connFeat );
-      stackEntry.addCreationToolEntry( connectionCreationToolEntry );
-    }
     }
   }
+  
+//Create Palette compartment for Monitoring Probes
+ private void addJCatascopiaMonitorProbeCompartment( List<IPaletteCompartmentEntry> ret )
+ {
+   
+ ArrayList<MonitoringProbe> mps = this.mockUpInfoSystemInstance.getMonitoringProbes();
+ 
+ @SuppressWarnings("unchecked")
+ ArrayList<MonitoringProbe> mpsCopy = ( ArrayList<MonitoringProbe> )mps.clone();
+
+   // Add custom probes from project explorer
+
+ IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+ IProject monitoringProbesProject = workspaceRoot.getProject( "MonitoringProbe" );
+
+ if( monitoringProbesProject.exists() ) {
+   IFolder srcFolder = monitoringProbesProject.getFolder( "src" );
+   IResource[] artifactsResource = null;
+   try {
+     artifactsResource = srcFolder.members();
+   } catch( CoreException e ) {
+     // TODO Auto-generated catch block
+     e.printStackTrace();
+   }
+   if ( artifactsResource != null ){
+     for( IResource tempResource : artifactsResource ) {
+       if( tempResource instanceof IFile ) {
+         MonitoringProbe mp = InfoSystemFactory.eINSTANCE.createMonitoringProbe();
+         mp.setUID( tempResource.getName().replaceFirst( ".java", "" ));
+         mp.setName( tempResource.getName().replaceFirst( ".java", "" ));
+         mp.setDescription( "" );
+         // add new probe to monitoring list
+         mpsCopy.add( 0, mp );
+       }
+     }
+   }
+ }
+ 
+   // add new compartment at the end of the existing compartments
+   PaletteCompartmentEntry compartmentEntry = new PaletteCompartmentEntry( "Monitor Probes", null ); //$NON-NLS-1$
+   compartmentEntry.setInitiallyOpen( false );
+   ret.add( compartmentEntry );
+       
+   for( MonitoringProbe mp : mpsCopy ) {
+
+     String metricsString = mp.getMetrics();
+     if ( metricsString.equals( "" ) == false ){
+       // add new Metric Probe entry to probes compartment
+       StackEntry stackEntry = new StackEntry(  mp.getName(), mp.getDescription(), null );
+       compartmentEntry.addToolEntry( stackEntry );
+       compartmentEntry.setInitiallyOpen( false );   
+       
+       IFeatureProvider featureProvider = getFeatureProvider();
+       ICreateFeature[] createFeatures = featureProvider.getCreateFeatures();
+       for( ICreateFeature cf : createFeatures ) {
+         if( cf instanceof CreateMonitorProbeFeature ) {
+           CreateMonitorProbeFeature mpCF = ( CreateMonitorProbeFeature )cf;
+
+           TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+           deploymentArtifact.setName( mp.getName() );
+           deploymentArtifact.setArtifactType( new QName( "MonitoringProbe" ) );
+           mpCF.setContextObject( deploymentArtifact );
+
+           ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( mp.getName(),
+                                                                                          mp.getDescription(),
+                                                                                          mpCF.getCreateImageId(),
+                                                                                          mpCF.getCreateLargeImageId(),
+                                                                                          mpCF );
+           stackEntry.addCreationToolEntry( objectCreationToolEntry );
+           break;
+         }
+       }
+       
+       String metrics = "{\"metrics\":" + metricsString + "}";
+       JSONObject obj = null;
+       JSONArray metrics_array = null;
+       try {
+         obj = new JSONObject( metrics );
+         metrics_array = obj.getJSONArray( "metrics" );
+       } catch( JSONException e ) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+       } //$NON-NLS-1$
+
+       for ( int i=0; i < metrics_array.length(); i++){
+         String metricLabel = null;
+         String metricDescription = null;
+         try {
+           metricLabel = metrics_array.getJSONObject( i ).getString( "name" );
+           metricDescription = metrics_array.getJSONObject( i ).getString( "desc" );
+         } catch( JSONException e ) {
+           // TODO Auto-generated catch block
+           e.printStackTrace();
+         }
+         // add all create-features to the new stack-entry
+         featureProvider = getFeatureProvider();
+         createFeatures = featureProvider.getCreateFeatures();
+         for( ICreateFeature cf : createFeatures ) {
+           if( cf instanceof CreateMonitorProbeFeature ) {
+             CreateMonitorProbeFeature mpCF = ( CreateMonitorProbeFeature )cf;
+
+             TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+             deploymentArtifact.setName( metricLabel );
+             deploymentArtifact.setArtifactType( new QName( "MonitoringProbe" ) );
+             mpCF.setContextObject( deploymentArtifact );
+
+             ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( metricLabel,
+                                                                                            metricDescription,
+                                                                                            mpCF.getCreateImageId(),
+                                                                                            mpCF.getCreateLargeImageId(),
+                                                                                            mpCF );
+             
+             stackEntry.addCreationToolEntry( objectCreationToolEntry );
+             break;
+           }
+         }
+         
+       }
+     }
+     else{
+     // Custom Monitoring Probes
+     // add all create-features to the new stack-entry
+     IFeatureProvider featureProvider = getFeatureProvider();
+     ICreateFeature[] createFeatures = featureProvider.getCreateFeatures();
+     for( ICreateFeature cf : createFeatures ) {
+       if( cf instanceof CreateMonitorProbeFeature ) {
+         CreateMonitorProbeFeature mpCF = ( CreateMonitorProbeFeature )cf;
+
+         TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+         deploymentArtifact.setName( mp.getName() );
+         deploymentArtifact.setArtifactType( new QName( "MonitoringProbe" ) );
+         mpCF.setContextObject( deploymentArtifact );
+         
+         // add new stack entry to new compartment
+         IToolEntry entry = new ObjectCreationToolEntry( mp.getName(),
+                                                         mp.getDescription(),
+                                                         null,
+                                                         null,
+                                                         mpCF );
+         compartmentEntry.addToolEntry( entry );
+
+       }
+     }
+   }
+   }
+ }
   
   // Create Palette compartment for Monitoring Probes
   private void addMonitorProbeCompartment( List<IPaletteCompartmentEntry> ret )
@@ -721,6 +873,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                            mpCF.getCreateLargeImageId(),
                                                                                            mpCF );
             stackEntry.addCreationToolEntry( objectCreationToolEntry );
+            break;
           }
         }
         
@@ -746,7 +899,8 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                              mpCF );
               
               stackEntry.addCreationToolEntry( objectCreationToolEntry );
-            }
+              break;
+            }            
           }
           
         }
@@ -772,7 +926,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                           null,
                                                           mpCF );
           compartmentEntry.addToolEntry( entry );
-
+          break;
         }
       }
     }
@@ -785,6 +939,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
   {
     ArrayList<ResizingAction> ras = this.mockUpInfoSystemInstance.getResizingActions();
     
+    @SuppressWarnings("unchecked")
     ArrayList<ResizingAction> rasCopy = ( ArrayList<ResizingAction> )ras.clone();
     // Add custom images from project explorer
     IProject activeProject = ToscaDiagramEditor.getActiveProject();
@@ -831,6 +986,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                          raCF.getCreateLargeImageId(),
                                                                                          raCF );
           stackEntry.addCreationToolEntry( objectCreationToolEntry );
+          break;
         }
       }
     }
@@ -904,7 +1060,12 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
   public GraphicsAlgorithm[] getClickArea( final PictogramElement pe ) {
     IFeatureProvider featureProvider = getFeatureProvider();
     Object bo = featureProvider.getBusinessObjectForPictogramElement( pe );
-    if( bo instanceof TNodeTemplate ) {
+    
+    if (bo instanceof TNodeTemplate)
+      if ( ((TNodeTemplate) bo)==null || ((TNodeTemplate) bo).getType() == null)
+        return null;
+    
+    if( bo instanceof TNodeTemplate && ((TNodeTemplate) bo).getType().toString().contains("substituteNode")==false) {
       GraphicsAlgorithm invisible = pe.getGraphicsAlgorithm();
       GraphicsAlgorithm rectangle = invisible.getGraphicsAlgorithmChildren()
         .get( 0 );

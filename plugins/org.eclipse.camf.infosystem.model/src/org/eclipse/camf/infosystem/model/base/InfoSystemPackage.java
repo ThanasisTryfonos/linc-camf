@@ -110,15 +110,15 @@ public interface InfoSystemPackage extends EPackage
   int MONITORING_PROBE__DESCRIPTION = 2;
 
   /**
-	 * The feature id for the '<em><b>URL</b></em>' attribute.
+	 * The feature id for the '<em><b>Metrics</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-  int MONITORING_PROBE__URL = 3;
+	int MONITORING_PROBE__METRICS = 3;
 
-  /**
+		/**
 	 * The number of structural features of the '<em>Monitoring Probe</em>' class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -824,17 +824,17 @@ public interface InfoSystemPackage extends EPackage
   EAttribute getMonitoringProbe_Description();
 
   /**
-	 * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getURL <em>URL</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getMetrics <em>Metrics</em>}'.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>URL</em>'.
-	 * @see org.eclipse.camf.infosystem.model.base.MonitoringProbe#getURL()
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Metrics</em>'.
+	 * @see org.eclipse.camf.infosystem.model.base.MonitoringProbe#getMetrics()
 	 * @see #getMonitoringProbe()
 	 * @generated
 	 */
-  EAttribute getMonitoringProbe_URL();
+	EAttribute getMonitoringProbe_Metrics();
 
-  /**
+		/**
 	 * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.ResizingAction <em>Resizing Action</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1541,14 +1541,14 @@ public interface InfoSystemPackage extends EPackage
     EAttribute MONITORING_PROBE__DESCRIPTION = eINSTANCE.getMonitoringProbe_Description();
 
     /**
-		 * The meta object literal for the '<em><b>URL</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Metrics</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-    EAttribute MONITORING_PROBE__URL = eINSTANCE.getMonitoringProbe_URL();
+		EAttribute MONITORING_PROBE__METRICS = eINSTANCE.getMonitoringProbe_Metrics();
 
-    /**
+				/**
 		 * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.ResizingActionImpl <em>Resizing Action</em>}' class.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

@@ -91,7 +91,6 @@ public class RenameCompositeComponentFeature extends AbstractCustomFeature {
         this.hasDoneChanges = true;
         tServiceTemplate.setName( newName );
         
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
         tServiceTemplate.setSubstitutableNodeType(new QName("substituteNode_"+newName));
         
         // Find the substitute TNodeTemplate
