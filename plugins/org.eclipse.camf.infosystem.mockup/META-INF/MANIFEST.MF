@@ -35,5 +35,7 @@ Export-Package: org.eclipse.camf.infosystem.mockup.info;
 Import-Package: 
  org.apache.commons.logging,
  org.apache.http;version="4.1.4",
+ org.eclipse.camf.infosystem.jobs,
  org.jclouds.compute;version="1.8.0",
- org.jclouds.compute.domain;version="1.8.0"
+ org.jclouds.compute.domain;version="1.8.0",
+ org.json

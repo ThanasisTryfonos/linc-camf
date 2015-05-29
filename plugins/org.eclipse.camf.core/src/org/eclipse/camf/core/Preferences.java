@@ -15,15 +15,31 @@
  *******************************************************************************/
 package org.eclipse.camf.core;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 import org.eclipse.camf.core.internal.Activator;
+import org.eclipse.camf.core.model.CloudModel;
+import org.eclipse.camf.core.model.ICloudElement;
+import org.eclipse.camf.core.model.ICloudProvider;
+import org.eclipse.camf.core.model.ICloudProviderManager;
+import org.eclipse.camf.core.model.impl.GenericCloudProvider;
+import org.eclipse.camf.core.model.impl.GenericCloudProviderCreator;
+import org.eclipse.camf.core.reporting.ProblemException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * This class gives easy access to the core preferences of c-Eclipse.
  * 
- * @author Nicholas Loulloudes
+ * @author Nicholas Loulloudes, Stalo Sofokleous
  */
 public class Preferences {
 
+	
 	/**
 	 * Set the name of the current default Cloud Provider.
 	 * 
@@ -94,5 +110,231 @@ public class Preferences {
 		}
 		return preferenceStore;
 	}
+	
+	/**
+	   * Add a new Cloud Provider.
+	   * 
+	   * @param newCloudProvider The new Cloud Provider.
+	   */
+	  static public void addCloudProvider(final ICloudProvider newCloudProvider){
+	    
+	    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
+	    GenericCloudProviderCreator creator = null;
+	    
+	    creator = new GenericCloudProviderCreator();
+	    creator.setVoName( ((GenericCloudProvider)newCloudProvider).getName());
+	    creator.setVoURI( ((GenericCloudProvider)newCloudProvider).getUri());
+	    creator.setVoPort( ((GenericCloudProvider)newCloudProvider).getPort());
+	    
+	    GenericCloudProvider cp = createVo( creator );
+	    try {
+	      manager.addElement( cp );
+	    } catch( ProblemException e1 ) {
+	      // TODO Auto-generated catch block
+	      e1.printStackTrace();
+	    }
+	    
+	    
+	    
+	    JSONObject provider = null;
+	    try {
+	      provider =  new JSONObject();
+	      provider.put("name", ((GenericCloudProvider)newCloudProvider).getName() );
+	      provider.put( "uri", ((GenericCloudProvider)newCloudProvider).getUri() );
+	      provider.put( "port",((GenericCloudProvider)newCloudProvider).getPort() );
+	    } catch( JSONException e ) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	    
+	    org.eclipse.core.runtime.Preferences preferenceStore = getPreferenceStore();
+
+	    JSONArray providersArray = null;
+	    String providerString = preferenceStore.getString( PreferenceConstants.DEFINED_CPS_ID );
+	    if (providerString.equals( "" )){
+	      providersArray = new JSONArray();
+	    }
+	    else{
+	      try {
+	        providersArray = new JSONArray( providerString );
+	      } catch( JSONException e ) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	      }
+	    }
+	        
+	    
+	    JSONObject tempProvider;
+	    for (int i=0; i<providersArray.length(); i++){
+	      try {
+	        tempProvider = providersArray.getJSONObject( i );
+	        if (tempProvider.getString( "name" ).compareTo( newCloudProvider.getName() )==0){
+	          tempProvider.put( "uri", ((GenericCloudProvider) newCloudProvider).getUri() );
+	          tempProvider.put( "port", ((GenericCloudProvider) newCloudProvider).getPort() );
+	          preferenceStore.setValue( PreferenceConstants.DEFINED_CPS_ID, providersArray.toString() );
+	          return;
+	        }
+	      } catch( JSONException e ) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	      }
+
+	    }
+
+	    providersArray.put( provider );
+	    preferenceStore.setValue( PreferenceConstants.DEFINED_CPS_ID, providersArray.toString() );
+	    save();
+	    
+	  }
+	  
+	  
+	  /**
+	   * Remove Cloud Provider.
+	   * 
+	   * @param removedCloudProvider The Cloud Provider to be removed.
+	   */
+	  static public void removeCloudProvider(final ICloudProvider removedCloudProvider){
+	    
+	    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
+	    manager.removeElement( removedCloudProvider );
+	    
+	    org.eclipse.core.runtime.Preferences preferenceStore = getPreferenceStore();
+
+	    JSONArray providersArray = null;
+	    String providerString = preferenceStore.getString( PreferenceConstants.DEFINED_CPS_ID );
+	    try {
+	      providersArray = new JSONArray( providerString );
+	    } catch( JSONException e ) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	    
+	    JSONObject tempProvider;
+	    for (int i=0; i<providersArray.length(); i++){
+	      try {
+	        tempProvider = providersArray.getJSONObject( i );
+	        if (tempProvider.getString( "name" ).compareTo( removedCloudProvider.getName() )==0){
+	          providersArray.remove( i );
+	          break;
+	        }
+	      } catch( JSONException e ) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	      }
+
+	    }
+	    preferenceStore.setValue( PreferenceConstants.DEFINED_CPS_ID, providersArray.toString() );
+	    save();
+	  }
+	  
+	  
+	  /**
+	   * Get the name of the current default Cloud Provider.
+	   * 
+	   * @return The name of the default Cloud Provider.
+	   */
+	  static public String getDefinedCloudProvidersString() {
+	    org.eclipse.core.runtime.Preferences preferenceStore = getPreferenceStore();
+	    String cloudProviders = preferenceStore.getString( PreferenceConstants.DEFINED_CPS_ID );
+	    return cloudProviders;
+	  }
+	  
+	  /**
+	   * Creates the Cloud Provider objects from the json string and adds them to the CloudProviderManager
+	   * 
+	   * @return The array with the defined Cloud Providers 
+	   */
+	  static public ICloudElement[] getDefinedCloudProviders() {
+	    ICloudElement[] result = null;
+
+	      ICloudProviderManager manager = CloudModel.getCloudProviderManager();
+
+	      try {
+	        result = manager.getChildren( null );
+	        
+	        if (result.length == 0){
+	          
+	          String providerName = getDefinedCloudProvidersString();
+	          if (providerName.equals( "" )){
+	            return result;
+	          }
+	          
+	          JSONArray providersArray = null;
+	          JSONObject provider = null;
+	          GenericCloudProviderCreator creator = null;
+	          try {
+	            //Get Cloud providers from Preference Store
+	            providersArray = new JSONArray(Preferences.getDefinedCloudProvidersString());
+	            for (int i=0; i<providersArray.length();i++){
+	              provider = providersArray.getJSONObject( i );
+	              creator = new GenericCloudProviderCreator();
+	              creator.setVoName( provider.getString( "name" ));
+	              creator.setVoURI( provider.getString( "uri" ));
+	              creator.setVoPort( provider.getString( "port" ));
+	              
+	              GenericCloudProvider cp = createVo( creator );
+	              manager.addElement( cp );
+	            }
+
+	          } catch( JSONException e ) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	          }
+	          
+
+	          result = manager.getChildren( null );
+	        }
+	        
+	        Arrays.sort( result, new Comparator< ICloudElement >() {
+	          public int compare( final ICloudElement vo1,
+	                              final ICloudElement vo2 ) {
+	            return vo1.getName().compareTo( vo2.getName() );
+	          }
+	        } );
+	      } catch ( ProblemException pExc ) {
+	        pExc.printStackTrace();
+	      }
+	    
+	    return result;
+	  }
+	  
+	  // Method from class GenericCloudProviderWizard
+	  private static GenericCloudProvider createVo( final GenericCloudProviderCreator creator ) {
+	    
+	    IStatus result = Status.OK_STATUS;
+	    
+	    GenericCloudProvider vo = null;
+	    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
+	    
+	    try {
+	      
+	        vo = ( GenericCloudProvider ) manager.create( creator );
+	      
+	    } catch ( ProblemException pExc ) {
+	      result = new Status( IStatus.ERROR, Activator.PLUGIN_ID, pExc.getLocalizedMessage(), pExc );
+	    }
+	    
+	    if ( ! result.isOK() && ( vo != null ) ) {
+	      try {
+	        manager.delete( vo );
+	      } catch ( ProblemException pExc ) {
+	        Activator.logException( pExc );
+	      }
+	    }
+	    
+	    return vo;
+	    
+	  }
+
+
+	//  @Override
+	//  public void initializeDefaultPreferences() {
+//	    org.eclipse.core.runtime.Preferences preferenceStore = getPreferenceStore();
+//	    String providerString = "[{\"port\"\\:\"8443\",\"name\"\\:\"Flexiant\",\"uri\"\\:\"https\\://83.212.122.157\"},{\"port\"\\:\"8443\",\"name\"\\:\"Okeanos\",\"uri\"\\:\"https\\://83.212.122.157\"}]";
+//	    preferenceStore.setDefault( PreferenceConstants.DEFINED_CPS_ID, providerString);
+	//    
+	//  }
+	//  
+
 
 }
