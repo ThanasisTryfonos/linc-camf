@@ -40,84 +40,84 @@ import org.eclipse.emf.ecore.EObject;
 public interface ReferenceToType extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Value</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see org.example.sybl.SyblPackage#getReferenceToType_Value()
-   * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-   *        extendedMetaData="name=':0' kind='simple'"
-   * @generated
-   */
+	 * @return the value of the '<em>Value</em>' attribute.
+	 * @see #setValue(String)
+	 * @see org.example.sybl.SyblPackage#getReferenceToType_Value()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="name=':0' kind='simple'"
+	 * @generated
+	 */
   String getValue();
 
   /**
-   * Sets the value of the '{@link org.example.sybl.ReferenceToType#getValue <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.example.sybl.ReferenceToType#getValue <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @see #getValue()
+	 * @generated
+	 */
   void setValue(String value);
 
   /**
-   * Returns the value of the '<em><b>Function</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Function</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Function</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Function</em>' attribute.
-   * @see #setFunction(String)
-   * @see org.example.sybl.SyblPackage#getReferenceToType_Function()
-   * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-   *        extendedMetaData="kind='attribute' name='Function'"
-   * @generated
-   */
+	 * @return the value of the '<em>Function</em>' attribute.
+	 * @see #setFunction(String)
+	 * @see org.example.sybl.SyblPackage#getReferenceToType_Function()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='Function'"
+	 * @generated
+	 */
   String getFunction();
 
   /**
-   * Sets the value of the '{@link org.example.sybl.ReferenceToType#getFunction <em>Function</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.example.sybl.ReferenceToType#getFunction <em>Function</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function</em>' attribute.
-   * @see #getFunction()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Function</em>' attribute.
+	 * @see #getFunction()
+	 * @generated
+	 */
   void setFunction(String value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.example.sybl.SyblPackage#getReferenceToType_Name()
-   * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-   *        extendedMetaData="kind='attribute' name='Name'"
-   * @generated
-   */
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.example.sybl.SyblPackage#getReferenceToType_Name()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='Name'"
+	 * @generated
+	 */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.example.sybl.ReferenceToType#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.example.sybl.ReferenceToType#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
   void setName(String value);
 
 } // ReferenceToType

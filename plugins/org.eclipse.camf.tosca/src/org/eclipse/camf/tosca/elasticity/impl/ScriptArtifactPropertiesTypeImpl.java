@@ -40,214 +40,208 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 public class ScriptArtifactPropertiesTypeImpl extends EObjectImpl implements ScriptArtifactPropertiesType
 {
   /**
-   * An array of objects representing the values of non-primitive features.
-   * <!-- begin-user-doc -->
+	 * An array of objects representing the values of non-primitive features.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Object[] eVirtualValues;
 
   /**
-   * A bit field representing the indices of non-primitive feature values.
-   * <!-- begin-user-doc -->
+	 * A bit field representing the indices of non-primitive feature values.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected int eVirtualIndexBits0;
 
   /**
-   * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLanguage()
-   * @generated
-   * @ordered
-   */
+	 * @see #getLanguage()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String LANGUAGE_EDEFAULT = null;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ScriptArtifactPropertiesTypeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return Tosca_Elasticity_ExtensionsPackage.Literals.SCRIPT_ARTIFACT_PROPERTIES_TYPE;
-  }
+		return Tosca_Elasticity_ExtensionsPackage.Literals.SCRIPT_ARTIFACT_PROPERTIES_TYPE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getLanguage()
   {
-    return (String)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, LANGUAGE_EDEFAULT);
-  }
+		return (String)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, LANGUAGE_EDEFAULT);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setLanguage(String newLanguage)
   {
-    String language = newLanguage;
-    Object oldLanguage = eVirtualSet(Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, language);
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, oldLanguage == EVIRTUAL_NO_VALUE ? LANGUAGE_EDEFAULT : oldLanguage, language));
-  }
+		String language = newLanguage;
+		Object oldLanguage = eVirtualSet(Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, language);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, oldLanguage == EVIRTUAL_NO_VALUE ? LANGUAGE_EDEFAULT : oldLanguage, language));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE:
-        return getLanguage();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE:
+				return getLanguage();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE:
-        setLanguage((String)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE:
+				setLanguage((String)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE:
-        setLanguage(LANGUAGE_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE:
+				setLanguage(LANGUAGE_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE:
-        String language = (String)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, LANGUAGE_EDEFAULT);
-        return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE:
+				String language = (String)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, LANGUAGE_EDEFAULT);
+				return LANGUAGE_EDEFAULT == null ? language != null : !LANGUAGE_EDEFAULT.equals(language);
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected Object[] eVirtualValues()
   {
-    return eVirtualValues;
-  }
+		return eVirtualValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualValues(Object[] newValues)
   {
-    eVirtualValues = newValues;
-  }
+		eVirtualValues = newValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected int eVirtualIndexBits(int offset)
   {
-    switch (offset)
-    {
-      case 0 :
-        return eVirtualIndexBits0;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualIndexBits(int offset, int newIndexBits)
   {
-    switch (offset)
-    {
-      case 0 :
-        eVirtualIndexBits0 = newIndexBits;
-        break;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (language: ");
-    result.append(eVirtualGet(Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, LANGUAGE_EDEFAULT));
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (language: ");
+		result.append(eVirtualGet(Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE__LANGUAGE, LANGUAGE_EDEFAULT));
+		result.append(')');
+		return result.toString();
+	}
 
 } //ScriptArtifactPropertiesTypeImpl

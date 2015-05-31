@@ -19,6 +19,7 @@ import org.eclipse.camf.core.model.CloudModel;
 import org.eclipse.camf.core.model.ICloudElement;
 import org.eclipse.camf.core.model.ICloudModelEvent;
 import org.eclipse.camf.core.model.ICloudModelListener;
+import org.eclipse.camf.tosca.editor.ToscaDiagramEditor;
 import org.eclipse.camf.ui.decorators.CloudProjectFolderDecorator;
 import org.eclipse.camf.ui.internal.actions.ActionGroupManager;
 import org.eclipse.camf.ui.internal.actions.CommonActions;
@@ -119,6 +120,16 @@ public abstract class CloudModelViewPart extends ViewPart implements ICloudModel
         decorator.refresh( event.getElements() );
       }
     }
+    
+	 // Refresh Palette Compartments
+    Display.getDefault().asyncExec(new Runnable() {
+    	@Override
+    	public void run() {
+    		if (ToscaDiagramEditor.db != null){          
+    			ToscaDiagramEditor.db.refreshPalette(); 
+    		}
+    	}
+	  });
   }
   
   public boolean isDragSource( final ICloudElement element ) {

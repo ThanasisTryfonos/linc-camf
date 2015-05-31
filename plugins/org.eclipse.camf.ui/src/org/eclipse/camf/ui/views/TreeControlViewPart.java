@@ -50,6 +50,7 @@ public abstract class TreeControlViewPart extends CloudModelViewPart implements 
             public void run() {
               TreeViewer tViewer = ( TreeViewer ) getViewer();
               tViewer.setChildCount( container, container.getChildCount() );
+              System.out.println("Refreshing");
             }
           } );
         }

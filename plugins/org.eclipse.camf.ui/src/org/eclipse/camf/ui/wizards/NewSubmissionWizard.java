@@ -19,10 +19,12 @@ package org.eclipse.camf.ui.wizards;
 import java.io.File;
 
 import org.eclipse.camf.core.model.CloudModel;
+import org.eclipse.camf.core.model.ICloudProvider;
 import org.eclipse.camf.core.reporting.ProblemException;
 import org.eclipse.camf.tosca.DocumentRoot;
 import org.eclipse.camf.tosca.core.TOSCAModel;
 import org.eclipse.camf.tosca.core.TOSCAResource;
+import org.eclipse.camf.tosca.elasticity.ServicePropertiesType;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -41,6 +43,7 @@ public class NewSubmissionWizard extends Wizard implements INewWizard{
   private NewSubmissionWizardFirstPage firstPage;
   private CloudProviderSelectionWizardPage secondPage;
   private IFile toscaFile;
+  private CloudProviderSelectionWizardPage providersWizard;
 
   @Override
   public void init( final IWorkbench workbench, final IStructuredSelection selection ) {
@@ -133,14 +136,21 @@ public class NewSubmissionWizard extends Wizard implements INewWizard{
      
   IProject project = resource.getProject().getResource().getProject();
   
-  IFile file = project.getFile( File.separator + "Application Submissions" + File.separator + fileName ); //$NON-NLS-1$
+  IFile file = project.getFile( System.getProperty( "file.separator" ) + "Application Submissions" + System.getProperty( "file.separator" ) + fileName ); //$NON-NLS-1$
   
   try {
     IResource resourceName = resource.getResource();
     this.toscaFile = (IFile) resourceName;
     
     DocumentRoot model = TOSCAModel.loadModelFromFile( this.toscaFile );
-              
+       
+    //Add providers' selection to tosca submission file
+    ICloudProvider[] providers = providersWizard.getSelectedCloudProviders();
+    ServicePropertiesType serviceProperties = (ServicePropertiesType) model.getDefinitions().getServiceTemplate().get( 0 ).getBoundaryDefinitions().getProperties().getAny().get( 0 ).getValue();
+    for (ICloudProvider provider : providers){
+      serviceProperties.getHostingEnvironment().add( provider.getName() );
+    }
+    
     TOSCAModel.saveModelToFile( file, model );  
   } catch( Exception e ) {
     e.printStackTrace();

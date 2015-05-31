@@ -40,214 +40,208 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 public class NodePropertiesTypeImpl extends EObjectImpl implements NodePropertiesType
 {
   /**
-   * An array of objects representing the values of non-primitive features.
-   * <!-- begin-user-doc -->
+	 * An array of objects representing the values of non-primitive features.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Object[] eVirtualValues;
 
   /**
-   * A bit field representing the indices of non-primitive feature values.
-   * <!-- begin-user-doc -->
+	 * A bit field representing the indices of non-primitive feature values.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected int eVirtualIndexBits0;
 
   /**
-   * The default value of the '{@link #getFlavor() <em>Flavor</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getFlavor() <em>Flavor</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFlavor()
-   * @generated
-   * @ordered
-   */
+	 * @see #getFlavor()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String FLAVOR_EDEFAULT = null;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected NodePropertiesTypeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return Tosca_Elasticity_ExtensionsPackage.Literals.NODE_PROPERTIES_TYPE;
-  }
+		return Tosca_Elasticity_ExtensionsPackage.Literals.NODE_PROPERTIES_TYPE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getFlavor()
   {
-    return (String)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, FLAVOR_EDEFAULT);
-  }
+		return (String)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, FLAVOR_EDEFAULT);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setFlavor(String newFlavor)
   {
-    String flavor = newFlavor;
-    Object oldFlavor = eVirtualSet(Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, flavor);
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, oldFlavor == EVIRTUAL_NO_VALUE ? FLAVOR_EDEFAULT : oldFlavor, flavor));
-  }
+		String flavor = newFlavor;
+		Object oldFlavor = eVirtualSet(Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, flavor);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, oldFlavor == EVIRTUAL_NO_VALUE ? FLAVOR_EDEFAULT : oldFlavor, flavor));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR:
-        return getFlavor();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR:
+				return getFlavor();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR:
-        setFlavor((String)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR:
+				setFlavor((String)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR:
-        setFlavor(FLAVOR_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR:
+				setFlavor(FLAVOR_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR:
-        String flavor = (String)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, FLAVOR_EDEFAULT);
-        return FLAVOR_EDEFAULT == null ? flavor != null : !FLAVOR_EDEFAULT.equals(flavor);
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR:
+				String flavor = (String)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, FLAVOR_EDEFAULT);
+				return FLAVOR_EDEFAULT == null ? flavor != null : !FLAVOR_EDEFAULT.equals(flavor);
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected Object[] eVirtualValues()
   {
-    return eVirtualValues;
-  }
+		return eVirtualValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualValues(Object[] newValues)
   {
-    eVirtualValues = newValues;
-  }
+		eVirtualValues = newValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected int eVirtualIndexBits(int offset)
   {
-    switch (offset)
-    {
-      case 0 :
-        return eVirtualIndexBits0;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualIndexBits(int offset, int newIndexBits)
   {
-    switch (offset)
-    {
-      case 0 :
-        eVirtualIndexBits0 = newIndexBits;
-        break;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (flavor: ");
-    result.append(eVirtualGet(Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, FLAVOR_EDEFAULT));
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (flavor: ");
+		result.append(eVirtualGet(Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE__FLAVOR, FLAVOR_EDEFAULT));
+		result.append(')');
+		return result.toString();
+	}
 
 } //NodePropertiesTypeImpl

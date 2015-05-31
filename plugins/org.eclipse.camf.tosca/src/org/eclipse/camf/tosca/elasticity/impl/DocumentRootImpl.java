@@ -58,442 +58,432 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class DocumentRootImpl extends EObjectImpl implements DocumentRoot
 {
   /**
-   * An array of objects representing the values of non-primitive features.
-   * <!-- begin-user-doc -->
+	 * An array of objects representing the values of non-primitive features.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Object[] eVirtualValues;
 
   /**
-   * A bit field representing the indices of non-primitive feature values.
-   * <!-- begin-user-doc -->
+	 * A bit field representing the indices of non-primitive feature values.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected int eVirtualIndexBits0;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected DocumentRootImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT;
-  }
+		return Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public FeatureMap getMixed()
   {
-    FeatureMap mixed = (FeatureMap)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED);
-    if (mixed == null)
-    {
-      eVirtualSet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED, mixed = new BasicFeatureMap(this, Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED));
-    }
-    return mixed;
-  }
+		FeatureMap mixed = (FeatureMap)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED);
+		if (mixed == null) {
+			eVirtualSet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED, mixed = new BasicFeatureMap(this, Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED));
+		}
+		return mixed;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   public EMap<String, String> getXMLNSPrefixMap()
   {
-    EMap<String, String> xMLNSPrefixMap = (EMap<String, String>)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
-    if (xMLNSPrefixMap == null)
-    {
-      eVirtualSet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP, xMLNSPrefixMap = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP));
-    }
-    return xMLNSPrefixMap;
-  }
+		EMap<String, String> xMLNSPrefixMap = (EMap<String, String>)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+		if (xMLNSPrefixMap == null) {
+			eVirtualSet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP, xMLNSPrefixMap = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP));
+		}
+		return xMLNSPrefixMap;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   public EMap<String, String> getXSISchemaLocation()
   {
-    EMap<String, String> xSISchemaLocation = (EMap<String, String>)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
-    if (xSISchemaLocation == null)
-    {
-      eVirtualSet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION, xSISchemaLocation = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION));
-    }
-    return xSISchemaLocation;
-  }
+		EMap<String, String> xSISchemaLocation = (EMap<String, String>)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+		if (xSISchemaLocation == null) {
+			eVirtualSet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION, xSISchemaLocation = new EcoreEMap<String,String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION));
+		}
+		return xSISchemaLocation;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ImageArtifactPropertiesType getImageArtifactProperties()
   {
-    return (ImageArtifactPropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES, true);
-  }
+		return (ImageArtifactPropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES, true);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetImageArtifactProperties(ImageArtifactPropertiesType newImageArtifactProperties, NotificationChain msgs)
   {
-    return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES, newImageArtifactProperties, msgs);
-  }
+		return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES, newImageArtifactProperties, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setImageArtifactProperties(ImageArtifactPropertiesType newImageArtifactProperties)
   {
-    ((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES, newImageArtifactProperties);
-  }
+		((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES, newImageArtifactProperties);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NodePropertiesType getNodeProperties()
   {
-    return (NodePropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NODE_PROPERTIES, true);
-  }
+		return (NodePropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NODE_PROPERTIES, true);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetNodeProperties(NodePropertiesType newNodeProperties, NotificationChain msgs)
   {
-    return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NODE_PROPERTIES, newNodeProperties, msgs);
-  }
+		return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NODE_PROPERTIES, newNodeProperties, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setNodeProperties(NodePropertiesType newNodeProperties)
   {
-    ((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NODE_PROPERTIES, newNodeProperties);
-  }
+		((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NODE_PROPERTIES, newNodeProperties);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ScriptArtifactPropertiesType getScriptArtifactProperties()
   {
-    return (ScriptArtifactPropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES, true);
-  }
+		return (ScriptArtifactPropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES, true);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetScriptArtifactProperties(ScriptArtifactPropertiesType newScriptArtifactProperties, NotificationChain msgs)
   {
-    return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES, newScriptArtifactProperties, msgs);
-  }
+		return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES, newScriptArtifactProperties, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setScriptArtifactProperties(ScriptArtifactPropertiesType newScriptArtifactProperties)
   {
-    ((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES, newScriptArtifactProperties);
-  }
+		((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES, newScriptArtifactProperties);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ServicePropertiesType getServiceProperties()
   {
-    return (ServicePropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SERVICE_PROPERTIES, true);
-  }
+		return (ServicePropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SERVICE_PROPERTIES, true);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NotificationChain basicSetServiceProperties(ServicePropertiesType newServiceProperties, NotificationChain msgs)
   {
-    return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SERVICE_PROPERTIES, newServiceProperties, msgs);
-  }
+		return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SERVICE_PROPERTIES, newServiceProperties, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setServiceProperties(ServicePropertiesType newServiceProperties)
   {
-    ((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SERVICE_PROPERTIES, newServiceProperties);
-  }
+		((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__SERVICE_PROPERTIES, newServiceProperties);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
-        return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-        return ((InternalEList<?>)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-        return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
-        return basicSetImageArtifactProperties(null, msgs);
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
-        return basicSetNodeProperties(null, msgs);
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
-        return basicSetScriptArtifactProperties(null, msgs);
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
-        return basicSetServiceProperties(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
+				return ((InternalEList<?>)getMixed()).basicRemove(otherEnd, msgs);
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+				return ((InternalEList<?>)getXMLNSPrefixMap()).basicRemove(otherEnd, msgs);
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+				return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
+				return basicSetImageArtifactProperties(null, msgs);
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
+				return basicSetNodeProperties(null, msgs);
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
+				return basicSetScriptArtifactProperties(null, msgs);
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
+				return basicSetServiceProperties(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
-        if (coreType) return getMixed();
-        return ((FeatureMap.Internal)getMixed()).getWrapper();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-        if (coreType) return getXMLNSPrefixMap();
-        else return getXMLNSPrefixMap().map();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-        if (coreType) return getXSISchemaLocation();
-        else return getXSISchemaLocation().map();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
-        return getImageArtifactProperties();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
-        return getNodeProperties();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
-        return getScriptArtifactProperties();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
-        return getServiceProperties();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
+				if (coreType) return getMixed();
+				return ((FeatureMap.Internal)getMixed()).getWrapper();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+				if (coreType) return getXMLNSPrefixMap();
+				else return getXMLNSPrefixMap().map();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+				if (coreType) return getXSISchemaLocation();
+				else return getXSISchemaLocation().map();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
+				return getImageArtifactProperties();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
+				return getNodeProperties();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
+				return getScriptArtifactProperties();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
+				return getServiceProperties();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
-        ((FeatureMap.Internal)getMixed()).set(newValue);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-        ((EStructuralFeature.Setting)getXMLNSPrefixMap()).set(newValue);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-        ((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
-        setImageArtifactProperties((ImageArtifactPropertiesType)newValue);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
-        setNodeProperties((NodePropertiesType)newValue);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
-        setScriptArtifactProperties((ScriptArtifactPropertiesType)newValue);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
-        setServiceProperties((ServicePropertiesType)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
+				((FeatureMap.Internal)getMixed()).set(newValue);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+				((EStructuralFeature.Setting)getXMLNSPrefixMap()).set(newValue);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+				((EStructuralFeature.Setting)getXSISchemaLocation()).set(newValue);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
+				setImageArtifactProperties((ImageArtifactPropertiesType)newValue);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
+				setNodeProperties((NodePropertiesType)newValue);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
+				setScriptArtifactProperties((ScriptArtifactPropertiesType)newValue);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
+				setServiceProperties((ServicePropertiesType)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
-        getMixed().clear();
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-        getXMLNSPrefixMap().clear();
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-        getXSISchemaLocation().clear();
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
-        setImageArtifactProperties((ImageArtifactPropertiesType)null);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
-        setNodeProperties((NodePropertiesType)null);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
-        setScriptArtifactProperties((ScriptArtifactPropertiesType)null);
-        return;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
-        setServiceProperties((ServicePropertiesType)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
+				getMixed().clear();
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+				getXMLNSPrefixMap().clear();
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+				getXSISchemaLocation().clear();
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
+				setImageArtifactProperties((ImageArtifactPropertiesType)null);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
+				setNodeProperties((NodePropertiesType)null);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
+				setScriptArtifactProperties((ScriptArtifactPropertiesType)null);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
+				setServiceProperties((ServicePropertiesType)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
-        FeatureMap mixed = (FeatureMap)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED);
-        return mixed != null && !mixed.isEmpty();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
-        EMap<String, String> xMLNSPrefixMap = (EMap<String, String>)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
-        return xMLNSPrefixMap != null && !xMLNSPrefixMap.isEmpty();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
-        EMap<String, String> xSISchemaLocation = (EMap<String, String>)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
-        return xSISchemaLocation != null && !xSISchemaLocation.isEmpty();
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
-        return getImageArtifactProperties() != null;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
-        return getNodeProperties() != null;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
-        return getScriptArtifactProperties() != null;
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
-        return getServiceProperties() != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED:
+				FeatureMap mixed = (FeatureMap)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED);
+				return mixed != null && !mixed.isEmpty();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP:
+				EMap<String, String> xMLNSPrefixMap = (EMap<String, String>)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
+				return xMLNSPrefixMap != null && !xMLNSPrefixMap.isEmpty();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION:
+				EMap<String, String> xSISchemaLocation = (EMap<String, String>)eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
+				return xSISchemaLocation != null && !xSISchemaLocation.isEmpty();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
+				return getImageArtifactProperties() != null;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
+				return getNodeProperties() != null;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
+				return getScriptArtifactProperties() != null;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SERVICE_PROPERTIES:
+				return getServiceProperties() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected Object[] eVirtualValues()
   {
-    return eVirtualValues;
-  }
+		return eVirtualValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualValues(Object[] newValues)
   {
-    eVirtualValues = newValues;
-  }
+		eVirtualValues = newValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected int eVirtualIndexBits(int offset)
   {
-    switch (offset)
-    {
-      case 0 :
-        return eVirtualIndexBits0;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualIndexBits(int offset, int newIndexBits)
   {
-    switch (offset)
-    {
-      case 0 :
-        eVirtualIndexBits0 = newIndexBits;
-        break;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (mixed: ");
-    result.append(eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED));
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (mixed: ");
+		result.append(eVirtualGet(Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__MIXED));
+		result.append(')');
+		return result.toString();
+	}
 
 } //DocumentRootImpl

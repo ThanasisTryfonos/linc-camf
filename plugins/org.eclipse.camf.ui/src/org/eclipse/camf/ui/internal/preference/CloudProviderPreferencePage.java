@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+import org.eclipse.camf.core.Preferences;
 import org.eclipse.camf.core.model.CloudModel;
 import org.eclipse.camf.core.model.ICloudElement;
 import org.eclipse.camf.core.model.ICloudModelEvent;
@@ -29,11 +30,13 @@ import org.eclipse.camf.core.model.ICloudModelListener;
 import org.eclipse.camf.core.model.ICloudProject;
 import org.eclipse.camf.core.model.ICloudProvider;
 import org.eclipse.camf.core.model.ICloudProviderManager;
+import org.eclipse.camf.core.model.impl.GenericCloudProvider;
 import org.eclipse.camf.core.reporting.ProblemException;
 import org.eclipse.camf.ui.comparators.TableColumnComparator;
 import org.eclipse.camf.ui.dialogs.ProblemDialog;
 import org.eclipse.camf.ui.internal.Activator;
 import org.eclipse.camf.ui.listeners.TableColumnListener;
+import org.eclipse.camf.ui.wizards.GenericCloudProviderWizard;
 import org.eclipse.camf.ui.wizards.wizardselection.ExtPointWizardSelectionListPage;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferencePage;
@@ -48,6 +51,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -95,29 +99,30 @@ public class CloudProviderPreferencePage
      * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
      */
     public Object[] getElements( final Object inputElement ) {
-      ICloudElement[] result = null;
-      if ( inputElement instanceof ICloudProviderManager ) {
-        ICloudProviderManager manager = ( ICloudProviderManager ) inputElement;
-        try {
-          result = manager.getChildren( null );
-          Arrays.sort( result, new Comparator< ICloudElement >() {
-            public int compare( final ICloudElement vo1,
-                                final ICloudElement vo2 ) {
-              return vo1.getName().compareTo( vo2.getName() );
-            }
-          } );
-        } catch ( ProblemException pExc ) {
-          if ( this.shell != null ) {
-            ProblemDialog.openProblem( this.shell,
-                                       Messages.getString("CloudProviderPreferencePage.content_provider_problem"), //$NON-NLS-1$
-                                       Messages.getString("CloudProviderPreferencePage.query_vo_failed"), //$NON-NLS-1$
-                                       pExc );
-          } else {
-            Activator.logException( pExc );
-          }
-        }
-      }
-      return result;
+//      ICloudElement[] result = null;
+//      if ( inputElement instanceof ICloudProviderManager ) {
+//        ICloudProviderManager manager = ( ICloudProviderManager ) inputElement;
+//        try {
+//          result = manager.getChildren( null );
+//          Arrays.sort( result, new Comparator< ICloudElement >() {
+//            public int compare( final ICloudElement vo1,
+//                                final ICloudElement vo2 ) {
+//              return vo1.getName().compareTo( vo2.getName() );
+//            }
+//          } );
+//        } catch ( ProblemException pExc ) {
+//          if ( this.shell != null ) {
+//            ProblemDialog.openProblem( this.shell,
+//                                       Messages.getString("CloudProviderPreferencePage.content_provider_problem"), //$NON-NLS-1$
+//                                       Messages.getString("CloudProviderPreferencePage.query_vo_failed"), //$NON-NLS-1$
+//                                       pExc );
+//          } else {
+//            Activator.logException( pExc );
+//          }
+//        }
+//      }
+//      return result;
+    	return Preferences.getDefinedCloudProviders();
     }
 
     /* (non-Javadoc)
@@ -180,7 +185,8 @@ public class CloudProviderPreferencePage
    *   Package visibility to avoid warning about synthetic accessor
    *   performance issue.
    */
-  CheckboxTableViewer cpViewer;
+  //CheckboxTableViewer cpViewer;
+  TableViewer cpViewer;
   
   /**
    * The button that triggers the creation of a new VO.
@@ -305,32 +311,6 @@ public class CloudProviderPreferencePage
       }
     } );
     manager.addCloudModelListener( this );
-    ICloudProvider defaultVo
-      = ( ICloudProvider ) manager.getDefault();
-    if ( defaultVo != null ) {
-      this.cpViewer.setCheckedElements( new Object[] { defaultVo } );
-    }
-    this.cpViewer.addCheckStateListener( new ICheckStateListener() {
-      public void checkStateChanged( final CheckStateChangedEvent event ) {
-        Object element = event.getElement();
-        if ( element instanceof ICloudProvider ) {
-          ICloudProvider vo = ( ICloudProvider ) element;
-          try {
-            if ( !event.getChecked() ) {
-              manager.setDefault( null );
-            } else {
-              // We want a radio-button behavior, as there is only one default VO
-              CloudProviderPreferencePage.this.cpViewer.setCheckedElements( new Object[] { vo } );
-              CloudProviderPreferencePage.this.cpViewer.refresh();
-              manager.setDefault( vo );
-            }
-          } catch ( ProblemException pExc ) {
-            // TODO mathias
-            Activator.logException( pExc );
-          }
-        }
-      }
-    } );
     
     Composite buttons = new Composite( parent, SWT.NULL );
     gData = new GridData( GridData.VERTICAL_ALIGN_BEGINNING );
@@ -344,11 +324,7 @@ public class CloudProviderPreferencePage
     this.addButton = new Button( buttons, SWT.PUSH );
     this.addButton.setText( Messages.getString("CloudProviderPreferencePage.add_button") ); //$NON-NLS-1$
     gData = new GridData( GridData.FILL_HORIZONTAL );
-    this.addButton.setLayoutData( gData );
-    this.importButton = new Button( buttons, SWT.PUSH );
-    this.importButton.setText( Messages.getString("CloudProviderPreferencePage.import_button") ); //$NON-NLS-1$
-    gData = new GridData( GridData.FILL_HORIZONTAL );
-    this.importButton.setLayoutData( gData );
+    this.addButton.setLayoutData( gData );    
     this.editButton = new Button( buttons, SWT.PUSH );
     this.editButton.setText( Messages.getString("CloudProviderPreferencePage.edit_button") ); //$NON-NLS-1$
     gData = new GridData( GridData.FILL_HORIZONTAL );
@@ -357,6 +333,10 @@ public class CloudProviderPreferencePage
     this.removeButton.setText( Messages.getString("CloudProviderPreferencePage.remove_button") ); //$NON-NLS-1$
     gData = new GridData( GridData.FILL_HORIZONTAL );
     this.removeButton.setLayoutData( gData );
+    this.importButton = new Button( buttons, SWT.PUSH );
+    this.importButton.setText( Messages.getString("CloudProviderPreferencePage.import_button") ); //$NON-NLS-1$
+    gData = new GridData( GridData.FILL_HORIZONTAL );
+    this.importButton.setLayoutData( gData );
     
     Label separator = new Label(buttons, SWT.NONE);
     separator.setVisible(false);
@@ -370,13 +350,7 @@ public class CloudProviderPreferencePage
       public void widgetSelected( final SelectionEvent e ) {
         editVO( null );
       }
-    } );
-    this.importButton.addSelectionListener( new SelectionAdapter() {
-      @Override
-      public void widgetSelected( final SelectionEvent e ) {
-//        importVOs();
-      }
-    } );
+    } );    
     this.editButton.addSelectionListener( new SelectionAdapter() {
       @Override
       public void widgetSelected( final SelectionEvent e ) {
@@ -392,8 +366,41 @@ public class CloudProviderPreferencePage
         removeSelectedVOs();
       }
     } );
+    this.importButton.addSelectionListener( new SelectionAdapter() {
+        @Override
+        public void widgetSelected( final SelectionEvent e ) {
+//          importVOs();
+        }
+      } );
     
     updateButtons();
+    
+//  ICloudProvider defaultVo
+//  = ( ICloudProvider ) manager.getDefault();
+//if ( defaultVo != null ) {
+//  this.cpViewer.setCheckedElements( new Object[] { defaultVo } );
+//}
+//this.cpViewer.addCheckStateListener( new ICheckStateListener() {
+//  public void checkStateChanged( final CheckStateChangedEvent event ) {
+//    Object element = event.getElement();
+//    if ( element instanceof ICloudProvider ) {
+//      ICloudProvider vo = ( ICloudProvider ) element;
+//      try {
+//        if ( !event.getChecked() ) {
+//          manager.setDefault( null );
+//        } else {
+//          // We want a radio-button behavior, as there is only one default VO
+//          CloudProviderPreferencePage.this.cpViewer.setCheckedElements( new Object[] { vo } );
+//          CloudProviderPreferencePage.this.cpViewer.refresh();
+//          manager.setDefault( vo );
+//        }
+//      } catch ( ProblemException pExc ) {
+//        // TODO mathias
+//        Activator.logException( pExc );
+//      }
+//    }
+//  }
+//} );
     
     return parent;
 
@@ -470,11 +477,16 @@ public class CloudProviderPreferencePage
     WizardDialog dialog = new WizardDialog( this.getShell(), wizard );
     dialog.open();
     
+    GenericCloudProvider newGenericCloudProvider = GenericCloudProviderWizard.getNewCloudProvider();
+    if (newGenericCloudProvider != null){
+      Preferences.addCloudProvider( newGenericCloudProvider );
+    }
+    
     /*
      * If no VOs were present before calling the wizard, there is now a default
      * VO to mark as checked.
      */
-    checkDefaultVo();
+    //checkDefaultVo();
   
   }
   
@@ -524,48 +536,61 @@ public class CloudProviderPreferencePage
         ICloudProject igp = null;
         
         for ( ICloudProvider vo : vos ) {
-          // Check if the given VO is used by some CloudProject on the WS
-          boolean used = false;
-          for ( ICloudElement element : projectElements ) {
-            igp = ( ICloudProject ) element;
-            
-            // Projects have a ProjectVO wrapper, not the real VO
-            ICloudProvider realCp = null;
-            ICloudProvider projectCp = igp.getCloudProvider();
-            // HiddenProject doesn't have a VO
-            if ( projectCp != null ) {
-              realCp = ( ICloudProvider ) projectCp.getAdapter( ICloudProvider.class );
-              if ( ( realCp != null ) && ( vo == realCp ) ) {
-                used = true;
-                break;
-              }
-            }
-          }
           
-          if ( used ) {
-            MessageDialog.openError( this.getShell(),
+          Preferences.removeCloudProvider( vo );
+          
+          try {
+          manager.delete( vo );
+        } catch ( ProblemException pExc ) {
+          ProblemDialog.openProblem( this.getShell(),
                                      Messages.getString("CloudProviderPreferencePage.error"), //$NON-NLS-1$
-                                     String.format( Messages.getString("CloudProviderPreferencePage.vo_in_use"), //$NON-NLS-1$
-                                                    vo.getName(),
-                                                    igp.getName() ) );
-          } else {
-            try {
-              manager.delete( vo );
-            } catch ( ProblemException pExc ) {
-              ProblemDialog.openProblem( this.getShell(),
-                                         Messages.getString("CloudProviderPreferencePage.error"), //$NON-NLS-1$
-                                         Messages.getString("CloudProviderPreferencePage.delete_vo_failed") //$NON-NLS-1$
-                                           + " " + vo.getName(), //$NON-NLS-1$
-                                         pExc );
-            }
-          }
+                                     Messages.getString("CloudProviderPreferencePage.delete_vo_failed") //$NON-NLS-1$
+                                       + " " + vo.getName(), //$NON-NLS-1$
+                                     pExc );
+        }
+          
+//          // Check if the given VO is used by some CloudProject on the WS
+//          boolean used = false;
+//          for ( ICloudElement element : projectElements ) {
+//            igp = ( ICloudProject ) element;
+//            
+//            // Projects have a ProjectVO wrapper, not the real VO
+//            ICloudProvider realCp = null;
+//            ICloudProvider projectCp = igp.getCloudProvider();
+//            // HiddenProject doesn't have a VO
+//            if ( projectCp != null ) {
+//              realCp = ( ICloudProvider ) projectCp.getAdapter( ICloudProvider.class );
+//              if ( ( realCp != null ) && ( vo == realCp ) ) {
+//                used = true;
+//                break;
+//              }
+//            }
+//          }
+//          
+//          if ( used ) {
+//            MessageDialog.openError( this.getShell(),
+//                                     Messages.getString("CloudProviderPreferencePage.error"), //$NON-NLS-1$
+//                                     String.format( Messages.getString("CloudProviderPreferencePage.vo_in_use"), //$NON-NLS-1$
+//                                                    vo.getName(),
+//                                                    igp.getName() ) );
+//          } else {
+//            try {
+//              manager.delete( vo );
+//            } catch ( ProblemException pExc ) {
+//              ProblemDialog.openProblem( this.getShell(),
+//                                         Messages.getString("CloudProviderPreferencePage.error"), //$NON-NLS-1$
+//                                         Messages.getString("CloudProviderPreferencePage.delete_vo_failed") //$NON-NLS-1$
+//                                           + " " + vo.getName(), //$NON-NLS-1$
+//                                         pExc );
+//            }
+//          }
         }
         
         /*
-         * If the default VO was removed, another one was selected arbitrarily
-         * by the VoManager. So we have to update the viewer's checked element.
+         * If no VOs were present before calling the wizard, there is now a default
+         * VO to mark as checked.
          */
-        checkDefaultVo();
+        //checkDefaultVo();
         
         updateButtons();
       }
@@ -575,13 +600,13 @@ public class CloudProviderPreferencePage
   /**
    * Mark the default VO checked in the voViewer table.
    */
-  private void checkDefaultVo() {
-    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
-    if ( ( manager.getChildCount() > 0 ) && ! this.cpViewer.getControl().isDisposed() ) {
-      Object[] checked = new Object[] { manager.getDefault() };
-      CloudProviderPreferencePage.this.cpViewer.setCheckedElements( checked );
-    }
-  }
+//  private void checkDefaultVo() {
+//    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
+//    if ( ( manager.getChildCount() > 0 ) && ! this.cpViewer.getControl().isDisposed() ) {
+//      Object[] checked = new Object[] { manager.getDefault() };
+//      CloudProviderPreferencePage.this.cpViewer.setCheckedElements( checked );
+//    }
+//  }
   
   /**
    * Update the enabled state of the button controls.
@@ -592,9 +617,9 @@ public class CloudProviderPreferencePage
     boolean selectionAvailable = !selection.isEmpty();
     
     this.addButton.setEnabled( true );
-    this.importButton.setEnabled( true );
     this.removeButton.setEnabled( selectionAvailable );
     this.editButton.setEnabled( selectionAvailable );
+    this.importButton.setEnabled( true );
     
   }
   
@@ -603,11 +628,11 @@ public class CloudProviderPreferencePage
    */
   public void modelChanged( final ICloudModelEvent source ) {
     this.cpViewer.refresh();
-    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
-    ICloudElement defaultVo = manager.getDefault();
-    if ( defaultVo != null ) {
-      this.cpViewer.setCheckedElements( new Object[] { defaultVo } );
-    }
+//    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
+//    ICloudElement defaultVo = manager.getDefault();
+//    if ( defaultVo != null ) {
+//      this.cpViewer.setCheckedElements( new Object[] { defaultVo } );
+//    }
     updateButtons();
   }
 

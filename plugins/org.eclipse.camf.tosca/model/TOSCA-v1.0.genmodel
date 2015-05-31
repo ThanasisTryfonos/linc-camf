@@ -4,7 +4,7 @@
     modelName="TOSCA" generateSchema="true" nonNLSMarkers="true" importerID="org.eclipse.xsd.ecore.importer"
     complianceLevel="7.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/XMLNamespace.genmodel#//namespace">
   <foreignModel>TOSCA-v1.0.xsd</foreignModel>
-  <genPackages prefix="Tosca" basePackage="eu.celar" resource="XML" disposableProviderFactory="true"
+  <genPackages prefix="Tosca" basePackage="org.eclipse.camf" resource="XML" disposableProviderFactory="true"
       ecorePackage="tosca.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="tosca.ecore#//MaxInstancesTypeMember1">
       <genEnumLiterals ecoreEnumLiteral="tosca.ecore#//MaxInstancesTypeMember1/unbounded"/>
