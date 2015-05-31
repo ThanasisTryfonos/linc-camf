@@ -19,11 +19,14 @@ package org.eclipse.camf.tosca.editor.features;
 import javax.xml.namespace.QName;
 
 import org.eclipse.camf.core.model.impl.ResourceCloudElement;
+import org.eclipse.camf.infosystem.model.base.KeyPair;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.ToscaFactory;
 import org.eclipse.camf.tosca.editor.StyleUtil;
+import org.eclipse.camf.tosca.editor.diagram.ToscaFeatureProvider;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
+import org.eclipse.graphiti.features.context.impl.CreateContext;
 import org.eclipse.graphiti.features.impl.AbstractAddShapeFeature;
 import org.eclipse.graphiti.mm.algorithms.Polyline;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
@@ -67,14 +70,15 @@ public class AddKeyPairFeature extends AbstractAddShapeFeature {
         .compareTo( "KeyPair" ) == 0 )
         result = true;
     } else if (context.getNewObject() instanceof ResourceCloudElement && !diagraminstance) {
-      System.out.println("reseource_element");
       ResourceCloudElement file = (ResourceCloudElement) context.getNewObject();
       if (file.getResource().getFileExtension().equals( "pub" )){
       
         result = true;
       }
         
-    } 
+    } else if (context.getNewObject() instanceof KeyPair) {
+      result = true;
+    }
     return result;
   }
 
@@ -88,9 +92,28 @@ public class AddKeyPairFeature extends AbstractAddShapeFeature {
       addedClass = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
       addedClass.setName( ce.getName() );
       addedClass.setArtifactType( new QName( "KeyPair" ) );
-    } else {
-      addedClass = ( TDeploymentArtifact )context.getNewObject();
+    } else if( context.getNewObject() instanceof KeyPair ) {
+      KeyPair kp = (KeyPair) context.getNewObject();
+      addedClass = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+      addedClass.setName( kp.getName() );
+      addedClass.setArtifactType( new QName( "KeyPair" ) );
+      
+      // Call the Create User Application Feature to create a deployment
+      // artifact for the deployment script and add it to the artifacts
+      // list
+      CreateContext createContext = new CreateContext();
+      createContext.setTargetContainer(context.getTargetContainer());
+      CreateKeyPairFeature createKPFeature = new CreateKeyPairFeature( new ToscaFeatureProvider( getDiagramBehavior().getDiagramContainer()
+        .getDiagramTypeProvider() ) );      
+      createKPFeature.setContextObject( addedClass );
+      if( createKPFeature.canCreate( createContext ) ) {
+        createKPFeature.create( createContext );
+      }
+      
     }
+      else {
+      addedClass = ( TDeploymentArtifact )context.getNewObject();
+    } 
     
     
     ContainerShape targetDiagram = ( ContainerShape )context.getTargetContainer();

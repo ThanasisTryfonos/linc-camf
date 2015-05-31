@@ -39,97 +39,97 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Module extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Mod ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Mod ID</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Mod ID</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mod ID</em>' attribute.
-	 * @see #setModID(String)
-	 * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getModule_ModID()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Mod ID</em>' attribute.
+   * @see #setModID(String)
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getModule_ModID()
+   * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+   * @generated
+   */
 	String getModID();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Module#getModID <em>Mod ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Module#getModID <em>Mod ID</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mod ID</em>' attribute.
-	 * @see #getModID()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Mod ID</em>' attribute.
+   * @see #getModID()
+   * @generated
+   */
 	void setModID(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Module Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Module Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Module Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Module Name</em>' attribute.
-	 * @see #setModuleName(String)
-	 * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getModule_ModuleName()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Module Name</em>' attribute.
+   * @see #setModuleName(String)
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getModule_ModuleName()
+   * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+   * @generated
+   */
 	String getModuleName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Module#getModuleName <em>Module Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Module#getModuleName <em>Module Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Module Name</em>' attribute.
-	 * @see #getModuleName()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Module Name</em>' attribute.
+   * @see #getModuleName()
+   * @generated
+   */
 	void setModuleName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Instances</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.camf.infosystem.model.base.VirtualInstance}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Instances</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.camf.infosystem.model.base.VirtualInstance}.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Instances</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Instances</em>' reference list.
-	 * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getModule_Instances()
-	 * @model required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Instances</em>' reference list.
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getModule_Instances()
+   * @model required="true"
+   * @generated
+   */
 	EList<VirtualInstance> getInstances();
 
 	/**
-	 * Returns the value of the '<em><b>Init Instances</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Init Instances</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Init Instances</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Init Instances</em>' attribute.
-	 * @see #setInitInstances(String)
-	 * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getModule_InitInstances()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Init Instances</em>' attribute.
+   * @see #setInitInstances(String)
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getModule_InitInstances()
+   * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+   * @generated
+   */
 	String getInitInstances();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Module#getInitInstances <em>Init Instances</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Module#getInitInstances <em>Init Instances</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Init Instances</em>' attribute.
-	 * @see #getInitInstances()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Init Instances</em>' attribute.
+   * @see #getInitInstances()
+   * @generated
+   */
 	void setInitInstances(String value);
 
 } // Module

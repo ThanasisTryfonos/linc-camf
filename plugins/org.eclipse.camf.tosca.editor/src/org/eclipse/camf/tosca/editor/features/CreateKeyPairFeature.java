@@ -46,10 +46,14 @@ public class CreateKeyPairFeature extends AbstractCreateFeature {
   // business object
   @Override
   public boolean canCreate( final ICreateContext context ) {
-    if( context.getTargetContainer() instanceof Diagram )
+    System.out.println("can");
+    if( context.getTargetContainer() instanceof Diagram ){
+      System.out.println( "not create");
       return false;
+    }
     Object parentBo = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
     if( parentBo instanceof TNodeTemplate ) {
+      System.out.println( "create");
       return true;
     }
     return false;

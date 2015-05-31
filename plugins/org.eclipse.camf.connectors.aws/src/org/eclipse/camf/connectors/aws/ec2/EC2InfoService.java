@@ -18,13 +18,16 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+import org.eclipse.camf.connectors.aws.AWSApplicationDeploymentService;
 import org.eclipse.camf.connectors.aws.AWSCloudProvider;
 import org.eclipse.camf.connectors.aws.EC2Client;
 import org.eclipse.camf.connectors.aws.info.AWSInfoCache;
 import org.eclipse.camf.connectors.aws.internal.Activator;
 import org.eclipse.camf.connectors.aws.internal.Messages;
 import org.eclipse.camf.connectors.aws.operation.AbstractEC2OpDescribeImages;
+import org.eclipse.camf.connectors.aws.operation.AbstractEC2OpDescribeKeypair;
 import org.eclipse.camf.connectors.aws.operation.EC2OpDescribeImages;
+import org.eclipse.camf.connectors.aws.operation.EC2OpDescribeKeypairs;
 import org.eclipse.camf.connectors.aws.operation.OperationExecuter;
 import org.eclipse.camf.core.model.CloudModel;
 import org.eclipse.camf.core.model.ICloudContainer;
@@ -33,12 +36,18 @@ import org.eclipse.camf.core.model.ICloudProject;
 import org.eclipse.camf.core.model.ICloudProvider;
 import org.eclipse.camf.core.model.ICloudResource;
 import org.eclipse.camf.core.model.ICloudResourceCategory;
+import org.eclipse.camf.core.model.ICloudService;
 import org.eclipse.camf.core.model.impl.AbstractCloudInfoSystem;
 import org.eclipse.camf.core.model.impl.CloudResourceCategoryFactory;
 import org.eclipse.camf.core.reporting.ProblemException;
+import org.eclipse.camf.infosystem.InfoService;
 import org.eclipse.camf.infosystem.model.base.AbstractInfoCache;
+import org.eclipse.camf.infosystem.model.base.CloudProvider;
 import org.eclipse.camf.infosystem.model.base.IExtendedInfoService;
+import org.eclipse.camf.infosystem.model.base.Images;
 import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
+import org.eclipse.camf.infosystem.model.base.Root;
+import org.eclipse.camf.infosystem.model.base.Security;
 import org.eclipse.camf.infosystem.model.base.VMI;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
 import org.eclipse.core.filesystem.IFileStore;
@@ -47,6 +56,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.jclouds.ec2.domain.Image;
+import org.jclouds.ec2.domain.KeyPair;
 
 /**
  * @author nickl
@@ -186,8 +196,17 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
                             cp,
                             monitor,
                             new EC2OpDescribeImages( getEc2() ) );
-    }
+    } else if ( category.equals( CloudResourceCategoryFactory.getCategory( IEC2Categories.CATEGORY_EC2_SECURITY ) ) )
+    {
 
+      result = fetchKeyPairs( parent,
+                            cp,
+                            monitor,
+                            new EC2OpDescribeKeypairs( getEc2() ) );
+    } else if( category.equals( CloudResourceCategoryFactory.getCategory( CloudResourceCategoryFactory.ID_DEPLOYMENT_SERVICES ) ) )
+    {
+      result = fetchDeploymentServices( parent, cp, monitor );
+    }
 
     if (result == null)
       result = new ICloudResource[0];
@@ -243,7 +262,20 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
       // transform answer into gEclipse format
       ArrayList<ICloudResource> resultCloudService = new ArrayList<ICloudResource>( operation.getResult()
         .size() );
-
+      
+      Root root = InfoService.getInstance().getRoot();
+      boolean newCP = false;
+      
+      CloudProvider infoCP = InfoService.getInstance().getCloudProvider( cp );
+      if( infoCP == null ) {
+        infoCP = InfoService.getInstance().getFactory().createCloudProvider();
+        infoCP.setName( cp.getName() );
+        newCP = true;
+      }
+      
+      Images images = InfoService.getInstance().getFactory().createImages();
+      infoCP.setImages( images );      
+      
       for( Image ami : operation.getResult() ) {
         VirtualMachineImage vmi = InfoSystemFactory.eINSTANCE.createVirtualMachineImage();
         vmi.setUID( ami.getId() );
@@ -251,13 +283,98 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
         vmi.setName( ami.getName() );
         vmi.setURL( ami.getImageLocation() );
         resultCloudService.add( new VMI( parent, vmi ) );
+        images.getVms().add( vmi );
       }
-
+            
+      if (newCP)
+        root.getCloudProviders().add( infoCP );
+      
       monitor.worked( 2 );
       monitor.done();
       return resultCloudService.toArray( new ICloudResource[ resultCloudService.size() ] );
     }
     return null;
+  }
+  
+  /**
+   * Fetches the available KeyPairs of the EC2 service using the owner as a filter.
+   * 
+   * @param parent the parent of this {@link IGridInfoService}
+   * @param vo the vo initiating the query
+   * @param monitor the monitor to notify of progress
+   * @param operation the operation to execute
+   * @return an array of {@link EC2AMIImage}s.
+   */
+  public ICloudResource[] fetchKeyPairs( final ICloudContainer parent,
+                                      final ICloudProvider cp,
+                                      IProgressMonitor monitor,
+                                      final AbstractEC2OpDescribeKeypair operation )
+  {
+    if( monitor == null ) {
+      monitor = new NullProgressMonitor();
+    }
+
+    // fetch existing AMI images from EC2 service
+    monitor.beginTask( Messages.getString( "EC2InfoService.monitor_task_description" ), //$NON-NLS-1$
+                       2 );
+
+    new OperationExecuter().execOp( operation );
+
+    monitor.worked( 1 );
+    if( operation.getException() == null ) {
+      
+      Root root = InfoService.getInstance().getRoot();
+      boolean newCP = false;
+      
+      CloudProvider infoCP = InfoService.getInstance().getCloudProvider( cp );
+      if( infoCP == null ) {
+        infoCP = InfoService.getInstance().getFactory().createCloudProvider();
+        infoCP.setName( cp.getName() );
+        newCP = true;
+      }
+      
+             
+      Security security = InfoService.getInstance().getFactory().createSecurity();
+      infoCP.setSecurity( security );      
+      
+      for( KeyPair remoteKeyPair : operation.getResult() ) {
+        org.eclipse.camf.infosystem.model.base.KeyPair kp = InfoSystemFactory.eINSTANCE.createKeyPair();
+        kp.setName( remoteKeyPair.getKeyName() );        
+        kp.setUID( remoteKeyPair.getFingerprint() );
+        security.getKeys().add( kp );
+      }
+      
+      if (newCP)
+        root.getCloudProviders().add( infoCP );
+
+      monitor.worked( 2 );
+      monitor.done();
+      return null;
+    }
+    return null;
+  }
+  
+  private ICloudService[] fetchDeploymentServices( final ICloudContainer parent,
+                                           final ICloudProvider cp,
+                                           IProgressMonitor monitor )
+  {
+    ArrayList<ICloudService> totalJobDeploymentServicesArray = new ArrayList<ICloudService>();
+    ICloudService[] result = null;
+    
+    if( monitor == null ) {
+      monitor = new NullProgressMonitor();
+    }
+    
+    monitor.beginTask( "Fetching Deployment Services ...", 1 ); //$NON-NLS-1$
+
+    AWSApplicationDeploymentService ads = new AWSApplicationDeploymentService( parent );
+    totalJobDeploymentServicesArray.add( ads );
+    
+    monitor.done();
+        
+    result = totalJobDeploymentServicesArray.toArray(new ICloudService[totalJobDeploymentServicesArray.size()]);
+    return result;
+    
   }
   
   private EC2Client getEc2() {

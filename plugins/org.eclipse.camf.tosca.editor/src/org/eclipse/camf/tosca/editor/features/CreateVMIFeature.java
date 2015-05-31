@@ -57,12 +57,13 @@ public class CreateVMIFeature extends AbstractCreateFeature {
   // Checks if user can create a VM image object in the target business object
   @Override
   public boolean canCreate( final ICreateContext context ) {
+
     Object parentBo = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
     if( parentBo instanceof TNodeTemplate || parentBo instanceof TServiceTemplate ) {
       return true;
+    } else {
+      return false;
     }
-    //return false;
-    return true;
   }
 
   // Creates the business object for the VM image
@@ -98,7 +99,6 @@ public class CreateVMIFeature extends AbstractCreateFeature {
           }
         } );
       
-      
     } 
     
     
@@ -119,28 +119,32 @@ public class CreateVMIFeature extends AbstractCreateFeature {
     
     // Add the new deployment artifact to the list
     final TDeploymentArtifacts deploymentArtifacts = tNode.getDeploymentArtifacts();
-    TDeploymentArtifact tempDeploymentArtifact = ( TDeploymentArtifact )this.contextObject;
     
-    TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
-    deploymentArtifact.setName( tempDeploymentArtifact.getName() );
-    deploymentArtifact.setArtifactType( tempDeploymentArtifact.getArtifactType() );
-    deploymentArtifact.setArtifactRef( new QName (tNode.getName() + "Image" ));
+    final TDeploymentArtifact tempDeploymentArtifact;
+    if( this.contextObject instanceof TDeploymentArtifact ) {
+      tempDeploymentArtifact = ( TDeploymentArtifact )this.contextObject;
+    } else {
+      tempDeploymentArtifact = null;
+    }
     
+    if (tempDeploymentArtifact.getArtifactRef() == null ) {
+      tempDeploymentArtifact.setArtifactRef( new QName (tNode.getName() + "Image" ));
+    }
         
-    final TDeploymentArtifact tempArtifact = deploymentArtifact;
+//    final TDeploymentArtifact tempArtifact = deploymentArtifact;
     TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( parentObject );
     editingDomain.getCommandStack()
       .execute( new RecordingCommand( editingDomain ) {
 
         protected void doExecute() {
-          deploymentArtifacts.getDeploymentArtifact().add( tempArtifact );
+          deploymentArtifacts.getDeploymentArtifact().add( tempDeploymentArtifact );
         }
       } );
     
     //addGraphicalRepresentation( context, vmi );
     
     /////////////////////////////////////////////
-    addGraphicalRepresentation( context, deploymentArtifact );
+    addGraphicalRepresentation( context, tempDeploymentArtifact );
     /////////////////////////////////////////////
 
     //Create Image Artifact Template
@@ -153,7 +157,7 @@ public class CreateVMIFeature extends AbstractCreateFeature {
     getFeatureProvider().getDirectEditingInfo().setActive( true );
     // return newly created business object(s)
     return new Object[]{
-      deploymentArtifact
+      tempDeploymentArtifact
     };
   }
   
@@ -166,7 +170,7 @@ public class CreateVMIFeature extends AbstractCreateFeature {
     ImageArtifactPropertiesType imageProperties = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createImageArtifactPropertiesType();
     imageProperties.setDescription( description );
     
-    if (imageId!=null){
+    if( imageId != null ) {
       imageProperties.setId( imageId );
     }
     
@@ -174,7 +178,8 @@ public class CreateVMIFeature extends AbstractCreateFeature {
     PropertiesType properties = ToscaFactory.eINSTANCE.createPropertiesType();   
     
     // Add the SYBL Policy to the FeatureMap of the Policy's Properties element
-    Entry e = FeatureMapUtil.createEntry(     Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getDocumentRoot_ImageArtifactProperties(),  imageProperties );
+    Entry e = FeatureMapUtil.createEntry( Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getDocumentRoot_ImageArtifactProperties(),
+                                          imageProperties );
     properties.getAny().add( e );   
     
     artifactTemplate.setProperties( properties );

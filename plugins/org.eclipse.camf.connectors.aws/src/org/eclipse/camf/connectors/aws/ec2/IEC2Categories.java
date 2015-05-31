@@ -36,7 +36,7 @@ public interface IEC2Categories {
 //  public static final String CATEGORY_EC2_IMAGES_ALL = "org.eclipse.camf.connectors.aws.ec2.allImages"; //$NON-NLS-1$
 //
   /** A category to contain security groups. */
-  public static final String CATEGORY_EC2_SECURITY_GROUPS = "org.eclipse.camf.connectors.aws.ec2.securityGroups"; //$NON-NLS-1$
+  public static final String CATEGORY_EC2_SECURITY = "org.eclipse.camf.connectors.aws.ec2.security"; //$NON-NLS-1$
 
   /** A category to contain keypairs. */
   public static final String CATEGORY_EC2_KEYPAIRS = "org.eclipse.camf.connectors.aws.ec2.keypairs"; //$NON-NLS-1$

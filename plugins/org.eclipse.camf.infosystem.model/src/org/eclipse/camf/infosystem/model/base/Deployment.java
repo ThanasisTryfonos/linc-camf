@@ -39,97 +39,97 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Deployment extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Dep ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Dep ID</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Dep ID</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Dep ID</em>' attribute.
-	 * @see #setDepID(String)
-	 * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getDeployment_DepID()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Dep ID</em>' attribute.
+   * @see #setDepID(String)
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getDeployment_DepID()
+   * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+   * @generated
+   */
 	String getDepID();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Deployment#getDepID <em>Dep ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Deployment#getDepID <em>Dep ID</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Dep ID</em>' attribute.
-	 * @see #getDepID()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Dep ID</em>' attribute.
+   * @see #getDepID()
+   * @generated
+   */
 	void setDepID(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Deployment Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Deployment Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deployment Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deployment Name</em>' attribute.
-	 * @see #setDeploymentName(String)
-	 * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getDeployment_DeploymentName()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Deployment Name</em>' attribute.
+   * @see #setDeploymentName(String)
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getDeployment_DeploymentName()
+   * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+   * @generated
+   */
 	String getDeploymentName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Deployment#getDeploymentName <em>Deployment Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Deployment#getDeploymentName <em>Deployment Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Deployment Name</em>' attribute.
-	 * @see #getDeploymentName()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Deployment Name</em>' attribute.
+   * @see #getDeploymentName()
+   * @generated
+   */
 	void setDeploymentName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Modules</b></em>' reference list.
-	 * The list contents are of type {@link org.eclipse.camf.infosystem.model.base.Module}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Modules</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.camf.infosystem.model.base.Module}.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Modules</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Modules</em>' reference list.
-	 * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getDeployment_Modules()
-	 * @model required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Modules</em>' reference list.
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getDeployment_Modules()
+   * @model required="true"
+   * @generated
+   */
 	EList<Module> getModules();
 
 	/**
-	 * Returns the value of the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Status</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Status</em>' attribute.
-	 * @see #setStatus(String)
-	 * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getDeployment_Status()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Status</em>' attribute.
+   * @see #setStatus(String)
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getDeployment_Status()
+   * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+   * @generated
+   */
 	String getStatus();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Deployment#getStatus <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.Deployment#getStatus <em>Status</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status</em>' attribute.
-	 * @see #getStatus()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Status</em>' attribute.
+   * @see #getStatus()
+   * @generated
+   */
 	void setStatus(String value);
 
 } // Deployment

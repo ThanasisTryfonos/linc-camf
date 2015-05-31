@@ -16,12 +16,12 @@
  *******************************************************************************/
 package org.eclipse.camf.tosca.editor.diagram;
 
-import java.io.ObjectInputStream.GetField;
-
 import javax.xml.namespace.QName;
 
 import org.eclipse.camf.core.model.impl.ResourceCloudElement;
+import org.eclipse.camf.infosystem.model.base.KeyPair;
 import org.eclipse.camf.infosystem.model.base.ResizingAction;
+import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.TNodeTemplate;
 import org.eclipse.camf.tosca.TRelationshipTemplate;
@@ -64,20 +64,17 @@ import org.eclipse.camf.tosca.editor.features.ResizeApplicationComponentFeature;
 import org.eclipse.camf.tosca.editor.features.ResizeCompositeComponentFeature;
 import org.eclipse.camf.tosca.editor.features.UpdateApplicationComponentFeature;
 import org.eclipse.camf.tosca.editor.features.UpdateCompositeComponentFeature;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.features.IAddFeature;
 import org.eclipse.graphiti.features.ICreateConnectionFeature;
 import org.eclipse.graphiti.features.ICreateFeature;
 import org.eclipse.graphiti.features.IDeleteFeature;
 import org.eclipse.graphiti.features.IDirectEditingFeature;
-import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.ILayoutFeature;
 import org.eclipse.graphiti.features.IMoveShapeFeature;
 import org.eclipse.graphiti.features.IResizeShapeFeature;
 import org.eclipse.graphiti.features.IUpdateFeature;
 import org.eclipse.graphiti.features.context.IAddContext;
-import org.eclipse.graphiti.features.context.ICreateContext;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.context.IDeleteContext;
 import org.eclipse.graphiti.features.context.IDirectEditingContext;
@@ -101,7 +98,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
 
   // Returns the add feature for the context
   @Override
-  public IAddFeature getAddFeature( final IAddContext context ) {    
+  public IAddFeature getAddFeature( final IAddContext context ) {
     if( context.getNewObject() instanceof TNodeTemplate ) {
       return new AddApplicationComponentFeature( this );
     } 
@@ -112,7 +109,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
 //    }
     else if( context.getNewObject() instanceof TRelationshipTemplate ) {
       return new AddDirectedRelationFeature( this );
-    } else if( context.getNewObject() instanceof TDeploymentArtifact ) {
+    } else if( context.getNewObject() instanceof TDeploymentArtifact ) {      
       if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "UA" )==0)
           return new AddUserApplicationFeature( this );
       else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "SD" )==0)
@@ -126,11 +123,13 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
       else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "MonitoringProbe" )==0)
         return new AddMonitorProbeFeature( this );
       
-    } else if( context.getNewObject() instanceof ResourceCloudElement) {
-            
+    } else if( context.getNewObject() instanceof ResourceCloudElement) {            
       return getIFileFeature(context);
-    }
-    else if( context.getNewObject() instanceof ResizingAction ) {
+    } else if (context.getNewObject() instanceof VirtualMachineImage ){
+      return new AddVirtualMachineFeature( this );
+    } else if (context.getNewObject() instanceof KeyPair ){
+      return new AddKeyPairFeature( this );
+    } else if( context.getNewObject() instanceof ResizingAction ) {
       return new AddResizingActionFeature( this );
     } 
     // its a substitutional Service Template
@@ -164,8 +163,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
 			// Call the Create User Application Feature to create a deployment
 			// artifact for the deployment script and add it to the artifacts
 			// list
-			CreateKeyPairFeature createKPFeature = new CreateKeyPairFeature(
-					new ToscaFeatureProvider(getDiagramTypeProvider()));
+            CreateKeyPairFeature createKPFeature = new CreateKeyPairFeature( new ToscaFeatureProvider( getDiagramTypeProvider() ) );
 
 			deploymentArtifact.setArtifactType(new QName("KeyPair"));
 

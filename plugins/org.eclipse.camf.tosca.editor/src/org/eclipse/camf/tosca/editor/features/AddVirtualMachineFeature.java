@@ -16,10 +16,15 @@
  *******************************************************************************/
 package org.eclipse.camf.tosca.editor.features;
 
+import javax.xml.namespace.QName;
+
+import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
-import org.eclipse.camf.tosca.editor.StyleUtil;
+import org.eclipse.camf.tosca.ToscaFactory;
+import org.eclipse.camf.tosca.editor.diagram.ToscaFeatureProvider;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
+import org.eclipse.graphiti.features.context.impl.CreateContext;
 import org.eclipse.graphiti.features.impl.AbstractAddShapeFeature;
 import org.eclipse.graphiti.mm.algorithms.Polyline;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
@@ -54,16 +59,20 @@ public class AddVirtualMachineFeature extends AbstractAddShapeFeature {
   public boolean canAdd( final IAddContext context ) {
     boolean result = false;
     boolean diagraminstance = context.getTargetContainer() instanceof Diagram;
-//    if( context.getNewObject() instanceof VirtualMachineImage
-//        && !diagraminstance )
-//    {
-//      result = true;
-//    }
+    // if( context.getNewObject() instanceof VirtualMachineImage
+    // && !diagraminstance )
+    // {
+    // result = true;
+    // }
     if( context.getNewObject() instanceof TDeploymentArtifact
         && !diagraminstance )
     {
-      if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "VMI" )==0)
+      if( ( ( TDeploymentArtifact )context.getNewObject() ).getArtifactType()
+        .toString()
+        .compareTo( "VMI" ) == 0 )
         result = true;
+    } else if( context.getNewObject() instanceof VirtualMachineImage ) {
+      result = true;
     }
     return result;
   }
@@ -71,14 +80,35 @@ public class AddVirtualMachineFeature extends AbstractAddShapeFeature {
   // Adds a VM Image figure to the target object
   @Override
   public PictogramElement add( final IAddContext context ) {
-
-    TDeploymentArtifact addedClass = ( TDeploymentArtifact )context.getNewObject();
+    TDeploymentArtifact addedArtifact;
+    VirtualMachineImage vmi = null;
     
+    if( context.getNewObject() instanceof VirtualMachineImage ) {
+      vmi = ( VirtualMachineImage )context.getNewObject();
+      addedArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+      addedArtifact.setName( vmi.getUID() );
+      addedArtifact.setArtifactType( new QName( "VMI" ) );
+      
+      // Call the Create User Application Feature to create a deployment
+      // artifact for the deployment script and add it to the artifacts
+      // list
+      CreateContext createContext = new CreateContext();
+      createContext.setTargetContainer( context.getTargetContainer() );
+      CreateVMIFeature createKPFeature = new CreateVMIFeature( new ToscaFeatureProvider( getDiagramBehavior().getDiagramContainer()
+        .getDiagramTypeProvider() ) );      
+      createKPFeature.setContextObject( addedArtifact );
+      if( createKPFeature.canCreate( createContext ) ) {
+        createKPFeature.create( createContext );
+      }
+      
+    } else {
+      addedArtifact = ( TDeploymentArtifact )context.getNewObject();
+    }
     
     ContainerShape targetDiagram = ( ContainerShape )context.getTargetContainer();
-    int targetContainerHeight = targetDiagram.getGraphicsAlgorithm().getHeight();
+    int targetContainerHeight = targetDiagram.getGraphicsAlgorithm()
+      .getHeight();
     int targetContainerWidth = targetDiagram.getGraphicsAlgorithm().getWidth();
-    
     // CONTAINER SHAPE WITH ROUNDED RECTANGLE
     IPeCreateService peCreateService = Graphiti.getPeCreateService();
     ContainerShape containerShape = peCreateService.createContainerShape( targetDiagram,
@@ -98,11 +128,11 @@ public class AddVirtualMachineFeature extends AbstractAddShapeFeature {
                                     targetContainerHeight - 20,
                                     width,
                                     height );
-      if( addedClass.eResource() == null ) {
-        getDiagram().eResource().getContents().add( addedClass );
+      if( addedArtifact.eResource() == null ) {
+        getDiagram().eResource().getContents().add( addedArtifact );
       }
       // create link and wire it
-      link( containerShape, addedClass );
+      link( containerShape, addedArtifact );
     }
     // SHAPE WITH LINE
     {
@@ -120,14 +150,15 @@ public class AddVirtualMachineFeature extends AbstractAddShapeFeature {
       // create shape for text
       Shape shape = peCreateService.createShape( containerShape, false );
       // create and set text graphics algorithm
-      Text text = gaService.createText( shape, addedClass.getName() );
+      String name = vmi != null ? vmi.getName() : addedArtifact.getName();
+      Text text = gaService.createText( shape, name );
       text.setForeground( manageColor( E_CLASS_TEXT_FOREGROUND ) );
       text.setHorizontalAlignment( Orientation.ALIGNMENT_CENTER );
       // vertical alignment has as default value "center"
       text.setFont( gaService.manageDefaultFont( getDiagram(), false, true ) );
       gaService.setLocationAndSize( text, 0, 0, width, 20 );
       // create link and wire it
-      link( shape, addedClass );
+      link( shape, addedArtifact );
     }
     // call the layout feature
     layoutPictogramElement( containerShape );

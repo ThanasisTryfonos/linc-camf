@@ -49,277 +49,282 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ModuleImpl extends EObjectImpl implements Module {
 	/**
-	 * The default value of the '{@link #getModID() <em>Mod ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getModID() <em>Mod ID</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModID()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getModID()
+   * @generated
+   * @ordered
+   */
 	protected static final String MOD_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getModID() <em>Mod ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getModID() <em>Mod ID</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModID()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getModID()
+   * @generated
+   * @ordered
+   */
 	protected String modID = MOD_ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModuleName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getModuleName()
+   * @generated
+   * @ordered
+   */
 	protected static final String MODULE_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModuleName()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getModuleName()
+   * @generated
+   * @ordered
+   */
 	protected String moduleName = MODULE_NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getInstances() <em>Instances</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInstances() <em>Instances</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInstances()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInstances()
+   * @generated
+   * @ordered
+   */
 	protected EList<VirtualInstance> instances;
 
 	/**
-	 * The default value of the '{@link #getInitInstances() <em>Init Instances</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getInitInstances() <em>Init Instances</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInitInstances()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInitInstances()
+   * @generated
+   * @ordered
+   */
 	protected static final String INIT_INSTANCES_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getInitInstances() <em>Init Instances</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInitInstances() <em>Init Instances</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInitInstances()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInitInstances()
+   * @generated
+   * @ordered
+   */
 	protected String initInstances = INIT_INSTANCES_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ModuleImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InfoSystemPackage.Literals.MODULE;
-	}
+    return InfoSystemPackage.Literals.MODULE;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String getModID() {
-		return modID;
-	}
+    return modID;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public void setModID(String newModID) {
-		String oldModID = modID;
-		modID = newModID;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.MODULE__MOD_ID, oldModID, modID));
-	}
+    String oldModID = modID;
+    modID = newModID;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.MODULE__MOD_ID, oldModID, modID));
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String getModuleName() {
-		return moduleName;
-	}
+    return moduleName;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public void setModuleName(String newModuleName) {
-		String oldModuleName = moduleName;
-		moduleName = newModuleName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.MODULE__MODULE_NAME, oldModuleName, moduleName));
-	}
+    String oldModuleName = moduleName;
+    moduleName = newModuleName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.MODULE__MODULE_NAME, oldModuleName, moduleName));
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public EList<VirtualInstance> getInstances() {
-		if (instances == null) {
-			instances = new EObjectResolvingEList<VirtualInstance>(VirtualInstance.class, this, InfoSystemPackage.MODULE__INSTANCES);
-		}
-		return instances;
-	}
+    if (instances == null)
+    {
+      instances = new EObjectResolvingEList<VirtualInstance>(VirtualInstance.class, this, InfoSystemPackage.MODULE__INSTANCES);
+    }
+    return instances;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String getInitInstances() {
-		return initInstances;
-	}
+    return initInstances;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public void setInitInstances(String newInitInstances) {
-		String oldInitInstances = initInstances;
-		initInstances = newInitInstances;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.MODULE__INIT_INSTANCES, oldInitInstances, initInstances));
-	}
+    String oldInitInstances = initInstances;
+    initInstances = newInitInstances;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.MODULE__INIT_INSTANCES, oldInitInstances, initInstances));
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InfoSystemPackage.MODULE__MOD_ID:
-				return getModID();
-			case InfoSystemPackage.MODULE__MODULE_NAME:
-				return getModuleName();
-			case InfoSystemPackage.MODULE__INSTANCES:
-				return getInstances();
-			case InfoSystemPackage.MODULE__INIT_INSTANCES:
-				return getInitInstances();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case InfoSystemPackage.MODULE__MOD_ID:
+        return getModID();
+      case InfoSystemPackage.MODULE__MODULE_NAME:
+        return getModuleName();
+      case InfoSystemPackage.MODULE__INSTANCES:
+        return getInstances();
+      case InfoSystemPackage.MODULE__INIT_INSTANCES:
+        return getInitInstances();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InfoSystemPackage.MODULE__MOD_ID:
-				setModID((String)newValue);
-				return;
-			case InfoSystemPackage.MODULE__MODULE_NAME:
-				setModuleName((String)newValue);
-				return;
-			case InfoSystemPackage.MODULE__INSTANCES:
-				getInstances().clear();
-				getInstances().addAll((Collection<? extends VirtualInstance>)newValue);
-				return;
-			case InfoSystemPackage.MODULE__INIT_INSTANCES:
-				setInitInstances((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case InfoSystemPackage.MODULE__MOD_ID:
+        setModID((String)newValue);
+        return;
+      case InfoSystemPackage.MODULE__MODULE_NAME:
+        setModuleName((String)newValue);
+        return;
+      case InfoSystemPackage.MODULE__INSTANCES:
+        getInstances().clear();
+        getInstances().addAll((Collection<? extends VirtualInstance>)newValue);
+        return;
+      case InfoSystemPackage.MODULE__INIT_INSTANCES:
+        setInitInstances((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InfoSystemPackage.MODULE__MOD_ID:
-				setModID(MOD_ID_EDEFAULT);
-				return;
-			case InfoSystemPackage.MODULE__MODULE_NAME:
-				setModuleName(MODULE_NAME_EDEFAULT);
-				return;
-			case InfoSystemPackage.MODULE__INSTANCES:
-				getInstances().clear();
-				return;
-			case InfoSystemPackage.MODULE__INIT_INSTANCES:
-				setInitInstances(INIT_INSTANCES_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case InfoSystemPackage.MODULE__MOD_ID:
+        setModID(MOD_ID_EDEFAULT);
+        return;
+      case InfoSystemPackage.MODULE__MODULE_NAME:
+        setModuleName(MODULE_NAME_EDEFAULT);
+        return;
+      case InfoSystemPackage.MODULE__INSTANCES:
+        getInstances().clear();
+        return;
+      case InfoSystemPackage.MODULE__INIT_INSTANCES:
+        setInitInstances(INIT_INSTANCES_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InfoSystemPackage.MODULE__MOD_ID:
-				return MOD_ID_EDEFAULT == null ? modID != null : !MOD_ID_EDEFAULT.equals(modID);
-			case InfoSystemPackage.MODULE__MODULE_NAME:
-				return MODULE_NAME_EDEFAULT == null ? moduleName != null : !MODULE_NAME_EDEFAULT.equals(moduleName);
-			case InfoSystemPackage.MODULE__INSTANCES:
-				return instances != null && !instances.isEmpty();
-			case InfoSystemPackage.MODULE__INIT_INSTANCES:
-				return INIT_INSTANCES_EDEFAULT == null ? initInstances != null : !INIT_INSTANCES_EDEFAULT.equals(initInstances);
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case InfoSystemPackage.MODULE__MOD_ID:
+        return MOD_ID_EDEFAULT == null ? modID != null : !MOD_ID_EDEFAULT.equals(modID);
+      case InfoSystemPackage.MODULE__MODULE_NAME:
+        return MODULE_NAME_EDEFAULT == null ? moduleName != null : !MODULE_NAME_EDEFAULT.equals(moduleName);
+      case InfoSystemPackage.MODULE__INSTANCES:
+        return instances != null && !instances.isEmpty();
+      case InfoSystemPackage.MODULE__INIT_INSTANCES:
+        return INIT_INSTANCES_EDEFAULT == null ? initInstances != null : !INIT_INSTANCES_EDEFAULT.equals(initInstances);
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (modID: ");
-		result.append(modID);
-		result.append(", moduleName: ");
-		result.append(moduleName);
-		result.append(", initInstances: ");
-		result.append(initInstances);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (modID: ");
+    result.append(modID);
+    result.append(", moduleName: ");
+    result.append(moduleName);
+    result.append(", initInstances: ");
+    result.append(initInstances);
+    result.append(')');
+    return result.toString();
+  }
 
 } //ModuleImpl

@@ -11,6 +11,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.workbench,
  org.eclipse.camf.ui,
  org.eclipse.core.resources,
- org.eclipse.camf.infosystem
+ org.eclipse.camf.infosystem,
+ org.eclipse.emf.edit,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.camf.infosystem.model,
+ org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

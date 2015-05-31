@@ -28,11 +28,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 
-import org.eclipse.camf.connectors.openstack.OpenStackClient;
-import org.eclipse.camf.connectors.openstack.operation.OpenStackOpDeployApplication;
-import org.eclipse.camf.connectors.openstack.operation.OpenStackOpDeployApplication.ActionToDo;
-import org.eclipse.camf.connectors.openstack.operation.OpenStackOpTerminateApplication;
-import org.eclipse.camf.connectors.openstack.operation.OperationExecuter;
 import org.eclipse.camf.core.model.CloudModel;
 import org.eclipse.camf.core.model.ICloudDeploymentService;
 import org.eclipse.camf.core.model.ICloudProject;
@@ -94,45 +89,52 @@ public class NewDeploymentWizard extends Wizard implements INewWizard {
 				@Override
 				public void run(final IProgressMonitor monitor)
 						throws InvocationTargetException, InterruptedException {
+				  
+		          ICloudDeploymentService deployService = getDeploymentService();
+		          try {
+		            deployService.deployApplication( NewDeploymentWizard.this.deploymentFile.getTOSCAModel(), monitor );
+		          } catch( ProblemException e1 ) {
+		            e1.printStackTrace();
+		          }
 					// EC2OpDeployApplication deployOperation = null;
-					OpenStackOpDeployApplication deployOperation = null;
-					try {
-						monitor.beginTask("Deploying VMIs", 2);
-						// deployOperation = new EC2OpDeployApplication(
-						// EC2Client.getEC2(),
-						// NewDeploymentWizard.this.deploymentFile );
-
-						deployOperation = new OpenStackOpDeployApplication(
-								OpenStackClient.getInstance(),
-								NewDeploymentWizard.this.deploymentFile,
-								OpenStackOpDeployApplication.ActionToDo.TERMINATE_AND_REVERT_ON_ERROR);
-
-						if (deployOperation.getException() != null) {
-							throw deployOperation.getException();
-						}
-
-						new OperationExecuter().execOp(deployOperation);
-
-						if (deployOperation.getActiontoDo().equals(
-								ActionToDo.TERMINATE_AND_REVERT_ON_ERROR)
-								&& !deployOperation.failed_to_deploy.isEmpty()) {
-							OpenStackOpTerminateApplication terminateOperation = new OpenStackOpTerminateApplication(
-									deployOperation.deployments,
-									deployOperation.depID,
-									deployOperation.modules,
-									deployOperation.instances);
-
-							if (terminateOperation.getException() != null) {
-								throw terminateOperation.getException();
-							}
-							new OperationExecuter().execOp(terminateOperation);
-						}
-					} catch (Exception e) {
-						e.printStackTrace();
-
-					} finally {
-						monitor.done();
-					}
+//					OpenStackOpDeployApplication deployOperation = null;
+//					try {
+//						monitor.beginTask("Deploying VMIs", 2);
+//						// deployOperation = new EC2OpDeployApplication(
+//						// EC2Client.getEC2(),
+//						// NewDeploymentWizard.this.deploymentFile );
+//
+//						deployOperation = new OpenStackOpDeployApplication(
+//								OpenStackClient.getInstance(),
+//								NewDeploymentWizard.this.deploymentFile,
+//								OpenStackOpDeployApplication.ActionToDo.TERMINATE_AND_REVERT_ON_ERROR);
+//
+//						if (deployOperation.getException() != null) {
+//							throw deployOperation.getException();
+//						}
+//
+//						new OperationExecuter().execOp(deployOperation);
+//
+//						if (deployOperation.getActiontoDo().equals(
+//								ActionToDo.TERMINATE_AND_REVERT_ON_ERROR)
+//								&& !deployOperation.failed_to_deploy.isEmpty()) {
+//							OpenStackOpTerminateApplication terminateOperation = new OpenStackOpTerminateApplication(
+//									deployOperation.deployments,
+//									deployOperation.depID,
+//									deployOperation.modules,
+//									deployOperation.instances);
+//
+//							if (terminateOperation.getException() != null) {
+//								throw terminateOperation.getException();
+//							}
+//							new OperationExecuter().execOp(terminateOperation);
+//						}
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//
+//					} finally {
+//						monitor.done();
+//					}
 				}
 			});
 		} catch (final Exception ex) {

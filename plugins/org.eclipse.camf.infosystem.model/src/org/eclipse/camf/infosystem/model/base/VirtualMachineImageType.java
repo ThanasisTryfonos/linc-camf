@@ -34,198 +34,204 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum VirtualMachineImageType implements Enumerator
 {
   /**
-	 * The '<em><b>Base Image</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Base Image</b></em>' literal object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #BASE_IMAGE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #BASE_IMAGE_VALUE
+   * @generated
+   * @ordered
+   */
   BASE_IMAGE(0, "BaseImage", "Base Image"),
 
   /**
-	 * The '<em><b>Custom Image</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Custom Image</b></em>' literal object.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #CUSTOM_IMAGE_VALUE
-	 * @generated
-	 * @ordered
-	 */
+   * @see #CUSTOM_IMAGE_VALUE
+   * @generated
+   * @ordered
+   */
   CUSTOM_IMAGE(1, "CustomImage", "Custom Image");
 
   /**
-	 * The '<em><b>Base Image</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Base Image</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Base Image</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-	 * @see #BASE_IMAGE
-	 * @model name="BaseImage" literal="Base Image"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #BASE_IMAGE
+   * @model name="BaseImage" literal="Base Image"
+   * @generated
+   * @ordered
+   */
   public static final int BASE_IMAGE_VALUE = 0;
 
   /**
-	 * The '<em><b>Custom Image</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+   * The '<em><b>Custom Image</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Custom Image</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-	 * @see #CUSTOM_IMAGE
-	 * @model name="CustomImage" literal="Custom Image"
-	 * @generated
-	 * @ordered
-	 */
+   * @see #CUSTOM_IMAGE
+   * @model name="CustomImage" literal="Custom Image"
+   * @generated
+   * @ordered
+   */
   public static final int CUSTOM_IMAGE_VALUE = 1;
 
   /**
-	 * An array of all the '<em><b>Virtual Machine Image Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * An array of all the '<em><b>Virtual Machine Image Type</b></em>' enumerators.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private static final VirtualMachineImageType[] VALUES_ARRAY =
-    new VirtualMachineImageType[] {
-			BASE_IMAGE,
-			CUSTOM_IMAGE,
-		};
+    new VirtualMachineImageType[]
+    {
+      BASE_IMAGE,
+      CUSTOM_IMAGE,
+    };
 
   /**
-	 * A public read-only list of all the '<em><b>Virtual Machine Image Type</b></em>' enumerators.
-	 * <!-- begin-user-doc -->
+   * A public read-only list of all the '<em><b>Virtual Machine Image Type</b></em>' enumerators.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static final List<VirtualMachineImageType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
   /**
-	 * Returns the '<em><b>Virtual Machine Image Type</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Virtual Machine Image Type</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static VirtualMachineImageType get(String literal)
   {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			VirtualMachineImageType result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      VirtualMachineImageType result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
 
   /**
-	 * Returns the '<em><b>Virtual Machine Image Type</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Virtual Machine Image Type</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static VirtualMachineImageType getByName(String name)
   {
-		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			VirtualMachineImageType result = VALUES_ARRAY[i];
-			if (result.getName().equals(name)) {
-				return result;
-			}
-		}
-		return null;
-	}
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      VirtualMachineImageType result = VALUES_ARRAY[i];
+      if (result.getName().equals(name))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
 
   /**
-	 * Returns the '<em><b>Virtual Machine Image Type</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc -->
+   * Returns the '<em><b>Virtual Machine Image Type</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static VirtualMachineImageType get(int value)
   {
-		switch (value) {
-			case BASE_IMAGE_VALUE: return BASE_IMAGE;
-			case CUSTOM_IMAGE_VALUE: return CUSTOM_IMAGE;
-		}
-		return null;
-	}
+    switch (value)
+    {
+      case BASE_IMAGE_VALUE: return BASE_IMAGE;
+      case CUSTOM_IMAGE_VALUE: return CUSTOM_IMAGE;
+    }
+    return null;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private final int value;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private final String name;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private final String literal;
 
   /**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc -->
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private VirtualMachineImageType(int value, String name, String literal)
   {
-		this.value = value;
-		this.name = name;
-		this.literal = literal;
-	}
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public int getValue()
   {
-	  return value;
-	}
+    return value;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public String getName()
   {
-	  return name;
-	}
+    return name;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public String getLiteral()
   {
-	  return literal;
-	}
+    return literal;
+  }
 
   /**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc -->
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public String toString()
   {
-		return literal;
-	}
+    return literal;
+  }
   
 } //VirtualMachineImageType

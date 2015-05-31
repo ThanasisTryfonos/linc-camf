@@ -16,6 +16,8 @@ package org.eclipse.camf.connectors.aws;
 
 import java.net.URI;
 
+import org.eclipse.camf.connectors.aws.operation.EC2OpDeployApplication;
+import org.eclipse.camf.connectors.aws.operation.OperationExecuter;
 import org.eclipse.camf.core.model.ICloudApplicationDescription;
 import org.eclipse.camf.core.model.ICloudContainer;
 import org.eclipse.camf.core.model.ICloudDeploymentID;
@@ -148,7 +150,23 @@ public class AWSApplicationDeploymentService extends AbstractCloudElement
                                                final IProgressMonitor monitor )
     throws ProblemException
   {
-    // TODO Auto-generated method stub
+    EC2OpDeployApplication deployOperation = null;
+    try {
+      monitor.beginTask( "Deploying VMIs", 2 );
+      deployOperation = new EC2OpDeployApplication( EC2Client.getInstance(),
+                                                    description );
+      
+        if( deployOperation.getException() != null ) {
+        throw deployOperation.getException();
+      }
+      new OperationExecuter().execOp( deployOperation );
+    } catch( Exception e ) {
+      e.printStackTrace( );
+      
+    } finally {
+      monitor.done();
+    }
+    
     return null;
   }
 

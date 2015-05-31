@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
-import org.jclouds.compute.ComputeService;
 import org.jclouds.openstack.nova.v2_0.domain.KeyPair;
 import org.jclouds.openstack.nova.v2_0.extensions.KeyPairApi;
 
@@ -27,7 +26,7 @@ import org.jclouds.openstack.nova.v2_0.extensions.KeyPairApi;
  * This {@link IOperation} implementation uses the {@link nova} to send a query
  * to OpenStack. It fetches all available Key Pairs.
  * 
- * @author Nicholas Loulloudes
+ * @author Nicholas Loulloudes, Andreas Kastanas
  */
 public class OpenStackOpDescribeKeyPairs extends AbstractOpenStackOpKeyPairs {
 
@@ -38,9 +37,13 @@ public class OpenStackOpDescribeKeyPairs extends AbstractOpenStackOpKeyPairs {
 	 * 
 	 */
 
-	public OpenStackOpDescribeKeyPairs() {
-		this.keyApi = OpenStackClient.getInstance().getKeyPairApi();
-	}
+  public OpenStackOpDescribeKeyPairs() {
+    this.keyApi = OpenStackClient.getInstance().getKeyPairApi();
+  }
+
+  public OpenStackOpDescribeKeyPairs( final OpenStackClient client ) {
+    this.keyApi = client.getKeyPairApi();
+  }
 
 	@Override
 	public void run() {

@@ -23,16 +23,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getUID <em>
- * UID</em>}</li>
- * <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getName
- * <em>Name</em>}</li>
- * <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getStatus
- * <em>Status</em>}</li>
- * <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getIPs <em>
- * IPs</em>}</li>
- * <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getURI <em>
- * URI</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getUID <em>UID</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getIPs <em>IPs</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getURI <em>URI</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,15 +54,12 @@ public interface VirtualInstance extends EObject {
 	String getUID();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getUID
-	 * <em>UID</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>UID</em>' attribute.
-	 * @see #getUID()
-	 * @generated
-	 */
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getUID <em>UID</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>UID</em>' attribute.
+   * @see #getUID()
+   * @generated
+   */
 	void setUID(String value);
 
 	/**
@@ -88,15 +80,12 @@ public interface VirtualInstance extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getName
-	 * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
 	void setName(String value);
 
 	/**
@@ -147,15 +136,12 @@ public interface VirtualInstance extends EObject {
 	String getIPs();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getIPs
-	 * <em>IPs</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>IPs</em>' attribute.
-	 * @see #getIPs()
-	 * @generated
-	 */
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getIPs <em>IPs</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>IPs</em>' attribute.
+   * @see #getIPs()
+   * @generated
+   */
 	void setIPs(String value);
 
 	/**
@@ -176,15 +162,12 @@ public interface VirtualInstance extends EObject {
 	String getURI();
 
 	/**
-	 * Sets the value of the '
-	 * {@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getURI
-	 * <em>URI</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>URI</em>' attribute.
-	 * @see #getURI()
-	 * @generated
-	 */
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getURI <em>URI</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>URI</em>' attribute.
+   * @see #getURI()
+   * @generated
+   */
 	void setURI(String value);
 
 } // VirtualInstance

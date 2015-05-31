@@ -29,128 +29,173 @@ import org.eclipse.emf.ecore.EFactory;
 public interface InfoSystemFactory extends EFactory
 {
   /**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   InfoSystemFactory eINSTANCE = org.eclipse.camf.infosystem.model.base.impl.InfoSystemFactoryImpl.init();
 
   /**
-	 * Returns a new object of class '<em>Monitoring Probe</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Monitoring Probe</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Monitoring Probe</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Monitoring Probe</em>'.
+   * @generated
+   */
   MonitoringProbe createMonitoringProbe();
 
   /**
-	 * Returns a new object of class '<em>Resizing Action</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Resizing Action</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resizing Action</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Resizing Action</em>'.
+   * @generated
+   */
   ResizingAction createResizingAction();
 
   /**
-	 * Returns a new object of class '<em>Software Dependency</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Software Dependency</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Software Dependency</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Software Dependency</em>'.
+   * @generated
+   */
   SoftwareDependency createSoftwareDependency();
 
   /**
-	 * Returns a new object of class '<em>Virtual Machine Image</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Virtual Machine Image</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Virtual Machine Image</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Virtual Machine Image</em>'.
+   * @generated
+   */
   VirtualMachineImage createVirtualMachineImage();
 
   /**
-	 * Returns a new object of class '<em>User Application</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>User Application</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>User Application</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>User Application</em>'.
+   * @generated
+   */
   UserApplication createUserApplication();
 
   /**
-	 * Returns a new object of class '<em>Key Pair</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Key Pair</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Key Pair</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Key Pair</em>'.
+   * @generated
+   */
   KeyPair createKeyPair();
 
   /**
-	 * Returns a new object of class '<em>Virtual Machine Image Flavor</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Virtual Machine Image Flavor</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Virtual Machine Image Flavor</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Virtual Machine Image Flavor</em>'.
+   * @generated
+   */
   VirtualMachineImageFlavor createVirtualMachineImageFlavor();
 
   /**
-	 * Returns a new object of class '<em>Virtual Network</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Virtual Network</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Virtual Network</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Virtual Network</em>'.
+   * @generated
+   */
   VirtualNetwork createVirtualNetwork();
 
   /**
-	 * Returns a new object of class '<em>Virtual Instance</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Cloud Provider</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cloud Provider</em>'.
+   * @generated
+   */
+  CloudProvider createCloudProvider();
+
+  /**
+   * Returns a new object of class '<em>Virtual Instance</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Virtual Instance</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Virtual Instance</em>'.
+   * @generated
+   */
 	VirtualInstance createVirtualInstance();
 
 		/**
-	 * Returns a new object of class '<em>Security Group</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Security Group</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Security Group</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Security Group</em>'.
+   * @generated
+   */
 	SecurityGroup createSecurityGroup();
 
 		/**
-	 * Returns a new object of class '<em>Deployment</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Root</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Root</em>'.
+   * @generated
+   */
+  Root createRoot();
+
+    /**
+   * Returns a new object of class '<em>Images</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Images</em>'.
+   * @generated
+   */
+  Images createImages();
+
+    /**
+   * Returns a new object of class '<em>Networks</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Networks</em>'.
+   * @generated
+   */
+  Networks createNetworks();
+
+    /**
+   * Returns a new object of class '<em>Security</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Security</em>'.
+   * @generated
+   */
+  Security createSecurity();
+
+    /**
+   * Returns a new object of class '<em>Deployment</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Deployment</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Deployment</em>'.
+   * @generated
+   */
 	Deployment createDeployment();
 
 		/**
-	 * Returns a new object of class '<em>Module</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Module</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Module</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Module</em>'.
+   * @generated
+   */
 	Module createModule();
 
 		/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
   InfoSystemPackage getInfoSystemPackage();
 
 } //InfoSystemFactory

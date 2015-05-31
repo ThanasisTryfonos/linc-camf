@@ -33,32 +33,33 @@ public class InfoSystemXMLProcessor extends XMLProcessor
 {
 
   /**
-	 * Public constructor to instantiate the helper.
-	 * <!-- begin-user-doc -->
+   * Public constructor to instantiate the helper.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public InfoSystemXMLProcessor()
   {
-		super((EPackage.Registry.INSTANCE));
-		InfoSystemPackage.eINSTANCE.eClass();
-	}
+    super((EPackage.Registry.INSTANCE));
+    InfoSystemPackage.eINSTANCE.eClass();
+  }
   
   /**
-	 * Register for "*" and "xml" file extensions the InfoSystemResourceFactoryImpl factory.
-	 * <!-- begin-user-doc -->
+   * Register for "*" and "xml" file extensions the InfoSystemResourceFactoryImpl factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected Map<String, Resource.Factory> getRegistrations()
   {
-		if (registrations == null) {
-			super.getRegistrations();
-			registrations.put(XML_EXTENSION, new InfoSystemResourceFactoryImpl());
-			registrations.put(STAR_EXTENSION, new InfoSystemResourceFactoryImpl());
-		}
-		return registrations;
-	}
+    if (registrations == null)
+    {
+      super.getRegistrations();
+      registrations.put(XML_EXTENSION, new InfoSystemResourceFactoryImpl());
+      registrations.put(STAR_EXTENSION, new InfoSystemResourceFactoryImpl());
+    }
+    return registrations;
+  }
 
 } //InfoSystemXMLProcessor

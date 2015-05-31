@@ -127,5 +127,6 @@
 		
 		<module>../org.eclipse.camf.connectors.celar</module>
 		<module>../org.eclipse.camf.connectors.celar.ui</module>
+		<module>../org.eclipse.camf.infosystem.model.edit</module>
 	</modules>
 </project> 

@@ -4,6 +4,7 @@ Bundle-Name: Openstack
 Bundle-SymbolicName: org.eclipse.camf.connectors.openstack;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.camf.connectors.openstack.internal.Activator
+Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources;bundle-version="3.8.101",
@@ -16,7 +17,8 @@ Require-Bundle: org.eclipse.ui,
  openstack-keystone,
  openstack-nova,
  openstack-neutron-custom;bundle-version="1.8.0",
- org.json;bundle-version="1.0.0"
+ org.json;bundle-version="1.0.0",
+ org.eclipse.camf.infosystem
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.inject,

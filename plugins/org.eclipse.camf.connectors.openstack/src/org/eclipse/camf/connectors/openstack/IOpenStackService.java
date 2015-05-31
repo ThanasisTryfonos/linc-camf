@@ -15,11 +15,14 @@
 package org.eclipse.camf.connectors.openstack;
 
 import org.eclipse.camf.core.model.ICloudContainer;
+import org.eclipse.camf.core.model.ICloudInfoService;
 import org.eclipse.camf.core.model.ICloudResourceCategory;
+import org.eclipse.camf.core.model.ICloudService;
 
 
-public interface IOpenStackService extends ICloudContainer {
+public interface IOpenStackService extends ICloudService, ICloudContainer {
 
+  public ICloudInfoService getInfoService(); 
 
   /**
    * Provides an array of categories contributing to the OpenStack Cloud Provider subfolders.

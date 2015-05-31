@@ -18,6 +18,7 @@ package org.eclipse.camf.connectors.openstack.operation;
 import java.util.ArrayList;
 import java.util.Set;
 
+import org.eclipse.camf.connectors.openstack.OpenStackClient;
 import org.jclouds.compute.ComputeService;
 import org.jclouds.compute.domain.Image;
 
@@ -43,6 +44,10 @@ public class OpenStackOpDescribeImages extends
 	public OpenStackOpDescribeImages(final ComputeService computeService) {
 		this.computeService = computeService;
 	}
+	
+    public OpenStackOpDescribeImages( final OpenStackClient client ) {
+      this.computeService = client.getComputeService();
+    }
 
 	@Override
 	public void run() {

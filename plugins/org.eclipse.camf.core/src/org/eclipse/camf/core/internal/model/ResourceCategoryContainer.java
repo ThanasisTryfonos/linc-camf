@@ -32,7 +32,7 @@ import org.eclipse.core.runtime.Status;
 
 
 /**
- * Internal implementation of the {@link IGridResourceContainer} interface.
+ * Internal implementation of the {@link ICloudResourceContainer} interface.
  */
 public class ResourceCategoryContainer
     extends VirtualCloudContainer
@@ -56,7 +56,7 @@ public class ResourceCategoryContainer
    * @param parent The parent container of this container.
    * @param category The category corresponding to this container.
    */
-  protected ResourceCategoryContainer( final ICloudContainer parent,
+  public ResourceCategoryContainer( final ICloudContainer parent,
                                        final ICloudResourceCategory category ) {
     super( parent, category.getName() );
     this.category = category;
