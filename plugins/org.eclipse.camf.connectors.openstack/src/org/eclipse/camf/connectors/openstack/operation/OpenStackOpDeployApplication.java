@@ -193,8 +193,11 @@ public class OpenStackOpDeployApplication extends
 								String artifactType = artifact
 										.getArtifactType().toString();
 
-								if (artifactType.equals("VMI")) { //$NON-NLS-1$
+								
+								if (artifactType.equals("{http://www.example.org/NewXMLSchema}ImageArtifactPropertiesType")) { //$NON-NLS-1$
 									amiID = artifact.getName();
+//								if (artifactType.equals("VMI")) { //$NON-NLS-1$
+//									amiID = artifact.getName();
 								} else if (artifactType.equals("KeyPair")) { //$NON-NLS-1$
 									keyPairArtifact = artifact.getName();
 								} else if (artifactType.equals("Network")) {

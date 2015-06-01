@@ -119,6 +119,8 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
 	        return new AddVirtualMachineFeature( this );
 	      else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "KeyPair" )==0)
 	        return new AddKeyPairFeature( this );
+	      else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "Network" )==0)
+	          return new AddNetworkFeature( this );
 	      else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "MonitoringProbe" )==0)
 	        return new AddMonitorProbeFeature( this );
 	      
@@ -184,6 +186,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
 	    return new ICreateFeature[]{
 	      new CreateApplicationComponentFeature( this ),
 	      new CreateVMIFeature( this ),
+	      new CreateNetworkFeature( this ),
 	      new CreateSoftwareDependencyFeature( this ),
 	      new CreateMonitorProbeFeature( this ),
 	      new CreateServiceTemplateFeature( this ),

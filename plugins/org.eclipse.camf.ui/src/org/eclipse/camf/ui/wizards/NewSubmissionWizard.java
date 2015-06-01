@@ -136,21 +136,14 @@ public class NewSubmissionWizard extends Wizard implements INewWizard{
      
   IProject project = resource.getProject().getResource().getProject();
   
-  IFile file = project.getFile( System.getProperty( "file.separator" ) + "Application Submissions" + System.getProperty( "file.separator" ) + fileName ); //$NON-NLS-1$
+  IFile file = project.getFile( File.separator + "Application Submissions" + File.separator + fileName ); //$NON-NLS-1$
   
   try {
     IResource resourceName = resource.getResource();
     this.toscaFile = (IFile) resourceName;
     
     DocumentRoot model = TOSCAModel.loadModelFromFile( this.toscaFile );
-       
-    //Add providers' selection to tosca submission file
-    ICloudProvider[] providers = providersWizard.getSelectedCloudProviders();
-    ServicePropertiesType serviceProperties = (ServicePropertiesType) model.getDefinitions().getServiceTemplate().get( 0 ).getBoundaryDefinitions().getProperties().getAny().get( 0 ).getValue();
-    for (ICloudProvider provider : providers){
-      serviceProperties.getHostingEnvironment().add( provider.getName() );
-    }
-    
+              
     TOSCAModel.saveModelToFile( file, model );  
   } catch( Exception e ) {
     e.printStackTrace();
@@ -165,6 +158,73 @@ public class NewSubmissionWizard extends Wizard implements INewWizard{
   return fileCreated;
 
   }
+//  // Creates the Application Deployment file
+//  public boolean createDeploymentFile( final TOSCAResource resource ) {
+//    
+//    String fileName = this.firstPage.getFileName();
+//    IPath path = new Path( fileName );
+//    fileName = path.removeFileExtension()
+//      .addFileExtension( "tosca" ) //$NON-NLS-1$
+//      .lastSegment();
+//    
+//    this.firstPage.setFileName( fileName );
+//    
+//    //////////////////////////////////////////////
+//    
+////    IProgressMonitor monitor = null;
+////    IProject project = resource.getProject().getResource().getProject();
+////    String cloudProjectPath = project.getFullPath().segment( 0 );
+////
+////    try {
+////      resource.getResource().copy( new Path(File.separator+cloudProjectPath+ File.separator+ "Application Submissions" +File.separator+ fileName), true, monitor );
+////    } catch( CoreException e ) {
+////      // TODO Auto-generated catch block
+////      e.printStackTrace();
+////    }
+////
+////    try {
+////      CloudModel.getRoot().refresh( monitor );
+////    } catch( ProblemException e ) {
+////      e.printStackTrace();
+////    }
+////    
+////    return true;
+//    
+//    //////////////////////////////////////////////
+//    
+//  boolean fileCreated = false;
+//     
+//  IProject project = resource.getProject().getResource().getProject();
+//  
+//  IFile file = project.getFile( System.getProperty( "file.separator" ) + "Application Submissions" + System.getProperty( "file.separator" ) + fileName ); //$NON-NLS-1$
+//  
+//  try {
+//    IResource resourceName = resource.getResource();
+//    this.toscaFile = (IFile) resourceName;
+//    
+//    DocumentRoot model = TOSCAModel.loadModelFromFile( this.toscaFile );
+//       
+//    //Add providers' selection to tosca submission file
+//    ICloudProvider[] providers = providersWizard.getSelectedCloudProviders();
+//    ServicePropertiesType serviceProperties = (ServicePropertiesType) model.getDefinitions().getServiceTemplate().get( 0 ).getBoundaryDefinitions().getProperties().getAny().get( 0 ).getValue();
+//    for (ICloudProvider provider : providers){
+//      serviceProperties.getHostingEnvironment().add( provider.getName() );
+//    }
+//    
+//    TOSCAModel.saveModelToFile( file, model );  
+//  } catch( Exception e ) {
+//    e.printStackTrace();
+//  }
+//  
+//  IProgressMonitor monitor = null;
+//  try {
+//    CloudModel.getRoot().refresh( monitor );
+//  } catch( ProblemException e ) {
+//    e.printStackTrace();
+//  }
+//  return fileCreated;
+//
+//  }
     
 //  // Validates TOSCA file before passing it to CELAR Server
 //  boolean validateTOSCA() throws IOException, SAXException{

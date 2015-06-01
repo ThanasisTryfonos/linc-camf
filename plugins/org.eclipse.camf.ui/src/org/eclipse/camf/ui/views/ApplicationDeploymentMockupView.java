@@ -132,7 +132,7 @@ class MyTreeLabelProvider extends DecoratingLabelProvider implements ITableLabel
   public Image getColumnImage( Object element, int columnIndex ) {
     Deployment person = ( Deployment )element;
     if(columnIndex == 0){
-      if( person.getChildren() != null && person.getChildren().length > 0 ) {
+      if( person.getChildren() != null && person.getChildren().length > 0 && person.getCloudProvider() != null ) {
     	  if (person.getCloudProvider().equals( Deployment.AWS )){
               return this.imgReg.get( "aws" ); //$NON-NLS-1$
             } else if (person.getCloudProvider().equals( Deployment.OPENSTACK )) {

@@ -43,121 +43,117 @@ import org.eclipse.jface.dialogs.MessageDialog;
 
 public class CreateVMIFeature extends AbstractCreateFeature {
 
-  private Object contextObject = null;
+	  private Object contextObject = null;
 
-  public CreateVMIFeature( final IFeatureProvider fp ) {
-    // set name and description of the creation feature
-    super( fp, "Base Image", "Base Image" ); //$NON-NLS-1$ //$NON-NLS-2$
-  }
+	  public CreateVMIFeature( final IFeatureProvider fp ) {
+	    // set name and description of the creation feature
+	    super( fp, "Base Image", "Base Image" ); //$NON-NLS-1$ //$NON-NLS-2$
+	  }
 
-  public void setContextObject( final Object obj ) {
-    this.contextObject = obj;
-  }
+	  public void setContextObject( final Object obj ) {
+	    this.contextObject = obj;
+	  }
 
-  // Checks if user can create a VM image object in the target business object
-  @Override
-  public boolean canCreate( final ICreateContext context ) {
-    Object parentBo = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
-    if( parentBo instanceof TNodeTemplate || parentBo instanceof TServiceTemplate ) {
-      return true;
-    }
-    //return false;
-    return true;
-  }
+	  // Checks if user can create a VM image object in the target business object
+	  @Override
+	  public boolean canCreate( final ICreateContext context ) {
+	    Object parentBo = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
+	    if( parentBo instanceof TNodeTemplate || parentBo instanceof TServiceTemplate ) {
+	      return true;
+	    }
+	    //return false;
+	    return true;
+	  }
 
-  // Creates the business object for the VM image
-  @Override
-  public Object[] create( final ICreateContext context ) {
-    if( this.contextObject == null )
-      return null;
+	  // Creates the business object for the VM image
+	  @Override
+	  public Object[] create( final ICreateContext context ) {
+	    if( this.contextObject == null )
+	      return null;
 
-    Object parentObject = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
-    TNodeTemplate tNode = null;
-    if( parentObject == null )
-      return null;
-    if( parentObject instanceof TNodeTemplate ) {
-      tNode = ( TNodeTemplate )parentObject;
-    }
+	    Object parentObject = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
+	    TNodeTemplate tNode = null;
+	    if( parentObject == null )
+	      return null;
+	    if( parentObject instanceof TNodeTemplate ) {
+	      tNode = ( TNodeTemplate )parentObject;
+	    }
 
-    if (tNode.getName()==null){
-      MessageDialog.openError(null, "Error", "Give a Name to the selected Component and try again.");
-      return null;
-    }
-    
-    if( tNode.getDeploymentArtifacts() == null ) {
-      //deploymentArtifacts = ToscaFactory.eINSTANCE.createTDeploymentArtifacts();
-      //tNode.setDeploymentArtifacts( deploymentArtifacts );
-      
-      final TNodeTemplate node = tNode;
-      TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( parentObject );
-      editingDomain.getCommandStack()
-        .execute( new RecordingCommand( editingDomain ) {
+	    if (tNode.getName()==null){
+	      MessageDialog.openError(null, "Error", "Give a Name to the selected Component and try again.");
+	      return null;
+	    }
+	    
+	    if( tNode.getDeploymentArtifacts() == null ) {
+	      //deploymentArtifacts = ToscaFactory.eINSTANCE.createTDeploymentArtifacts();
+	      //tNode.setDeploymentArtifacts( deploymentArtifacts );
+	      
+	      final TNodeTemplate node = tNode;
+	      TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( parentObject );
+	      editingDomain.getCommandStack()
+	        .execute( new RecordingCommand( editingDomain ) {
 
-          protected void doExecute() {
-            node.setDeploymentArtifacts( ToscaFactory.eINSTANCE.createTDeploymentArtifacts() );
-          }
-        } );
-      
-      
-    } 
-    
-    
-//    else {
-//      
-//      // Check whether a VM image has been specified for the component
-//      TDeploymentArtifact artifact;
-//      TDeploymentArtifacts deploymentArtifacts = tNode.getDeploymentArtifacts();
-//      for( int i=0; i<deploymentArtifacts.getDeploymentArtifact().size(); i++ )
-//      {
-//        artifact = deploymentArtifacts.getDeploymentArtifact().get( i );
-//        if( artifact.getArtifactType().toString().compareTo( "VMI" ) == 0 ) //$NON-NLS-1$
-//          deploymentArtifacts.getDeploymentArtifact().remove( artifact );
-//        
-//      }
-//    }
-    
-    
-    // Add the new deployment artifact to the list
-    final TDeploymentArtifacts deploymentArtifacts = tNode.getDeploymentArtifacts();
-    TDeploymentArtifact tempDeploymentArtifact = ( TDeploymentArtifact )this.contextObject;
-    
-    TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
-    deploymentArtifact.setName( tempDeploymentArtifact.getName() );
-    deploymentArtifact.setArtifactType( tempDeploymentArtifact.getArtifactType() );
-    deploymentArtifact.setArtifactRef( new QName (tNode.getName() + "Image" ));
-    
-        
-    final TDeploymentArtifact tempArtifact = deploymentArtifact;
-    TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( parentObject );
-    editingDomain.getCommandStack()
-      .execute( new RecordingCommand( editingDomain ) {
+	          protected void doExecute() {
+	            node.setDeploymentArtifacts( ToscaFactory.eINSTANCE.createTDeploymentArtifacts() );
+	          }
+	        } );
+	      
+	      
+	    } 
+	    
+	    
+//	    else {
+//	      
+//	      // Check whether a VM image has been specified for the component
+//	      TDeploymentArtifact artifact;
+//	      TDeploymentArtifacts deploymentArtifacts = tNode.getDeploymentArtifacts();
+//	      for( int i=0; i<deploymentArtifacts.getDeploymentArtifact().size(); i++ )
+//	      {
+//	        artifact = deploymentArtifacts.getDeploymentArtifact().get( i );
+//	        if( artifact.getArtifactType().toString().compareTo( "VMI" ) == 0 ) //$NON-NLS-1$
+//	          deploymentArtifacts.getDeploymentArtifact().remove( artifact );
+//	        
+//	      }
+//	    }
+	    
+	    
+	    // Add the new deployment artifact to the list
+	    final TDeploymentArtifacts deploymentArtifacts = tNode.getDeploymentArtifacts();
+	    TDeploymentArtifact tempDeploymentArtifact = ( TDeploymentArtifact )this.contextObject;
+	    
+	    TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+	    deploymentArtifact.setName( tempDeploymentArtifact.getName() );
+	    deploymentArtifact.setArtifactType( tempDeploymentArtifact.getArtifactType() );
+	    
+	    String deploymentArtifactName = "I" + (tempDeploymentArtifact.getName()).replaceAll("[^a-zA-Z0-9\\s]", "");
+	    deploymentArtifact.setArtifactRef( new QName(deploymentArtifactName) );
+	        
+	    final TDeploymentArtifact tempArtifact = deploymentArtifact;
+	    TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( parentObject );
+	    editingDomain.getCommandStack()
+	      .execute( new RecordingCommand( editingDomain ) {
 
-        protected void doExecute() {
-          deploymentArtifacts.getDeploymentArtifact().add( tempArtifact );
-        }
-      } );
-    
-    //addGraphicalRepresentation( context, vmi );
-    
-    /////////////////////////////////////////////
-    addGraphicalRepresentation( context, deploymentArtifact );
-    /////////////////////////////////////////////
+	        protected void doExecute() {
+	          deploymentArtifacts.getDeploymentArtifact().add( tempArtifact );
+	        }
+	      } );
+	    
+	  
+	    addGraphicalRepresentation( context, deploymentArtifact );
 
-    //Create Image Artifact Template
-   
-    createArtifactTemplate(tNode.getName(), "not_specified", tempDeploymentArtifact.getArtifactRef().toString());
-    
-    
-    
-    // activate direct editing after object creation
-    getFeatureProvider().getDirectEditingInfo().setActive( true );
-    // return newly created business object(s)
-    return new Object[]{
-      deploymentArtifact
-    };
-  }
-  
-  private void createArtifactTemplate(String description, String artifactRef, String imageId){
+	    //Create Image Artifact Template
+	    String deploymentArtifactRef = "I" + (tempDeploymentArtifact.getArtifactRef().toString()).replaceAll("[^a-zA-Z0-9\\s]", "");
+	    createArtifactTemplate("not_specified", deploymentArtifactName, deploymentArtifactRef);
+	    
+	    // activate direct editing after object creation
+	    getFeatureProvider().getDirectEditingInfo().setActive( true );
+	    // return newly created business object(s)
+	    return new Object[]{
+	      deploymentArtifact
+	    };
+	  }
+	  
+	  private void createArtifactTemplate(String description, String artifactRef, String imageId){
 	    
 	    final ToscaModelLayer model = ModelHandler.getModel( EcoreUtil.getURI( getDiagram() ) );
 	    

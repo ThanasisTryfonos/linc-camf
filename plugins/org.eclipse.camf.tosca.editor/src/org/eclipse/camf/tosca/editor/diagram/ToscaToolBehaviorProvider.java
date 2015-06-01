@@ -240,7 +240,8 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
     this.mockUpInfoSystemInstance = MockUpInfoSystem.getInstance();
     addVMImageCompartment( ret );
     addNetworkCompartment( ret );
-    addMonitorProbeCompartment( ret );
+    addJCatascopiaMonitorProbeCompartment(ret);
+    //addMonitorProbeCompartment( ret );
     addResizeActionsCompartment( ret );
     
     addUserAppsCompartment( ret );
@@ -274,10 +275,11 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
           deploymentArtifact.setArtifactType( new QName( "Network" ) );
           vnCF.setContextObject( deploymentArtifact );
 
-          ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( vn.getUID(),
-                                                                                         vnCF.getName(),
-                                                                                         vnCF.getCreateImageId(),
-                                                                                         vnCF.getCreateLargeImageId(),
+          ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( 
+        		  																		vn.getName(),
+        		  																		vn.getUID(),
+                                                                                         null,
+                                                                                         null,
                                                                                          vnCF );
           stackEntry.addCreationToolEntry( objectCreationToolEntry );
           
@@ -285,15 +287,17 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
       }
       
       // add all create-connection-features to the new stack-entry
-      ICreateConnectionFeature[] createConnectionFeatures = featureProvider.getCreateConnectionFeatures();
-      for( ICreateConnectionFeature cf : createConnectionFeatures ) {
-        ConnectionCreationToolEntry connectionCreationToolEntry = new ConnectionCreationToolEntry( vn.getName(),
-                                                                                                   cf.getName(),
-                                                                                                   cf.getCreateImageId(),
-                                                                                                   cf.getCreateLargeImageId() );
-        connectionCreationToolEntry.addCreateConnectionFeature( cf );
-        stackEntry.addCreationToolEntry( connectionCreationToolEntry );
-      }
+//      ICreateConnectionFeature[] createConnectionFeatures = featureProvider.getCreateConnectionFeatures();
+//      for( ICreateConnectionFeature cf : createConnectionFeatures ) {
+//        ConnectionCreationToolEntry connectionCreationToolEntry = new ConnectionCreationToolEntry( 
+//        		//vn.getName(),
+//        		vn.getUID(),
+//                                                                                                   cf.getName(),
+//                                                                                                   cf.getCreateImageId(),
+//                                                                                                   cf.getCreateLargeImageId() );
+//        connectionCreationToolEntry.addCreateConnectionFeature( cf );
+//        stackEntry.addCreationToolEntry( connectionCreationToolEntry );
+//      }
     }    
   }
 
@@ -306,17 +310,21 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
   {
     ArrayList<TNodeTemplateExtension> appComponents = new ArrayList<TNodeTemplateExtension>();
     TNodeTemplateExtension applicationServerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
-    applicationServerComponent.setType( new QName( "appserver" ) );
-    applicationServerComponent.setName( "ApplicationServer" );
+    applicationServerComponent.setType( new QName( "SimpleComponent" ) );
+    applicationServerComponent.setName( "Component" );
     appComponents.add( applicationServerComponent );
-    TNodeTemplateExtension databaseServerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
-    databaseServerComponent.setType( new QName( "dbserver" ) );
-    databaseServerComponent.setName( "DatabaseServer" );
-    appComponents.add( databaseServerComponent );
-    TNodeTemplateExtension loadBalancerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
-    loadBalancerComponent.setType( new QName( "loadbalancer" ) );
-    loadBalancerComponent.setName( "LoadBalancer" );
-    appComponents.add( loadBalancerComponent );
+//    TNodeTemplateExtension applicationServerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
+//    applicationServerComponent.setType( new QName( "appserver" ) );
+//    applicationServerComponent.setName( "ApplicationServer" );
+//    appComponents.add( applicationServerComponent );
+//    TNodeTemplateExtension databaseServerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
+//    databaseServerComponent.setType( new QName( "dbserver" ) );
+//    databaseServerComponent.setName( "DatabaseServer" );
+//    appComponents.add( databaseServerComponent );
+//    TNodeTemplateExtension loadBalancerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
+//    loadBalancerComponent.setType( new QName( "loadbalancer" ) );
+//    loadBalancerComponent.setName( "LoadBalancer" );
+//    appComponents.add( loadBalancerComponent );
     
     // add new compartment at the end of the existing compartments
     PaletteCompartmentEntry compartmentEntry = new PaletteCompartmentEntry( "Application Components", null ); //$NON-NLS-1$
@@ -530,6 +538,9 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
         }
       }
       
+      // Now check the InfoService for additional KeyPairs
+      keyPairList.addAll( this.mockUpInfoSystemInstance.getKeyPairs() );
+      
       // add new compartment at the end of the existing compartments
       PaletteCompartmentEntry compartmentEntry = new PaletteCompartmentEntry( "Key Pairs", null ); //$NON-NLS-1$
       ret.add( compartmentEntry );
@@ -648,7 +659,8 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
           deploymentArtifact.setArtifactType( new QName( typesNamespace, imageType, typesPrefix ));
           vmiCF.setContextObject( deploymentArtifact );
 
-          ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( vmi.getUID(),
+          ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry(  vmi.getName(),
+        		  //vmi.getUID(),
                                                                                          vmiCF.getName(),
                                                                                          vmiCF.getCreateImageId(),
                                                                                          vmiCF.getCreateLargeImageId(),
