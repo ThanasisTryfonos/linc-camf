@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
-import org.jclouds.openstack.neutron.v2.NeutronApi;
 import org.jclouds.openstack.neutron.v2.domain.Network;
 import org.jclouds.openstack.neutron.v2.features.NetworkApi;
 
@@ -39,6 +38,9 @@ public class OpenStackOpDescribeNetworks extends
 	 * networks.
 	 * 
 	 */
+    public OpenStackOpDescribeNetworks( final OpenStackClient client ) {
+      this.networkApi = client.getNetworkApi();
+    }
 
 	public OpenStackOpDescribeNetworks() {
 		this.networkApi = OpenStackClient.getInstance().getNetworkApi();

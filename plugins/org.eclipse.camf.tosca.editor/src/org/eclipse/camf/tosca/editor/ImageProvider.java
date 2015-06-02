@@ -41,6 +41,10 @@ public class ImageProvider extends AbstractImageProvider {
    *  The image identifier for a Monitoring Probe.
    */
   public static final String IMG_MONITORING = PREFIX + "monitoring"; //$NON-NLS-1$
+  /**
+   *  The image identifier for a VM Flavor.
+   */
+  public static final String IMG_FLAVOR = PREFIX + "flavor"; //$NON-NLS-1$
 
   @Override
   protected void addAvailableImages() {
@@ -48,5 +52,6 @@ public class ImageProvider extends AbstractImageProvider {
     addImageFilePath( IMG_EREFERENCE, "icons/ereference.gif" ); //$NON-NLS-1$
     addImageFilePath( IMG_EREFERENCE2, "icons/ereference2.gif" ); //$NON-NLS-1$
     addImageFilePath( IMG_MONITORING, "icons/monitoring.png" ); //$NON-NLS-1$
+    addImageFilePath( IMG_FLAVOR, "icons/flavor.gif" ); //$NON-NLS-1$
   }
 }

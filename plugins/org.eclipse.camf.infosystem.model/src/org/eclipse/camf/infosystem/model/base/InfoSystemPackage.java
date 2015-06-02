@@ -550,13 +550,31 @@ public interface InfoSystemPackage extends EPackage
   int CLOUD_PROVIDER__SECURITY = 3;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLOUD_PROVIDER__TYPE = 4;
+
+  /**
+   * The feature id for the '<em><b>Flavors</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLOUD_PROVIDER__FLAVORS = 5;
+
+  /**
    * The number of structural features of the '<em>Cloud Provider</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLOUD_PROVIDER_FEATURE_COUNT = 4;
+  int CLOUD_PROVIDER_FEATURE_COUNT = 6;
 
   /**
    * The feature id for the '<em><b>UID</b></em>' attribute.
@@ -927,7 +945,7 @@ public interface InfoSystemPackage extends EPackage
   int NETWORKS_FEATURE_COUNT = 1;
 
     /**
-   * The feature id for the '<em><b>Keys</b></em>' containment reference list.
+   * The feature id for the '<em><b>Keys</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -936,15 +954,108 @@ public interface InfoSystemPackage extends EPackage
   int SECURITY__KEYS = 0;
 
     /**
+   * The feature id for the '<em><b>Groups</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SECURITY__GROUPS = 1;
+
+    /**
    * The number of structural features of the '<em>Security</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SECURITY_FEATURE_COUNT = 1;
+  int SECURITY_FEATURE_COUNT = 2;
 
 		/**
+   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.KeysImpl <em>Keys</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.camf.infosystem.model.base.impl.KeysImpl
+   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getKeys()
+   * @generated
+   */
+  int KEYS = 17;
+
+    /**
+   * The feature id for the '<em><b>Keypairs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int KEYS__KEYPAIRS = 0;
+
+    /**
+   * The number of structural features of the '<em>Keys</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int KEYS_FEATURE_COUNT = 1;
+
+    /**
+   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.GroupsImpl <em>Groups</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.camf.infosystem.model.base.impl.GroupsImpl
+   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getGroups()
+   * @generated
+   */
+  int GROUPS = 18;
+
+    /**
+   * The feature id for the '<em><b>Security Groups</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUPS__SECURITY_GROUPS = 0;
+
+    /**
+   * The number of structural features of the '<em>Groups</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GROUPS_FEATURE_COUNT = 1;
+
+    /**
+   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.FlavorsImpl <em>Flavors</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.camf.infosystem.model.base.impl.FlavorsImpl
+   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getFlavors()
+   * @generated
+   */
+  int FLAVORS = 19;
+
+    /**
+   * The feature id for the '<em><b>Flavors</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLAVORS__FLAVORS = 0;
+
+    /**
+   * The number of structural features of the '<em>Flavors</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLAVORS_FEATURE_COUNT = 1;
+
+    /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageType <em>Virtual Machine Image Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -952,7 +1063,7 @@ public interface InfoSystemPackage extends EPackage
    * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualMachineImageType()
    * @generated
    */
-  int VIRTUAL_MACHINE_IMAGE_TYPE = 17;
+  int VIRTUAL_MACHINE_IMAGE_TYPE = 20;
 
   /**
    * The meta object id for the '<em>Virtual Machine Image Type Object</em>' data type.
@@ -962,7 +1073,7 @@ public interface InfoSystemPackage extends EPackage
    * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualMachineImageTypeObject()
    * @generated
    */
-  int VIRTUAL_MACHINE_IMAGE_TYPE_OBJECT = 18;
+  int VIRTUAL_MACHINE_IMAGE_TYPE_OBJECT = 21;
 
 
   /**
@@ -1507,6 +1618,28 @@ public interface InfoSystemPackage extends EPackage
   EReference getCloudProvider_Security();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.CloudProvider#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.CloudProvider#getType()
+   * @see #getCloudProvider()
+   * @generated
+   */
+  EAttribute getCloudProvider_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.camf.infosystem.model.base.CloudProvider#getFlavors <em>Flavors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Flavors</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.CloudProvider#getFlavors()
+   * @see #getCloudProvider()
+   * @generated
+   */
+  EReference getCloudProvider_Flavors();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance <em>Virtual Instance</em>}'.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1688,15 +1821,89 @@ public interface InfoSystemPackage extends EPackage
   EClass getSecurity();
 
     /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Security#getKeys <em>Keys</em>}'.
+   * Returns the meta object for the containment reference '{@link org.eclipse.camf.infosystem.model.base.Security#getKeys <em>Keys</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Keys</em>'.
+   * @return the meta object for the containment reference '<em>Keys</em>'.
    * @see org.eclipse.camf.infosystem.model.base.Security#getKeys()
    * @see #getSecurity()
    * @generated
    */
   EReference getSecurity_Keys();
+
+    /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.camf.infosystem.model.base.Security#getGroups <em>Groups</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Groups</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Security#getGroups()
+   * @see #getSecurity()
+   * @generated
+   */
+  EReference getSecurity_Groups();
+
+    /**
+   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Keys <em>Keys</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Keys</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Keys
+   * @generated
+   */
+  EClass getKeys();
+
+    /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Keys#getKeypairs <em>Keypairs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Keypairs</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Keys#getKeypairs()
+   * @see #getKeys()
+   * @generated
+   */
+  EReference getKeys_Keypairs();
+
+    /**
+   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Groups <em>Groups</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Groups</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Groups
+   * @generated
+   */
+  EClass getGroups();
+
+    /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Groups#getSecurityGroups <em>Security Groups</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Security Groups</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Groups#getSecurityGroups()
+   * @see #getGroups()
+   * @generated
+   */
+  EReference getGroups_SecurityGroups();
+
+    /**
+   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Flavors <em>Flavors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Flavors</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Flavors
+   * @generated
+   */
+  EClass getFlavors();
+
+    /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Flavors#getFlavors <em>Flavors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Flavors</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Flavors#getFlavors()
+   * @see #getFlavors()
+   * @generated
+   */
+  EReference getFlavors_Flavors();
 
     /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Deployment <em>Deployment</em>}'.
@@ -2270,6 +2477,22 @@ public interface InfoSystemPackage extends EPackage
     EReference CLOUD_PROVIDER__SECURITY = eINSTANCE.getCloudProvider_Security();
 
     /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLOUD_PROVIDER__TYPE = eINSTANCE.getCloudProvider_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Flavors</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLOUD_PROVIDER__FLAVORS = eINSTANCE.getCloudProvider_Flavors();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualInstanceImpl <em>Virtual Instance</em>}' class.
      * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2418,12 +2641,74 @@ public interface InfoSystemPackage extends EPackage
     EClass SECURITY = eINSTANCE.getSecurity();
 
         /**
-     * The meta object literal for the '<em><b>Keys</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Keys</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference SECURITY__KEYS = eINSTANCE.getSecurity_Keys();
+
+        /**
+     * The meta object literal for the '<em><b>Groups</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SECURITY__GROUPS = eINSTANCE.getSecurity_Groups();
+
+        /**
+     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.KeysImpl <em>Keys</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.camf.infosystem.model.base.impl.KeysImpl
+     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getKeys()
+     * @generated
+     */
+    EClass KEYS = eINSTANCE.getKeys();
+
+        /**
+     * The meta object literal for the '<em><b>Keypairs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference KEYS__KEYPAIRS = eINSTANCE.getKeys_Keypairs();
+
+        /**
+     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.GroupsImpl <em>Groups</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.camf.infosystem.model.base.impl.GroupsImpl
+     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getGroups()
+     * @generated
+     */
+    EClass GROUPS = eINSTANCE.getGroups();
+
+        /**
+     * The meta object literal for the '<em><b>Security Groups</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GROUPS__SECURITY_GROUPS = eINSTANCE.getGroups_SecurityGroups();
+
+        /**
+     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.FlavorsImpl <em>Flavors</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.camf.infosystem.model.base.impl.FlavorsImpl
+     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getFlavors()
+     * @generated
+     */
+    EClass FLAVORS = eINSTANCE.getFlavors();
+
+        /**
+     * The meta object literal for the '<em><b>Flavors</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FLAVORS__FLAVORS = eINSTANCE.getFlavors_Flavors();
 
         /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl <em>Deployment</em>}' class.

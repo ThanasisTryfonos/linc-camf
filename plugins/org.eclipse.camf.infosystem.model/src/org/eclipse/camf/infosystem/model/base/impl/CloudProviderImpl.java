@@ -2,20 +2,26 @@
  */
 package org.eclipse.camf.infosystem.model.base.impl;
 
+import java.util.Collection;
 import org.eclipse.camf.infosystem.model.base.CloudProvider;
+import org.eclipse.camf.infosystem.model.base.Flavors;
 import org.eclipse.camf.infosystem.model.base.Images;
 import org.eclipse.camf.infosystem.model.base.InfoSystemPackage;
 import org.eclipse.camf.infosystem.model.base.Networks;
 import org.eclipse.camf.infosystem.model.base.Security;
 
+import org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +34,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getImages <em>Images</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getNetworks <em>Networks</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getSecurity <em>Security</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getFlavors <em>Flavors</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,6 +92,36 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
    * @ordered
    */
   protected Security security;
+
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getFlavors() <em>Flavors</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFlavors()
+   * @generated
+   * @ordered
+   */
+  protected Flavors flavors;
 
   /**
    * <!-- begin-user-doc -->
@@ -278,6 +316,77 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(String newType)
+  {
+    String oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.CLOUD_PROVIDER__TYPE, oldType, type));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Flavors getFlavors()
+  {
+    return flavors;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFlavors(Flavors newFlavors, NotificationChain msgs)
+  {
+    Flavors oldFlavors = flavors;
+    flavors = newFlavors;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InfoSystemPackage.CLOUD_PROVIDER__FLAVORS, oldFlavors, newFlavors);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFlavors(Flavors newFlavors)
+  {
+    if (newFlavors != flavors)
+    {
+      NotificationChain msgs = null;
+      if (flavors != null)
+        msgs = ((InternalEObject)flavors).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InfoSystemPackage.CLOUD_PROVIDER__FLAVORS, null, msgs);
+      if (newFlavors != null)
+        msgs = ((InternalEObject)newFlavors).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InfoSystemPackage.CLOUD_PROVIDER__FLAVORS, null, msgs);
+      msgs = basicSetFlavors(newFlavors, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.CLOUD_PROVIDER__FLAVORS, newFlavors, newFlavors));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -289,6 +398,8 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
         return basicSetNetworks(null, msgs);
       case InfoSystemPackage.CLOUD_PROVIDER__SECURITY:
         return basicSetSecurity(null, msgs);
+      case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
+        return basicSetFlavors(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -311,6 +422,10 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
         return getNetworks();
       case InfoSystemPackage.CLOUD_PROVIDER__SECURITY:
         return getSecurity();
+      case InfoSystemPackage.CLOUD_PROVIDER__TYPE:
+        return getType();
+      case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
+        return getFlavors();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -320,6 +435,7 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -336,6 +452,12 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
         return;
       case InfoSystemPackage.CLOUD_PROVIDER__SECURITY:
         setSecurity((Security)newValue);
+        return;
+      case InfoSystemPackage.CLOUD_PROVIDER__TYPE:
+        setType((String)newValue);
+        return;
+      case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
+        setFlavors((Flavors)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -363,6 +485,12 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
       case InfoSystemPackage.CLOUD_PROVIDER__SECURITY:
         setSecurity((Security)null);
         return;
+      case InfoSystemPackage.CLOUD_PROVIDER__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
+      case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
+        setFlavors((Flavors)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -385,6 +513,10 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
         return networks != null;
       case InfoSystemPackage.CLOUD_PROVIDER__SECURITY:
         return security != null;
+      case InfoSystemPackage.CLOUD_PROVIDER__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+      case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
+        return flavors != null;
     }
     return super.eIsSet(featureID);
   }
@@ -402,6 +534,8 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (Name: ");
     result.append(name);
+    result.append(", type: ");
+    result.append(type);
     result.append(')');
     return result.toString();
   }

@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
+import org.eclipse.camf.core.model.ICloudApplicationDescription;
 import org.eclipse.camf.core.model.ICloudProject;
 import org.eclipse.camf.infosystem.model.base.Deployment;
 import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
@@ -73,8 +74,8 @@ import com.google.common.collect.Ordering;
 public class OpenStackOpDeployApplication extends
 		AbstractOpenStackOpDeployApplication {
 
-	private final TOSCAResource toscaResource;
-	private final ICloudProject project;
+	private TOSCAResource toscaResource;
+	private ICloudProject project;
 	private final static String DEP_SCRIPTS = "/Artifacts/Deployment Scripts/";
 
 	public enum ActionToDo {
@@ -94,11 +95,21 @@ public class OpenStackOpDeployApplication extends
 	private KeyPairApi keyPairApi = nova.getKeyPairExtensionForZone(this.zone)
 			.get();
 	private ServerApi serverApi = nova.getServerApiForZone(this.zone);
+	private TOSCAModel toscaModel = null;
 
 	public OpenStackOpDeployApplication(final OpenStackClient client,
-			final TOSCAResource tosca) {
-		this.toscaResource = tosca;
-		this.project = this.toscaResource.getProject();
+	                                    final ICloudApplicationDescription description) {
+	  if( description instanceof TOSCAResource ) {
+	      this.toscaResource = ( TOSCAResource ) description;
+	      this.toscaModel = this.toscaResource.getTOSCAModel();
+	      this.project = this.toscaResource.getProject();
+	    } else if (description instanceof TOSCAModel) {
+	      this.toscaModel = (TOSCAModel) description;
+	      this.project = this.toscaModel.getProject();
+	    } else {
+	      this.toscaResource = null;
+	      this.toscaModel = null;
+	    }		
 	}
 
 	public OpenStackOpDeployApplication(final OpenStackClient client,
@@ -125,7 +136,8 @@ public class OpenStackOpDeployApplication extends
 			String start_time = new SimpleDateFormat("dd/M/yyyy hh:mm:ss")
 					.format(Calendar.getInstance().getTime());
 
-			TOSCAModel toscaModel = this.toscaResource.getTOSCAModel();
+	
+//			TOSCAModel toscaModel = this.toscaResource.getTOSCAModel();
 			TServiceTemplate serviceTemplate = toscaModel.getServiceTemplate();
 			List<HashMap<String, String>> xmlinfo = new ArrayList<HashMap<String, String>>();
 			HashMap<String, String> array = null;

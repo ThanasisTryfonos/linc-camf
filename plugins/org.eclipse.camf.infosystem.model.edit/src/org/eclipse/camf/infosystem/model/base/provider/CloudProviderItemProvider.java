@@ -9,12 +9,14 @@ import java.util.List;
 import org.eclipse.camf.infosystem.model.base.CloudProvider;
 import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
 import org.eclipse.camf.infosystem.model.base.InfoSystemPackage;
-
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -26,6 +28,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.camf.infosystem.model.base.CloudProvider} object.
@@ -67,6 +72,7 @@ public class CloudProviderItemProvider
       super.getPropertyDescriptors(object);
 
       addNamePropertyDescriptor(object);
+      addTypePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -95,6 +101,29 @@ public class CloudProviderItemProvider
   }
 
   /**
+   * This adds a property descriptor for the Type feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTypePropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_CloudProvider_type_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_CloudProvider_type_feature", "_UI_CloudProvider_type"),
+         InfoSystemPackage.Literals.CLOUD_PROVIDER__TYPE,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -111,6 +140,7 @@ public class CloudProviderItemProvider
       childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__IMAGES);
       childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__NETWORKS);
       childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__SECURITY);
+      childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__FLAVORS);
     }
     return childrenFeatures;
   }
@@ -133,12 +163,34 @@ public class CloudProviderItemProvider
    * This returns CloudProvider.gif.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
+   * @generated NOT
    */
   @Override
   public Object getImage(Object object)
   {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/CloudProvider"));
+    IExtensionRegistry registry = Platform.getExtensionRegistry();
+    IExtensionPoint extensionPoint = registry.getExtensionPoint( "org.eclipse.camf.ui.cloudProviderIcon" );
+    if (extensionPoint != null) {
+      IExtension[] extensions = extensionPoint.getExtensions();
+      for( IExtension extension : extensions ) {
+        IConfigurationElement[] elements = extension.getConfigurationElements();
+        for( IConfigurationElement element : elements ) {
+          if( element.getAttribute( "type" ).equals( ( (CloudProvider) object).getType() ) ) {
+            String location = element.getAttribute( "location" );
+            Image icon = null;
+            ImageDescriptor iconDesc = null;
+            if( location != null ) {
+              String pluginId = element.getContributor().getName();
+              iconDesc = AbstractUIPlugin.imageDescriptorFromPlugin( pluginId, location );
+              return iconDesc;
+            }
+          }
+        }
+      }
+      return overlayImage(object, getResourceLocator().getImage("full/obj16/CloudProvider"));
+    } else {
+      return overlayImage(object, getResourceLocator().getImage("full/obj16/CloudProvider"));      
+    }
   }
 
   /**
@@ -172,11 +224,13 @@ public class CloudProviderItemProvider
     switch (notification.getFeatureID(CloudProvider.class))
     {
       case InfoSystemPackage.CLOUD_PROVIDER__NAME:
+      case InfoSystemPackage.CLOUD_PROVIDER__TYPE:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case InfoSystemPackage.CLOUD_PROVIDER__IMAGES:
       case InfoSystemPackage.CLOUD_PROVIDER__NETWORKS:
       case InfoSystemPackage.CLOUD_PROVIDER__SECURITY:
+      case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -209,6 +263,11 @@ public class CloudProviderItemProvider
       (createChildParameter
         (InfoSystemPackage.Literals.CLOUD_PROVIDER__SECURITY,
          InfoSystemFactory.eINSTANCE.createSecurity()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (InfoSystemPackage.Literals.CLOUD_PROVIDER__FLAVORS,
+         InfoSystemFactory.eINSTANCE.createFlavors()));
   }
 
   /**

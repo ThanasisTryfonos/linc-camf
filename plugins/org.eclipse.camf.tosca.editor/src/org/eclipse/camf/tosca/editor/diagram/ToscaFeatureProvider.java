@@ -22,6 +22,9 @@ import org.eclipse.camf.core.model.impl.ResourceCloudElement;
 import org.eclipse.camf.infosystem.model.base.KeyPair;
 import org.eclipse.camf.infosystem.model.base.ResizingAction;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
+import org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor;
+import org.eclipse.camf.infosystem.model.base.VirtualNetwork;
+import org.eclipse.camf.tosca.PropertiesType;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.TNodeTemplate;
 import org.eclipse.camf.tosca.TRelationshipTemplate;
@@ -29,6 +32,7 @@ import org.eclipse.camf.tosca.TServiceTemplate;
 import org.eclipse.camf.tosca.ToscaFactory;
 import org.eclipse.camf.tosca.editor.features.AddApplicationComponentFeature;
 import org.eclipse.camf.tosca.editor.features.AddDirectedRelationFeature;
+import org.eclipse.camf.tosca.editor.features.AddFlavorFeature;
 import org.eclipse.camf.tosca.editor.features.AddGroupFeature;
 import org.eclipse.camf.tosca.editor.features.AddKeyPairFeature;
 import org.eclipse.camf.tosca.editor.features.AddMonitorProbeFeature;
@@ -40,6 +44,7 @@ import org.eclipse.camf.tosca.editor.features.AddUserApplicationFeature;
 import org.eclipse.camf.tosca.editor.features.AddVirtualMachineFeature;
 import org.eclipse.camf.tosca.editor.features.CreateApplicationComponentFeature;
 import org.eclipse.camf.tosca.editor.features.CreateDirectedRelationFeature;
+import org.eclipse.camf.tosca.editor.features.CreateFlavorFeature;
 import org.eclipse.camf.tosca.editor.features.CreateGroupFeature;
 import org.eclipse.camf.tosca.editor.features.CreateKeyPairFeature;
 import org.eclipse.camf.tosca.editor.features.CreateMonitorProbeFeature;
@@ -64,6 +69,7 @@ import org.eclipse.camf.tosca.editor.features.ResizeApplicationComponentFeature;
 import org.eclipse.camf.tosca.editor.features.ResizeCompositeComponentFeature;
 import org.eclipse.camf.tosca.editor.features.UpdateApplicationComponentFeature;
 import org.eclipse.camf.tosca.editor.features.UpdateCompositeComponentFeature;
+import org.eclipse.camf.tosca.elasticity.NodePropertiesType;
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.features.IAddFeature;
 import org.eclipse.graphiti.features.ICreateConnectionFeature;
@@ -129,8 +135,12 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
       return new AddVirtualMachineFeature( this );
     } else if (context.getNewObject() instanceof KeyPair ){
       return new AddKeyPairFeature( this );
+    } else if (context.getNewObject() instanceof VirtualNetwork ){
+      return new AddNetworkFeature( this );
     } else if( context.getNewObject() instanceof ResizingAction ) {
       return new AddResizingActionFeature( this );
+    } else if( context.getNewObject() instanceof VirtualMachineImageFlavor ) {
+      return new AddFlavorFeature( this );
     } 
     // its a substitutional Service Template
     else if( context.getNewObject() instanceof TServiceTemplate
@@ -200,6 +210,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
       new CreateNetworkFeature( this ),
       new CreateSoftwareDependencyFeature( this ),
       new CreateMonitorProbeFeature( this ),
+      new CreateFlavorFeature(this),
       new CreateServiceTemplateFeature( this ),
       new CreateResizeActionFeature( this ),
       new CreateUserApplicationFeature( this ),

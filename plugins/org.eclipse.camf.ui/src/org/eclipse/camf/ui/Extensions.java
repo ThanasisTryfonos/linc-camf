@@ -68,6 +68,11 @@ public class Extensions {
    */
   public static final String WIZARD_EXTENSION_EXECUTABLE = "class"; //$NON-NLS-1$
   
+  /**
+   * The ID of the wizard extension wizard element's executable.
+   */
+  public static final String WIZARD_EXTENSION_CLOUD_ICON = "cloudicon"; //$NON-NLS-1$
+  
   
   private static final String PROPERTIES_FACTORY_POINT = "org.eclipse.camf.ui.propertiesFactory";  //$NON-NLS-1$
   private static final String PROPERTIES_FACTORY_ELEMENT = "PropertiesFactory"; //$NON-NLS-1$

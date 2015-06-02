@@ -16,6 +16,8 @@ package org.eclipse.camf.connectors.openstack;
 
 import java.net.URI;
 
+import org.eclipse.camf.connectors.openstack.operation.OpenStackOpDeployApplication;
+import org.eclipse.camf.connectors.openstack.operation.OperationExecuter;
 import org.eclipse.camf.core.model.ICloudApplicationDescription;
 import org.eclipse.camf.core.model.ICloudContainer;
 import org.eclipse.camf.core.model.ICloudDeploymentID;
@@ -24,6 +26,7 @@ import org.eclipse.camf.core.model.ICloudDeploymentStatus;
 import org.eclipse.camf.core.model.ICloudProvider;
 import org.eclipse.camf.core.model.impl.AbstractCloudElement;
 import org.eclipse.camf.core.reporting.ProblemException;
+import org.eclipse.camf.tosca.core.TOSCAModel;
 import org.eclipse.camf.tosca.core.TOSCAResource;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IResource;
@@ -148,7 +151,23 @@ public class OpenStackApplicationDeploymentService extends AbstractCloudElement
                                                final IProgressMonitor monitor )
     throws ProblemException
   {
-    // TODO Auto-generated method stub
+    OpenStackOpDeployApplication deployOperation = null;
+    try {
+      monitor.beginTask( "Deploying VMIs", 2 );
+      deployOperation = new OpenStackOpDeployApplication( OpenStackClient.getInstance(),
+                                                   description );
+      
+        if( deployOperation.getException() != null ) {
+        throw deployOperation.getException();
+      }
+      new OperationExecuter().execOp( deployOperation );
+    } catch( Exception e ) {
+      e.printStackTrace( );
+      
+    } finally {
+      monitor.done();
+    }
+    
     return null;
   }
 
@@ -165,7 +184,28 @@ public class OpenStackApplicationDeploymentService extends AbstractCloudElement
                                                final IProgressMonitor monitor )
     throws ProblemException
   {
-    // TODO Auto-generated method stub
+    OpenStackOpDeployApplication deployOperation = null;
+    try {
+      monitor.beginTask( "Deploying VMIs", 2 );
+      TOSCAModel model;
+      if (description instanceof TOSCAModel){
+        model = (TOSCAModel) description;
+      }
+
+      deployOperation = new OpenStackOpDeployApplication( OpenStackClient.getInstance(),
+                                                   (TOSCAResource) description );
+      
+        if( deployOperation.getException() != null ) {
+        throw deployOperation.getException();
+      }
+      new OperationExecuter().execOp( deployOperation );
+    } catch( Exception e ) {
+      e.printStackTrace( );
+      
+    } finally {
+      monitor.done();
+    }
+    
     return null;
   }
 

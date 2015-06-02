@@ -46,6 +46,7 @@ import org.eclipse.camf.infosystem.model.base.CloudProvider;
 import org.eclipse.camf.infosystem.model.base.IExtendedInfoService;
 import org.eclipse.camf.infosystem.model.base.Images;
 import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
+import org.eclipse.camf.infosystem.model.base.Keys;
 import org.eclipse.camf.infosystem.model.base.Root;
 import org.eclipse.camf.infosystem.model.base.Security;
 import org.eclipse.camf.infosystem.model.base.VMI;
@@ -65,6 +66,7 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
 
   /** The name of the file to save this cloud element in. */
   public static String STORAGE_NAME = ".ec2InfoService"; //$NON-NLS-1$
+  private static String CP_TYPE = "org.eclipse.camf.connectors.aws";
   private AWSCloudProvider awsCP;
   private EC2Service ec2Service;
   public static AWSInfoCache infoCache = null;
@@ -206,6 +208,15 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
     } else if( category.equals( CloudResourceCategoryFactory.getCategory( CloudResourceCategoryFactory.ID_DEPLOYMENT_SERVICES ) ) )
     {
       result = fetchDeploymentServices( parent, cp, monitor );
+    } else if (category.equals( CloudResourceCategoryFactory.getCategory( CloudResourceCategoryFactory.ID_ALL ) )) {
+      fetchImages( parent,
+                   cp,
+                   monitor,
+                   new EC2OpDescribeImages( getEc2() ) );
+      fetchKeyPairs( parent,
+                     cp,
+                     monitor,
+                     new EC2OpDescribeKeypairs( getEc2() ) );
     }
 
     if (result == null)
@@ -270,6 +281,7 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
       if( infoCP == null ) {
         infoCP = InfoService.getInstance().getFactory().createCloudProvider();
         infoCP.setName( cp.getName() );
+        infoCP.setType( CP_TYPE );
         newCP = true;
       }
       
@@ -330,18 +342,20 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
       if( infoCP == null ) {
         infoCP = InfoService.getInstance().getFactory().createCloudProvider();
         infoCP.setName( cp.getName() );
+        infoCP.setType( CP_TYPE );
         newCP = true;
       }
-      
              
       Security security = InfoService.getInstance().getFactory().createSecurity();
+      Keys keys = InfoService.getInstance().getFactory().createKeys();
+      security.setKeys( keys );
       infoCP.setSecurity( security );      
       
       for( KeyPair remoteKeyPair : operation.getResult() ) {
         org.eclipse.camf.infosystem.model.base.KeyPair kp = InfoSystemFactory.eINSTANCE.createKeyPair();
         kp.setName( remoteKeyPair.getKeyName() );        
         kp.setUID( remoteKeyPair.getFingerprint() );
-        security.getKeys().add( kp );
+        keys.getKeypairs().add( kp );
       }
       
       if (newCP)

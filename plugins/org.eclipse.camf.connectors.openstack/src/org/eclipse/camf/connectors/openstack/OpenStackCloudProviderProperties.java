@@ -27,6 +27,7 @@ import org.eclipse.camf.connectors.openstack.internal.Activator;
 import org.eclipse.camf.core.ICoreProblems;
 import org.eclipse.camf.core.model.CloudModel;
 import org.eclipse.camf.core.model.ICloudContainer;
+import org.eclipse.camf.core.model.ICloudProviderProperties;
 import org.eclipse.camf.core.model.ISerializableElement;
 import org.eclipse.camf.core.model.impl.AbstractCloudElement;
 import org.eclipse.camf.core.reporting.ProblemException;
@@ -55,7 +56,7 @@ import org.eclipse.core.runtime.IPath;
  * @see OpenStackCloudProviderCreator
  */
 public class OpenStackCloudProviderProperties extends AbstractCloudElement
-  implements ISerializableElement
+  implements ISerializableElement, ICloudProviderProperties
 {
 
   /** Name to reference the properties in the {@link CloudModel}. */

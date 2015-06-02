@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.camf.connectors.openstack.info.IOpenStackCategories;
 import org.eclipse.camf.connectors.openstack.info.OpenStackInfoService;
 import org.eclipse.camf.connectors.openstack.internal.Activator;
 import org.eclipse.camf.connectors.openstack.internal.Messages;
@@ -30,6 +31,7 @@ import org.eclipse.camf.core.model.ICloudElementCreator;
 import org.eclipse.camf.core.model.ICloudResourceCategory;
 import org.eclipse.camf.core.model.ISerializableElement;
 import org.eclipse.camf.core.model.impl.AbstractCloudProvider;
+import org.eclipse.camf.core.model.impl.CloudResourceCategoryFactory;
 import org.eclipse.camf.core.reporting.ProblemException;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
@@ -57,6 +59,14 @@ public class OpenStackCloudProvider extends AbstractCloudProvider {
    * Name of this Cloud Provider used in the {@link IFileStore}.
    */
   private String cpName;
+  
+  /** The categories published by this {@link IVirtualOrganization}. */
+  public static ICloudResourceCategory[] STANDARD_RESOURCE_CATEGORIES = new ICloudResourceCategory[]{
+    CloudResourceCategoryFactory.getCategory( IOpenStackCategories.CATEGORY_OPENSTACK_IMAGES ),
+    CloudResourceCategoryFactory.getCategory( IOpenStackCategories.CATEGORY_OPENSTACK_NETWORKING ),
+    CloudResourceCategoryFactory.getCategory( IOpenStackCategories.CATEGORY_OPENSTACK_SECURITY),
+    CloudResourceCategoryFactory.getCategory( IOpenStackCategories.CATEGORY_OPENSTACK_STORAGE )
+  };
 
 
   /**
@@ -186,8 +196,8 @@ public class OpenStackCloudProvider extends AbstractCloudProvider {
                      problemEx );
     }
 
-//    Collections.addAll( categoriesList,
-//                        OSCloudProvider.STANDARD_RESOURCE_CATEGORIES );
+    Collections.addAll( categoriesList,
+                        OpenStackCloudProvider.STANDARD_RESOURCE_CATEGORIES );
     return categoriesList.toArray( new ICloudResourceCategory[ categoriesList.size() ] );
   }
 

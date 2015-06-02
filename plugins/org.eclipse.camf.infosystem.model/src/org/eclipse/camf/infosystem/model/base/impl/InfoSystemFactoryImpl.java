@@ -93,6 +93,9 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
       case InfoSystemPackage.IMAGES: return createImages();
       case InfoSystemPackage.NETWORKS: return createNetworks();
       case InfoSystemPackage.SECURITY: return createSecurity();
+      case InfoSystemPackage.KEYS: return createKeys();
+      case InfoSystemPackage.GROUPS: return createGroups();
+      case InfoSystemPackage.FLAVORS: return createFlavors();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -297,6 +300,39 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
   {
     SecurityImpl security = new SecurityImpl();
     return security;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Keys createKeys()
+  {
+    KeysImpl keys = new KeysImpl();
+    return keys;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Groups createGroups()
+  {
+    GroupsImpl groups = new GroupsImpl();
+    return groups;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Flavors createFlavors()
+  {
+    FlavorsImpl flavors = new FlavorsImpl();
+    return flavors;
   }
 
     /**

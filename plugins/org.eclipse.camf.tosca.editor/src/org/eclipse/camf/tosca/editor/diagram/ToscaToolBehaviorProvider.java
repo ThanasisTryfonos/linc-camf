@@ -225,15 +225,15 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
     }
     addApplicationComponentsCompartment( ret );
     
-    this.mockUpInfoSystemInstance = MockUpInfoSystem.getInstance();
-    addVMImageCompartment( ret );
-    addNetworkCompartment( ret );
-    addMonitorProbeCompartment( ret );
-    addResizeActionsCompartment( ret );
-    
-    addUserAppsCompartment( ret );
-    addKeyPairCompartment( ret );
-    addDeployScriptCompartment( ret );
+//    this.mockUpInfoSystemInstance = MockUpInfoSystem.getInstance();
+//    addVMImageCompartment( ret );
+//    addNetworkCompartment( ret );
+//    addMonitorProbeCompartment( ret );
+//    addResizeActionsCompartment( ret );
+//    
+//    addUserAppsCompartment( ret );
+//    addKeyPairCompartment( ret );
+//    addDeployScriptCompartment( ret );
 
     return ret.toArray( new IPaletteCompartmentEntry[ ret.size() ] );
   }

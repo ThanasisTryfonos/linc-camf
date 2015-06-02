@@ -172,6 +172,10 @@
             id="org.eclipse.camf.core.model.category.services.deployment"
             name="Cloud Application Deployment Services">
       </category>
+      <category
+            id="org.eclipse.camf.core.model.category.all"
+            name="All Cloud Resources">
+      </category>
    </extension>
    
 </plugin>

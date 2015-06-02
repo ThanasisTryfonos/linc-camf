@@ -1,6 +1,14 @@
 package org.eclipse.camf.infosystem.ui;
 
+import org.eclipse.camf.core.model.CloudModel;
+import org.eclipse.camf.core.model.ICloudElement;
+import org.eclipse.camf.core.model.ICloudModelEvent;
+import org.eclipse.camf.core.model.ICloudModelListener;
+import org.eclipse.camf.core.model.ICloudProject;
+import org.eclipse.camf.core.model.ICloudProvider;
+import org.eclipse.camf.core.model.ICloudProviderProperties;
 import org.eclipse.camf.infosystem.InfoService;
+import org.eclipse.camf.infosystem.jobs.FetchJob;
 import org.eclipse.camf.infosystem.model.base.Root;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -23,13 +31,19 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
 
-public class InfoSystemView extends ViewPart implements ISelectionProvider {
+public class InfoSystemView extends ViewPart implements ISelectionProvider, ICloudModelListener {
   
   private TreeViewer treeViewer;
   private ComposedAdapterFactory composedAdapterFactory;
   private AdapterFactoryLabelProvider adapterFactoryLabelProvider;
   private AdapterFactoryContentProvider adapterFactoryContentProvider;
 
+
+   
+  public InfoSystemView() {
+    CloudModel.getRoot().addCloudModelListener( InfoSystemView.this );
+  }
+  
   @Override
   public void addSelectionChangedListener( ISelectionChangedListener listener )
   {
@@ -125,4 +139,27 @@ public class InfoSystemView extends ViewPart implements ISelectionProvider {
     }
     return composedAdapterFactory;
 }
+
+  @Override
+  public void modelChanged( ICloudModelEvent event ) {
+    int type = event.getType();    
+    switch ( type ) {
+      case ICloudModelEvent.ELEMENTS_ADDED:
+      case ICloudModelEvent.ELEMENTS_REMOVED:
+      case ICloudModelEvent.PROJECT_CLOSED:
+      case ICloudModelEvent.PROJECT_OPENED:
+
+        for ( ICloudElement cloudElement : event.getElements() ) {
+
+          if ( (cloudElement instanceof ICloudProject) || (cloudElement instanceof ICloudProviderProperties)){
+            FetchJob myFetchJob = FetchJob.getInstance(" Retrieving Information"); //$NON-NLS-1$
+            myFetchJob.schedule(); // Getting the information from the info services.
+            break;
+          }
+        }
+        break;
+      default:
+        break;
+    }
+  }    
 }

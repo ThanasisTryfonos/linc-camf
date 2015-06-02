@@ -499,6 +499,81 @@ public class InfoSystemItemProviderAdapterFactory extends InfoSystemAdapterFacto
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.camf.infosystem.model.base.Keys} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected KeysItemProvider keysItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.camf.infosystem.model.base.Keys}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createKeysAdapter()
+  {
+    if (keysItemProvider == null)
+    {
+      keysItemProvider = new KeysItemProvider(this);
+    }
+
+    return keysItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.camf.infosystem.model.base.Groups} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected GroupsItemProvider groupsItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.camf.infosystem.model.base.Groups}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createGroupsAdapter()
+  {
+    if (groupsItemProvider == null)
+    {
+      groupsItemProvider = new GroupsItemProvider(this);
+    }
+
+    return groupsItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.camf.infosystem.model.base.Flavors} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected FlavorsItemProvider flavorsItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.camf.infosystem.model.base.Flavors}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createFlavorsAdapter()
+  {
+    if (flavorsItemProvider == null)
+    {
+      flavorsItemProvider = new FlavorsItemProvider(this);
+    }
+
+    return flavorsItemProvider;
+  }
+
+  /**
    * This returns the root adapter factory that contains this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -626,6 +701,9 @@ public class InfoSystemItemProviderAdapterFactory extends InfoSystemAdapterFacto
     if (imagesItemProvider != null) imagesItemProvider.dispose();
     if (networksItemProvider != null) networksItemProvider.dispose();
     if (securityItemProvider != null) securityItemProvider.dispose();
+    if (keysItemProvider != null) keysItemProvider.dispose();
+    if (groupsItemProvider != null) groupsItemProvider.dispose();
+    if (flavorsItemProvider != null) flavorsItemProvider.dispose();
   }
 
 }

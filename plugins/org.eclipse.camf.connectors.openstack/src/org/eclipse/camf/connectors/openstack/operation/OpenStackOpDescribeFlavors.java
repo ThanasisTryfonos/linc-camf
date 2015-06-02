@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
-import org.jclouds.compute.ComputeService;
 import org.jclouds.openstack.nova.v2_0.domain.Flavor;
 import org.jclouds.openstack.nova.v2_0.features.FlavorApi;
 
@@ -39,6 +38,10 @@ public class OpenStackOpDescribeFlavors extends AbstractOpenStackOpFlavors {
 	 * 
 	 * 
 	 */
+	
+	public OpenStackOpDescribeFlavors( final OpenStackClient client ) {
+      this.flavorApi = client.getFlavorApi();
+    }
 
 	public OpenStackOpDescribeFlavors() {
 		this.flavorApi = OpenStackClient.getInstance().getFlavorApi();

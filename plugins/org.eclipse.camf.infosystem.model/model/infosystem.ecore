@@ -251,6 +251,9 @@
         eType="#//Networks" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="security" lowerBound="1"
         eType="#//Security" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flavors" lowerBound="1"
+        eType="#//Flavors" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VirtualMachineImage">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -295,7 +298,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Deployment">
+  <eClassifiers xsi:type="ecore:EClass" name="Deployment">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="depID" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deploymentName" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
@@ -327,7 +330,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String" defaultValueLiteral=""/>
   </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Root">
+  <eClassifiers xsi:type="ecore:EClass" name="Root">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cloudProviders" lowerBound="1"
         upperBound="-1" eType="#//CloudProvider" containment="true"/>
   </eClassifiers>
@@ -340,8 +343,21 @@
         eType="#//VirtualNetwork" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Security">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="keys" lowerBound="1" upperBound="-1"
-        eType="#//KeyPair" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keys" lowerBound="1" eType="#//Keys"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" lowerBound="1"
+        eType="#//Groups" containment="true"/>
   </eClassifiers>
-
+  <eClassifiers xsi:type="ecore:EClass" name="Keys">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keypairs" lowerBound="1"
+        upperBound="-1" eType="#//KeyPair" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Groups">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="securityGroups" lowerBound="1"
+        upperBound="-1" eType="#//SecurityGroup" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Flavors">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flavors" lowerBound="1"
+        upperBound="-1" eType="#//VirtualMachineImageFlavor" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -203,6 +203,27 @@ public class InfoSystemSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case InfoSystemPackage.KEYS:
+      {
+        Keys keys = (Keys)theEObject;
+        T result = caseKeys(keys);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case InfoSystemPackage.GROUPS:
+      {
+        Groups groups = (Groups)theEObject;
+        T result = caseGroups(groups);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case InfoSystemPackage.FLAVORS:
+      {
+        Flavors flavors = (Flavors)theEObject;
+        T result = caseFlavors(flavors);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -441,6 +462,54 @@ public class InfoSystemSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSecurity(Security object)
+  {
+    return null;
+  }
+
+    /**
+   * Returns the result of interpreting the object as an instance of '<em>Keys</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Keys</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseKeys(Keys object)
+  {
+    return null;
+  }
+
+    /**
+   * Returns the result of interpreting the object as an instance of '<em>Groups</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Groups</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGroups(Groups object)
+  {
+    return null;
+  }
+
+    /**
+   * Returns the result of interpreting the object as an instance of '<em>Flavors</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Flavors</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFlavors(Flavors object)
   {
     return null;
   }

@@ -18,10 +18,13 @@ package org.eclipse.camf.infosystem.model.base.impl;
 
 import org.eclipse.camf.infosystem.model.base.CloudProvider;
 import org.eclipse.camf.infosystem.model.base.Deployment;
+import org.eclipse.camf.infosystem.model.base.Flavors;
+import org.eclipse.camf.infosystem.model.base.Groups;
 import org.eclipse.camf.infosystem.model.base.Images;
 import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
 import org.eclipse.camf.infosystem.model.base.InfoSystemPackage;
 import org.eclipse.camf.infosystem.model.base.KeyPair;
+import org.eclipse.camf.infosystem.model.base.Keys;
 import org.eclipse.camf.infosystem.model.base.Module;
 import org.eclipse.camf.infosystem.model.base.MonitoringProbe;
 import org.eclipse.camf.infosystem.model.base.Networks;
@@ -157,6 +160,27 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
    * @generated
    */
   private EClass securityEClass = null;
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass keysEClass = null;
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass groupsEClass = null;
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass flavorsEClass = null;
 
     /**
    * <!-- begin-user-doc -->
@@ -748,6 +772,26 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
   /**
    * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCloudProvider_Type()
+  {
+    return (EAttribute)cloudProviderEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCloudProvider_Flavors()
+  {
+    return (EReference)cloudProviderEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    */
@@ -914,6 +958,76 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
   public EReference getSecurity_Keys()
   {
     return (EReference)securityEClass.getEStructuralFeatures().get(0);
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSecurity_Groups()
+  {
+    return (EReference)securityEClass.getEStructuralFeatures().get(1);
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getKeys()
+  {
+    return keysEClass;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getKeys_Keypairs()
+  {
+    return (EReference)keysEClass.getEStructuralFeatures().get(0);
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getGroups()
+  {
+    return groupsEClass;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGroups_SecurityGroups()
+  {
+    return (EReference)groupsEClass.getEStructuralFeatures().get(0);
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFlavors()
+  {
+    return flavorsEClass;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFlavors_Flavors()
+  {
+    return (EReference)flavorsEClass.getEStructuralFeatures().get(0);
   }
 
     /**
@@ -1107,6 +1221,8 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     createEReference(cloudProviderEClass, CLOUD_PROVIDER__IMAGES);
     createEReference(cloudProviderEClass, CLOUD_PROVIDER__NETWORKS);
     createEReference(cloudProviderEClass, CLOUD_PROVIDER__SECURITY);
+    createEAttribute(cloudProviderEClass, CLOUD_PROVIDER__TYPE);
+    createEReference(cloudProviderEClass, CLOUD_PROVIDER__FLAVORS);
 
     virtualMachineImageEClass = createEClass(VIRTUAL_MACHINE_IMAGE);
     createEAttribute(virtualMachineImageEClass, VIRTUAL_MACHINE_IMAGE__UID);
@@ -1150,6 +1266,16 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
     securityEClass = createEClass(SECURITY);
     createEReference(securityEClass, SECURITY__KEYS);
+    createEReference(securityEClass, SECURITY__GROUPS);
+
+    keysEClass = createEClass(KEYS);
+    createEReference(keysEClass, KEYS__KEYPAIRS);
+
+    groupsEClass = createEClass(GROUPS);
+    createEReference(groupsEClass, GROUPS__SECURITY_GROUPS);
+
+    flavorsEClass = createEClass(FLAVORS);
+    createEReference(flavorsEClass, FLAVORS__FLAVORS);
 
     // Create enums
     virtualMachineImageTypeEEnum = createEEnum(VIRTUAL_MACHINE_IMAGE_TYPE);
@@ -1243,6 +1369,8 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     initEReference(getCloudProvider_Images(), this.getImages(), null, "images", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCloudProvider_Networks(), this.getNetworks(), null, "networks", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCloudProvider_Security(), this.getSecurity(), null, "security", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCloudProvider_Type(), theXMLTypePackage.getString(), "type", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCloudProvider_Flavors(), this.getFlavors(), null, "flavors", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(virtualMachineImageEClass, VirtualMachineImage.class, "VirtualMachineImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVirtualMachineImage_UID(), theXMLTypePackage.getString(), "uID", null, 1, 1, VirtualMachineImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1285,7 +1413,17 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     initEReference(getNetworks_Nets(), this.getVirtualNetwork(), null, "nets", null, 1, -1, Networks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(securityEClass, Security.class, "Security", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSecurity_Keys(), this.getKeyPair(), null, "keys", null, 1, -1, Security.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSecurity_Keys(), this.getKeys(), null, "keys", null, 1, 1, Security.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSecurity_Groups(), this.getGroups(), null, "groups", null, 1, 1, Security.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(keysEClass, Keys.class, "Keys", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getKeys_Keypairs(), this.getKeyPair(), null, "keypairs", null, 1, -1, Keys.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(groupsEClass, Groups.class, "Groups", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGroups_SecurityGroups(), this.getSecurityGroup(), null, "securityGroups", null, 1, -1, Groups.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(flavorsEClass, Flavors.class, "Flavors", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFlavors_Flavors(), this.getVirtualMachineImageFlavor(), null, "flavors", null, 1, -1, Flavors.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(virtualMachineImageTypeEEnum, VirtualMachineImageType.class, "VirtualMachineImageType");

@@ -172,6 +172,33 @@ public interface InfoSystemFactory extends EFactory
   Security createSecurity();
 
     /**
+   * Returns a new object of class '<em>Keys</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Keys</em>'.
+   * @generated
+   */
+  Keys createKeys();
+
+    /**
+   * Returns a new object of class '<em>Groups</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Groups</em>'.
+   * @generated
+   */
+  Groups createGroups();
+
+    /**
+   * Returns a new object of class '<em>Flavors</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Flavors</em>'.
+   * @generated
+   */
+  Flavors createFlavors();
+
+    /**
    * Returns a new object of class '<em>Deployment</em>'.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

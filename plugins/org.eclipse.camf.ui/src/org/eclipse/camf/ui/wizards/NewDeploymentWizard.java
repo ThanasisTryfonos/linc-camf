@@ -92,7 +92,7 @@ public class NewDeploymentWizard extends Wizard implements INewWizard {
 				  
 		          ICloudDeploymentService deployService = getDeploymentService();
 		          try {
-		            deployService.deployApplication( NewDeploymentWizard.this.deploymentFile.getTOSCAModel(), monitor );
+		            deployService.deployApplication( NewDeploymentWizard.this.deploymentFile, monitor );
 		          } catch( ProblemException e1 ) {
 		            e1.printStackTrace();
 		          }

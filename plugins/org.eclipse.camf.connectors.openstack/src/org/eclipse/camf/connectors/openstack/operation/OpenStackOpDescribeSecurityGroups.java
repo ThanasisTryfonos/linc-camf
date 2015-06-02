@@ -33,16 +33,17 @@ public class OpenStackOpDescribeSecurityGroups extends
 
 	private final SecurityGroupApi SecurityGroupApi;
 
-	/**
-	 * Creates a new {@link OpenStackOpDescribeSecurityGroups} to fetch
-	 * available data
-	 *
-	 */
+  /**
+   * Creates a new {@link OpenStackOpDescribeSecurityGroups} to fetch available
+   * data
+   */
+  public OpenStackOpDescribeSecurityGroups( final OpenStackClient client ) {
+    this.SecurityGroupApi = client.getSecurityGroupApi();
+  }
 
-	public OpenStackOpDescribeSecurityGroups() {
-		this.SecurityGroupApi = OpenStackClient.getInstance()
-				.getSecurityGroupApi();
-	}
+  public OpenStackOpDescribeSecurityGroups() {
+    this.SecurityGroupApi = OpenStackClient.getInstance().getSecurityGroupApi();
+  }
 
 	@Override
 	public void run() {

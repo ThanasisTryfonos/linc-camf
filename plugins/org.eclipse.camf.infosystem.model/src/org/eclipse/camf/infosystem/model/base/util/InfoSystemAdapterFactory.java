@@ -171,6 +171,21 @@ public class InfoSystemAdapterFactory extends AdapterFactoryImpl
         return createSecurityAdapter();
       }
       @Override
+      public Adapter caseKeys(Keys object)
+      {
+        return createKeysAdapter();
+      }
+      @Override
+      public Adapter caseGroups(Groups object)
+      {
+        return createGroupsAdapter();
+      }
+      @Override
+      public Adapter caseFlavors(Flavors object)
+      {
+        return createFlavorsAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -411,6 +426,51 @@ public class InfoSystemAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSecurityAdapter()
+  {
+    return null;
+  }
+
+    /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.Keys <em>Keys</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.camf.infosystem.model.base.Keys
+   * @generated
+   */
+  public Adapter createKeysAdapter()
+  {
+    return null;
+  }
+
+    /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.Groups <em>Groups</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.camf.infosystem.model.base.Groups
+   * @generated
+   */
+  public Adapter createGroupsAdapter()
+  {
+    return null;
+  }
+
+    /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.Flavors <em>Flavors</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.camf.infosystem.model.base.Flavors
+   * @generated
+   */
+  public Adapter createFlavorsAdapter()
   {
     return null;
   }

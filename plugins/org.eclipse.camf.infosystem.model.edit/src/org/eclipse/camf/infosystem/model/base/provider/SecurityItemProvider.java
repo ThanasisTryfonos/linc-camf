@@ -86,6 +86,7 @@ public class SecurityItemProvider
     {
       super.getChildrenFeatures(object);
       childrenFeatures.add(InfoSystemPackage.Literals.SECURITY__KEYS);
+      childrenFeatures.add(InfoSystemPackage.Literals.SECURITY__GROUPS);
     }
     return childrenFeatures;
   }
@@ -144,6 +145,7 @@ public class SecurityItemProvider
     switch (notification.getFeatureID(Security.class))
     {
       case InfoSystemPackage.SECURITY__KEYS:
+      case InfoSystemPackage.SECURITY__GROUPS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -165,7 +167,12 @@ public class SecurityItemProvider
     newChildDescriptors.add
       (createChildParameter
         (InfoSystemPackage.Literals.SECURITY__KEYS,
-         InfoSystemFactory.eINSTANCE.createKeyPair()));
+         InfoSystemFactory.eINSTANCE.createKeys()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (InfoSystemPackage.Literals.SECURITY__GROUPS,
+         InfoSystemFactory.eINSTANCE.createGroups()));
   }
 
   /**

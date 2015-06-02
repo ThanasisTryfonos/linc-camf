@@ -23,4 +23,11 @@
             name="OpenStack Auth Token UI Factory">
       </factory>
    </extension>
+<extension
+      point="org.eclipse.camf.ui.cloudProviderIcon">
+   <icon
+         location="/icons/obj16/cp.gif"
+         type="org.eclipse.camf.connectors.openstack">
+   </icon>
+</extension>
 </plugin>

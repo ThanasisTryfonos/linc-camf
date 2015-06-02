@@ -1,12 +1,12 @@
 /*****************************************************************************
- * Copyright (c) 2006-2008 g-Eclipse Consortium 
+ * Copyright (c) 2006-2008 CAMF Consortium 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Initial development of the original code was made for the
- * g-Eclipse project founded by European Union
+ * CAMF project founded by European Union
  * project number: FP6-IST-034327  http://www.geclipse.eu/
  *
  * Contributors:
@@ -32,55 +32,60 @@ import org.eclipse.core.runtime.IConfigurationElement;
 public class CloudResourceCategoryFactory {
   
   /**
-   * Unique ID for the default applications category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default applications category as defined by the CAMF core plug-in.
+   */
+  public static final String ID_ALL = "org.eclipse.camf.core.model.category.all"; //$NON-NLS-1$
+  
+  /**
+   * Unique ID for the default applications category as defined by the CAMF core plug-in.
    */
   public static final String ID_APPLICATIONS = "org.eclipse.camf.core.model.category.applications"; //$NON-NLS-1$
   
   /**
-   * Unique ID for the default computing category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default computing category as defined by the CAMF core plug-in.
    */
   public static final String ID_COMPUTING = "org.eclipse.camf.core.model.category.computing"; //$NON-NLS-1$
  
   
   /**
-   * Unique ID for the default data services category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default data services category as defined by the CAMF core plug-in.
    */
   public static final String ID_DATA_SERVICES = "org.eclipse.camf.core.model.category.services.data"; //$NON-NLS-1$
   
   /**
-   * Unique ID for the default info services category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default info services category as defined by the CAMF core plug-in.
    */
   public static final String ID_INFO_SERVICES = "org.eclipse.camf.core.model.category.services.info"; //$NON-NLS-1$
   
   /**
-   * Unique ID for the default job services category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default job services category as defined by the CAMF core plug-in.
    */
   public static final String ID_JOB_SERVICES = "org.eclipse.camf.core.model.category.services.jobs"; //$NON-NLS-1$
   
   /**
-   * Unique ID for the default instrumentation services category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default instrumentation services category as defined by the CAMF core plug-in.
    */
   public static final String ID_INSTRUMENTATION_SERVICES = "org.eclipse.camf.core.model.category.services.instrumentation"; //$NON-NLS-1$
   
   /**
-   * Unique ID for the default other services category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default other services category as defined by the CAMF core plug-in.
    */
   public static final String ID_OTHER_SERVICES = "org.eclipse.camf.core.model.category.services.others"; //$NON-NLS-1$
   
   /**
-   * Unique ID for the default storage category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default storage category as defined by the CAMF core plug-in.
    */
   public static final String ID_STORAGE = "org.eclipse.camf.core.model.category.storage"; //$NON-NLS-1$
   
   
   
   /**
-   * Unique ID for the default services category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default services category as defined by the CAMF core plug-in.
    */
   public static final String ID_SERVICES = "org.eclipse.camf.core.model.category.services"; //$NON-NLS-1$
  
   /**
-   * Unique ID for the default job services category as defined by the g-Eclipse core plug-in.
+   * Unique ID for the default job services category as defined by the CAMF core plug-in.
    */
   public static final String ID_DEPLOYMENT_SERVICES = "org.eclipse.camf.core.model.category.services.deployment"; //$NON-NLS-1$
   
