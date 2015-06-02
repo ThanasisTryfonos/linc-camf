@@ -22,7 +22,8 @@ Require-Bundle: org.eclipse.ui,
  openstack-nova;bundle-version="1.8.0",
  openstack-keystone;bundle-version="1.8.0",
  ec2;bundle-version="1.8.0",
- cloudwatch
+ cloudwatch,
+ org.json;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.camf.infosystem.mockup.info;

@@ -26,8 +26,10 @@ import org.eclipse.camf.connectors.aws.internal.Activator;
 import org.eclipse.camf.connectors.aws.internal.Messages;
 import org.eclipse.camf.connectors.aws.operation.AbstractEC2OpDescribeImages;
 import org.eclipse.camf.connectors.aws.operation.AbstractEC2OpDescribeKeypair;
+import org.eclipse.camf.connectors.aws.operation.AbstractEC2OpSecurityGroups;
 import org.eclipse.camf.connectors.aws.operation.EC2OpDescribeImages;
 import org.eclipse.camf.connectors.aws.operation.EC2OpDescribeKeypairs;
+import org.eclipse.camf.connectors.aws.operation.EC2OpDescribeSecurityGroups;
 import org.eclipse.camf.connectors.aws.operation.OperationExecuter;
 import org.eclipse.camf.core.model.CloudModel;
 import org.eclipse.camf.core.model.ICloudContainer;
@@ -43,6 +45,7 @@ import org.eclipse.camf.core.reporting.ProblemException;
 import org.eclipse.camf.infosystem.InfoService;
 import org.eclipse.camf.infosystem.model.base.AbstractInfoCache;
 import org.eclipse.camf.infosystem.model.base.CloudProvider;
+import org.eclipse.camf.infosystem.model.base.Groups;
 import org.eclipse.camf.infosystem.model.base.IExtendedInfoService;
 import org.eclipse.camf.infosystem.model.base.Images;
 import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
@@ -58,6 +61,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.jclouds.ec2.domain.Image;
 import org.jclouds.ec2.domain.KeyPair;
+import org.jclouds.ec2.domain.SecurityGroup;
 
 /**
  * @author nickl
@@ -217,6 +221,10 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
                      cp,
                      monitor,
                      new EC2OpDescribeKeypairs( getEc2() ) );
+      fetchSecurityGroups( parent,
+                     cp,
+                     monitor,
+                     new EC2OpDescribeSecurityGroups( getEc2() ) );
     }
 
     if (result == null)
@@ -367,6 +375,62 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
     }
     return null;
   }
+  
+  public ICloudResource[] fetchSecurityGroups( final ICloudContainer parent,
+                                         final ICloudProvider cp,
+                                         IProgressMonitor monitor,
+                                         final AbstractEC2OpSecurityGroups operation )
+     {
+       if( monitor == null ) {
+         monitor = new NullProgressMonitor();
+       }
+
+       // fetch existing AMI images from EC2 service
+       monitor.beginTask( Messages.getString( "EC2InfoService.monitor_task_description" ), //$NON-NLS-1$
+                          2 );
+
+       new OperationExecuter().execOp( operation );
+
+       monitor.worked( 1 );
+       if( operation.getException() == null ) {
+         
+         Root root = InfoService.getInstance().getRoot();
+         boolean newCP = false;
+         
+         CloudProvider infoCP = InfoService.getInstance().getCloudProvider( cp );
+         if( infoCP == null ) {
+           infoCP = InfoService.getInstance().getFactory().createCloudProvider();
+           infoCP.setName( cp.getName() );
+           infoCP.setType( CP_TYPE );
+           newCP = true;
+         }
+                
+         Security security = null;
+         if (infoCP.getSecurity() == null) {
+           security = InfoService.getInstance().getFactory().createSecurity();           
+         } else {
+           security = infoCP.getSecurity();
+         }
+         Groups groups = InfoService.getInstance().getFactory().createGroups();
+         security.setGroups( groups );
+         infoCP.setSecurity( security );      
+         
+         for( SecurityGroup remoteSG : operation.getResult() ) {
+           org.eclipse.camf.infosystem.model.base.SecurityGroup sg = InfoSystemFactory.eINSTANCE.createSecurityGroup();
+           sg.setName( remoteSG.getName() );        
+           sg.setUID( remoteSG.getId() );
+           groups.getSecurityGroups().add( sg );
+         }
+         
+         if (newCP)
+           root.getCloudProviders().add( infoCP );
+
+         monitor.worked( 2 );
+         monitor.done();
+         return null;
+       }
+       return null;
+     }
   
   private ICloudService[] fetchDeploymentServices( final ICloudContainer parent,
                                            final ICloudProvider cp,

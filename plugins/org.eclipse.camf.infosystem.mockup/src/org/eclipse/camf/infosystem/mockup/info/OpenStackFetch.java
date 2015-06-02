@@ -15,6 +15,7 @@
  *******************************************************************************/
 package org.eclipse.camf.infosystem.mockup.info;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
@@ -47,6 +48,9 @@ import org.jclouds.compute.domain.ComputeMetadata;
 import org.jclouds.compute.domain.Image;
 import org.jclouds.openstack.neutron.v2.domain.Network;
 import org.jclouds.openstack.nova.v2_0.domain.Flavor;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * @author Nicholas Loulloudes
@@ -240,12 +244,69 @@ public class OpenStackFetch extends Job {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		localMonitor.done();
+
 		Status status = new Status(IStatus.OK, "org.eclipse.camf.infosystem", //$NON-NLS-1$
 				"Information data fetched successfully."); //$NON-NLS-1$
+		
+		try {
+			fetchJCatascopiaMonitorProbes( localMonitor );
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		localMonitor.done();
 		return status;
 	}
 
+	  //fetch probes from JCatascopia Probe Library
+	  private void fetchJCatascopiaMonitorProbes (final IProgressMonitor monitor) throws SQLException, JSONException {
+	    
+	    //CELAR Manager call : Get Monitoring Probes
+	    String probes = getJCatascopiaProbes();
+	    
+	    if ( probes.equals( "" ) == false ) {
+	      
+	      probes = "{\"probes\":" + probes + "}";
+	      String output_json = probes;
+	      JSONObject obj = new JSONObject( output_json );
+	      JSONArray probes_array = obj.getJSONArray( "probes" ); //$NON-NLS-1$
+	      
+	      if ( probes_array != null ){
+	        for (int i=0; i < probes_array.length(); i++){
+	          MonitoringProbe mp = InfoSystemFactory.eINSTANCE.createMonitoringProbe();
+	          /*
+	           * get the necessary mp fields
+	           */
+	          mp.setName( probes_array.getJSONObject( i ).getString( "probe" )); //$NON-NLS-1$ );
+	          mp.setMetrics( probes_array.getJSONObject( i ).getString( "metrics" ) );
+	          mp.setDescription( probes_array.getJSONObject( i ).getString( "desc" ) );
+	                    
+	          //add new monitor probe to probes list
+	          this.monitor_probes.add(mp);
+	          //instance.monitor_probes.add( mp ); 
+	        }
+	        
+	      }
+	    }    
+	  }
+	  
+	  String getJCatascopiaProbes(){
+		    JCatascopiaProbeRepo repo = new JCatascopiaProbeRepo();
+		    String probes = null;
+		    try {
+		      probes = repo.getProbes();
+
+		    } catch( JCatascopiaProbeRepoException e ) {
+		      // TODO Auto-generated catch block
+		      e.printStackTrace();
+		    }
+		    //System.out.println(probes);
+		    return probes;
+		  }
 	/**
 	 * @return A list with the available Base Machine Images
 	 */

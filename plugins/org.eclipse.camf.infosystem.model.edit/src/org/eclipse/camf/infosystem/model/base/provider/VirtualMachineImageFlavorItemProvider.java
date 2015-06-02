@@ -212,7 +212,7 @@ public class VirtualMachineImageFlavorItemProvider
     String label = ((VirtualMachineImageFlavor)object).getName();
     return label == null || label.length() == 0 ?
       getString("_UI_VirtualMachineImageFlavor_type") :
-      label;
+      getString("_UI_VirtualMachineImageFlavor_type") + " " + label;
   }
   
 

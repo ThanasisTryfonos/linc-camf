@@ -68,6 +68,7 @@ public class MonitoringProbeItemProvider
       addNamePropertyDescriptor(object);
       addDescriptionPropertyDescriptor(object);
       addURLPropertyDescriptor(object);
+      addMetricsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -165,6 +166,29 @@ public class MonitoringProbeItemProvider
   }
 
   /**
+   * This adds a property descriptor for the Metrics feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addMetricsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_MonitoringProbe_metrics_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_MonitoringProbe_metrics_feature", "_UI_MonitoringProbe_type"),
+         InfoSystemPackage.Literals.MONITORING_PROBE__METRICS,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
    * This returns MonitoringProbe.gif.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -210,6 +234,7 @@ public class MonitoringProbeItemProvider
       case InfoSystemPackage.MONITORING_PROBE__NAME:
       case InfoSystemPackage.MONITORING_PROBE__DESCRIPTION:
       case InfoSystemPackage.MONITORING_PROBE__URL:
+      case InfoSystemPackage.MONITORING_PROBE__METRICS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
     }

@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringProbeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringProbeImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringProbeImpl#getURL <em>URL</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringProbeImpl#getMetrics <em>Metrics</em>}</li>
  * </ul>
  * </p>
  *
@@ -120,6 +121,26 @@ public class MonitoringProbeImpl extends EObjectImpl implements MonitoringProbe
    * @ordered
    */
   protected String uRL = URL_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getMetrics() <em>Metrics</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetrics()
+   * @generated
+   * @ordered
+   */
+  protected static final String METRICS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMetrics() <em>Metrics</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetrics()
+   * @generated
+   * @ordered
+   */
+  protected String metrics = METRICS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -239,6 +260,29 @@ public class MonitoringProbeImpl extends EObjectImpl implements MonitoringProbe
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getMetrics()
+  {
+    return metrics;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMetrics(String newMetrics)
+  {
+    String oldMetrics = metrics;
+    metrics = newMetrics;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.MONITORING_PROBE__METRICS, oldMetrics, metrics));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -252,6 +296,8 @@ public class MonitoringProbeImpl extends EObjectImpl implements MonitoringProbe
         return getDescription();
       case InfoSystemPackage.MONITORING_PROBE__URL:
         return getURL();
+      case InfoSystemPackage.MONITORING_PROBE__METRICS:
+        return getMetrics();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -277,6 +323,9 @@ public class MonitoringProbeImpl extends EObjectImpl implements MonitoringProbe
         return;
       case InfoSystemPackage.MONITORING_PROBE__URL:
         setURL((String)newValue);
+        return;
+      case InfoSystemPackage.MONITORING_PROBE__METRICS:
+        setMetrics((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -304,6 +353,9 @@ public class MonitoringProbeImpl extends EObjectImpl implements MonitoringProbe
       case InfoSystemPackage.MONITORING_PROBE__URL:
         setURL(URL_EDEFAULT);
         return;
+      case InfoSystemPackage.MONITORING_PROBE__METRICS:
+        setMetrics(METRICS_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -326,6 +378,8 @@ public class MonitoringProbeImpl extends EObjectImpl implements MonitoringProbe
         return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
       case InfoSystemPackage.MONITORING_PROBE__URL:
         return URL_EDEFAULT == null ? uRL != null : !URL_EDEFAULT.equals(uRL);
+      case InfoSystemPackage.MONITORING_PROBE__METRICS:
+        return METRICS_EDEFAULT == null ? metrics != null : !METRICS_EDEFAULT.equals(metrics);
     }
     return super.eIsSet(featureID);
   }
@@ -349,6 +403,8 @@ public class MonitoringProbeImpl extends EObjectImpl implements MonitoringProbe
     result.append(description);
     result.append(", uRL: ");
     result.append(uRL);
+    result.append(", metrics: ");
+    result.append(metrics);
     result.append(')');
     return result.toString();
   }

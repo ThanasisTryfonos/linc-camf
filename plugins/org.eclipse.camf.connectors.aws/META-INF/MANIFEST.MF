@@ -20,7 +20,8 @@ Require-Bundle: org.eclipse.ui,
  jclouds-slf4j,
  jclouds-compute,
  cloudwatch;bundle-version="1.8.0",
- org.eclipse.camf.infosystem
+ org.eclipse.camf.infosystem,
+ jclouds-scriptbuilder;bundle-version="1.8.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.camf.core,

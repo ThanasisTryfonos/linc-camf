@@ -14,6 +14,9 @@
  *******************************************************************************/
 package org.eclipse.camf.connectors.aws.operation;
 
+
+import static org.jclouds.compute.options.TemplateOptions.Builder.runScript;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -36,7 +39,11 @@ import org.jclouds.ec2.domain.InstanceType;
 import org.jclouds.ec2.features.InstanceApi;
 import org.jclouds.ec2.options.RunInstancesOptions;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
+import com.google.common.io.Files;
+
+import org.jclouds.compute.options.TemplateOptions;
 
 
 
@@ -101,40 +108,22 @@ public class EC2OpDeployApplication extends AbstractEC2OpDeployApplication {
                 amiID = artifact.getName();
               } else if( artifactType.equals( "KeyPair" ) ) { //$NON-NLS-1$
                 keypair = artifact.getName();
+              } else if (artifactType.equals( "SH" )) {//                
+                try {
+                  TemplateOptions templateOptions = runScript( Files.toString(new File("runscript.sh"), Charsets.UTF_8 ));
+                } catch( IOException e ) {
+                  // TODO Auto-generated catch block
+                  e.printStackTrace();
+                }
+                
               }
-              
-              // Check if keypair in description is available on AWS -
-              // If not import it from workspace and upload to AWS
-              // FIXME - Cannon import an existing key to AWS with Jclouds
-              // if (keypair != null) {
-              // String encodedPublicKey = importKeyPair(keypair, this.project);
-              // //Strip extension. - Get file name only
-              //                  keypairName = keypair.substring( 0, keypair.indexOf( "." ) ); //$NON-NLS-1$
-              // try {
-              // /* Get current key pair in Amazon */
-              // // DescribeKeyPairsRequest describeKeyPairsRequest = new
-              // DescribeKeyPairsRequest();
-              // this.ec2.getEC2Api().getKeyPairApi();
-              // this.ec2.describeKeyPairs(
-              // describeKeyPairsRequest.withKeyNames( keypairName ) );
-              //
-              // if (describeKeyPairsResult.getKeyPairs().size() == 0) {
-              // ImportKeyPairRequest importKeyRequest = new
-              // ImportKeyPairRequest( keypairName, encodedPublicKey );
-              // this.ec2.importKeyPair( importKeyRequest );
-              // }
-              //
-              // } catch( AmazonServiceException ase ) {
-              // throw ase;
-              // }
-              //
-              // }
+
             }
-            
+                        
              Optional<? extends InstanceApi> instanceApi =
              this.ec2.getEC2Api().getInstanceApiForRegion(
-             this.ec2.getRegion() );
-             RunInstancesOptions options = RunInstancesOptions.Builder.asType(InstanceType.M1_SMALL).withKeyName(keypair);
+             this.ec2.getRegion() );             
+             RunInstancesOptions options = RunInstancesOptions.Builder.asType(InstanceType.M1_SMALL).withKeyName(keypair);             
              instanceApi.get().runInstancesInRegion( this.ec2.getRegion(),
              null, amiID, minCount, maxCount, options );
                

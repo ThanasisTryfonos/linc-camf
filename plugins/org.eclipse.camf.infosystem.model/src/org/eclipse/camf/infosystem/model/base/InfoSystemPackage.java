@@ -119,13 +119,22 @@ public interface InfoSystemPackage extends EPackage
   int MONITORING_PROBE__URL = 3;
 
   /**
+   * The feature id for the '<em><b>Metrics</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MONITORING_PROBE__METRICS = 4;
+
+  /**
    * The number of structural features of the '<em>Monitoring Probe</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MONITORING_PROBE_FEATURE_COUNT = 4;
+  int MONITORING_PROBE_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.ResizingActionImpl <em>Resizing Action</em>}' class.
@@ -1131,6 +1140,17 @@ public interface InfoSystemPackage extends EPackage
   EAttribute getMonitoringProbe_URL();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getMetrics <em>Metrics</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Metrics</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.MonitoringProbe#getMetrics()
+   * @see #getMonitoringProbe()
+   * @generated
+   */
+  EAttribute getMonitoringProbe_Metrics();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.ResizingAction <em>Resizing Action</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2099,6 +2119,14 @@ public interface InfoSystemPackage extends EPackage
      * @generated
      */
     EAttribute MONITORING_PROBE__URL = eINSTANCE.getMonitoringProbe_URL();
+
+    /**
+     * The meta object literal for the '<em><b>Metrics</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MONITORING_PROBE__METRICS = eINSTANCE.getMonitoringProbe_Metrics();
 
     /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.ResizingActionImpl <em>Resizing Action</em>}' class.

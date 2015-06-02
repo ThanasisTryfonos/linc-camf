@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getDescription <em>Description</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getURL <em>URL</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getMetrics <em>Metrics</em>}</li>
  * </ul>
  * </p>
  *
@@ -146,5 +147,31 @@ public interface MonitoringProbe extends EObject
    * @generated
    */
   void setURL(String value);
+
+  /**
+   * Returns the value of the '<em><b>Metrics</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Metrics</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metrics</em>' attribute.
+   * @see #setMetrics(String)
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getMonitoringProbe_Metrics()
+   * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+   * @generated
+   */
+  String getMetrics();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getMetrics <em>Metrics</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Metrics</em>' attribute.
+   * @see #getMetrics()
+   * @generated
+   */
+  void setMetrics(String value);
 
 } // MonitoringProbe

@@ -331,6 +331,16 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getMonitoringProbe_Metrics()
+  {
+    return (EAttribute)monitoringProbeEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getResizingAction()
   {
     return resizingActionEClass;
@@ -1175,6 +1185,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     createEAttribute(monitoringProbeEClass, MONITORING_PROBE__NAME);
     createEAttribute(monitoringProbeEClass, MONITORING_PROBE__DESCRIPTION);
     createEAttribute(monitoringProbeEClass, MONITORING_PROBE__URL);
+    createEAttribute(monitoringProbeEClass, MONITORING_PROBE__METRICS);
 
     resizingActionEClass = createEClass(RESIZING_ACTION);
     createEAttribute(resizingActionEClass, RESIZING_ACTION__UID);
@@ -1323,6 +1334,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     initEAttribute(getMonitoringProbe_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMonitoringProbe_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMonitoringProbe_URL(), theXMLTypePackage.getString(), "uRL", null, 1, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMonitoringProbe_Metrics(), theXMLTypePackage.getString(), "metrics", null, 0, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resizingActionEClass, ResizingAction.class, "ResizingAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getResizingAction_UID(), theXMLTypePackage.getString(), "uID", null, 1, 1, ResizingAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

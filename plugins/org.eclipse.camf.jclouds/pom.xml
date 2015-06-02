@@ -102,7 +102,9 @@
 								<artifact>
                                     <id>org.apache.jclouds.labs:openstack-neutron:${jclouds.version}</id>
                                 </artifact>   
-                                
+                            	<artifact>
+                                    <id>org.apache.jclouds:jclouds-scriptbuilder:${jclouds.version}</id>
+                                </artifact> 
                                 
                                 <!-- JClouds Amazon AWS EC2 Dependencies -->
                                 <artifact>

@@ -95,6 +95,9 @@ import org.eclipse.graphiti.tb.IContextButtonPadData;
 import org.eclipse.graphiti.tb.IContextMenuEntry;
 import org.eclipse.graphiti.tb.IDecorator;
 import org.eclipse.graphiti.tb.ImageDecorator;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
 
@@ -225,12 +228,13 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
     }
     addApplicationComponentsCompartment( ret );
     
-//    this.mockUpInfoSystemInstance = MockUpInfoSystem.getInstance();
+    this.mockUpInfoSystemInstance = MockUpInfoSystem.getInstance();
 //    addVMImageCompartment( ret );
 //    addNetworkCompartment( ret );
-//    addMonitorProbeCompartment( ret );
+//      ProbeCompartment( ret );
 //    addResizeActionsCompartment( ret );
 //    
+    addJCatascopiaMonitorProbeCompartment( ret );
 //    addUserAppsCompartment( ret );
 //    addKeyPairCompartment( ret );
 //    addDeployScriptCompartment( ret );
@@ -880,6 +884,126 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
     }
     return super.getDecorators( pe );
   }
+  
+//Create Palette compartment for Monitoring Probes
+ private void addJCatascopiaMonitorProbeCompartment( List<IPaletteCompartmentEntry> ret )
+ {
+   
+ ArrayList<MonitoringProbe> mps = this.mockUpInfoSystemInstance.getMonitoringProbes();
+ 
+ @SuppressWarnings("unchecked")
+ ArrayList<MonitoringProbe> mpsCopy = ( ArrayList<MonitoringProbe> )mps.clone();
+
+
+ 
+   // add new compartment at the end of the existing compartments
+   PaletteCompartmentEntry compartmentEntry = new PaletteCompartmentEntry( "Monitor Probes", null ); //$NON-NLS-1$
+   compartmentEntry.setInitiallyOpen( false );
+   ret.add( compartmentEntry );
+       
+   for( MonitoringProbe mp : mpsCopy ) {
+
+     String metricsString = "";
+     if ( metricsString.equals( "" ) == false ){
+       // add new Metric Probe entry to probes compartment
+       StackEntry stackEntry = new StackEntry(  mp.getName(), mp.getDescription(), null );
+       compartmentEntry.addToolEntry( stackEntry );
+       compartmentEntry.setInitiallyOpen( false );   
+       
+       IFeatureProvider featureProvider = getFeatureProvider();
+       ICreateFeature[] createFeatures = featureProvider.getCreateFeatures();
+       for( ICreateFeature cf : createFeatures ) {
+         if( cf instanceof CreateMonitorProbeFeature ) {
+           CreateMonitorProbeFeature mpCF = ( CreateMonitorProbeFeature )cf;
+
+           TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+           deploymentArtifact.setName( mp.getName() );
+           deploymentArtifact.setArtifactType( new QName( "MonitoringProbe" ) );
+           mpCF.setContextObject( deploymentArtifact );
+
+           ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( mp.getName(),
+                                                                                          mp.getDescription(),
+                                                                                          mpCF.getCreateImageId(),
+                                                                                          mpCF.getCreateLargeImageId(),
+                                                                                          mpCF );
+           stackEntry.addCreationToolEntry( objectCreationToolEntry );
+           break;
+         }
+       }
+       
+       String metrics = "{\"metrics\":" + metricsString + "}";
+       JSONObject obj = null;
+       JSONArray metrics_array = null;
+       try {
+         obj = new JSONObject( metrics );
+         metrics_array = obj.getJSONArray( "metrics" );
+       } catch( JSONException e ) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+       } //$NON-NLS-1$
+
+       for ( int i=0; i < metrics_array.length(); i++){
+         String metricLabel = null;
+         String metricDescription = null;
+         try {
+           metricLabel = metrics_array.getJSONObject( i ).getString( "name" );
+           metricDescription = metrics_array.getJSONObject( i ).getString( "desc" );
+         } catch( JSONException e ) {
+           // TODO Auto-generated catch block
+           e.printStackTrace();
+         }
+         // add all create-features to the new stack-entry
+         featureProvider = getFeatureProvider();
+         createFeatures = featureProvider.getCreateFeatures();
+         for( ICreateFeature cf : createFeatures ) {
+           if( cf instanceof CreateMonitorProbeFeature ) {
+             CreateMonitorProbeFeature mpCF = ( CreateMonitorProbeFeature )cf;
+
+             TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+             deploymentArtifact.setName( metricLabel );
+             deploymentArtifact.setArtifactType( new QName( "MonitoringProbe" ) );
+             mpCF.setContextObject( deploymentArtifact );
+
+             ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( metricLabel,
+                                                                                            metricDescription,
+                                                                                            mpCF.getCreateImageId(),
+                                                                                            mpCF.getCreateLargeImageId(),
+                                                                                            mpCF );
+             
+             stackEntry.addCreationToolEntry( objectCreationToolEntry );
+             break;
+           }
+         }
+         
+       }
+     }
+     else{
+     // Custom Monitoring Probes
+     // add all create-features to the new stack-entry
+     IFeatureProvider featureProvider = getFeatureProvider();
+     ICreateFeature[] createFeatures = featureProvider.getCreateFeatures();
+     for( ICreateFeature cf : createFeatures ) {
+       if( cf instanceof CreateMonitorProbeFeature ) {
+         CreateMonitorProbeFeature mpCF = ( CreateMonitorProbeFeature )cf;
+
+         TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+         deploymentArtifact.setName( mp.getName() );
+         deploymentArtifact.setArtifactType( new QName( "MonitoringProbe" ) );
+         mpCF.setContextObject( deploymentArtifact );
+         
+         // add new stack entry to new compartment
+         IToolEntry entry = new ObjectCreationToolEntry( mp.getName(),
+                                                         mp.getDescription(),
+                                                         null,
+                                                         null,
+                                                         mpCF );
+         compartmentEntry.addToolEntry( entry );
+
+       }
+     }
+   }
+   }
+ }
 
   @Override
   public ICustomFeature getDoubleClickFeature( final IDoubleClickContext context )

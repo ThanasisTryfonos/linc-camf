@@ -200,6 +200,9 @@ public class OpenStackOpTerminateApplication extends
 		return false;
 	}
 
+	public boolean terminateModuleInstance(String vID){
+		return terminateInstance(vID);
+	}
 	/**
 	 * Terminates a deployment based on the deployment ID
 	 * 
