@@ -258,14 +258,14 @@ public class AWSCloudProviderWizardPage extends WizardPage {
   protected void validateInput() {
     String name = this.cpNameText.getText().trim();
     if( name.length() == 0 ) {
-      setErrorMessage( Messages.getString( "AWSVoWizardPage.error_vo_name_required" ) ); //$NON-NLS-1$
+      setErrorMessage( Messages.getString( "AWSCloudProviderWizardPage.error_vo_name_required" ) ); //$NON-NLS-1$
       setPageComplete( false );
     } else if ( ( this.initialCloudProvider == null )
         && ( CloudModel.getCloudProviderManager().findChild( name ) != null ) ) {
-      setErrorMessage( Messages.getString( "AWSVoWizardPage.error_vo_already_exists" ) ); //$NON-NLS-1$
+      setErrorMessage( Messages.getString( "AWSCloudProviderWizardPage.error_vo_already_exists" ) ); //$NON-NLS-1$
       setPageComplete( false );
     } else if( this.awsAccessIdText.getText().trim().length() == 0 ) {
-      setErrorMessage( Messages.getString( "AWSVoWizardPage.error_acces_id_required" ) ); //$NON-NLS-1$
+      setErrorMessage( Messages.getString( "AWSCloudProviderWizardPage.error_acces_id_required" ) ); //$NON-NLS-1$
       setPageComplete( false );
     } else {
       setErrorMessage( null );

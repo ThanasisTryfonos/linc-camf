@@ -26,7 +26,9 @@ import org.eclipse.camf.infosystem.model.base.InfoSystemPackage;
 import org.eclipse.camf.infosystem.model.base.KeyPair;
 import org.eclipse.camf.infosystem.model.base.Keys;
 import org.eclipse.camf.infosystem.model.base.Module;
+import org.eclipse.camf.infosystem.model.base.Monitoring;
 import org.eclipse.camf.infosystem.model.base.MonitoringProbe;
+import org.eclipse.camf.infosystem.model.base.MonitoringService;
 import org.eclipse.camf.infosystem.model.base.Networks;
 import org.eclipse.camf.infosystem.model.base.ResizingAction;
 import org.eclipse.camf.infosystem.model.base.Root;
@@ -181,6 +183,20 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
    * @generated
    */
   private EClass flavorsEClass = null;
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass monitoringEClass = null;
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass monitoringServiceEClass = null;
 
     /**
    * <!-- begin-user-doc -->
@@ -802,6 +818,16 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
   /**
    * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCloudProvider_Monitoring()
+  {
+    return (EReference)cloudProviderEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    */
@@ -1042,6 +1068,56 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
     /**
    * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMonitoring()
+  {
+    return monitoringEClass;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMonitoring_MonitoringService()
+  {
+    return (EReference)monitoringEClass.getEStructuralFeatures().get(0);
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMonitoringService()
+  {
+    return monitoringServiceEClass;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMonitoringService_Name()
+  {
+    return (EAttribute)monitoringServiceEClass.getEStructuralFeatures().get(0);
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMonitoringService_Probes()
+  {
+    return (EReference)monitoringServiceEClass.getEStructuralFeatures().get(1);
+  }
+
+    /**
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
    * @generated
    */
@@ -1234,6 +1310,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     createEReference(cloudProviderEClass, CLOUD_PROVIDER__SECURITY);
     createEAttribute(cloudProviderEClass, CLOUD_PROVIDER__TYPE);
     createEReference(cloudProviderEClass, CLOUD_PROVIDER__FLAVORS);
+    createEReference(cloudProviderEClass, CLOUD_PROVIDER__MONITORING);
 
     virtualMachineImageEClass = createEClass(VIRTUAL_MACHINE_IMAGE);
     createEAttribute(virtualMachineImageEClass, VIRTUAL_MACHINE_IMAGE__UID);
@@ -1287,6 +1364,13 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
     flavorsEClass = createEClass(FLAVORS);
     createEReference(flavorsEClass, FLAVORS__FLAVORS);
+
+    monitoringEClass = createEClass(MONITORING);
+    createEReference(monitoringEClass, MONITORING__MONITORING_SERVICE);
+
+    monitoringServiceEClass = createEClass(MONITORING_SERVICE);
+    createEAttribute(monitoringServiceEClass, MONITORING_SERVICE__NAME);
+    createEReference(monitoringServiceEClass, MONITORING_SERVICE__PROBES);
 
     // Create enums
     virtualMachineImageTypeEEnum = createEEnum(VIRTUAL_MACHINE_IMAGE_TYPE);
@@ -1383,6 +1467,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     initEReference(getCloudProvider_Security(), this.getSecurity(), null, "security", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCloudProvider_Type(), theXMLTypePackage.getString(), "type", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCloudProvider_Flavors(), this.getFlavors(), null, "flavors", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCloudProvider_Monitoring(), this.getMonitoring(), null, "monitoring", null, 1, 1, CloudProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(virtualMachineImageEClass, VirtualMachineImage.class, "VirtualMachineImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVirtualMachineImage_UID(), theXMLTypePackage.getString(), "uID", null, 1, 1, VirtualMachineImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1436,6 +1521,13 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
     initEClass(flavorsEClass, Flavors.class, "Flavors", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFlavors_Flavors(), this.getVirtualMachineImageFlavor(), null, "flavors", null, 1, -1, Flavors.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(monitoringEClass, Monitoring.class, "Monitoring", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMonitoring_MonitoringService(), this.getMonitoringService(), null, "monitoringService", null, 1, -1, Monitoring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(monitoringServiceEClass, MonitoringService.class, "MonitoringService", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMonitoringService_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, MonitoringService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMonitoringService_Probes(), this.getMonitoringProbe(), null, "probes", null, 1, -1, MonitoringService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(virtualMachineImageTypeEEnum, VirtualMachineImageType.class, "VirtualMachineImageType");

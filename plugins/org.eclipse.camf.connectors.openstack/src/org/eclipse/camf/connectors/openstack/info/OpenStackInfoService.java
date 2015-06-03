@@ -188,6 +188,10 @@ public class OpenStackInfoService extends AbstractCloudInfoSystem
                             cp,
                             monitor,
                             new OpenStackOpDescribeImages( getClient() ) );
+      fetchFlavors( parent,
+                    cp,
+                    monitor,
+                    new OpenStackOpDescribeFlavors( getClient() ) );    
     } else if( category.equals( CloudResourceCategoryFactory.getCategory( IOpenStackCategories.CATEGORY_OPENSTACK_SECURITY ) ) )
     {
       fetchKeyPairs( parent,

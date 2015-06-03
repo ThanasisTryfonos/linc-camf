@@ -48,10 +48,10 @@ public class AddMonitorProbeFeature extends AbstractFeature
     boolean isDiagramInstance = context.getTargetContainer() instanceof Diagram
                                                                                ? true
                                                                                : false;
-//    if( context.getNewObject() instanceof MonitoringProbe && !isDiagramInstance )
-//    {
-//      result = true;
-//    }
+    if( context.getNewObject() instanceof MonitoringProbe && !isDiagramInstance )
+    {
+      result = true;
+    }
     
     boolean monitoringProbe = false;
     monitoringProbe = context.getNewObject() instanceof TDeploymentArtifact && ((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "MonitoringProbe" )==0;

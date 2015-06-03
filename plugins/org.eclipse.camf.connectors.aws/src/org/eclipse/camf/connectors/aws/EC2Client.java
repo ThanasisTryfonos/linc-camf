@@ -48,7 +48,8 @@ public class EC2Client {
 	private static ContextBuilder computeContextBuilder = null;
 	private static ContextBuilder cloudWatchContextBuilder = null;
 	private static ComputeService computeService = null;
-	private static String REGION = "eu-west-1";
+//	private static String REGION = "eu-west-1"; // IRELAND
+	private static String REGION = "us-west-2"; // OREGON
 
 	// public static AmazonEC2Client getInstance() {
 	// if( ec2 == null ) {

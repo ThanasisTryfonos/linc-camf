@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.camf.infosystem.model.base.CloudProvider#getSecurity <em>Security</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.CloudProvider#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.CloudProvider#getFlavors <em>Flavors</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.CloudProvider#getMonitoring <em>Monitoring</em>}</li>
  * </ul>
  * </p>
  *
@@ -183,5 +184,31 @@ public interface CloudProvider extends EObject
    * @generated
    */
   void setFlavors(Flavors value);
+
+  /**
+   * Returns the value of the '<em><b>Monitoring</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Monitoring</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Monitoring</em>' containment reference.
+   * @see #setMonitoring(Monitoring)
+   * @see org.eclipse.camf.infosystem.model.base.InfoSystemPackage#getCloudProvider_Monitoring()
+   * @model containment="true" required="true"
+   * @generated
+   */
+  Monitoring getMonitoring();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.camf.infosystem.model.base.CloudProvider#getMonitoring <em>Monitoring</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Monitoring</em>' containment reference.
+   * @see #getMonitoring()
+   * @generated
+   */
+  void setMonitoring(Monitoring value);
 
 } // CloudProvider

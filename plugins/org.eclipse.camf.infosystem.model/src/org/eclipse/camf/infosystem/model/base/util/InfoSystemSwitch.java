@@ -224,6 +224,20 @@ public class InfoSystemSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case InfoSystemPackage.MONITORING:
+      {
+        Monitoring monitoring = (Monitoring)theEObject;
+        T result = caseMonitoring(monitoring);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case InfoSystemPackage.MONITORING_SERVICE:
+      {
+        MonitoringService monitoringService = (MonitoringService)theEObject;
+        T result = caseMonitoringService(monitoringService);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -510,6 +524,38 @@ public class InfoSystemSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFlavors(Flavors object)
+  {
+    return null;
+  }
+
+    /**
+   * Returns the result of interpreting the object as an instance of '<em>Monitoring</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Monitoring</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMonitoring(Monitoring object)
+  {
+    return null;
+  }
+
+    /**
+   * Returns the result of interpreting the object as an instance of '<em>Monitoring Service</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Monitoring Service</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMonitoringService(MonitoringService object)
   {
     return null;
   }

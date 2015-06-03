@@ -18,7 +18,8 @@ Require-Bundle: org.eclipse.ui,
  openstack-nova,
  openstack-neutron-custom;bundle-version="1.8.0",
  org.json;bundle-version="1.0.0",
- org.eclipse.camf.infosystem
+ org.eclipse.camf.infosystem,
+ jclouds-scriptbuilder;bundle-version="1.8.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.inject,

@@ -212,7 +212,7 @@ public class MonitoringProbeItemProvider
     String label = ((MonitoringProbe)object).getName();
     return label == null || label.length() == 0 ?
       getString("_UI_MonitoringProbe_type") :
-      getString("_UI_MonitoringProbe_type") + " " + label;
+      label;
   }
   
 

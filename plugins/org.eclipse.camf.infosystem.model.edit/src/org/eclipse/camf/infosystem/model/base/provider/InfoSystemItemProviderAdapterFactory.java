@@ -574,6 +574,56 @@ public class InfoSystemItemProviderAdapterFactory extends InfoSystemAdapterFacto
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.camf.infosystem.model.base.Monitoring} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected MonitoringItemProvider monitoringItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.camf.infosystem.model.base.Monitoring}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createMonitoringAdapter()
+  {
+    if (monitoringItemProvider == null)
+    {
+      monitoringItemProvider = new MonitoringItemProvider(this);
+    }
+
+    return monitoringItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.camf.infosystem.model.base.MonitoringService} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected MonitoringServiceItemProvider monitoringServiceItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.camf.infosystem.model.base.MonitoringService}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createMonitoringServiceAdapter()
+  {
+    if (monitoringServiceItemProvider == null)
+    {
+      monitoringServiceItemProvider = new MonitoringServiceItemProvider(this);
+    }
+
+    return monitoringServiceItemProvider;
+  }
+
+  /**
    * This returns the root adapter factory that contains this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -704,6 +754,8 @@ public class InfoSystemItemProviderAdapterFactory extends InfoSystemAdapterFacto
     if (keysItemProvider != null) keysItemProvider.dispose();
     if (groupsItemProvider != null) groupsItemProvider.dispose();
     if (flavorsItemProvider != null) flavorsItemProvider.dispose();
+    if (monitoringItemProvider != null) monitoringItemProvider.dispose();
+    if (monitoringServiceItemProvider != null) monitoringServiceItemProvider.dispose();
   }
 
 }

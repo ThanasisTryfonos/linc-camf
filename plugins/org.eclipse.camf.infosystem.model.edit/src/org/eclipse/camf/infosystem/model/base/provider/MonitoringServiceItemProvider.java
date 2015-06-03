@@ -6,18 +6,17 @@ package org.eclipse.camf.infosystem.model.base.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.camf.infosystem.model.base.CloudProvider;
 import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
 import org.eclipse.camf.infosystem.model.base.InfoSystemPackage;
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtension;
-import org.eclipse.core.runtime.IExtensionPoint;
-import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.Platform;
+import org.eclipse.camf.infosystem.model.base.MonitoringService;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,17 +27,14 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.camf.infosystem.model.base.CloudProvider} object.
+ * This is the item provider adapter for a {@link org.eclipse.camf.infosystem.model.base.MonitoringService} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class CloudProviderItemProvider 
+public class MonitoringServiceItemProvider 
   extends ItemProviderAdapter
   implements
     IEditingDomainItemProvider,
@@ -53,7 +49,7 @@ public class CloudProviderItemProvider
    * <!-- end-user-doc -->
    * @generated
    */
-  public CloudProviderItemProvider(AdapterFactory adapterFactory)
+  public MonitoringServiceItemProvider(AdapterFactory adapterFactory)
   {
     super(adapterFactory);
   }
@@ -72,7 +68,6 @@ public class CloudProviderItemProvider
       super.getPropertyDescriptors(object);
 
       addNamePropertyDescriptor(object);
-      addTypePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -89,32 +84,9 @@ public class CloudProviderItemProvider
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_CloudProvider_Name_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_CloudProvider_Name_feature", "_UI_CloudProvider_type"),
-         InfoSystemPackage.Literals.CLOUD_PROVIDER__NAME,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-         null,
-         null));
-  }
-
-  /**
-   * This adds a property descriptor for the Type feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addTypePropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_CloudProvider_type_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_CloudProvider_type_feature", "_UI_CloudProvider_type"),
-         InfoSystemPackage.Literals.CLOUD_PROVIDER__TYPE,
+         getString("_UI_MonitoringService_name_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_MonitoringService_name_feature", "_UI_MonitoringService_type"),
+         InfoSystemPackage.Literals.MONITORING_SERVICE__NAME,
          true,
          false,
          false,
@@ -137,11 +109,7 @@ public class CloudProviderItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__IMAGES);
-      childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__NETWORKS);
-      childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__SECURITY);
-      childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__FLAVORS);
-      childrenFeatures.add(InfoSystemPackage.Literals.CLOUD_PROVIDER__MONITORING);
+      childrenFeatures.add(InfoSystemPackage.Literals.MONITORING_SERVICE__PROBES);
     }
     return childrenFeatures;
   }
@@ -161,51 +129,29 @@ public class CloudProviderItemProvider
   }
 
   /**
-   * This returns CloudProvider.gif.
+   * This returns MonitoringService.gif.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated NOT
+   * @generated
    */
   @Override
   public Object getImage(Object object)
   {
-    IExtensionRegistry registry = Platform.getExtensionRegistry();
-    IExtensionPoint extensionPoint = registry.getExtensionPoint( "org.eclipse.camf.ui.cloudProviderIcon" );
-    if (extensionPoint != null) {
-      IExtension[] extensions = extensionPoint.getExtensions();
-      for( IExtension extension : extensions ) {
-        IConfigurationElement[] elements = extension.getConfigurationElements();
-        for( IConfigurationElement element : elements ) {
-          if( element.getAttribute( "type" ).equals( ( (CloudProvider) object).getType() ) ) {
-            String location = element.getAttribute( "location" );
-            Image icon = null;
-            ImageDescriptor iconDesc = null;
-            if( location != null ) {
-              String pluginId = element.getContributor().getName();
-              iconDesc = AbstractUIPlugin.imageDescriptorFromPlugin( pluginId, location );
-              return iconDesc;
-            }
-          }
-        }
-      }
-      return overlayImage(object, getResourceLocator().getImage("full/obj16/CloudProvider"));
-    } else {
-      return overlayImage(object, getResourceLocator().getImage("full/obj16/CloudProvider"));      
-    }
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/MonitoringService"));
   }
 
   /**
    * This returns the label text for the adapted class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated NOT
+   * @generated
    */
   @Override
   public String getText(Object object)
   {
-    String label = ((CloudProvider)object).getName();
+    String label = ((MonitoringService)object).getName();
     return label == null || label.length() == 0 ?
-      getString("_UI_CloudProvider_type") :
+      getString("_UI_MonitoringService_type") :
       label;
   }
   
@@ -222,17 +168,12 @@ public class CloudProviderItemProvider
   {
     updateChildren(notification);
 
-    switch (notification.getFeatureID(CloudProvider.class))
+    switch (notification.getFeatureID(MonitoringService.class))
     {
-      case InfoSystemPackage.CLOUD_PROVIDER__NAME:
-      case InfoSystemPackage.CLOUD_PROVIDER__TYPE:
+      case InfoSystemPackage.MONITORING_SERVICE__NAME:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case InfoSystemPackage.CLOUD_PROVIDER__IMAGES:
-      case InfoSystemPackage.CLOUD_PROVIDER__NETWORKS:
-      case InfoSystemPackage.CLOUD_PROVIDER__SECURITY:
-      case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
-      case InfoSystemPackage.CLOUD_PROVIDER__MONITORING:
+      case InfoSystemPackage.MONITORING_SERVICE__PROBES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -253,28 +194,8 @@ public class CloudProviderItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (InfoSystemPackage.Literals.CLOUD_PROVIDER__IMAGES,
-         InfoSystemFactory.eINSTANCE.createImages()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (InfoSystemPackage.Literals.CLOUD_PROVIDER__NETWORKS,
-         InfoSystemFactory.eINSTANCE.createNetworks()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (InfoSystemPackage.Literals.CLOUD_PROVIDER__SECURITY,
-         InfoSystemFactory.eINSTANCE.createSecurity()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (InfoSystemPackage.Literals.CLOUD_PROVIDER__FLAVORS,
-         InfoSystemFactory.eINSTANCE.createFlavors()));
-
-    newChildDescriptors.add
-      (createChildParameter
-        (InfoSystemPackage.Literals.CLOUD_PROVIDER__MONITORING,
-         InfoSystemFactory.eINSTANCE.createMonitoring()));
+        (InfoSystemPackage.Literals.MONITORING_SERVICE__PROBES,
+         InfoSystemFactory.eINSTANCE.createMonitoringProbe()));
   }
 
   /**

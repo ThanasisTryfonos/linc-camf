@@ -56,8 +56,8 @@ public class EC2OpDescribeImages extends AbstractEC2OpDescribeImages {
     	
     	Optional<? extends AMIApi> amiApi = ec2.getEC2Api().getAMIApi();
     	Builder<String, String> filter = ImmutableMultimap.<String, String>builder();
-//    	filter.put("name","ubuntu");
-    	filter.put("name","*apache*");
+    	filter.put("name","ubuntu-precise*");
+//    	filter.put("name","*apache*");
     	
 			Set<? extends Image> images = amiApi.get()
 					.describeImagesInRegionWithFilter(ec2.getRegion(),

@@ -186,6 +186,16 @@ public class InfoSystemAdapterFactory extends AdapterFactoryImpl
         return createFlavorsAdapter();
       }
       @Override
+      public Adapter caseMonitoring(Monitoring object)
+      {
+        return createMonitoringAdapter();
+      }
+      @Override
+      public Adapter caseMonitoringService(MonitoringService object)
+      {
+        return createMonitoringServiceAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -471,6 +481,36 @@ public class InfoSystemAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFlavorsAdapter()
+  {
+    return null;
+  }
+
+    /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.Monitoring <em>Monitoring</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.camf.infosystem.model.base.Monitoring
+   * @generated
+   */
+  public Adapter createMonitoringAdapter()
+  {
+    return null;
+  }
+
+    /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.camf.infosystem.model.base.MonitoringService <em>Monitoring Service</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.camf.infosystem.model.base.MonitoringService
+   * @generated
+   */
+  public Adapter createMonitoringServiceAdapter()
   {
     return null;
   }

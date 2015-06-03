@@ -16,6 +16,7 @@ package org.eclipse.camf.connectors.aws.operation;
 
 
 import static org.jclouds.compute.options.TemplateOptions.Builder.runScript;
+import static org.jclouds.scriptbuilder.domain.Statements.exec;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,6 +39,8 @@ import org.eclipse.emf.common.util.EList;
 import org.jclouds.ec2.domain.InstanceType;
 import org.jclouds.ec2.features.InstanceApi;
 import org.jclouds.ec2.options.RunInstancesOptions;
+import org.jclouds.scriptbuilder.ScriptBuilder;
+import org.jclouds.scriptbuilder.domain.OsFamily;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
@@ -64,13 +67,14 @@ public class EC2OpDeployApplication extends AbstractEC2OpDeployApplication {
     if( description instanceof TOSCAResource ) {
       this.toscaResource = ( TOSCAResource ) description;
       this.toscaModel = this.toscaResource.getTOSCAModel();
+      this.project = this.toscaResource.getProject();
     } else if (description instanceof TOSCAModel) {
-      this.toscaModel = (TOSCAModel) description;      
+      this.toscaModel = (TOSCAModel) description;    
+      this.project = this.toscaModel.getProject();
     } else {
       this.toscaResource = null;
       this.toscaModel = null;
     }
-//    this.project = this.toscaResource.getProject();
   }
 
   /* (non-Javadoc)
@@ -99,7 +103,9 @@ public class EC2OpDeployApplication extends AbstractEC2OpDeployApplication {
             TDeploymentArtifacts deploymentArtifacts = node.getDeploymentArtifacts();
             String amiID = null;
             String keypair = null;
+            String scriptFile = null;
             String keypairName = null;
+            String script = null;
             for( TDeploymentArtifact artifact : deploymentArtifacts.getDeploymentArtifact() )
             {
               // Find the VMI or Keypair artifacts
@@ -108,9 +114,11 @@ public class EC2OpDeployApplication extends AbstractEC2OpDeployApplication {
                 amiID = artifact.getName();
               } else if( artifactType.equals( "KeyPair" ) ) { //$NON-NLS-1$
                 keypair = artifact.getName();
-              } else if (artifactType.equals( "SH" )) {//                
+              } else if (artifactType.equals( "SD" )) {//                
                 try {
-                  TemplateOptions templateOptions = runScript( Files.toString(new File("runscript.sh"), Charsets.UTF_8 ));
+                  scriptFile = artifact.getName();
+                  String string = Files.toString(importScript( artifact.getName(), project ), Charsets.UTF_8 );
+                  script = new ScriptBuilder().addStatement( exec (string ) ).render( OsFamily.UNIX );
                 } catch( IOException e ) {
                   // TODO Auto-generated catch block
                   e.printStackTrace();
@@ -123,7 +131,7 @@ public class EC2OpDeployApplication extends AbstractEC2OpDeployApplication {
              Optional<? extends InstanceApi> instanceApi =
              this.ec2.getEC2Api().getInstanceApiForRegion(
              this.ec2.getRegion() );             
-             RunInstancesOptions options = RunInstancesOptions.Builder.asType(InstanceType.M1_SMALL).withKeyName(keypair);             
+             RunInstancesOptions options = RunInstancesOptions.Builder.asType(InstanceType.M1_SMALL).withKeyName(keypair).withSecurityGroup( "sg-16bd5e72" ).withUserData( script.getBytes() );             
              instanceApi.get().runInstancesInRegion( this.ec2.getRegion(),
              null, amiID, minCount, maxCount, options );
                
@@ -133,6 +141,14 @@ public class EC2OpDeployApplication extends AbstractEC2OpDeployApplication {
     }
 
 
+  }
+  
+  private static File importScript (final String file, final ICloudProject project) throws IOException {
+    File f = null;
+   
+    f = new File(Platform.getLocation() + "/" + project.getName() + "/Artifacts/Deployment Scripts/" + file); //$NON-NLS-1$ //$NON-NLS-2$
+    
+    return f;
   }
   
   

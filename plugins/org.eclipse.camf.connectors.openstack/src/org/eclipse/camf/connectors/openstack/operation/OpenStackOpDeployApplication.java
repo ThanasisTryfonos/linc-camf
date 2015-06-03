@@ -16,6 +16,9 @@
  *******************************************************************************/
 package org.eclipse.camf.connectors.openstack.operation;
 
+import static org.jclouds.compute.options.TemplateOptions.Builder.runScript;
+import static org.jclouds.scriptbuilder.domain.Statements.exec;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -58,10 +61,14 @@ import org.jclouds.openstack.nova.v2_0.extensions.KeyPairApi;
 import org.jclouds.openstack.nova.v2_0.features.FlavorApi;
 import org.jclouds.openstack.nova.v2_0.features.ServerApi;
 import org.jclouds.openstack.nova.v2_0.options.CreateServerOptions;
+import org.jclouds.scriptbuilder.ScriptBuilder;
+import org.jclouds.scriptbuilder.domain.OsFamily;
 
+import com.google.common.base.Charsets;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Ordering;
+import com.google.common.io.Files;
 
 /**
  * Main class that gathers the necessary elements from the TOSCA description and
@@ -192,6 +199,7 @@ public class OpenStackOpDeployApplication extends
 							KeyPair keyPair = null;
 							boolean keyPairExists = false;
 							String networks = null;
+							String scriptName = null;
 							String script = null;
 							String vID = null;
 
@@ -211,8 +219,12 @@ public class OpenStackOpDeployApplication extends
 									keyPairArtifact = artifact.getName();
 								} else if (artifactType.equals("Network")) {
 									networks = artifact.getName();
-								} else if (artifactType.equals("Script")) {
-									script = artifact.getName();
+								} else if (artifactType.equals("SD")) {
+									scriptName = artifact.getName();
+									if (artifact.getName().endsWith( ".sh" )){
+									  String string = Files.toString(importScript( artifact.getName(), project ), Charsets.UTF_8 );
+					                  script = new ScriptBuilder().addStatement( exec (string ) ).render( OsFamily.UNIX );
+									}
 								}
 
 								// get Key Pair
@@ -246,11 +258,11 @@ public class OpenStackOpDeployApplication extends
 									flavorID = "3";
 								}
 
-								String statements = null;
-								if (script != null) {
-									statements = importScript(script,
-											this.project);
-								}
+//								String statements = null;
+//								if (scriptName != null) {
+//									statements = importScript(scriptName,
+//											this.project);
+//								}
 							}
 
 							CreateServerOptions sv;
@@ -267,6 +279,10 @@ public class OpenStackOpDeployApplication extends
 								}
 							} else {
 								sv.keyPairName(keypairName);
+							}
+							
+							if (script != null) {
+							  sv.userData( script.getBytes() );
 							}
 
 							// create each instance for each module
@@ -429,47 +445,55 @@ public class OpenStackOpDeployApplication extends
 		}
 		return encodedPublicKey;
 	}
+	
+	  private static File importScript (final String file, final ICloudProject project) throws IOException {
+	    File f = null;
+	   
+	    f = new File(Platform.getLocation() + "/" + project.getName() + "/Artifacts/Deployment Scripts/" + file); //$NON-NLS-1$ //$NON-NLS-2$
+	    
+	    return f;
+	  }
 
-	/**
-	 * 
-	 * @param scriptFile
-	 * @param project
-	 * @return
-	 * @throws IOException
-	 */
-	private static String importScript(final String scriptFile,
-			final ICloudProject project) throws IOException {
-
-		/* Read Script */
-		String scriptContent = null;
-		BufferedReader br = null;
-		try {
-			// ICloudElement element =
-			// CloudModel.getRoot().findChildWithResource(
-			// publicKeyFile );
-			// For now get the File
-			// TODO - Incorporate Keypairs in CloudModel
-			File file = new File(Platform.getLocation()
-					+ "/" + project.getName() + DEP_SCRIPTS + scriptFile); //$NON-NLS-1$ //$NON-NLS-2$
-			if (file.exists()) {
-				br = new BufferedReader(new FileReader(file));
-				scriptContent = br.readLine();
-				scriptContent.trim();
-			}
-		} catch (IOException ioe) {
-			throw ioe;
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-					br = null;
-				} catch (IOException ioe) {
-					throw ioe;
-				}
-			}
-		}
-		return scriptContent;
-	}
+//	/**
+//	 * 
+//	 * @param scriptFile
+//	 * @param project
+//	 * @return
+//	 * @throws IOException
+//	 */
+//	private static String importScript(final String scriptFile,
+//			final ICloudProject project) throws IOException {
+//
+//		/* Read Script */
+//		String scriptContent = null;
+//		BufferedReader br = null;
+//		try {
+//			// ICloudElement element =
+//			// CloudModel.getRoot().findChildWithResource(
+//			// publicKeyFile );
+//			// For now get the File
+//			// TODO - Incorporate Keypairs in CloudModel
+//			File file = new File(Platform.getLocation()
+//					+ "/" + project.getName() + DEP_SCRIPTS + scriptFile); //$NON-NLS-1$ //$NON-NLS-2$
+//			if (file.exists()) {
+//				br = new BufferedReader(new FileReader(file));
+//				scriptContent = br.readLine();
+//				scriptContent.trim();
+//			}
+//		} catch (IOException ioe) {
+//			throw ioe;
+//		} finally {
+//			if (br != null) {
+//				try {
+//					br.close();
+//					br = null;
+//				} catch (IOException ioe) {
+//					throw ioe;
+//				}
+//			}
+//		}
+//		return scriptContent;
+//	}
 
 	/**
 	 * Creates a deployment object

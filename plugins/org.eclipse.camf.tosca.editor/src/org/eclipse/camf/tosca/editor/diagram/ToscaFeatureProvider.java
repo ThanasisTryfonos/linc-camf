@@ -20,7 +20,9 @@ import javax.xml.namespace.QName;
 
 import org.eclipse.camf.core.model.impl.ResourceCloudElement;
 import org.eclipse.camf.infosystem.model.base.KeyPair;
+import org.eclipse.camf.infosystem.model.base.MonitoringProbe;
 import org.eclipse.camf.infosystem.model.base.ResizingAction;
+import org.eclipse.camf.infosystem.model.base.SecurityGroup;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor;
 import org.eclipse.camf.infosystem.model.base.VirtualNetwork;
@@ -38,6 +40,7 @@ import org.eclipse.camf.tosca.editor.features.AddKeyPairFeature;
 import org.eclipse.camf.tosca.editor.features.AddMonitorProbeFeature;
 import org.eclipse.camf.tosca.editor.features.AddNetworkFeature;
 import org.eclipse.camf.tosca.editor.features.AddResizingActionFeature;
+import org.eclipse.camf.tosca.editor.features.AddSecurityGroupFeature;
 import org.eclipse.camf.tosca.editor.features.AddServiceTemplateFeature;
 import org.eclipse.camf.tosca.editor.features.AddSoftwareDependencyFeature;
 import org.eclipse.camf.tosca.editor.features.AddUserApplicationFeature;
@@ -50,6 +53,7 @@ import org.eclipse.camf.tosca.editor.features.CreateKeyPairFeature;
 import org.eclipse.camf.tosca.editor.features.CreateMonitorProbeFeature;
 import org.eclipse.camf.tosca.editor.features.CreateNetworkFeature;
 import org.eclipse.camf.tosca.editor.features.CreateResizeActionFeature;
+import org.eclipse.camf.tosca.editor.features.CreateSecurityGroupFeature;
 import org.eclipse.camf.tosca.editor.features.CreateServiceTemplateFeature;
 import org.eclipse.camf.tosca.editor.features.CreateSoftwareDependencyFeature;
 import org.eclipse.camf.tosca.editor.features.CreateUserApplicationFeature;
@@ -141,6 +145,10 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
       return new AddResizingActionFeature( this );
     } else if( context.getNewObject() instanceof VirtualMachineImageFlavor ) {
       return new AddFlavorFeature( this );
+    } else if( context.getNewObject() instanceof SecurityGroup ) {
+      return new AddSecurityGroupFeature( this );
+    } else if( context.getNewObject() instanceof MonitoringProbe ) {
+      return new AddMonitorProbeFeature( this );
     } 
     // its a substitutional Service Template
     else if( context.getNewObject() instanceof TServiceTemplate
@@ -215,7 +223,8 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
       new CreateResizeActionFeature( this ),
       new CreateUserApplicationFeature( this ),
       new CreateGroupFeature( this ),
-      new CreateKeyPairFeature( this )
+      new CreateKeyPairFeature( this ),
+      new CreateSecurityGroupFeature( this )
     };
   }
 

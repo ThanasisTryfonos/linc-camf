@@ -286,10 +286,10 @@ public class OpenStackCloudProviderWizardPage extends WizardPage {
       setErrorMessage( Messages.getString( "OpenStackWizardPage.error_cp_already_exists" ) ); //$NON-NLS-1$
       setPageComplete( false );
     } else if( this.openstackAccessIdText.getText().trim().length() == 0 ) {
-      setErrorMessage( Messages.getString( "OpenStackWizardPage.error_acces_id_required" ) ); //$NON-NLS-1$
+      setErrorMessage( Messages.getString( "OpenStackCloudProviderWizardPage.error_acces_id_required" ) ); //$NON-NLS-1$
       setPageComplete( false );
     } else if( this.openstackEndPointText.getText().trim().length() == 0 ) {
-      setErrorMessage( Messages.getString( "OpenStackWizardPage.error_access_endpoint_required" ) ); //$NON-NLS-1$
+      setErrorMessage( Messages.getString( "OpenStackCloudProviderWizardPage.error_access_endpoint_required" ) ); //$NON-NLS-1$
       setPageComplete( false );
     } else {
       setErrorMessage( null );

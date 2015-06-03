@@ -19,7 +19,7 @@
 package org.eclipse.camf.core;
 
 /**
- * Preference Constants that will be used throughout the c-Eclipse framework.
+ * Preference Constants that will be used throughout the CAMF framework.
  */
 public class PreferenceConstants {
 

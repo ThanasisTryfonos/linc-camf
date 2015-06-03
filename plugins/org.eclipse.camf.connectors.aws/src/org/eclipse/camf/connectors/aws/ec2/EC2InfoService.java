@@ -23,6 +23,8 @@ import org.eclipse.camf.connectors.aws.AWSCloudProvider;
 import org.eclipse.camf.connectors.aws.EC2Client;
 import org.eclipse.camf.connectors.aws.info.AWSInfoCache;
 import org.eclipse.camf.connectors.aws.internal.Activator;
+import org.eclipse.camf.connectors.aws.internal.JCatascopiaProbeRepo;
+import org.eclipse.camf.connectors.aws.internal.JCatascopiaProbeRepoException;
 import org.eclipse.camf.connectors.aws.internal.Messages;
 import org.eclipse.camf.connectors.aws.operation.AbstractEC2OpDescribeImages;
 import org.eclipse.camf.connectors.aws.operation.AbstractEC2OpDescribeKeypair;
@@ -50,6 +52,9 @@ import org.eclipse.camf.infosystem.model.base.IExtendedInfoService;
 import org.eclipse.camf.infosystem.model.base.Images;
 import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
 import org.eclipse.camf.infosystem.model.base.Keys;
+import org.eclipse.camf.infosystem.model.base.Monitoring;
+import org.eclipse.camf.infosystem.model.base.MonitoringProbe;
+import org.eclipse.camf.infosystem.model.base.MonitoringService;
 import org.eclipse.camf.infosystem.model.base.Root;
 import org.eclipse.camf.infosystem.model.base.Security;
 import org.eclipse.camf.infosystem.model.base.VMI;
@@ -59,9 +64,12 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.EList;
 import org.jclouds.ec2.domain.Image;
 import org.jclouds.ec2.domain.KeyPair;
 import org.jclouds.ec2.domain.SecurityGroup;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * @author nickl
@@ -205,10 +213,14 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
     } else if ( category.equals( CloudResourceCategoryFactory.getCategory( IEC2Categories.CATEGORY_EC2_SECURITY ) ) )
     {
 
-      result = fetchKeyPairs( parent,
+      fetchKeyPairs( parent,
                             cp,
                             monitor,
                             new EC2OpDescribeKeypairs( getEc2() ) );
+      fetchSecurityGroups( parent,
+                           cp,
+                           monitor,
+                           new EC2OpDescribeSecurityGroups( getEc2() ) );
     } else if( category.equals( CloudResourceCategoryFactory.getCategory( CloudResourceCategoryFactory.ID_DEPLOYMENT_SERVICES ) ) )
     {
       result = fetchDeploymentServices( parent, cp, monitor );
@@ -225,6 +237,7 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
                      cp,
                      monitor,
                      new EC2OpDescribeSecurityGroups( getEc2() ) );
+      fetchJCatascopiaProbes( parent, cp, monitor );
     }
 
     if (result == null)
@@ -296,6 +309,11 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
       Images images = InfoService.getInstance().getFactory().createImages();
       infoCP.setImages( images );      
       
+      VirtualMachineImage vmCustom = InfoSystemFactory.eINSTANCE.createVirtualMachineImage();
+      vmCustom.setUID( "ami-13471c23" );
+      vmCustom.setName( "Ubuntu-12-04-precise" );
+      images.getVms().add(vmCustom);
+      
       for( Image ami : operation.getResult() ) {
         VirtualMachineImage vmi = InfoSystemFactory.eINSTANCE.createVirtualMachineImage();
         vmi.setUID( ami.getId() );
@@ -305,6 +323,8 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
         resultCloudService.add( new VMI( parent, vmi ) );
         images.getVms().add( vmi );
       }
+      
+      
             
       if (newCP)
         root.getCloudProviders().add( infoCP );
@@ -431,6 +451,92 @@ public class EC2InfoService extends AbstractCloudInfoSystem implements IExtended
        }
        return null;
      }
+  
+  private ICloudService[] fetchJCatascopiaProbes( final ICloudContainer parent,
+                                                            final ICloudProvider cp,
+                                                            IProgressMonitor monitor )
+  {
+    ICloudService[] result = null;
+    if( monitor == null ) {
+      monitor = new NullProgressMonitor();
+    }
+    monitor.beginTask( "Fetching JCatascopia Probes ...", 1 ); //$NON-NLS-1$
+    
+    
+    Root root = InfoService.getInstance().getRoot();
+    boolean newCP = false;
+    
+    CloudProvider infoCP = InfoService.getInstance().getCloudProvider( cp );
+    if( infoCP == null ) {
+      infoCP = InfoService.getInstance().getFactory().createCloudProvider();
+      infoCP.setName( cp.getName() );
+      infoCP.setType( CP_TYPE );
+      newCP = true;
+    }
+    
+    Monitoring monitoring = null;
+    MonitoringService jCatascopiaService = null;
+    if (infoCP.getMonitoring() != null){
+      monitoring = infoCP.getMonitoring();
+    } else {
+      monitoring = InfoService.getInstance().getFactory().createMonitoring();
+      infoCP.setMonitoring( monitoring );
+      jCatascopiaService = InfoService.getInstance().getFactory().createMonitoringService();
+      jCatascopiaService.setName( "jCatascopia" );
+      monitoring.getMonitoringService().add( jCatascopiaService );
+    }
+    
+    
+    try {
+      
+    
+    //CELAR Manager call : Get Monitoring Probes
+    String probes = getJCatascopiaProbes();
+    
+    if ( probes.equals( "" ) == false ) {
+      
+      probes = "{\"probes\":" + probes + "}";
+      String output_json = probes;
+      JSONObject obj = new JSONObject( output_json );
+      JSONArray probes_array = obj.getJSONArray( "probes" ); //$NON-NLS-1$
+      
+      if ( probes_array != null ){
+        for (int i=0; i < probes_array.length(); i++){
+          MonitoringProbe mp = InfoSystemFactory.eINSTANCE.createMonitoringProbe();
+          /*
+           * get the necessary mp fields
+           */
+          mp.setName( probes_array.getJSONObject( i ).getString( "probe" )); //$NON-NLS-1$ );
+          mp.setMetrics( probes_array.getJSONObject( i ).getString( "metrics" ) );
+          mp.setDescription( probes_array.getJSONObject( i ).getString( "desc" ) );
+                    
+          //add new monitor probe to probes list
+          jCatascopiaService.getProbes().add(mp);
+          //instance.monitor_probes.add( mp ); 
+        }
+        
+      }
+    }  
+    } catch( Exception e ) {
+      Activator.log( e );
+    }
+    
+    return result;
+  }
+  
+  String getJCatascopiaProbes(){
+    JCatascopiaProbeRepo repo = new JCatascopiaProbeRepo();
+    String probes = null;
+    try {
+      probes = repo.getProbes();
+
+    } catch( JCatascopiaProbeRepoException e ) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    //System.out.println(probes);
+    return probes;
+  }
   
   private ICloudService[] fetchDeploymentServices( final ICloudContainer parent,
                                            final ICloudProvider cp,

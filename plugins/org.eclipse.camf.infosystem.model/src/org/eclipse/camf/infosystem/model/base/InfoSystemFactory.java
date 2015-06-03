@@ -199,6 +199,24 @@ public interface InfoSystemFactory extends EFactory
   Flavors createFlavors();
 
     /**
+   * Returns a new object of class '<em>Monitoring</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Monitoring</em>'.
+   * @generated
+   */
+  Monitoring createMonitoring();
+
+    /**
+   * Returns a new object of class '<em>Monitoring Service</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Monitoring Service</em>'.
+   * @generated
+   */
+  MonitoringService createMonitoringService();
+
+    /**
    * Returns a new object of class '<em>Deployment</em>'.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

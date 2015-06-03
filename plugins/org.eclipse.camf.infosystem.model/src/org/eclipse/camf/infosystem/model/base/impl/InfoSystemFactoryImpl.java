@@ -96,6 +96,8 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
       case InfoSystemPackage.KEYS: return createKeys();
       case InfoSystemPackage.GROUPS: return createGroups();
       case InfoSystemPackage.FLAVORS: return createFlavors();
+      case InfoSystemPackage.MONITORING: return createMonitoring();
+      case InfoSystemPackage.MONITORING_SERVICE: return createMonitoringService();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -333,6 +335,28 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
   {
     FlavorsImpl flavors = new FlavorsImpl();
     return flavors;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Monitoring createMonitoring()
+  {
+    MonitoringImpl monitoring = new MonitoringImpl();
+    return monitoring;
+  }
+
+    /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MonitoringService createMonitoringService()
+  {
+    MonitoringServiceImpl monitoringService = new MonitoringServiceImpl();
+    return monitoringService;
   }
 
     /**

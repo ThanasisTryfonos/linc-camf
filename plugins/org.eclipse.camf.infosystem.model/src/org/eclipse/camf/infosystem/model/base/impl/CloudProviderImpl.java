@@ -7,6 +7,7 @@ import org.eclipse.camf.infosystem.model.base.CloudProvider;
 import org.eclipse.camf.infosystem.model.base.Flavors;
 import org.eclipse.camf.infosystem.model.base.Images;
 import org.eclipse.camf.infosystem.model.base.InfoSystemPackage;
+import org.eclipse.camf.infosystem.model.base.Monitoring;
 import org.eclipse.camf.infosystem.model.base.Networks;
 import org.eclipse.camf.infosystem.model.base.Security;
 
@@ -36,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getSecurity <em>Security</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getFlavors <em>Flavors</em>}</li>
+ *   <li>{@link org.eclipse.camf.infosystem.model.base.impl.CloudProviderImpl#getMonitoring <em>Monitoring</em>}</li>
  * </ul>
  * </p>
  *
@@ -122,6 +124,16 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
    * @ordered
    */
   protected Flavors flavors;
+
+  /**
+   * The cached value of the '{@link #getMonitoring() <em>Monitoring</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMonitoring()
+   * @generated
+   * @ordered
+   */
+  protected Monitoring monitoring;
 
   /**
    * <!-- begin-user-doc -->
@@ -387,6 +399,54 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
    * <!-- end-user-doc -->
    * @generated
    */
+  public Monitoring getMonitoring()
+  {
+    return monitoring;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMonitoring(Monitoring newMonitoring, NotificationChain msgs)
+  {
+    Monitoring oldMonitoring = monitoring;
+    monitoring = newMonitoring;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InfoSystemPackage.CLOUD_PROVIDER__MONITORING, oldMonitoring, newMonitoring);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMonitoring(Monitoring newMonitoring)
+  {
+    if (newMonitoring != monitoring)
+    {
+      NotificationChain msgs = null;
+      if (monitoring != null)
+        msgs = ((InternalEObject)monitoring).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InfoSystemPackage.CLOUD_PROVIDER__MONITORING, null, msgs);
+      if (newMonitoring != null)
+        msgs = ((InternalEObject)newMonitoring).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InfoSystemPackage.CLOUD_PROVIDER__MONITORING, null, msgs);
+      msgs = basicSetMonitoring(newMonitoring, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InfoSystemPackage.CLOUD_PROVIDER__MONITORING, newMonitoring, newMonitoring));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -400,6 +460,8 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
         return basicSetSecurity(null, msgs);
       case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
         return basicSetFlavors(null, msgs);
+      case InfoSystemPackage.CLOUD_PROVIDER__MONITORING:
+        return basicSetMonitoring(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -426,6 +488,8 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
         return getType();
       case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
         return getFlavors();
+      case InfoSystemPackage.CLOUD_PROVIDER__MONITORING:
+        return getMonitoring();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -459,6 +523,9 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
       case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
         setFlavors((Flavors)newValue);
         return;
+      case InfoSystemPackage.CLOUD_PROVIDER__MONITORING:
+        setMonitoring((Monitoring)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -491,6 +558,9 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
       case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
         setFlavors((Flavors)null);
         return;
+      case InfoSystemPackage.CLOUD_PROVIDER__MONITORING:
+        setMonitoring((Monitoring)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -517,6 +587,8 @@ public class CloudProviderImpl extends EObjectImpl implements CloudProvider
         return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case InfoSystemPackage.CLOUD_PROVIDER__FLAVORS:
         return flavors != null;
+      case InfoSystemPackage.CLOUD_PROVIDER__MONITORING:
+        return monitoring != null;
     }
     return super.eIsSet(featureID);
   }

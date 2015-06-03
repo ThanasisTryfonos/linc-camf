@@ -577,13 +577,22 @@ public interface InfoSystemPackage extends EPackage
   int CLOUD_PROVIDER__FLAVORS = 5;
 
   /**
+   * The feature id for the '<em><b>Monitoring</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLOUD_PROVIDER__MONITORING = 6;
+
+  /**
    * The number of structural features of the '<em>Cloud Provider</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLOUD_PROVIDER_FEATURE_COUNT = 6;
+  int CLOUD_PROVIDER_FEATURE_COUNT = 7;
 
   /**
    * The feature id for the '<em><b>UID</b></em>' attribute.
@@ -1065,6 +1074,71 @@ public interface InfoSystemPackage extends EPackage
   int FLAVORS_FEATURE_COUNT = 1;
 
     /**
+   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringImpl <em>Monitoring</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.camf.infosystem.model.base.impl.MonitoringImpl
+   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getMonitoring()
+   * @generated
+   */
+  int MONITORING = 20;
+
+    /**
+   * The feature id for the '<em><b>Monitoring Service</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MONITORING__MONITORING_SERVICE = 0;
+
+    /**
+   * The number of structural features of the '<em>Monitoring</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MONITORING_FEATURE_COUNT = 1;
+
+    /**
+   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringServiceImpl <em>Monitoring Service</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.camf.infosystem.model.base.impl.MonitoringServiceImpl
+   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getMonitoringService()
+   * @generated
+   */
+  int MONITORING_SERVICE = 21;
+
+    /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MONITORING_SERVICE__NAME = 0;
+
+    /**
+   * The feature id for the '<em><b>Probes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MONITORING_SERVICE__PROBES = 1;
+
+    /**
+   * The number of structural features of the '<em>Monitoring Service</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MONITORING_SERVICE_FEATURE_COUNT = 2;
+
+    /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageType <em>Virtual Machine Image Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1072,7 +1146,7 @@ public interface InfoSystemPackage extends EPackage
    * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualMachineImageType()
    * @generated
    */
-  int VIRTUAL_MACHINE_IMAGE_TYPE = 20;
+  int VIRTUAL_MACHINE_IMAGE_TYPE = 22;
 
   /**
    * The meta object id for the '<em>Virtual Machine Image Type Object</em>' data type.
@@ -1082,7 +1156,7 @@ public interface InfoSystemPackage extends EPackage
    * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualMachineImageTypeObject()
    * @generated
    */
-  int VIRTUAL_MACHINE_IMAGE_TYPE_OBJECT = 21;
+  int VIRTUAL_MACHINE_IMAGE_TYPE_OBJECT = 23;
 
 
   /**
@@ -1660,6 +1734,17 @@ public interface InfoSystemPackage extends EPackage
   EReference getCloudProvider_Flavors();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.camf.infosystem.model.base.CloudProvider#getMonitoring <em>Monitoring</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Monitoring</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.CloudProvider#getMonitoring()
+   * @see #getCloudProvider()
+   * @generated
+   */
+  EReference getCloudProvider_Monitoring();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance <em>Virtual Instance</em>}'.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1924,6 +2009,59 @@ public interface InfoSystemPackage extends EPackage
    * @generated
    */
   EReference getFlavors_Flavors();
+
+    /**
+   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Monitoring <em>Monitoring</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Monitoring</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Monitoring
+   * @generated
+   */
+  EClass getMonitoring();
+
+    /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Monitoring#getMonitoringService <em>Monitoring Service</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Monitoring Service</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Monitoring#getMonitoringService()
+   * @see #getMonitoring()
+   * @generated
+   */
+  EReference getMonitoring_MonitoringService();
+
+    /**
+   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.MonitoringService <em>Monitoring Service</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Monitoring Service</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.MonitoringService
+   * @generated
+   */
+  EClass getMonitoringService();
+
+    /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.MonitoringService#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.MonitoringService#getName()
+   * @see #getMonitoringService()
+   * @generated
+   */
+  EAttribute getMonitoringService_Name();
+
+    /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.MonitoringService#getProbes <em>Probes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Probes</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.MonitoringService#getProbes()
+   * @see #getMonitoringService()
+   * @generated
+   */
+  EReference getMonitoringService_Probes();
 
     /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Deployment <em>Deployment</em>}'.
@@ -2521,6 +2659,14 @@ public interface InfoSystemPackage extends EPackage
     EReference CLOUD_PROVIDER__FLAVORS = eINSTANCE.getCloudProvider_Flavors();
 
     /**
+     * The meta object literal for the '<em><b>Monitoring</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLOUD_PROVIDER__MONITORING = eINSTANCE.getCloudProvider_Monitoring();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualInstanceImpl <em>Virtual Instance</em>}' class.
      * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2737,6 +2883,50 @@ public interface InfoSystemPackage extends EPackage
      * @generated
      */
     EReference FLAVORS__FLAVORS = eINSTANCE.getFlavors_Flavors();
+
+        /**
+     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringImpl <em>Monitoring</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.camf.infosystem.model.base.impl.MonitoringImpl
+     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getMonitoring()
+     * @generated
+     */
+    EClass MONITORING = eINSTANCE.getMonitoring();
+
+        /**
+     * The meta object literal for the '<em><b>Monitoring Service</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MONITORING__MONITORING_SERVICE = eINSTANCE.getMonitoring_MonitoringService();
+
+        /**
+     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringServiceImpl <em>Monitoring Service</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.camf.infosystem.model.base.impl.MonitoringServiceImpl
+     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getMonitoringService()
+     * @generated
+     */
+    EClass MONITORING_SERVICE = eINSTANCE.getMonitoringService();
+
+        /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MONITORING_SERVICE__NAME = eINSTANCE.getMonitoringService_Name();
+
+        /**
+     * The meta object literal for the '<em><b>Probes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MONITORING_SERVICE__PROBES = eINSTANCE.getMonitoringService_Probes();
 
         /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl <em>Deployment</em>}' class.

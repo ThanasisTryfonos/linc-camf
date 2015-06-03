@@ -255,6 +255,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="flavors" lowerBound="1"
         eType="#//Flavors" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="monitoring" lowerBound="1"
+        eType="#//Monitoring" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VirtualMachineImage">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -360,5 +362,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="Flavors">
     <eStructuralFeatures xsi:type="ecore:EReference" name="flavors" lowerBound="1"
         upperBound="-1" eType="#//VirtualMachineImageFlavor" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Monitoring">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="monitoringService" lowerBound="1"
+        upperBound="-1" eType="#//MonitoringService" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MonitoringService">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="probes" lowerBound="1"
+        upperBound="-1" eType="#//MonitoringProbe" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

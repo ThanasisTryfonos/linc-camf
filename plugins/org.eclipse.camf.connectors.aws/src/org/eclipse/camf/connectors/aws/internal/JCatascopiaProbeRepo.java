@@ -1,4 +1,4 @@
-package org.eclipse.camf.infosystem.mockup.info;
+package org.eclipse.camf.connectors.aws.internal;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

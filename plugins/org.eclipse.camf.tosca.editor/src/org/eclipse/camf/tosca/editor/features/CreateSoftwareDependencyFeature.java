@@ -67,7 +67,14 @@ public class CreateSoftwareDependencyFeature extends AbstractCreateFeature {
   // business object
   @Override
   public boolean canCreate( final ICreateContext context ) {
-    return !( context.getTargetContainer() instanceof Diagram );
+    if( context.getTargetContainer() instanceof Diagram ){
+      return false;
+    }
+    Object parentBo = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
+    if( parentBo instanceof TNodeTemplate ) {
+      return true;
+    }
+    return false;
   }
 
   // Creates the business object for the software dependency
