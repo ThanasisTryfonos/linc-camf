@@ -76,11 +76,6 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 
-
-/**
- * @author Nicholas Loulloudes
- *
- */
 public class ToscaDiagramEditor extends DiagramEditor {
 	  
 	  private static GraphicalViewer gViewer;
