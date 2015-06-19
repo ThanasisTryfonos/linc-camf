@@ -12,10 +12,23 @@
  * Contributors:
  *    Mathias Stuempert - initial API and implementation
  *    Nicholas Loulloudes - code adapted for CELAR project, 2013
+ *    Stalo Sofokleous - implementation
  *****************************************************************************/
 package org.eclipse.camf.ui.views;
 
+import java.util.ArrayList;
+
+import org.eclipse.camf.connectors.openstack.operation.OpenStackOpDescribeFlavors;
+import org.eclipse.camf.connectors.openstack.operation.OpenStackOpDescribeInstances;
+import org.eclipse.camf.connectors.openstack.operation.OpenStackOpExceptions;
+import org.eclipse.camf.connectors.openstack.operation.OpenStackOpTerminateApplication;
+import org.eclipse.camf.connectors.openstack.operation.OperationExecuter;
 import org.eclipse.camf.core.Preferences;
+import org.eclipse.camf.infosystem.mockup.info.MockUpInfoSystem;
+import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
+import org.eclipse.camf.infosystem.model.base.VirtualInstance;
+import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
+import org.eclipse.camf.infosystem.model.base.VirtualNetwork;
 import org.eclipse.camf.ui.internal.Activator;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -27,6 +40,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.ISharedImages;
@@ -35,9 +49,15 @@ import org.eclipse.ui.part.ViewPart;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.jface.viewers.IStructuredSelection;
+
 
 public class ApplicationDeploymentMockupView extends ViewPart {
-
 
   private TreeViewer viewer;
 
@@ -49,9 +69,89 @@ public class ApplicationDeploymentMockupView extends ViewPart {
     this.viewer.setContentProvider( new MyTreeContentProvider() );
     this.viewer.setLabelProvider( new MyTreeLabelProvider() );
     this.viewer.setInput( DataProvider.getInputData() );
+    this.viewer.setAutoExpandLevel(3);
+    	  
+    MenuManager menuMgr = new MenuManager();
+    menuMgr.setRemoveAllWhenShown(true);
+
+    Menu menu = menuMgr.createContextMenu(this.viewer.getControl());
+    
+    getSite().registerContextMenu(menuMgr, this.viewer);
+    getSite().setSelectionProvider(this.viewer);
+    
+    menuMgr.addMenuListener(new IMenuListener() {
+        @Override
+        public void menuAboutToShow(IMenuManager manager) {
+
+            if (viewer.getSelection() instanceof IStructuredSelection == false) {
+                return;
+            }
+
+            Deployment deployment = null;
+            IStructuredSelection selection = (IStructuredSelection) viewer.getSelection();
+            if (selection!=null && selection instanceof IStructuredSelection) {
+              if (selection.getFirstElement() instanceof Deployment){
+                deployment = (Deployment) selection.getFirstElement();
+              }
+
+            }
+            manager.add( new TerminateDeployment(deployment) );
+        }
+    });
+    menuMgr.setRemoveAllWhenShown(true);
+    this.viewer.getControl().setMenu(menu);
 
 
+    Thread updateThread = new Thread() {
+        public void run() {
+            while (true) {
+                Display.getDefault().syncExec(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        ApplicationDeploymentMockupView.this.viewer.setInput( DataProvider.getInputData() );
+                        ApplicationDeploymentMockupView.this.viewer.setAutoExpandLevel(3);
+                        
+                    }
+                });
+
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
+    // background thread
+    updateThread.setDaemon(true);
+    updateThread.start();
   }
+
+
+	class TerminateDeployment extends Action {
+		Deployment selectedDeployment;
+	  public TerminateDeployment(Deployment deployment) {
+	      super("Terminate");
+	      this.selectedDeployment = deployment;
+	  }
+	  public void run() {
+		  OpenStackOpTerminateApplication op = new OpenStackOpTerminateApplication(this.selectedDeployment.id);
+			if (op.getException() != null) {
+				try {
+					throw op.getException();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			new OperationExecuter().execOp(op);
+
+
+	    //Update Preferences file
+	    Preferences.removeDeploymentStatus(this.selectedDeployment.getName());
+	  }
+	}
 
   /**
    * @param tree
@@ -132,7 +232,8 @@ class MyTreeLabelProvider extends DecoratingLabelProvider implements ITableLabel
   public Image getColumnImage( Object element, int columnIndex ) {
     Deployment person = ( Deployment )element;
     if(columnIndex == 0){
-      if( person.getChildren() != null && person.getChildren().length > 0 && person.getCloudProvider() != null ) {
+      if(( person.getChildren() != null && person.getChildren().length > 0 && person.getCloudProvider() != null ) || 
+      (person.getStatus()!=null && person.getStatus().compareTo("RUNNING")==0) ){
     	  if (person.getCloudProvider().equals( Deployment.AWS )){
               return this.imgReg.get( "aws" ); //$NON-NLS-1$
             } else if (person.getCloudProvider().equals( Deployment.OPENSTACK )) {
@@ -203,20 +304,14 @@ class MyTreeContentProvider extends ArrayContentProvider
 }
 
 class DataProvider {
-//
-//  public static Deployment[] getInputData1() {
-//    return new Deployment[]{
-//      new Deployment( "3-Tier Video Streaming Service", Deployment.AWS, new Deployment[]{ //$NON-NLS-1$
-//                        new Deployment( "Load Balancer", "109.231.122.181", "i-13461e53" ), new Deployment( "Application Server", "109.231.122.187", "i-aa441cea" ), new Deployment( "NoSQL Database", "109.231.122.155", "i-ab441ceb" ) //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
-//                      } ),
-//      new Deployment( "3-Tier Video Streaming Service", Deployment.OPENSTACK, new Deployment[]{ //$NON-NLS-1$
-//                        new Deployment( "Load Balancer", "10.16.5.3", "8e3c4cb6" ), new Deployment( "Application Server", "10.16.5.4", "fd9f7af2a3c2" ), new Deployment( "NoSQL Database", "10.16.5.5", "21d9f7af2a4c1" ) //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
-//                      } )
-//    };
-//  }
-  
+
   public static Deployment[] getInputData(){
-  
+		  
+	    
+	  MockUpInfoSystem mockUpInfoSystemInstance = MockUpInfoSystem.getInstance();
+	  ArrayList<VirtualInstance> virtualInstances = mockUpInfoSystemInstance.getVirtualInstances();
+	  ArrayList<Deployment> deploymentsList = new ArrayList<Deployment> ();
+		  
     String deploymentsString = Preferences.getDeploymentsStatus();
     Deployment[] deployments=null;
     try {
@@ -261,7 +356,37 @@ class DataProvider {
       e.printStackTrace();
     }
 
-    return deployments;
+	  boolean found;
+	  for (VirtualInstance vi : virtualInstances){
+		  String viId = vi.getUID().substring(vi.getUID().indexOf("/")+1, vi.getUID().length());
+		  found = false;
+		  for (Deployment d: deployments){
+			  for (Deployment dModule : d.children){
+				  for (Deployment dInstances : dModule.children){
+					  if (dInstances.getID().compareTo(viId)==0){
+						  found = true;
+						  break;
+				  }
+
+				  }
+			  }
+		  }
+		  if (!found){
+			deploymentsList.add(new Deployment(vi.getName(), Deployment.OPENSTACK, vi.getStatus(), viId, vi.getIPs(), new Deployment[0]));
+		  	System.out.println(vi.getName() + vi.getIPs() + vi.getURI());
+		  }
+	  }
+	  
+	  
+	  Deployment[] deploymentsTotal = new Deployment[deployments.length + deploymentsList.size()];
+	  for (int i=0; i<deployments.length; i++){
+		  deploymentsTotal[i]=deployments[i];
+	  }
+	  for (int i=0; i<deploymentsList.size();i++){
+		  deploymentsTotal[i+deployments.length]=deploymentsList.get(i);
+	  }
+    
+    return deploymentsTotal;
   }
 
 }

@@ -15,7 +15,6 @@
 
 package org.eclipse.camf.connectors.openstack.operation;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -154,15 +153,17 @@ public class OpenStackOpCreateJSON {
 	 * 
 	 * @return Deployment Model
 	 */
-	public List<Deployment[]> getInputData() {
+	public Deployment[] getInputData() {
 
 		// read the JSON object from preferences
 		String deploymentsString = Preferences.getDeploymentsStatus();
-		List<Deployment[]> deploymentdata = new ArrayList<Deployment[]>();
+		Deployment[] deploymentdata=null;
 		try {
 			JSONObject deploymentsInfo = new JSONObject(deploymentsString);
 			JSONArray deploymentsArray = deploymentsInfo
 					.getJSONArray("Deployments");
+			
+			deploymentdata = new Deployment[deploymentsArray.length()];
 			Deployment[] deployments = new Deployment[deploymentsArray.length()];
 
 			// loop through deployment data and collect each element
@@ -223,7 +224,7 @@ public class OpenStackOpCreateJSON {
 						}
 					}
 					// add all fetched data to the list we return
-					deploymentdata.add(deployments);
+					deploymentdata[i]=deployments[i];
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

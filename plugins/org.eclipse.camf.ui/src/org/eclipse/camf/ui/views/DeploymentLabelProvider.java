@@ -19,11 +19,6 @@ import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 
-
-/**
- * @author Nicholas Loulloudes
- *
- */
 public class DeploymentLabelProvider extends LabelProvider implements ITableLabelProvider {
 
 
@@ -57,9 +52,9 @@ public class DeploymentLabelProvider extends LabelProvider implements ITableLabe
 				break;
 			}
 			case 2: {
-				String ip = deployment.getID();
-				if( ip != null ) {
-					text = ip;
+				String id = deployment.getID();
+				if( id != null ) {
+					text = id;
 				}
 				break;
 			}
@@ -92,13 +87,9 @@ public class DeploymentLabelProvider extends LabelProvider implements ITableLabe
 				break;
 			}
 			case 7:
-				text = "test";            
+				text = "";            
 				break;        
 			}
-		}
-
-		if( text == null ) {
-			text = ""; //$NON-NLS-1$
 		}
 
 		return text;

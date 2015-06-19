@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import org.eclipse.camf.infosystem.model.base.KeyPair;
 import org.eclipse.camf.infosystem.model.base.MonitoringProbe;
 import org.eclipse.camf.infosystem.model.base.ResizingAction;
+import org.eclipse.camf.infosystem.model.base.VirtualInstance;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor;
 import org.eclipse.camf.infosystem.model.base.VirtualNetwork;
@@ -106,6 +107,13 @@ public class MockUpInfoSystem {
 	
 	public ArrayList<KeyPair> getKeyPairs() {
 		return this.resourceFetcher.getKeyPairs();
+	}
+	
+	/**
+	 * @return A list of virtual instances
+	 */
+	public ArrayList<VirtualInstance> getVirtualInstances() {
+		return this.resourceFetcher.getInstances();
 	}
 
 }

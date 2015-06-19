@@ -11,18 +11,17 @@
  *
  * Contributors:
  * 	Andreas Kastanas - initial API and implementation
+ *  Stalo Sofokleous - implementation
  *******************************************************************************/
 package org.eclipse.camf.connectors.openstack.operation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import org.eclipse.camf.connectors.openstack.OpenStackClient;
 import org.eclipse.camf.infosystem.model.base.Deployment;
+import org.eclipse.camf.infosystem.model.base.InfoSystemFactory;
 import org.eclipse.camf.infosystem.model.base.Module;
 import org.eclipse.camf.infosystem.model.base.VirtualInstance;
 import org.eclipse.emf.common.util.EList;
+import org.jclouds.compute.ComputeService;
 import org.jclouds.openstack.nova.v2_0.NovaApi;
 import org.jclouds.openstack.nova.v2_0.features.ServerApi;
 
@@ -36,20 +35,15 @@ import org.jclouds.openstack.nova.v2_0.features.ServerApi;
 public class OpenStackOpTerminateApplication extends
 		AbstractOpenStackOpTerminateApplication {
 
-	private HashMap<String, Deployment> deployments = new HashMap<String, Deployment>();
 	private String depID = new String();
-	private List<String> modules = new ArrayList<String>();
-	private List<String> instances = new ArrayList<String>();
-
+	private Deployment deployment = InfoSystemFactory.eINSTANCE
+			.createDeployment();
+	private Deployment[] deploymentData = null;
 	private NovaApi nova = OpenStackClient.getInstance().getNova();
 	private String zone = OpenStackClient.getInstance().getOpenStackZone();
 
-	public OpenStackOpTerminateApplication(HashMap<String, Deployment> dep,
-			String depid, List<String> mods, List<String> inst) {
-		this.deployments = dep;
+	public OpenStackOpTerminateApplication(String depid) {
 		this.depID = depid;
-		this.modules = mods;
-		this.instances = inst;
 	}
 
 	/*
@@ -64,26 +58,35 @@ public class OpenStackOpTerminateApplication extends
 
 		setResult(null);
 		setException(null);
+		this.deploymentData = getDeploymentStatus();
+		for (int i = 0; i < deploymentData.length; i++) {
+			Deployment dep = deploymentData[i];
+			if (dep.getDepID().equals(this.depID))
+				this.deployment = dep;
+		}
 		try {
 			// loop through all modules, get their instances and try to
 			// terminate them and finally remove the modules
-			for (int i = 0; i < this.modules.size(); i++) {
-				if (this.terminateModule(this.depID, this.modules.get(i)))
+			for (int i = 0; i < this.deployment.getModules().size(); i++) {
+				String modID = this.deployment.getModules().get(i).getModID();
+				if (this.terminateModule(this.depID, modID))
 					System.out
 							.println("Successfully terminate module with modID: "
-									+ modules.get(i)
+									+ modID
 									+ ", for deployment with depID: "
 									+ this.depID);
 				else
 					System.out
 							.println("Failed to terminate module with modID: "
-									+ this.modules.get(i)
+									+ this.deployment.getModules().get(i)
+											.getModID()
 									+ ", for deployment with depID: "
 									+ this.depID);
 			}
 
-			// remove the deployment that contained the modules we removed above
-			if (this.terminateDeployment(this.depID))
+			// remove the deployment that contained the modules we removed
+			// above
+			if (this.terminateDeployment(this.deployment))
 				System.out
 						.println("Successfully terminated deployment with depID: "
 								+ this.depID);
@@ -113,10 +116,9 @@ public class OpenStackOpTerminateApplication extends
 	 * @return true if termination was successful else false
 	 */
 	private boolean terminateModule(String depID, String modID) {
-		Deployment d = this.deployments.get(depID);
-		if (d != null) {
+		if (this.deployment != null) {
 			Module module = null;
-			for (Module m : d.getModules()) {
+			for (Module m : this.deployment.getModules()) {
 				if (m.getModID().equals(modID)) {
 					module = m;
 					EList<VirtualInstance> ilist = module.getInstances();
@@ -124,7 +126,7 @@ public class OpenStackOpTerminateApplication extends
 						this.removeInstanceFromModule(depID, modID,
 								ilist.get(i - 1).getUID());
 
-					removeModule(d, modID);
+					removeModule(this.deployment, modID);
 
 					return true;
 				}
@@ -147,10 +149,10 @@ public class OpenStackOpTerminateApplication extends
 	 */
 	private boolean removeInstanceFromModule(String depID, String modID,
 			String vID) {
-		Deployment d = this.deployments.get(depID);
-		if (d != null) {
+
+		if (this.deployment != null) {
 			Module module = null;
-			for (Module m : d.getModules()) {
+			for (Module m : this.deployment.getModules()) {
 				if (m.getModID().equals(modID))
 					module = m;
 			}
@@ -207,9 +209,18 @@ public class OpenStackOpTerminateApplication extends
 	 *            a DeploymentID
 	 * @return true if deployment terminated successfully
 	 */
-	private boolean terminateDeployment(String depID) {
-		boolean response = (this.deployments.remove(depID) != null) ? true
-				: false;
+	private boolean terminateDeployment(Deployment dep) {
+		
+		boolean response = false;
+		for (int i=0; i<this.deploymentData.length; i++){
+			Deployment tempDeployment = this.deploymentData[i];
+			if (tempDeployment.getDepID().compareTo(dep.getDepID())==0){
+				this.deploymentData[i]=null;
+				response = true;
+				break;
+			}
+				
+		}
 
 		return response;
 	}
@@ -242,5 +253,41 @@ public class OpenStackOpTerminateApplication extends
 			if (obj.getUID().equals(instID))
 				mod.getInstances().remove(i);
 		}
+	}
+
+	/**
+	 * Gets from getInputData the deployment model and check the instances for
+	 * their status
+	 * 
+	 * @return
+	 */
+	private Deployment[] getDeploymentStatus() {
+		OpenStackOpCreateJSON json = new OpenStackOpCreateJSON();
+
+		Deployment[] deploymentData = json.getInputData();
+		ComputeService computeService = OpenStackClient.getInstance()
+				.getComputeService();
+
+		for (int i = 0; i < deploymentData.length; i++) {
+			Deployment dep = deploymentData[i];
+			for (int j = 0; j < dep.getModules().size(); j++) {
+				Module mods = dep.getModules().get(j);
+				for (int k = 0; k < mods.getInstances().size(); k++) {
+					VirtualInstance vi = mods.getInstances().get(k);
+					try {
+						if (!computeService
+								.getNodeMetadata(this.zone + "/" + vi.getUID())
+								.getStatus().equals("RUNNING")) {
+							// do nothing instance exists
+						}
+					} catch (Exception ex) {
+						System.err.println("Instance with id:" + vi.getUID()
+								+ " NOT found!");
+					}
+				}
+			}
+		}
+
+		return deploymentData;
 	}
 }

@@ -84,9 +84,76 @@ public class Preferences {
 	 *            The deployment JSON value.
 	 */
 	static public void setDeploymentStatus(final String deploymentValue) {
+		
 		org.eclipse.core.runtime.Preferences preferenceStore = getPreferenceStore();
-		preferenceStore.setValue(PreferenceConstants.DEPLOYMENTS,
-				deploymentValue);
+		String deploymentsString = preferenceStore
+				.getString(PreferenceConstants.DEPLOYMENTS);
+
+	    if (deploymentsString.equals( "" )){
+			preferenceStore.setValue(PreferenceConstants.DEPLOYMENTS,
+					deploymentValue);
+			save();
+	    }
+	    else{
+	      try {
+	    	  
+	    	  JSONObject newDeploymentValue = new JSONObject(deploymentValue);
+	    	  JSONArray newDeploymentsArray = newDeploymentValue.getJSONArray("Deployments");
+	    	  JSONObject newDeploymentObject = newDeploymentsArray.getJSONObject(0);
+	    	
+	    	  JSONObject preferencesDeployments = new JSONObject(deploymentsString);
+	    	  JSONArray preferencesDeploymentsArray = preferencesDeployments.getJSONArray("Deployments");
+	    	  preferencesDeploymentsArray.put(newDeploymentObject);
+	    	  
+				preferenceStore.setValue(PreferenceConstants.DEPLOYMENTS,
+						preferencesDeployments.toString());
+				save();
+	      } catch( JSONException e ) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	      }
+	    }
+	    
+	}
+	
+	/**
+	 * Remove the value of the Deployment JSON string.
+	 * 
+	 * @param deploymentValue
+	 *            The deployment JSON value.
+	 */
+	static public void removeDeploymentStatus(final String deploymentName) {
+		
+		org.eclipse.core.runtime.Preferences preferenceStore = getPreferenceStore();
+		String deploymentsString = preferenceStore
+				.getString(PreferenceConstants.DEPLOYMENTS);
+
+	    if (deploymentsString.equals( "" )){
+			return;
+	    }
+	    else{
+	      try {
+	    	  	    	
+	    	  JSONObject preferencesDeployments = new JSONObject(deploymentsString);
+	    	  JSONArray preferencesDeploymentsArray = preferencesDeployments.getJSONArray("Deployments");
+	    	  for (int i=0; i<preferencesDeploymentsArray.length(); i++){
+	    		  JSONObject deployment  = preferencesDeploymentsArray.getJSONObject(i);
+	    		  if (deployment.get("appName").equals(deploymentName)){
+	    			  preferencesDeploymentsArray.remove((i));
+	    	    	  
+	  				preferenceStore.setValue(PreferenceConstants.DEPLOYMENTS,
+	  						preferencesDeployments.toString());
+	  				save();
+	  				return;
+	    		  }
+	    	  }
+	    	  
+	      } catch( JSONException e ) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	      }
+	    }
+	    
 	}
 
 	/**

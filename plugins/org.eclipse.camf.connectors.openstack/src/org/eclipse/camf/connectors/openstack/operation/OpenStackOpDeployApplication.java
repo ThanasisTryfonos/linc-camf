@@ -576,14 +576,14 @@ public class OpenStackOpDeployApplication extends
 	 * their status
 	 */
 	private void getDeploymentStatus() {
-		List<Deployment[]> deploymentData = this.json.getInputData();
+		Deployment[] deploymentData = this.json.getInputData();
 		ComputeService computeService = OpenStackClient.getInstance()
 				.getComputeService();
 
-		for (int i = 0; i < deploymentData.size(); i++) {
-			Deployment[] dep = deploymentData.get(i);
-			for (int j = 0; j < dep[i].getModules().size(); j++) {
-				Module mods = dep[i].getModules().get(j);
+		for (int i = 0; i < deploymentData.length; i++) {
+			Deployment dep = deploymentData[i];
+			for (int j = 0; j < dep.getModules().size(); j++) {
+				Module mods = dep.getModules().get(j);
 				for (int k = 0; k < mods.getInstances().size(); k++) {
 					VirtualInstance vi = mods.getInstances().get(k);
 					try {
