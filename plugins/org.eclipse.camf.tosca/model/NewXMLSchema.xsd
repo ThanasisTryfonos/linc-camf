@@ -114,10 +114,22 @@
     <complexType name="ServicePropertiesType">
     	<sequence>
     		<element name="Version" type="string"></element>
+    		<element name="HostingEnvironment" type="string" maxOccurs="unbounded" minOccurs="1"></element>
     	</sequence>
     </complexType>
 
     <element name="ServiceProperties"
     	type="elasticity:ServicePropertiesType">
+    </element>
+
+    <complexType name="NetworkArtifactPropertiesType">
+    	<sequence>
+    		<element name="Description" type="string"></element>
+    		<element name="Id" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="NetworkArtifactProperties"
+    	type="elasticity:NetworkArtifactPropertiesType">
     </element>
 </schema>

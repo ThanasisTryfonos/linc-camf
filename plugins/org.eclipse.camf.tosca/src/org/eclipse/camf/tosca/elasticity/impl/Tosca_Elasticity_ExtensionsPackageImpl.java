@@ -21,6 +21,7 @@ import org.eclipse.camf.tosca.ToscaPackage;
 import org.eclipse.camf.tosca.elasticity.DocumentRoot;
 import org.eclipse.camf.tosca.elasticity.ImageArtifactPropertiesType;
 import org.eclipse.camf.tosca.elasticity.MonitoringProbesType1;
+import org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType;
 import org.eclipse.camf.tosca.elasticity.NodePropertiesType;
 import org.eclipse.camf.tosca.elasticity.ScriptArtifactPropertiesType;
 import org.eclipse.camf.tosca.elasticity.ServicePropertiesType;
@@ -69,6 +70,13 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
   private EClass monitoringProbesType1EClass = null;
 
   /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass networkArtifactPropertiesTypeEClass = null;
+
+		/**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
@@ -241,20 +249,19 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
 
   /**
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public EReference getDocumentRoot_NodeProperties()
-  {
+	public EReference getDocumentRoot_NetworkArtifactProperties() {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(4);
 	}
 
-  /**
+		/**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public EReference getDocumentRoot_ScriptArtifactProperties()
+  public EReference getDocumentRoot_NodeProperties()
   {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(5);
 	}
@@ -264,9 +271,19 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
    * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public EReference getDocumentRoot_ServiceProperties()
+  public EReference getDocumentRoot_ScriptArtifactProperties()
   {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(6);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public EReference getDocumentRoot_ServiceProperties()
+  {
+		return (EReference)documentRootEClass.getEStructuralFeatures().get(7);
 	}
 
   /**
@@ -320,6 +337,33 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
 	}
 
   /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNetworkArtifactPropertiesType() {
+		return networkArtifactPropertiesTypeEClass;
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetworkArtifactPropertiesType_Description() {
+		return (EAttribute)networkArtifactPropertiesTypeEClass.getEStructuralFeatures().get(0);
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNetworkArtifactPropertiesType_Id() {
+		return (EAttribute)networkArtifactPropertiesTypeEClass.getEStructuralFeatures().get(1);
+	}
+
+		/**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
@@ -573,6 +617,7 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
 		createEReference(documentRootEClass, DOCUMENT_ROOT__XMLNS_PREFIX_MAP);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__XSI_SCHEMA_LOCATION);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES);
+		createEReference(documentRootEClass, DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__NODE_PROPERTIES);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES);
 		createEReference(documentRootEClass, DOCUMENT_ROOT__SERVICE_PROPERTIES);
@@ -583,6 +628,10 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
 
 		monitoringProbesType1EClass = createEClass(MONITORING_PROBES_TYPE1);
 		createEReference(monitoringProbesType1EClass, MONITORING_PROBES_TYPE1__MONITORING_PROBES);
+
+		networkArtifactPropertiesTypeEClass = createEClass(NETWORK_ARTIFACT_PROPERTIES_TYPE);
+		createEAttribute(networkArtifactPropertiesTypeEClass, NETWORK_ARTIFACT_PROPERTIES_TYPE__DESCRIPTION);
+		createEAttribute(networkArtifactPropertiesTypeEClass, NETWORK_ARTIFACT_PROPERTIES_TYPE__ID);
 
 		nodePropertiesTypeEClass = createEClass(NODE_PROPERTIES_TYPE);
 		createEAttribute(nodePropertiesTypeEClass, NODE_PROPERTIES_TYPE__FLAVOR);
@@ -658,6 +707,7 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
 		initEReference(getDocumentRoot_XMLNSPrefixMap(), ecorePackage.getEStringToStringMapEntry(), null, "xMLNSPrefixMap", null, 0, -1, null, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentRoot_XSISchemaLocation(), ecorePackage.getEStringToStringMapEntry(), null, "xSISchemaLocation", null, 0, -1, null, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentRoot_ImageArtifactProperties(), this.getImageArtifactPropertiesType(), null, "imageArtifactProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getDocumentRoot_NetworkArtifactProperties(), this.getNetworkArtifactPropertiesType(), null, "networkArtifactProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentRoot_NodeProperties(), this.getNodePropertiesType(), null, "nodeProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentRoot_ScriptArtifactProperties(), this.getScriptArtifactPropertiesType(), null, "scriptArtifactProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getDocumentRoot_ServiceProperties(), this.getServicePropertiesType(), null, "serviceProperties", null, 0, -2, null, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -668,6 +718,10 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
 
 		initEClass(monitoringProbesType1EClass, MonitoringProbesType1.class, "MonitoringProbesType1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMonitoringProbesType1_MonitoringProbes(), this.getTMonitoringProbe(), null, "monitoringProbes", null, 1, -1, MonitoringProbesType1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(networkArtifactPropertiesTypeEClass, NetworkArtifactPropertiesType.class, "NetworkArtifactPropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNetworkArtifactPropertiesType_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, NetworkArtifactPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNetworkArtifactPropertiesType_Id(), theXMLTypePackage.getString(), "id", null, 1, 1, NetworkArtifactPropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodePropertiesTypeEClass, NodePropertiesType.class, "NodePropertiesType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNodePropertiesType_Flavor(), theXMLTypePackage.getString(), "flavor", null, 1, 1, NodePropertiesType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -752,6 +806,14 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
 			 "namespace", "##targetNamespace"
 		   });	
 		addAnnotation
+		  (getDocumentRoot_NetworkArtifactProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "NetworkArtifactProperties",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
 		  (getDocumentRoot_NodeProperties(), 
 		   source, 
 		   new String[] {
@@ -811,6 +873,29 @@ public class Tosca_Elasticity_ExtensionsPackageImpl extends EPackageImpl impleme
 		   new String[] {
 			 "kind", "element",
 			 "name", "monitoringProbes",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (networkArtifactPropertiesTypeEClass, 
+		   source, 
+		   new String[] {
+			 "name", "NetworkArtifactPropertiesType",
+			 "kind", "elementOnly"
+		   });	
+		addAnnotation
+		  (getNetworkArtifactPropertiesType_Description(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "Description",
+			 "namespace", "##targetNamespace"
+		   });	
+		addAnnotation
+		  (getNetworkArtifactPropertiesType_Id(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "Id",
 			 "namespace", "##targetNamespace"
 		   });	
 		addAnnotation

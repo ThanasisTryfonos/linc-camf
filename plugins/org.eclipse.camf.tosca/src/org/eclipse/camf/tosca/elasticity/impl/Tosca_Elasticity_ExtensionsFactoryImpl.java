@@ -75,6 +75,7 @@ public class Tosca_Elasticity_ExtensionsFactoryImpl extends EFactoryImpl impleme
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT: return createDocumentRoot();
 			case Tosca_Elasticity_ExtensionsPackage.IMAGE_ARTIFACT_PROPERTIES_TYPE: return createImageArtifactPropertiesType();
 			case Tosca_Elasticity_ExtensionsPackage.MONITORING_PROBES_TYPE1: return createMonitoringProbesType1();
+			case Tosca_Elasticity_ExtensionsPackage.NETWORK_ARTIFACT_PROPERTIES_TYPE: return createNetworkArtifactPropertiesType();
 			case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE: return createNodePropertiesType();
 			case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE: return createScriptArtifactPropertiesType();
 			case Tosca_Elasticity_ExtensionsPackage.SERVICE_PROPERTIES_TYPE: return createServicePropertiesType();
@@ -121,6 +122,16 @@ public class Tosca_Elasticity_ExtensionsFactoryImpl extends EFactoryImpl impleme
 	}
 
   /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NetworkArtifactPropertiesType createNetworkArtifactPropertiesType() {
+		NetworkArtifactPropertiesTypeImpl networkArtifactPropertiesType = new NetworkArtifactPropertiesTypeImpl();
+		return networkArtifactPropertiesType;
+	}
+
+		/**
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated

@@ -16,6 +16,8 @@
  *******************************************************************************/
 package org.eclipse.camf.tosca.editor.features;
 
+import java.util.ArrayList;
+
 import javax.xml.namespace.QName;
 
 import org.eclipse.camf.tosca.TArtifactTemplate;
@@ -95,7 +97,7 @@ public class DeleteApplicationComponentFeature extends DefaultDeleteFeature {
 	    if (model.getDocumentRoot()
 	        .getDefinitions()
 	        .getNodeTypeImplementation() != null){
-	    QName[] artifactTemplatesIDs = new QName[1];
+	    ArrayList<QName> artifactTemplatesIDs = new ArrayList<QName>();
 	    for( TNodeTypeImplementation tempNodeTypeImplementation : model.getDocumentRoot()
 	        .getDefinitions()
 	        .getNodeTypeImplementation() )
@@ -104,7 +106,7 @@ public class DeleteApplicationComponentFeature extends DefaultDeleteFeature {
 	          //Find Artifact Templates to be Deleted
 	          {
 	            for (TImplementationArtifact tempImplementationArtifact: tempNodeTypeImplementation.getImplementationArtifacts().getImplementationArtifact()){
-	              artifactTemplatesIDs[artifactTemplatesIDs.length-1]=tempImplementationArtifact.getArtifactRef();
+	              artifactTemplatesIDs.add(tempImplementationArtifact.getArtifactRef());
 	            }
 	          }
 	          //Delete NodeTypeImplementation
@@ -120,14 +122,15 @@ public class DeleteApplicationComponentFeature extends DefaultDeleteFeature {
 	    //Find DeploymentArtifacts to be deleted
 	    if (deletedNodeTemplate.getDeploymentArtifacts() != null){
 	      for (TDeploymentArtifact tempDeploymentArtifact: deletedNodeTemplate.getDeploymentArtifacts().getDeploymentArtifact()){
-	        artifactTemplatesIDs[artifactTemplatesIDs.length-1]=tempDeploymentArtifact.getArtifactRef();
+	    	  artifactTemplatesIDs.add(tempDeploymentArtifact.getArtifactRef());
 	      }
 	    }
 	    
 	    //Delete ArtifactTemplates
-	    for( TArtifactTemplate tempArtifactTemplate : model.getDocumentRoot()
-	        .getDefinitions().getArtifactTemplate()){
+
 	      for (QName tempArtifactTemplateID : artifactTemplatesIDs){
+	  	    for( TArtifactTemplate tempArtifactTemplate : model.getDocumentRoot()
+	  		        .getDefinitions().getArtifactTemplate()){
 	        if (tempArtifactTemplateID != null && tempArtifactTemplate.getId().equals( tempArtifactTemplateID.toString() )){
 	          //Delete Artifact Template
 	          {

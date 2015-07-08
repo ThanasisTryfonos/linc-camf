@@ -106,6 +106,12 @@ public class Tosca_Elasticity_ExtensionsSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Tosca_Elasticity_ExtensionsPackage.NETWORK_ARTIFACT_PROPERTIES_TYPE: {
+				NetworkArtifactPropertiesType networkArtifactPropertiesType = (NetworkArtifactPropertiesType)theEObject;
+				T result = caseNetworkArtifactPropertiesType(networkArtifactPropertiesType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE: {
 				NodePropertiesType nodePropertiesType = (NodePropertiesType)theEObject;
 				T result = caseNodePropertiesType(nodePropertiesType);
@@ -208,6 +214,21 @@ public class Tosca_Elasticity_ExtensionsSwitch<T> extends Switch<T>
 	}
 
   /**
+	 * Returns the result of interpreting the object as an instance of '<em>Network Artifact Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Network Artifact Properties Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNetworkArtifactPropertiesType(NetworkArtifactPropertiesType object) {
+		return null;
+	}
+
+		/**
 	 * Returns the result of interpreting the object as an instance of '<em>Node Properties Type</em>'.
 	 * <!-- begin-user-doc -->
    * This implementation returns null;

@@ -25,7 +25,7 @@ import org.eclipse.camf.tosca.TNodeTemplate;
 import org.eclipse.camf.tosca.ToscaFactory;
 import org.eclipse.camf.tosca.editor.ModelHandler;
 import org.eclipse.camf.tosca.editor.ToscaModelLayer;
-import org.eclipse.camf.tosca.elasticity.ImageArtifactPropertiesType;
+import org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType;
 import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsFactory;
 import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -134,38 +134,38 @@ public class CreateNetworkFeature extends AbstractCreateFeature {
     };
   }
   
-  private void createArtifactTemplate(String description, String artifactRef, String imageId){
+  private void createArtifactTemplate(String description, String artifactRef, String networkId){
 	    
 	    final ToscaModelLayer model = ModelHandler.getModel( EcoreUtil.getURI( getDiagram() ) );
 	    
 	    for (TArtifactTemplate tempArtifactTemplate : model.getDocumentRoot()
 	        .getDefinitions()
 	        .getArtifactTemplate()){
-	      if (tempArtifactTemplate.getId().equals( imageId ))
+	      if (tempArtifactTemplate.getId().equals( networkId ))
 	        return;
 	    }
 	  
 	    //Create Artifact Template
 	    final TArtifactTemplate artifactTemplate = ToscaFactory.eINSTANCE.createTArtifactTemplate();
 	    
-	    //Create Image Artifact Properties
-	    ImageArtifactPropertiesType imageProperties = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createImageArtifactPropertiesType();
-	    imageProperties.setDescription( description );
+	    //Create Network Artifact Properties
+	    NetworkArtifactPropertiesType networkProperties = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createNetworkArtifactPropertiesType();
+	    networkProperties.setDescription( description );
 	    
-	    if (imageId!=null){
-	      imageProperties.setId( imageId );
+	    if (networkId!=null){
+	    	networkProperties.setId( networkId );
 	    }
 	    
 	    // Set the Properties of the Policy Template    
 	    PropertiesType properties = ToscaFactory.eINSTANCE.createPropertiesType();   
 	    
 	    // Add the SYBL Policy to the FeatureMap of the Policy's Properties element
-	    Entry e = FeatureMapUtil.createEntry(     Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getDocumentRoot_ImageArtifactProperties(),  imageProperties );
+	    Entry e = FeatureMapUtil.createEntry(     Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getDocumentRoot_NetworkArtifactProperties(),  networkProperties );
 	    properties.getAny().add( e );   
 	    
 	    artifactTemplate.setProperties( properties );
 	 
-	    //artifactTemplate.setId( imageId );
+	    //artifactTemplate.setId( networkId );
 	    artifactTemplate.setId( artifactRef );
 	    
 	    // Add the new Artifact Template to the TOSCA Definitions element

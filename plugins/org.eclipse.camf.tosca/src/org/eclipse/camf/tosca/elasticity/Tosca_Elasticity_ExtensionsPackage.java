@@ -277,13 +277,22 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
   int DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES = 3;
 
   /**
+	 * The feature id for the '<em><b>Network Artifact Properties</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES = 4;
+
+		/**
 	 * The feature id for the '<em><b>Node Properties</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-  int DOCUMENT_ROOT__NODE_PROPERTIES = 4;
+  int DOCUMENT_ROOT__NODE_PROPERTIES = 5;
 
   /**
 	 * The feature id for the '<em><b>Script Artifact Properties</b></em>' containment reference.
@@ -292,7 +301,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-  int DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES = 5;
+  int DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES = 6;
 
   /**
 	 * The feature id for the '<em><b>Service Properties</b></em>' containment reference.
@@ -301,7 +310,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-  int DOCUMENT_ROOT__SERVICE_PROPERTIES = 6;
+  int DOCUMENT_ROOT__SERVICE_PROPERTIES = 7;
 
   /**
 	 * The number of structural features of the '<em>Document Root</em>' class.
@@ -310,7 +319,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-  int DOCUMENT_ROOT_FEATURE_COUNT = 7;
+  int DOCUMENT_ROOT_FEATURE_COUNT = 8;
 
   /**
 	 * The meta object id for the '{@link org.eclipse.camf.tosca.elasticity.impl.ImageArtifactPropertiesTypeImpl <em>Image Artifact Properties Type</em>}' class.
@@ -378,6 +387,43 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
   int MONITORING_PROBES_TYPE1_FEATURE_COUNT = 1;
 
   /**
+	 * The meta object id for the '{@link org.eclipse.camf.tosca.elasticity.impl.NetworkArtifactPropertiesTypeImpl <em>Network Artifact Properties Type</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.camf.tosca.elasticity.impl.NetworkArtifactPropertiesTypeImpl
+	 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getNetworkArtifactPropertiesType()
+	 * @generated
+	 */
+	int NETWORK_ARTIFACT_PROPERTIES_TYPE = 3;
+
+		/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_ARTIFACT_PROPERTIES_TYPE__DESCRIPTION = 0;
+
+		/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_ARTIFACT_PROPERTIES_TYPE__ID = 1;
+
+		/**
+	 * The number of structural features of the '<em>Network Artifact Properties Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NETWORK_ARTIFACT_PROPERTIES_TYPE_FEATURE_COUNT = 2;
+
+		/**
 	 * The meta object id for the '{@link org.eclipse.camf.tosca.elasticity.impl.NodePropertiesTypeImpl <em>Node Properties Type</em>}' class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -385,7 +431,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getNodePropertiesType()
 	 * @generated
 	 */
-  int NODE_PROPERTIES_TYPE = 3;
+  int NODE_PROPERTIES_TYPE = 4;
 
   /**
 	 * The feature id for the '<em><b>Flavor</b></em>' attribute.
@@ -413,7 +459,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getScriptArtifactPropertiesType()
 	 * @generated
 	 */
-  int SCRIPT_ARTIFACT_PROPERTIES_TYPE = 4;
+  int SCRIPT_ARTIFACT_PROPERTIES_TYPE = 5;
 
   /**
 	 * The feature id for the '<em><b>Language</b></em>' attribute.
@@ -441,7 +487,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getServicePropertiesType()
 	 * @generated
 	 */
-  int SERVICE_PROPERTIES_TYPE = 5;
+  int SERVICE_PROPERTIES_TYPE = 6;
 
   /**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -478,7 +524,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getTBoundaryDefinitionsExtension()
 	 * @generated
 	 */
-  int TBOUNDARY_DEFINITIONS_EXTENSION = 6;
+  int TBOUNDARY_DEFINITIONS_EXTENSION = 7;
 
   /**
 	 * The feature id for the '<em><b>Properties</b></em>' containment reference.
@@ -560,7 +606,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getTMonitoringProbe()
 	 * @generated
 	 */
-  int TMONITORING_PROBE = 7;
+  int TMONITORING_PROBE = 8;
 
   /**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -615,7 +661,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getTNodeTemplateExtension()
 	 * @generated
 	 */
-  int TNODE_TEMPLATE_EXTENSION = 8;
+  int TNODE_TEMPLATE_EXTENSION = 9;
 
   /**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -805,7 +851,7 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
 	 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getTServiceTemplateExtension()
 	 * @generated
 	 */
-  int TSERVICE_TEMPLATE_EXTENSION = 9;
+  int TSERVICE_TEMPLATE_EXTENSION = 10;
 
   /**
 	 * The feature id for the '<em><b>Documentation</b></em>' containment reference list.
@@ -1007,6 +1053,17 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
   EReference getDocumentRoot_ImageArtifactProperties();
 
   /**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getNetworkArtifactProperties <em>Network Artifact Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Network Artifact Properties</em>'.
+	 * @see org.eclipse.camf.tosca.elasticity.DocumentRoot#getNetworkArtifactProperties()
+	 * @see #getDocumentRoot()
+	 * @generated
+	 */
+	EReference getDocumentRoot_NetworkArtifactProperties();
+
+		/**
 	 * Returns the meta object for the containment reference '{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getNodeProperties <em>Node Properties</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1093,6 +1150,38 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
   EReference getMonitoringProbesType1_MonitoringProbes();
 
   /**
+	 * Returns the meta object for class '{@link org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType <em>Network Artifact Properties Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Network Artifact Properties Type</em>'.
+	 * @see org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType
+	 * @generated
+	 */
+	EClass getNetworkArtifactPropertiesType();
+
+		/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType#getDescription()
+	 * @see #getNetworkArtifactPropertiesType()
+	 * @generated
+	 */
+	EAttribute getNetworkArtifactPropertiesType_Description();
+
+		/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType#getId()
+	 * @see #getNetworkArtifactPropertiesType()
+	 * @generated
+	 */
+	EAttribute getNetworkArtifactPropertiesType_Id();
+
+		/**
 	 * Returns the meta object for class '{@link org.eclipse.camf.tosca.elasticity.NodePropertiesType <em>Node Properties Type</em>}'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1393,6 +1482,14 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
     EReference DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES = eINSTANCE.getDocumentRoot_ImageArtifactProperties();
 
     /**
+		 * The meta object literal for the '<em><b>Network Artifact Properties</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES = eINSTANCE.getDocumentRoot_NetworkArtifactProperties();
+
+				/**
 		 * The meta object literal for the '<em><b>Node Properties</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1461,6 +1558,32 @@ public interface Tosca_Elasticity_ExtensionsPackage extends EPackage
     EReference MONITORING_PROBES_TYPE1__MONITORING_PROBES = eINSTANCE.getMonitoringProbesType1_MonitoringProbes();
 
     /**
+		 * The meta object literal for the '{@link org.eclipse.camf.tosca.elasticity.impl.NetworkArtifactPropertiesTypeImpl <em>Network Artifact Properties Type</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.camf.tosca.elasticity.impl.NetworkArtifactPropertiesTypeImpl
+		 * @see org.eclipse.camf.tosca.elasticity.impl.Tosca_Elasticity_ExtensionsPackageImpl#getNetworkArtifactPropertiesType()
+		 * @generated
+		 */
+		EClass NETWORK_ARTIFACT_PROPERTIES_TYPE = eINSTANCE.getNetworkArtifactPropertiesType();
+
+				/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK_ARTIFACT_PROPERTIES_TYPE__DESCRIPTION = eINSTANCE.getNetworkArtifactPropertiesType_Description();
+
+				/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NETWORK_ARTIFACT_PROPERTIES_TYPE__ID = eINSTANCE.getNetworkArtifactPropertiesType_Id();
+
+				/**
 		 * The meta object literal for the '{@link org.eclipse.camf.tosca.elasticity.impl.NodePropertiesTypeImpl <em>Node Properties Type</em>}' class.
 		 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

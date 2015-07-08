@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getImageArtifactProperties <em>Image Artifact Properties</em>}</li>
+ *   <li>{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getNetworkArtifactProperties <em>Network Artifact Properties</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getNodeProperties <em>Node Properties</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getScriptArtifactProperties <em>Script Artifact Properties</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getServiceProperties <em>Service Properties</em>}</li>
@@ -128,6 +129,33 @@ public interface DocumentRoot extends EObject
   void setImageArtifactProperties(ImageArtifactPropertiesType value);
 
   /**
+	 * Returns the value of the '<em><b>Network Artifact Properties</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Network Artifact Properties</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Network Artifact Properties</em>' containment reference.
+	 * @see #setNetworkArtifactProperties(NetworkArtifactPropertiesType)
+	 * @see org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage#getDocumentRoot_NetworkArtifactProperties()
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="kind='element' name='NetworkArtifactProperties' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	NetworkArtifactPropertiesType getNetworkArtifactProperties();
+
+		/**
+	 * Sets the value of the '{@link org.eclipse.camf.tosca.elasticity.DocumentRoot#getNetworkArtifactProperties <em>Network Artifact Properties</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Network Artifact Properties</em>' containment reference.
+	 * @see #getNetworkArtifactProperties()
+	 * @generated
+	 */
+	void setNetworkArtifactProperties(NetworkArtifactPropertiesType value);
+
+		/**
 	 * Returns the value of the '<em><b>Node Properties</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
    * <p>

@@ -19,6 +19,7 @@ package org.eclipse.camf.tosca.elasticity.impl;
 
 import org.eclipse.camf.tosca.elasticity.DocumentRoot;
 import org.eclipse.camf.tosca.elasticity.ImageArtifactPropertiesType;
+import org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType;
 import org.eclipse.camf.tosca.elasticity.NodePropertiesType;
 import org.eclipse.camf.tosca.elasticity.ScriptArtifactPropertiesType;
 import org.eclipse.camf.tosca.elasticity.ServicePropertiesType;
@@ -47,6 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.camf.tosca.elasticity.impl.DocumentRootImpl#getXMLNSPrefixMap <em>XMLNS Prefix Map</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.impl.DocumentRootImpl#getXSISchemaLocation <em>XSI Schema Location</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.impl.DocumentRootImpl#getImageArtifactProperties <em>Image Artifact Properties</em>}</li>
+ *   <li>{@link org.eclipse.camf.tosca.elasticity.impl.DocumentRootImpl#getNetworkArtifactProperties <em>Network Artifact Properties</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.impl.DocumentRootImpl#getNodeProperties <em>Node Properties</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.impl.DocumentRootImpl#getScriptArtifactProperties <em>Script Artifact Properties</em>}</li>
  *   <li>{@link org.eclipse.camf.tosca.elasticity.impl.DocumentRootImpl#getServiceProperties <em>Service Properties</em>}</li>
@@ -170,6 +172,33 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot
 
   /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NetworkArtifactPropertiesType getNetworkArtifactProperties() {
+		return (NetworkArtifactPropertiesType)getMixed().get(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES, true);
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNetworkArtifactProperties(NetworkArtifactPropertiesType newNetworkArtifactProperties, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES, newNetworkArtifactProperties, msgs);
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNetworkArtifactProperties(NetworkArtifactPropertiesType newNetworkArtifactProperties) {
+		((FeatureMap.Internal)getMixed()).set(Tosca_Elasticity_ExtensionsPackage.Literals.DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES, newNetworkArtifactProperties);
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -275,6 +304,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot
 				return ((InternalEList<?>)getXSISchemaLocation()).basicRemove(otherEnd, msgs);
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
 				return basicSetImageArtifactProperties(null, msgs);
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES:
+				return basicSetNetworkArtifactProperties(null, msgs);
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
 				return basicSetNodeProperties(null, msgs);
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
@@ -305,6 +336,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot
 				else return getXSISchemaLocation().map();
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
 				return getImageArtifactProperties();
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES:
+				return getNetworkArtifactProperties();
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
 				return getNodeProperties();
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:
@@ -335,6 +368,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot
 				return;
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
 				setImageArtifactProperties((ImageArtifactPropertiesType)newValue);
+				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES:
+				setNetworkArtifactProperties((NetworkArtifactPropertiesType)newValue);
 				return;
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
 				setNodeProperties((NodePropertiesType)newValue);
@@ -370,6 +406,9 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
 				setImageArtifactProperties((ImageArtifactPropertiesType)null);
 				return;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES:
+				setNetworkArtifactProperties((NetworkArtifactPropertiesType)null);
+				return;
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
 				setNodeProperties((NodePropertiesType)null);
 				return;
@@ -404,6 +443,8 @@ public class DocumentRootImpl extends EObjectImpl implements DocumentRoot
 				return xSISchemaLocation != null && !xSISchemaLocation.isEmpty();
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__IMAGE_ARTIFACT_PROPERTIES:
 				return getImageArtifactProperties() != null;
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NETWORK_ARTIFACT_PROPERTIES:
+				return getNetworkArtifactProperties() != null;
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__NODE_PROPERTIES:
 				return getNodeProperties() != null;
 			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT__SCRIPT_ARTIFACT_PROPERTIES:

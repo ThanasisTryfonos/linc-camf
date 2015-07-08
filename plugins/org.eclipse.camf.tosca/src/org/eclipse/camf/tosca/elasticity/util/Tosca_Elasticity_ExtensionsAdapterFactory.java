@@ -100,6 +100,10 @@ public class Tosca_Elasticity_ExtensionsAdapterFactory extends AdapterFactoryImp
 				return createMonitoringProbesType1Adapter();
 			}
 			@Override
+			public Adapter caseNetworkArtifactPropertiesType(NetworkArtifactPropertiesType object) {
+				return createNetworkArtifactPropertiesTypeAdapter();
+			}
+			@Override
 			public Adapter caseNodePropertiesType(NodePropertiesType object) {
 				return createNodePropertiesTypeAdapter();
 			}
@@ -214,6 +218,20 @@ public class Tosca_Elasticity_ExtensionsAdapterFactory extends AdapterFactoryImp
 	}
 
   /**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType <em>Network Artifact Properties Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.camf.tosca.elasticity.NetworkArtifactPropertiesType
+	 * @generated
+	 */
+	public Adapter createNetworkArtifactPropertiesTypeAdapter() {
+		return null;
+	}
+
+		/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.camf.tosca.elasticity.NodePropertiesType <em>Node Properties Type</em>}'.
 	 * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;

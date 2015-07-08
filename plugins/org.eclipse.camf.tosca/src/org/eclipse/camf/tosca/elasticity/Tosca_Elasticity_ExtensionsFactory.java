@@ -65,6 +65,15 @@ public interface Tosca_Elasticity_ExtensionsFactory extends EFactory
   MonitoringProbesType1 createMonitoringProbesType1();
 
   /**
+	 * Returns a new object of class '<em>Network Artifact Properties Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Network Artifact Properties Type</em>'.
+	 * @generated
+	 */
+	NetworkArtifactPropertiesType createNetworkArtifactPropertiesType();
+
+		/**
 	 * Returns a new object of class '<em>Node Properties Type</em>'.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
