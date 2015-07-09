@@ -204,24 +204,21 @@
                   commandId="org.eclipse.ui.file.import"
                   label="Import"
                   style="push">
-            </command>
-         </menuContribution>
-         <menuContribution
-               allPopups="false"
-               locationURI="popup:org.eclipse.ui.popup.any?after=additions">
-            <command
-                  commandId="org.eclipse.ui.edit.delete"
-                  label="Delete"
-                  style="push">
-            </command>
-         </menuContribution>
-         <menuContribution
-               allPopups="false"
-               locationURI="popup:org.eclipse.ui.popup.any?after=additions">
-            <command
-                  commandId="org.eclipse.ui.file.export"
-                  label="Export"
-                  style="push">
+                     <visibleWhen>
+      <with
+            variable="selection">
+         <iterate
+               ifEmpty="false">
+            <adapt
+                  type="org.eclipse.core.resources.IResource">
+               <test
+                     property="org.eclipse.core.resources.path"
+                     value="*Artifacts/*">
+               </test>
+            </adapt>
+         </iterate>
+      </with>
+   </visibleWhen>
             </command>
          </menuContribution>
       </extension>
