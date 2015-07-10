@@ -29,6 +29,9 @@
            class="org.eclipse.camf.core.project.CloudProjectScope"
            name="org.eclipse.camf.core.projectScope">
      </scope>
+     <initializer
+           class="org.eclipse.camf.core.PreferencesInitializer">
+     </initializer>
    </extension>
    <extension
          point="org.eclipse.camf.core.reporting.problemReporting">
