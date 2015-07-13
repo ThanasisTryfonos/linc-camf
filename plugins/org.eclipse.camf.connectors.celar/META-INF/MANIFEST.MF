@@ -9,3 +9,16 @@ Require-Bundle: org.eclipse.ui,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %Bundle-Vendor
+Import-Package: org.eclipse.camf.core,
+ org.eclipse.camf.core.model,
+ org.eclipse.camf.core.model.impl,
+ org.eclipse.camf.core.reporting,
+ org.eclipse.camf.tosca,
+ org.eclipse.camf.tosca.core,
+ org.eclipse.camf.tosca.editor,
+ org.eclipse.camf.tosca.elasticity,
+ org.eclipse.core.resources,
+ org.eclipse.emf.common.util,
+ org.eclipse.emf.ecore.util,
+ org.eclipse.emf.ecore.xmi.impl,
+ org.eclipse.ui.console

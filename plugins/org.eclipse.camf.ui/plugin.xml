@@ -245,22 +245,6 @@
          </page>
       </extension>
       <extension
-            point="org.eclipse.camf.ui.newCloudProviderWizards">
-         <wizard
-               class="org.eclipse.camf.ui.wizards.CELARCloudProviderWizard"
-               id="org.eclipse.camf.ui.wizards.CELARCloudProviderWizard"
-               name="CELAR Cloud Provider">
-         </wizard>
-      </extension>
-      <extension
-            point="org.eclipse.camf.ui.newCloudProviderWizards">
-         <wizard
-               class="org.eclipse.camf.ui.wizards.GenericCloudProviderWizard"
-               id="org.eclipse.camf.ui.wizards.GenericCloudProviderWizard"
-               name="Generic Cloud Provider">
-         </wizard>
-      </extension>
-      <extension
             point="org.eclipse.ui.handlers">
          <handler
                commandId="org.eclipse.ui.edit.delete">

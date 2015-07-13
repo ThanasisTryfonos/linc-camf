@@ -9,3 +9,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
+Import-Package: org.eclipse.camf.core,
+ org.eclipse.camf.core.model,
+ org.eclipse.camf.core.model.impl,
+ org.eclipse.camf.core.reporting,
+ org.eclipse.camf.ui.wizards.wizardselection

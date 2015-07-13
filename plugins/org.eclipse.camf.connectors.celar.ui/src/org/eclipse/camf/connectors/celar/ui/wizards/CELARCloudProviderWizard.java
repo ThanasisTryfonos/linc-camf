@@ -14,14 +14,15 @@
  *    Nicholas Loulloudes - code adapted for CELAR project, 2013
  *    Stalo Sofokleous
  *****************************************************************************/
-package org.eclipse.camf.ui.wizards;
+package org.eclipse.camf.connectors.celar.ui.wizards;
 
+import org.eclipse.camf.connectors.celar.ui.internal.Activator;
+import org.eclipse.camf.core.Preferences;
 import org.eclipse.camf.core.model.CloudModel;
 import org.eclipse.camf.core.model.ICloudProviderManager;
 import org.eclipse.camf.core.model.impl.GenericCloudProvider;
 import org.eclipse.camf.core.model.impl.GenericCloudProviderCreator;
 import org.eclipse.camf.core.reporting.ProblemException;
-import org.eclipse.camf.ui.internal.Activator;
 import org.eclipse.camf.ui.wizards.wizardselection.IInitializableWizard;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -38,7 +39,8 @@ public class CELARCloudProviderWizard
   
   private CELARCloudProviderWizardPage cpPage;
   
-//  private VoServiceSelectionPage servicePage;
+  private static GenericCloudProvider newGenericCloudProvider;
+  
   
   /* (non-Javadoc)
    * @see org.eclipse.jface.wizard.Wizard#addPages()
@@ -47,15 +49,12 @@ public class CELARCloudProviderWizard
   public void addPages() {
     
     this.cpPage = new CELARCloudProviderWizardPage();
-//    this.servicePage = new VoServiceSelectionPage();
     
     if ( this.initialVo != null ) {
       this.cpPage.setInitialVo( this.initialVo );
-//      this.servicePage.setInitialVo( this.initialVo );
     }
     
     addPage( this.cpPage );
-//    addPage( this.servicePage );
     
   }
   
@@ -87,11 +86,10 @@ public class CELARCloudProviderWizard
     IStatus result = this.cpPage.apply( creator );
     
     if ( result.isOK() ) {
-//      result = this.servicePage.apply( creator );
-    }
-    
-    if ( result.isOK() ) {
       result = createVo( creator );
+      if (CELARCloudProviderWizard.newGenericCloudProvider != null){
+          Preferences.addCloudProvider( CELARCloudProviderWizard.newGenericCloudProvider );
+        }
     }
     
     if ( ! result.isOK() ) {
@@ -104,31 +102,63 @@ public class CELARCloudProviderWizard
   
   private IStatus createVo( final GenericCloudProviderCreator creator ) {
     
-    IStatus result = Status.OK_STATUS;
-    
-    GenericCloudProvider vo = null;
-    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
-    
-    try {
-      if ( this.initialVo != null ) {
-        creator.apply( this.initialVo );
-      } else {
-        vo = ( GenericCloudProvider ) manager.create( creator );
-      }
-    } catch ( ProblemException pExc ) {
-      result = new Status( IStatus.ERROR, Activator.PLUGIN_ID, pExc.getLocalizedMessage(), pExc );
-    }
-    
-    if ( ! result.isOK() && ( vo != null ) ) {
-      try {
-        manager.delete( vo );
-      } catch ( ProblemException pExc ) {
-        Activator.logException( pExc );
-      }
-    }
-    
-    return result;
+//	    IStatus result = Status.OK_STATUS;
+//	    
+//	    GenericCloudProvider vo = null;
+//	    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
+//	    
+//	    try {
+//	      if ( this.initialVo != null ) {
+//	        creator.apply( this.initialVo );
+//	      } else {
+//	        vo = ( GenericCloudProvider ) manager.create( creator );
+//	      }
+//	    } catch ( ProblemException pExc ) {
+//	      result = new Status( IStatus.ERROR, Activator.PLUGIN_ID, pExc.getLocalizedMessage(), pExc );
+//	    }
+//	    
+//	    if ( ! result.isOK() && ( vo != null ) ) {
+//	      try {
+//	        manager.delete( vo );
+//	      } catch ( ProblemException pExc ) {
+//	        //Activator.logException( pExc );
+//	      }
+//	    }
+//	    
+//	    return result;
+	  
+	    IStatus result = Status.OK_STATUS;
+	    
+	    GenericCloudProvider vo = null;
+	    ICloudProviderManager manager = CloudModel.getCloudProviderManager();
+	    
+	    try {
+	      if ( this.initialVo != null ) {
+	        this.initialVo.setUri( creator.getVoURI() );
+	        this.initialVo.setPort( creator.getVoPort() );
+	        creator.apply( this.initialVo );
+	        CELARCloudProviderWizard.newGenericCloudProvider = this.initialVo;
+	      } else {
+	        vo = ( GenericCloudProvider ) manager.create( creator );
+	        CELARCloudProviderWizard.newGenericCloudProvider = vo;
+	      }
+	    } catch ( ProblemException pExc ) {
+	      result = new Status( IStatus.ERROR, Activator.PLUGIN_ID, pExc.getLocalizedMessage(), pExc );
+	    }
+	    
+	    if ( ! result.isOK() && ( vo != null ) ) {
+	      try {
+	        manager.delete( vo );
+	      } catch ( ProblemException pExc ) {
+	        //Activator.logException( pExc );
+	      }
+	    }   
+	    return result;
     
   }
+  
+  public static GenericCloudProvider getNewCloudProvider(){
+	    return CELARCloudProviderWizard.newGenericCloudProvider;
+	  }
   
 }

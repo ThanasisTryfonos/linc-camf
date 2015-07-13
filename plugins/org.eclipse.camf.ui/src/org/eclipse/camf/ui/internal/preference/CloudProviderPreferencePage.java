@@ -477,11 +477,6 @@ public class CloudProviderPreferencePage
     WizardDialog dialog = new WizardDialog( this.getShell(), wizard );
     dialog.open();
     
-    GenericCloudProvider newGenericCloudProvider = GenericCloudProviderWizard.getNewCloudProvider();
-    if (newGenericCloudProvider != null){
-      Preferences.addCloudProvider( newGenericCloudProvider );
-    }
-    
     /*
      * If no VOs were present before calling the wizard, there is now a default
      * VO to mark as checked.

@@ -11,6 +11,7 @@
  *
  * Contributors:
  * 	Nicholas Loulloudes - initial API and implementation
+ *  Stalo Sofokleous - implementation
  *  Andreas Kastanas - added getDeploymentsStatus & setDeploymentStatus
  *******************************************************************************/
 package org.eclipse.camf.core;
