@@ -12,6 +12,7 @@ package org.eclipse.camf.infosystem.mockup.info;
  *
  * Contributors:
  * 	Stalo Sofokleous - initial API and implementation
+ *  Nicholas Loulloudes - initial API and implementation
  *******************************************************************************/
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -68,12 +69,11 @@ import javax.net.ssl.SSLSession;
 
 public class CelarizedFetch extends Job {
 
+
 	  private Connection con = null;
 
 	  private static CelarizedFetch instance = null;
-	  
-	  private ArrayList<ICloudProvider> selectedProviders = new ArrayList<ICloudProvider>();
-	  
+	  	  
 	  private ArrayList<VirtualMachineImage> base_images = new ArrayList<VirtualMachineImage>();
 	  private ArrayList<MonitoringProbe> monitor_probes = new ArrayList<MonitoringProbe>();
 	  private ArrayList<ResizingAction> resize_actions = new ArrayList<ResizingAction>();
@@ -498,7 +498,8 @@ public class CelarizedFetch extends Job {
 	      
 	  }
 	  
-	}
+
+}
 
 
 

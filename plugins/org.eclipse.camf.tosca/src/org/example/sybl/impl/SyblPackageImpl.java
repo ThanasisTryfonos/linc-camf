@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.example.smart.deployment.DeploymentPackage;
+import org.example.smart.deployment.impl.DeploymentPackageImpl;
 import org.example.sybl.BinaryRestriction;
 import org.example.sybl.ConditionType;
 import org.example.sybl.ConditionType1;

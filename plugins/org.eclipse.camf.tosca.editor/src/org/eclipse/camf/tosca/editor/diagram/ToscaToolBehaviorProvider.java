@@ -683,31 +683,31 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
 
    // Add custom probes from project explorer
 
- IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
- IProject monitoringProbesProject = workspaceRoot.getProject( "MonitoringProbe" );
-
- if( monitoringProbesProject.exists() ) {
-   IFolder srcFolder = monitoringProbesProject.getFolder( "src" );
-   IResource[] artifactsResource = null;
-   try {
-     artifactsResource = srcFolder.members();
-   } catch( CoreException e ) {
-     // TODO Auto-generated catch block
-     e.printStackTrace();
-   }
-   if ( artifactsResource != null ){
-     for( IResource tempResource : artifactsResource ) {
-       if( tempResource instanceof IFile ) {
-         MonitoringProbe mp = InfoSystemFactory.eINSTANCE.createMonitoringProbe();
-         mp.setUID( tempResource.getName().replaceFirst( ".java", "" ));
-         mp.setName( tempResource.getName().replaceFirst( ".java", "" ));
-         mp.setDescription( "" );
-         // add new probe to monitoring list
-         mpsCopy.add( 0, mp );
-       }
-     }
-   }
- }
+// IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+// IProject monitoringProbesProject = workspaceRoot.getProject( "MonitoringProbe" );
+//
+// if( monitoringProbesProject.exists() ) {
+//   IFolder srcFolder = monitoringProbesProject.getFolder( "src" );
+//   IResource[] artifactsResource = null;
+//   try {
+//     artifactsResource = srcFolder.members();
+//   } catch( CoreException e ) {
+//     // TODO Auto-generated catch block
+//     e.printStackTrace();
+//   }
+//   if ( artifactsResource != null ){
+//     for( IResource tempResource : artifactsResource ) {
+//       if( tempResource instanceof IFile ) {
+//         MonitoringProbe mp = InfoSystemFactory.eINSTANCE.createMonitoringProbe();
+//         mp.setUID( tempResource.getName().replaceFirst( ".java", "" ));
+//         mp.setName( tempResource.getName().replaceFirst( ".java", "" ));
+//         mp.setDescription( "" );
+//         // add new probe to monitoring list
+//         mpsCopy.add( 0, mp );
+//       }
+//     }
+//   }
+// }
  
    // add new compartment at the end of the existing compartments
    PaletteCompartmentEntry compartmentEntry = new PaletteCompartmentEntry( "Monitor Probes", null ); //$NON-NLS-1$

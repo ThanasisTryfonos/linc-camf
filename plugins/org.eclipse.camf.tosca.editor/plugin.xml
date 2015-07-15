@@ -51,7 +51,7 @@
 	        Defines a property sheet tab for the Eclipse tabbed property sheet for EReferences.
 	        -->
    <propertyTab
-         afterTab="graphiti.main.tab"
+         afterTab="graphiti.component.smart.tab"
          category="CELAR"
          id="graphiti.component.elasticity.tab"
          label="Elasticity">
@@ -136,6 +136,12 @@
          category="CELAR"
          id="graphiti.component.deployment.script.tab"
          label="Deployment">
+   </propertyTab>
+   <propertyTab
+         afterTab="graphiti.main.tab"
+         category="CELAR"
+         id="graphiti.component.smart.tab"
+         label="Smart">
    </propertyTab>
 	    </propertyTabs>
 	</extension>
@@ -243,6 +249,12 @@
            filter="org.eclipse.camf.tosca.editor.property.ApplicationComponentFilter"
            id="graphiti.advanced.tab.deployment.script"
            tab="graphiti.component.deployment.script.tab">
+     </propertySection>
+     <propertySection
+           class="org.eclipse.camf.tosca.editor.property.ApplicationComponentSmartSection"
+           filter="org.eclipse.camf.tosca.editor.property.ApplicationComponentFilter"
+           id="graphiti.advanced.tab.smart.deployment"
+           tab="graphiti.component.smart.tab">
      </propertySection>
 			    </propertySections>
 	</extension>

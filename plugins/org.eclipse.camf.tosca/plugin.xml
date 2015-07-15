@@ -69,4 +69,5 @@
             type="tosca_elasticity_extensions"
             class="org.eclipse.camf.tosca.elasticity.util.Tosca_Elasticity_ExtensionsResourceFactoryImpl"/>
    </extension>
+
 null</plugin>

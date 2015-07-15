@@ -113,20 +113,20 @@ public class NewDeploymentWizard extends Wizard implements INewWizard {
 
 						new OperationExecuter().execOp(deployOperation);
 
-						if (deployOperation.getActiontoDo().equals(
-								ActionToDo.TERMINATE_AND_REVERT_ON_ERROR)
-								&& !deployOperation.failed_to_deploy.isEmpty()) {
-							OpenStackOpTerminateApplication terminateOperation = new OpenStackOpTerminateApplication(
-									deployOperation.deployments,
-									deployOperation.depID,
-									deployOperation.modules,
-									deployOperation.instances);
-
-							if (terminateOperation.getException() != null) {
-								throw terminateOperation.getException();
-							}
-							new OperationExecuter().execOp(terminateOperation);
-						}
+//						if (deployOperation.getActiontoDo().equals(
+//								ActionToDo.TERMINATE_AND_REVERT_ON_ERROR)
+//								&& !deployOperation.failed_to_deploy.isEmpty()) {
+//							OpenStackOpTerminateApplication terminateOperation = new OpenStackOpTerminateApplication(
+//									deployOperation.deployments,
+//									deployOperation.depID,
+//									deployOperation.modules,
+//									deployOperation.instances);
+//
+//							if (terminateOperation.getException() != null) {
+//								throw terminateOperation.getException();
+//							}
+//							new OperationExecuter().execOp(terminateOperation);
+//						}
 					} catch (Exception e) {
 						e.printStackTrace();
 

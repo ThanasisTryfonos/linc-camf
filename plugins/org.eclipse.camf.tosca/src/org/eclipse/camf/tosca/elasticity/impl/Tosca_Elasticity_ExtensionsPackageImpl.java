@@ -37,6 +37,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
+import org.example.smart.deployment.DeploymentPackage;
+import org.example.smart.deployment.impl.DeploymentPackageImpl;
 import org.example.sybl.SyblPackage;
 import org.example.sybl.impl.SyblPackageImpl;
 
