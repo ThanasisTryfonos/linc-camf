@@ -40,84 +40,84 @@ import org.eclipse.emf.ecore.EObject;
 public interface UnaryRestriction extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Metric</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Metric</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Metric</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Metric</em>' attribute.
-   * @see #setMetric(String)
-   * @see org.example.sybl.SyblPackage#getUnaryRestriction_Metric()
-   * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-   *        extendedMetaData="kind='element' name='Metric'"
-   * @generated
-   */
+	 * @return the value of the '<em>Metric</em>' attribute.
+	 * @see #setMetric(String)
+	 * @see org.example.sybl.SyblPackage#getUnaryRestriction_Metric()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='element' name='Metric'"
+	 * @generated
+	 */
   String getMetric();
 
   /**
-   * Sets the value of the '{@link org.example.sybl.UnaryRestriction#getMetric <em>Metric</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.example.sybl.UnaryRestriction#getMetric <em>Metric</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Metric</em>' attribute.
-   * @see #getMetric()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Metric</em>' attribute.
+	 * @see #getMetric()
+	 * @generated
+	 */
   void setMetric(String value);
 
   /**
-   * Returns the value of the '<em><b>Reference To</b></em>' containment reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Reference To</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Reference To</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Reference To</em>' containment reference.
-   * @see #setReferenceTo(ReferenceToType)
-   * @see org.example.sybl.SyblPackage#getUnaryRestriction_ReferenceTo()
-   * @model containment="true"
-   *        extendedMetaData="kind='element' name='ReferenceTo'"
-   * @generated
-   */
+	 * @return the value of the '<em>Reference To</em>' containment reference.
+	 * @see #setReferenceTo(ReferenceToType)
+	 * @see org.example.sybl.SyblPackage#getUnaryRestriction_ReferenceTo()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='ReferenceTo'"
+	 * @generated
+	 */
   ReferenceToType getReferenceTo();
 
   /**
-   * Sets the value of the '{@link org.example.sybl.UnaryRestriction#getReferenceTo <em>Reference To</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.example.sybl.UnaryRestriction#getReferenceTo <em>Reference To</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Reference To</em>' containment reference.
-   * @see #getReferenceTo()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Reference To</em>' containment reference.
+	 * @see #getReferenceTo()
+	 * @generated
+	 */
   void setReferenceTo(ReferenceToType value);
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see #setType(String)
-   * @see org.example.sybl.SyblPackage#getUnaryRestriction_Type()
-   * @model dataType="org.eclipse.emf.ecore.xml.type.String"
-   *        extendedMetaData="kind='attribute' name='Type'"
-   * @generated
-   */
+	 * @return the value of the '<em>Type</em>' attribute.
+	 * @see #setType(String)
+	 * @see org.example.sybl.SyblPackage#getUnaryRestriction_Type()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='Type'"
+	 * @generated
+	 */
   String getType();
 
   /**
-   * Sets the value of the '{@link org.example.sybl.UnaryRestriction#getType <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.example.sybl.UnaryRestriction#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see #getType()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see #getType()
+	 * @generated
+	 */
   void setType(String value);
 
 } // UnaryRestriction

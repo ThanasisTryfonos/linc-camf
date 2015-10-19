@@ -91,15 +91,13 @@ public class DeploymentLabelProvider extends LabelProvider implements ITableLabe
 				}
 				break;
 			}
-			case 7:
+			case 7: {
 				text = "test";            
-				break;        
+				break;
+			  }
 			}
 		}
 
-		if( text == null ) {
-			text = ""; //$NON-NLS-1$
-		}
 
 		return text;
 	}

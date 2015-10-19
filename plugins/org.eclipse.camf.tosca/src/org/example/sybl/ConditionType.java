@@ -41,37 +41,37 @@ import org.eclipse.emf.ecore.EObject;
 public interface ConditionType extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Binary Restrictions Conjunction</b></em>' containment reference list.
-   * The list contents are of type {@link org.example.sybl.BinaryRestriction}.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Binary Restrictions Conjunction</b></em>' containment reference list.
+	 * The list contents are of type {@link org.example.sybl.BinaryRestriction}.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Binary Restrictions Conjunction</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Binary Restrictions Conjunction</em>' containment reference list.
-   * @see org.example.sybl.SyblPackage#getConditionType_BinaryRestrictionsConjunction()
-   * @model containment="true" required="true"
-   *        extendedMetaData="kind='element' name='BinaryRestrictionsConjunction'"
-   * @generated
-   */
+	 * @return the value of the '<em>Binary Restrictions Conjunction</em>' containment reference list.
+	 * @see org.example.sybl.SyblPackage#getConditionType_BinaryRestrictionsConjunction()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='BinaryRestrictionsConjunction'"
+	 * @generated
+	 */
   EList<BinaryRestriction> getBinaryRestrictionsConjunction();
 
   /**
-   * Returns the value of the '<em><b>Unary Restrictions Conjunction</b></em>' containment reference list.
-   * The list contents are of type {@link org.example.sybl.UnaryRestriction}.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Unary Restrictions Conjunction</b></em>' containment reference list.
+	 * The list contents are of type {@link org.example.sybl.UnaryRestriction}.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Unary Restrictions Conjunction</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Unary Restrictions Conjunction</em>' containment reference list.
-   * @see org.example.sybl.SyblPackage#getConditionType_UnaryRestrictionsConjunction()
-   * @model containment="true" required="true"
-   *        extendedMetaData="kind='element' name='UnaryRestrictionsConjunction'"
-   * @generated
-   */
+	 * @return the value of the '<em>Unary Restrictions Conjunction</em>' containment reference list.
+	 * @see org.example.sybl.SyblPackage#getConditionType_UnaryRestrictionsConjunction()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='UnaryRestrictionsConjunction'"
+	 * @generated
+	 */
   EList<UnaryRestriction> getUnaryRestrictionsConjunction();
 
 } // ConditionType

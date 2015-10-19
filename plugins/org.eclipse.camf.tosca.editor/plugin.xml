@@ -296,6 +296,24 @@
             name="%_UI_Wizard_category"/>
    </extension>
 
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated elasticity -->
+      <editor
+            id="org.example.sybl.presentation.SyblEditorID"
+            name="%_UI_SyblEditor_label"
+            icon="icons/full/obj16/SyblModelFile.gif"
+            extensions="sybl"
+            class="org.example.sybl.presentation.SyblEditor"
+            contributorClass="org.example.sybl.presentation.SyblActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated elasticity -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+   </extension>
 
    <extension point="org.eclipse.ui.editors">
       <!-- @generated elasticity -->

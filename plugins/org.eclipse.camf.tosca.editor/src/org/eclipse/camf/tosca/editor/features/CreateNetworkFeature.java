@@ -16,10 +16,22 @@
  *******************************************************************************/
 package org.eclipse.camf.tosca.editor.features;
 
+import org.eclipse.camf.tosca.DefinitionsType;
+import org.eclipse.camf.tosca.PropertiesType;
+import org.eclipse.camf.tosca.TArtifactTemplate;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.TDeploymentArtifacts;
 import org.eclipse.camf.tosca.TNodeTemplate;
 import org.eclipse.camf.tosca.ToscaFactory;
+import org.eclipse.camf.tosca.editor.ModelHandler;
+import org.eclipse.camf.tosca.editor.ToscaModelLayer;
+import org.eclipse.camf.tosca.elasticity.ImageArtifactPropertiesType;
+import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsFactory;
+import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.ecore.util.FeatureMap.Entry;
+import org.eclipse.emf.ecore.xml.type.internal.QName;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -94,6 +106,9 @@ public class CreateNetworkFeature extends AbstractCreateFeature {
     deploymentArtifact.setName( tempDeploymentArtifact.getName() );
     deploymentArtifact.setArtifactType( tempDeploymentArtifact.getArtifactType() );
     
+    String deploymentArtifactName = "N" + (tempDeploymentArtifact.getName()).replaceAll("[^a-zA-Z0-9\\s]", "");
+    deploymentArtifact.setArtifactRef( new QName(deploymentArtifactName) );
+    
     final TDeploymentArtifact tempArtifact = deploymentArtifact;
     TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( parentObject );
     editingDomain.getCommandStack()
@@ -106,6 +121,11 @@ public class CreateNetworkFeature extends AbstractCreateFeature {
     // ///////////////////////////////////////////
     addGraphicalRepresentation( context, deploymentArtifact );
     // ///////////////////////////////////////////
+    
+    //Create Network Artifact Template
+    String deploymentArtifactRef = "N" + (deploymentArtifact.getArtifactRef().toString()).replaceAll("[^a-zA-Z0-9\\s]", "");
+    createArtifactTemplate("not_specified", deploymentArtifactName, deploymentArtifactRef);
+    
     // activate direct editing after object creation
     getFeatureProvider().getDirectEditingInfo().setActive( true );
     // return newly created business object(s)
@@ -113,4 +133,55 @@ public class CreateNetworkFeature extends AbstractCreateFeature {
       deploymentArtifact
     };
   }
+  
+  private void createArtifactTemplate(String description, String artifactRef, String imageId){
+	    
+	    final ToscaModelLayer model = ModelHandler.getModel( EcoreUtil.getURI( getDiagram() ) );
+	    
+	    for (TArtifactTemplate tempArtifactTemplate : model.getDocumentRoot()
+	        .getDefinitions()
+	        .getArtifactTemplate()){
+	      if (tempArtifactTemplate.getId().equals( imageId ))
+	        return;
+	    }
+	  
+	    //Create Artifact Template
+	    final TArtifactTemplate artifactTemplate = ToscaFactory.eINSTANCE.createTArtifactTemplate();
+	    
+	    //Create Image Artifact Properties
+	    ImageArtifactPropertiesType imageProperties = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createImageArtifactPropertiesType();
+	    imageProperties.setDescription( description );
+	    
+	    if (imageId!=null){
+	      imageProperties.setId( imageId );
+	    }
+	    
+	    // Set the Properties of the Policy Template    
+	    PropertiesType properties = ToscaFactory.eINSTANCE.createPropertiesType();   
+	    
+	    // Add the SYBL Policy to the FeatureMap of the Policy's Properties element
+	    Entry e = FeatureMapUtil.createEntry(     Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getDocumentRoot_ImageArtifactProperties(),  imageProperties );
+	    properties.getAny().add( e );   
+	    
+	    artifactTemplate.setProperties( properties );
+	 
+	    //artifactTemplate.setId( imageId );
+	    artifactTemplate.setId( artifactRef );
+	    
+	    // Add the new Artifact Template to the TOSCA Definitions element
+	    
+	    DefinitionsType definitions = model.getDocumentRoot().getDefinitions();
+	       
+	    TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( definitions );
+	    editingDomain.getCommandStack()
+	      .execute( new RecordingCommand( editingDomain ) {
+
+	        @Override
+	        protected void doExecute() {
+	          model.getDocumentRoot().getDefinitions().getArtifactTemplate().add( artifactTemplate );
+	          
+	        }
+	      } );
+
+	  }
 }

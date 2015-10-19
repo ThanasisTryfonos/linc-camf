@@ -45,306 +45,300 @@ import org.example.sybl.SyblPackage;
 public class ReferenceToTypeImpl extends EObjectImpl implements ReferenceToType
 {
   /**
-   * An array of objects representing the values of non-primitive features.
-   * <!-- begin-user-doc -->
+	 * An array of objects representing the values of non-primitive features.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Object[] eVirtualValues;
 
   /**
-   * A bit field representing the indices of non-primitive feature values.
-   * <!-- begin-user-doc -->
+	 * A bit field representing the indices of non-primitive feature values.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected int eVirtualIndexBits0;
 
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
+	 * @see #getValue()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String VALUE_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFunction()
-   * @generated
-   * @ordered
-   */
+	 * @see #getFunction()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String FUNCTION_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ReferenceToTypeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return SyblPackage.Literals.REFERENCE_TO_TYPE;
-  }
+		return SyblPackage.Literals.REFERENCE_TO_TYPE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getValue()
   {
-    return (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__VALUE, VALUE_EDEFAULT);
-  }
+		return (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__VALUE, VALUE_EDEFAULT);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setValue(String newValue)
   {
-    String value = newValue;
-    Object oldValue = eVirtualSet(SyblPackage.REFERENCE_TO_TYPE__VALUE, value);
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.REFERENCE_TO_TYPE__VALUE, oldValue == EVIRTUAL_NO_VALUE ? VALUE_EDEFAULT : oldValue, value));
-  }
+		String value = newValue;
+		Object oldValue = eVirtualSet(SyblPackage.REFERENCE_TO_TYPE__VALUE, value);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.REFERENCE_TO_TYPE__VALUE, oldValue == EVIRTUAL_NO_VALUE ? VALUE_EDEFAULT : oldValue, value));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getFunction()
   {
-    return (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__FUNCTION, FUNCTION_EDEFAULT);
-  }
+		return (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__FUNCTION, FUNCTION_EDEFAULT);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setFunction(String newFunction)
   {
-    String function = newFunction;
-    Object oldFunction = eVirtualSet(SyblPackage.REFERENCE_TO_TYPE__FUNCTION, function);
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.REFERENCE_TO_TYPE__FUNCTION, oldFunction == EVIRTUAL_NO_VALUE ? FUNCTION_EDEFAULT : oldFunction, function));
-  }
+		String function = newFunction;
+		Object oldFunction = eVirtualSet(SyblPackage.REFERENCE_TO_TYPE__FUNCTION, function);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.REFERENCE_TO_TYPE__FUNCTION, oldFunction == EVIRTUAL_NO_VALUE ? FUNCTION_EDEFAULT : oldFunction, function));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getName()
   {
-    return (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__NAME, NAME_EDEFAULT);
-  }
+		return (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__NAME, NAME_EDEFAULT);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setName(String newName)
   {
-    String name = newName;
-    Object oldName = eVirtualSet(SyblPackage.REFERENCE_TO_TYPE__NAME, name);
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.REFERENCE_TO_TYPE__NAME, oldName == EVIRTUAL_NO_VALUE ? NAME_EDEFAULT : oldName, name));
-  }
+		String name = newName;
+		Object oldName = eVirtualSet(SyblPackage.REFERENCE_TO_TYPE__NAME, name);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.REFERENCE_TO_TYPE__NAME, oldName == EVIRTUAL_NO_VALUE ? NAME_EDEFAULT : oldName, name));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case SyblPackage.REFERENCE_TO_TYPE__VALUE:
-        return getValue();
-      case SyblPackage.REFERENCE_TO_TYPE__FUNCTION:
-        return getFunction();
-      case SyblPackage.REFERENCE_TO_TYPE__NAME:
-        return getName();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case SyblPackage.REFERENCE_TO_TYPE__VALUE:
+				return getValue();
+			case SyblPackage.REFERENCE_TO_TYPE__FUNCTION:
+				return getFunction();
+			case SyblPackage.REFERENCE_TO_TYPE__NAME:
+				return getName();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case SyblPackage.REFERENCE_TO_TYPE__VALUE:
-        setValue((String)newValue);
-        return;
-      case SyblPackage.REFERENCE_TO_TYPE__FUNCTION:
-        setFunction((String)newValue);
-        return;
-      case SyblPackage.REFERENCE_TO_TYPE__NAME:
-        setName((String)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case SyblPackage.REFERENCE_TO_TYPE__VALUE:
+				setValue((String)newValue);
+				return;
+			case SyblPackage.REFERENCE_TO_TYPE__FUNCTION:
+				setFunction((String)newValue);
+				return;
+			case SyblPackage.REFERENCE_TO_TYPE__NAME:
+				setName((String)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case SyblPackage.REFERENCE_TO_TYPE__VALUE:
-        setValue(VALUE_EDEFAULT);
-        return;
-      case SyblPackage.REFERENCE_TO_TYPE__FUNCTION:
-        setFunction(FUNCTION_EDEFAULT);
-        return;
-      case SyblPackage.REFERENCE_TO_TYPE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case SyblPackage.REFERENCE_TO_TYPE__VALUE:
+				setValue(VALUE_EDEFAULT);
+				return;
+			case SyblPackage.REFERENCE_TO_TYPE__FUNCTION:
+				setFunction(FUNCTION_EDEFAULT);
+				return;
+			case SyblPackage.REFERENCE_TO_TYPE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case SyblPackage.REFERENCE_TO_TYPE__VALUE:
-        String value = (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__VALUE, VALUE_EDEFAULT);
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-      case SyblPackage.REFERENCE_TO_TYPE__FUNCTION:
-        String function = (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__FUNCTION, FUNCTION_EDEFAULT);
-        return FUNCTION_EDEFAULT == null ? function != null : !FUNCTION_EDEFAULT.equals(function);
-      case SyblPackage.REFERENCE_TO_TYPE__NAME:
-        String name = (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__NAME, NAME_EDEFAULT);
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case SyblPackage.REFERENCE_TO_TYPE__VALUE:
+				String value = (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__VALUE, VALUE_EDEFAULT);
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case SyblPackage.REFERENCE_TO_TYPE__FUNCTION:
+				String function = (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__FUNCTION, FUNCTION_EDEFAULT);
+				return FUNCTION_EDEFAULT == null ? function != null : !FUNCTION_EDEFAULT.equals(function);
+			case SyblPackage.REFERENCE_TO_TYPE__NAME:
+				String name = (String)eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__NAME, NAME_EDEFAULT);
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected Object[] eVirtualValues()
   {
-    return eVirtualValues;
-  }
+		return eVirtualValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualValues(Object[] newValues)
   {
-    eVirtualValues = newValues;
-  }
+		eVirtualValues = newValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected int eVirtualIndexBits(int offset)
   {
-    switch (offset)
-    {
-      case 0 :
-        return eVirtualIndexBits0;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualIndexBits(int offset, int newIndexBits)
   {
-    switch (offset)
-    {
-      case 0 :
-        eVirtualIndexBits0 = newIndexBits;
-        break;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__VALUE, VALUE_EDEFAULT));
-    result.append(", function: ");
-    result.append(eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__FUNCTION, FUNCTION_EDEFAULT));
-    result.append(", name: ");
-    result.append(eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__NAME, NAME_EDEFAULT));
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (value: ");
+		result.append(eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__VALUE, VALUE_EDEFAULT));
+		result.append(", function: ");
+		result.append(eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__FUNCTION, FUNCTION_EDEFAULT));
+		result.append(", name: ");
+		result.append(eVirtualGet(SyblPackage.REFERENCE_TO_TYPE__NAME, NAME_EDEFAULT));
+		result.append(')');
+		return result.toString();
+	}
 
 } //ReferenceToTypeImpl

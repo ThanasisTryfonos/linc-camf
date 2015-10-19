@@ -16,12 +16,14 @@
  *******************************************************************************/
 package org.eclipse.camf.tosca.editor.features;
 
+import org.eclipse.camf.tosca.TArtifactTemplate;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.editor.StyleUtil;
 import org.eclipse.graphiti.features.IAddFeature;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.IContext;
+import org.eclipse.graphiti.features.impl.AbstractAddShapeFeature;
 import org.eclipse.graphiti.features.impl.AbstractFeature;
 import org.eclipse.graphiti.mm.algorithms.Polyline;
 import org.eclipse.graphiti.mm.algorithms.Rectangle;
@@ -38,8 +40,7 @@ import org.eclipse.graphiti.services.IPeCreateService;
 import org.eclipse.graphiti.util.ColorConstant;
 import org.eclipse.graphiti.util.IColorConstant;
 
-public class AddSoftwareDependencyFeature extends AbstractFeature
-  implements IAddFeature
+public class AddSoftwareDependencyFeature extends AbstractAddShapeFeature
 {
 
   private static final IColorConstant E_CLASS_TEXT_FOREGROUND = IColorConstant.BLACK;
@@ -59,14 +60,16 @@ public class AddSoftwareDependencyFeature extends AbstractFeature
   public boolean canAdd( final IAddContext context ) {
 	  
 	    boolean result = false;
-	    boolean diagraminstance = context.getTargetContainer() instanceof Diagram;
-
-	    if( context.getNewObject() instanceof TDeploymentArtifact
-	        && !diagraminstance )
-	    {
-	      if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "SD" )==0)
-	        result = true;
-	    }
+	    boolean diagraminstance = context.getTargetContainer() instanceof Diagram;    
+	    
+	     if( context.getNewObject() instanceof TArtifactTemplate
+      && !diagraminstance )
+      {
+        if (((TArtifactTemplate)context.getNewObject()).getName().contains( "SD" ))
+          result = true;
+      }
+	    
+	    
 	    return result;
 
   }
@@ -75,7 +78,7 @@ public class AddSoftwareDependencyFeature extends AbstractFeature
   @Override
   public PictogramElement add( final IAddContext context ) {
 	  
-	TDeploymentArtifact addedClass = ( TDeploymentArtifact )context.getNewObject();
+    TArtifactTemplate addedClass = ( TArtifactTemplate )context.getNewObject();
 	    
     ContainerShape targetDiagram = context.getTargetContainer();
     Object[] targetDiagrams = targetDiagram.getChildren().toArray();
@@ -135,7 +138,9 @@ public class AddSoftwareDependencyFeature extends AbstractFeature
       // create shape for text
       Shape shape = peCreateService.createShape( containerShape, false );
       // create and set text graphics algorithm
-      Text text = gaService.createText( shape, addedClass.getName() );
+      // 2 is the size of "SD"
+      Text text = gaService.createText( shape, addedClass.getName().substring( 2 ) );
+      //Text text = gaService.createText( shape, findImplementationArtifactName(addedClass.getId()) );
       text.setForeground( manageColor( E_CLASS_TEXT_FOREGROUND ) );
       text.setHorizontalAlignment( Orientation.ALIGNMENT_CENTER );
       // vertical alignment has as default value "center"
@@ -151,13 +156,23 @@ public class AddSoftwareDependencyFeature extends AbstractFeature
     return containerShape;
   }
 
-  @Override
-  public boolean canExecute( final IContext context ) {
-    return false;
-  }
-
-  @Override
-  public void execute( final IContext context ) {
-    // TODO Auto-generated method stub
-  }
+  
+//  private String findImplementationArtifactName(String artifactId){
+//    ToscaModelLayer model = ModelHandler.getModel( EcoreUtil.getURI( getDiagram() ) );
+//    DocumentRoot dr = model.getDocumentRoot();
+//    DefinitionsType dt = dr.getDefinitions();
+//    EList<TArtifactTemplate> artifactTemplates =
+//    dt.getArtifactTemplate();
+//
+//    for (TArtifactTemplate tempArtifactTemplate : artifactTemplates){
+//      if (tempArtifactTemplate.getId().equals( artifactId )){
+//        TArtifactReference artifactRef = tempArtifactTemplate.getArtifactReferences().getArtifactReference().get( 0 );
+//        String artifactReference = artifactRef.getReference();
+//        String artifactName = artifactReference.substring( artifactReference.indexOf( "\\" ) +1);
+//        return artifactName;
+//      }
+//    }
+//
+//   return null;
+//  }
 }

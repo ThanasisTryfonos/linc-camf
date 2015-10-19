@@ -16,6 +16,7 @@
 package org.eclipse.camf.ui.internal.preference;
 
 import org.eclipse.camf.ui.internal.Activator;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.SWT;
@@ -53,6 +54,7 @@ public class CEclipsePreferencePage extends PreferencePage implements IWorkbench
    */
   public CEclipsePreferencePage() {
     super();
+    IPreferenceStore ps = Activator.getDefault().getPreferenceStore();
     setPreferenceStore( Activator.getDefault().getPreferenceStore() );
     // setDescription("A demonstration of a preference page implementation");
   }
@@ -106,7 +108,7 @@ public class CEclipsePreferencePage extends PreferencePage implements IWorkbench
     infoComp.setLayout( layout );
     
     Label infoLabel1 = new Label( infoComp, SWT.LEFT );
-    infoLabel1.setText( "These are the preferences for the c-Eclipse plugin" ); //$NON-NLS-1$
+    infoLabel1.setText( "These are the preferences for the CAMF plugin" ); //$NON-NLS-1$
     infoLabel1.setFont( new Font( display, "Arial", 10, SWT.BOLD ) ); //$NON-NLS-1$
     gData = new GridData();
     gData.verticalAlignment = GridData.BEGINNING;
@@ -114,7 +116,7 @@ public class CEclipsePreferencePage extends PreferencePage implements IWorkbench
     infoLabel1.setLayoutData( gData );
     
     Label infoLabel2 = new Label( infoComp, SWT.LEFT );
-    infoLabel2.setText( "To change specific preferences of c-Eclipse\nchoose from the tree on the left." ); //$NON-NLS-1$
+    infoLabel2.setText( "To change specific preferences of CAMF\nchoose from the tree on the left." ); //$NON-NLS-1$
     gData = new GridData( GridData.FILL_VERTICAL );
     gData.verticalAlignment = GridData.BEGINNING;
     gData.verticalIndent = 12;

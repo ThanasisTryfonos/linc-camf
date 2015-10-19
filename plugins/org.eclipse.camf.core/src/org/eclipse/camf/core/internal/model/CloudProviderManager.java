@@ -34,7 +34,7 @@ import org.eclipse.camf.core.internal.Activator;
 
 
 /**
- * @author Nicholas Loulloudes
+ * @author Nicholas Loulloudes, Stalo Sofokleous
  *
  */
 public class CloudProviderManager extends AbstractDefaultCloudElementManager

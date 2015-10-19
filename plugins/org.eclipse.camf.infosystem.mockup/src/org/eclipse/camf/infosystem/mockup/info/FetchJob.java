@@ -13,6 +13,11 @@ package org.eclipse.camf.infosystem.mockup.info;
  * Contributors:
  * 	Nicholas Loulloudes - initial API and implementation
  *******************************************************************************/
+
+
+
+
+
 //package org.eclipse.camf.infosystem.mockup.info;
 //
 //import java.io.BufferedReader;

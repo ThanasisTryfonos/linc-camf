@@ -90,7 +90,16 @@ class Deployment {
   }
   
 	public String getStatus(){
-		return this.status;
+	  String status;
+	    if (this.cp == null){
+	      if (this.imageId != null)
+	        status = "RUNNING"; //$NON-NLS-1$
+	      else
+	        status = null;
+	    } else {
+	      status = "DEPLOYED"; //$NON-NLS-1$
+	    }
+	    return status;
 	}
   
   public String getIP(){

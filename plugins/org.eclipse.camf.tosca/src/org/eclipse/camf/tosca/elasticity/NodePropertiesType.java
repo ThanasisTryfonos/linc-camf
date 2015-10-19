@@ -38,30 +38,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface NodePropertiesType extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Flavor</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Flavor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Flavor</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Flavor</em>' attribute.
-   * @see #setFlavor(String)
-   * @see org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage#getNodePropertiesType_Flavor()
-   * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
-   *        extendedMetaData="kind='element' name='Flavor' namespace='##targetNamespace'"
-   * @generated
-   */
+	 * @return the value of the '<em>Flavor</em>' attribute.
+	 * @see #setFlavor(String)
+	 * @see org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage#getNodePropertiesType_Flavor()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String" required="true"
+	 *        extendedMetaData="kind='element' name='Flavor' namespace='##targetNamespace'"
+	 * @generated
+	 */
   String getFlavor();
 
   /**
-   * Sets the value of the '{@link org.eclipse.camf.tosca.elasticity.NodePropertiesType#getFlavor <em>Flavor</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.eclipse.camf.tosca.elasticity.NodePropertiesType#getFlavor <em>Flavor</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Flavor</em>' attribute.
-   * @see #getFlavor()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Flavor</em>' attribute.
+	 * @see #getFlavor()
+	 * @generated
+	 */
   void setFlavor(String value);
 
 } // NodePropertiesType

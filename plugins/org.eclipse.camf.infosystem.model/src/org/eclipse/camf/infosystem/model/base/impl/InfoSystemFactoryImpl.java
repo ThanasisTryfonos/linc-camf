@@ -1,20 +1,5 @@
-/*******************************************************************************
- * Copyright (c) 2014 Laboratory for Internet Computing, University of Cyprus.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Initial development of the original code was made for the 
- * CELAR project founded by European Union
- * project number: FP7-317790  http://www.celarcloud.eu
- *
- * Contributors:
- * 	Nicholas Loulloudes - initial API and implementation
- *******************************************************************************/
-/**
- */
 package org.eclipse.camf.infosystem.model.base.impl;
+
 
 import org.eclipse.camf.infosystem.model.base.*;
 import org.eclipse.emf.ecore.EClass;
@@ -179,17 +164,6 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public VirtualMachineImage createVirtualMachineImage()
-  {
-    VirtualMachineImageImpl virtualMachineImage = new VirtualMachineImageImpl();
-    return virtualMachineImage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public UserApplication createUserApplication()
   {
     UserApplicationImpl userApplication = new UserApplicationImpl();
@@ -242,25 +216,60 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
 
   /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public VirtualInstance createVirtualInstance() {
+  public VirtualMachineImage createVirtualMachineImage()
+  {
+    VirtualMachineImageImpl virtualMachineImage = new VirtualMachineImageImpl();
+    return virtualMachineImage;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Deployment createDeployment()
+  {
+    DeploymentImpl deployment = new DeploymentImpl();
+    return deployment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Module createModule()
+  {
+    ModuleImpl module = new ModuleImpl();
+    return module;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VirtualInstance createVirtualInstance()
+  {
     VirtualInstanceImpl virtualInstance = new VirtualInstanceImpl();
     return virtualInstance;
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public SecurityGroup createSecurityGroup() {
+  public SecurityGroup createSecurityGroup()
+  {
     SecurityGroupImpl securityGroup = new SecurityGroupImpl();
     return securityGroup;
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -271,7 +280,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return root;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -282,7 +291,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return images;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -293,7 +302,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return networks;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -304,7 +313,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return security;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -315,7 +324,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return keys;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -326,7 +335,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return groups;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -337,7 +346,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return flavors;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -348,7 +357,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return monitoring;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -359,27 +368,7 @@ public class InfoSystemFactoryImpl extends EFactoryImpl implements InfoSystemFac
     return monitoringService;
   }
 
-    /**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public Deployment createDeployment() {
-    DeploymentImpl deployment = new DeploymentImpl();
-    return deployment;
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public Module createModule() {
-    ModuleImpl module = new ModuleImpl();
-    return module;
-  }
-
-		/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated

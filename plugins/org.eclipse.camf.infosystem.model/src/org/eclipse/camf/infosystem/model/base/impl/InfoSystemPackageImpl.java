@@ -1,20 +1,5 @@
-/*******************************************************************************
- * Copyright (c) 2014 Laboratory for Internet Computing, University of Cyprus.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Initial development of the original code was made for the 
- * CELAR project founded by European Union
- * project number: FP7-317790  http://www.celarcloud.eu
- *
- * Contributors:
- * 	Nicholas Loulloudes - initial API and implementation
- *******************************************************************************/
-/**
- */
 package org.eclipse.camf.infosystem.model.base.impl;
+
 
 import org.eclipse.camf.infosystem.model.base.CloudProvider;
 import org.eclipse.camf.infosystem.model.base.Deployment;
@@ -84,13 +69,6 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass virtualMachineImageEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass userApplicationEClass = null;
 
   /**
@@ -123,96 +101,103 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
   /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	private EClass virtualInstanceEClass = null;
+  private EClass virtualMachineImageEClass = null;
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	private EClass securityGroupEClass = null;
+  private EClass deploymentEClass = null;
 
-		/**
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass moduleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass virtualInstanceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass securityGroupEClass = null;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass rootEClass = null;
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass imagesEClass = null;
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass networksEClass = null;
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass securityEClass = null;
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass keysEClass = null;
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass groupsEClass = null;
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass flavorsEClass = null;
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass monitoringEClass = null;
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   private EClass monitoringServiceEClass = null;
 
-    /**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	private EClass deploymentEClass = null;
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	private EClass moduleEClass = null;
-
-		/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -337,19 +322,9 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMonitoringProbe_URL()
-  {
-    return (EAttribute)monitoringProbeEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getMonitoringProbe_Metrics()
   {
-    return (EAttribute)monitoringProbeEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)monitoringProbeEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -467,66 +442,6 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getVirtualMachineImage()
-  {
-    return virtualMachineImageEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVirtualMachineImage_UID()
-  {
-    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVirtualMachineImage_Name()
-  {
-    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVirtualMachineImage_Description()
-  {
-    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVirtualMachineImage_Type()
-  {
-    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVirtualMachineImage_URL()
-  {
-    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getUserApplication()
   {
     return userApplicationEClass;
@@ -614,32 +529,35 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
   /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getKeyPair_PublicKey() {
+  public EAttribute getKeyPair_PublicKey()
+  {
     return (EAttribute)keyPairEClass.getEStructuralFeatures().get(2);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getKeyPair_Description() {
+  public EAttribute getKeyPair_Description()
+  {
     return (EAttribute)keyPairEClass.getEStructuralFeatures().get(3);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getKeyPair_URL() {
+  public EAttribute getKeyPair_URL()
+  {
     return (EAttribute)keyPairEClass.getEStructuralFeatures().get(4);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -671,32 +589,35 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
   /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getVirtualMachineImageFlavor_Ram() {
+  public EAttribute getVirtualMachineImageFlavor_Ram()
+  {
     return (EAttribute)virtualMachineImageFlavorEClass.getEStructuralFeatures().get(2);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getVirtualMachineImageFlavor_Hdd() {
+  public EAttribute getVirtualMachineImageFlavor_Hdd()
+  {
     return (EAttribute)virtualMachineImageFlavorEClass.getEStructuralFeatures().get(3);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getVirtualMachineImageFlavor_VCPU() {
+  public EAttribute getVirtualMachineImageFlavor_VCPU()
+  {
     return (EAttribute)virtualMachineImageFlavorEClass.getEStructuralFeatures().get(4);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -828,95 +749,265 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
 
   /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EClass getVirtualInstance() {
+  public EClass getVirtualMachineImage()
+  {
+    return virtualMachineImageEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVirtualMachineImage_UID()
+  {
+    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVirtualMachineImage_Name()
+  {
+    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVirtualMachineImage_Description()
+  {
+    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVirtualMachineImage_Type()
+  {
+    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVirtualMachineImage_URL()
+  {
+    return (EAttribute)virtualMachineImageEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDeployment()
+  {
+    return deploymentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeployment_DepID()
+  {
+    return (EAttribute)deploymentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeployment_DeploymentName()
+  {
+    return (EAttribute)deploymentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDeployment_Modules()
+  {
+    return (EReference)deploymentEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDeployment_Status()
+  {
+    return (EAttribute)deploymentEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getModule()
+  {
+    return moduleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModule_ModID()
+  {
+    return (EAttribute)moduleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModule_ModuleName()
+  {
+    return (EAttribute)moduleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModule_Instances()
+  {
+    return (EReference)moduleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModule_InitInstances()
+  {
+    return (EAttribute)moduleEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVirtualInstance()
+  {
     return virtualInstanceEClass;
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getVirtualInstance_UID() {
+  public EAttribute getVirtualInstance_UID()
+  {
     return (EAttribute)virtualInstanceEClass.getEStructuralFeatures().get(0);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getVirtualInstance_Name() {
+  public EAttribute getVirtualInstance_Name()
+  {
     return (EAttribute)virtualInstanceEClass.getEStructuralFeatures().get(1);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getVirtualInstance_Status() {
+  public EAttribute getVirtualInstance_Status()
+  {
     return (EAttribute)virtualInstanceEClass.getEStructuralFeatures().get(2);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getVirtualInstance_IPs() {
+  public EAttribute getVirtualInstance_IPs()
+  {
     return (EAttribute)virtualInstanceEClass.getEStructuralFeatures().get(3);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getVirtualInstance_URI() {
+  public EAttribute getVirtualInstance_URI()
+  {
     return (EAttribute)virtualInstanceEClass.getEStructuralFeatures().get(4);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EClass getSecurityGroup() {
+  public EClass getSecurityGroup()
+  {
     return securityGroupEClass;
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getSecurityGroup_UID() {
+  public EAttribute getSecurityGroup_UID()
+  {
     return (EAttribute)securityGroupEClass.getEStructuralFeatures().get(0);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getSecurityGroup_Name() {
+  public EAttribute getSecurityGroup_Name()
+  {
     return (EAttribute)securityGroupEClass.getEStructuralFeatures().get(1);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EAttribute getSecurityGroup_Description() {
+  public EAttribute getSecurityGroup_Description()
+  {
     return (EAttribute)securityGroupEClass.getEStructuralFeatures().get(2);
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -926,7 +1017,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return rootEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -936,7 +1027,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)rootEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -946,7 +1037,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return imagesEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -956,7 +1047,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)imagesEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -966,7 +1057,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return networksEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -976,7 +1067,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)networksEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -986,7 +1077,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return securityEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -996,7 +1087,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)securityEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1006,7 +1097,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)securityEClass.getEStructuralFeatures().get(1);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1016,7 +1107,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return keysEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1026,7 +1117,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)keysEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1036,7 +1127,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return groupsEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1046,7 +1137,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)groupsEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1056,7 +1147,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return flavorsEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1066,7 +1157,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)flavorsEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1076,7 +1167,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return monitoringEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1086,7 +1177,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)monitoringEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1096,7 +1187,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return monitoringServiceEClass;
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1106,7 +1197,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EAttribute)monitoringServiceEClass.getEStructuralFeatures().get(0);
   }
 
-    /**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1116,97 +1207,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     return (EReference)monitoringServiceEClass.getEStructuralFeatures().get(1);
   }
 
-    /**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EClass getDeployment() {
-    return deploymentEClass;
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EAttribute getDeployment_DepID() {
-    return (EAttribute)deploymentEClass.getEStructuralFeatures().get(0);
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EAttribute getDeployment_DeploymentName() {
-    return (EAttribute)deploymentEClass.getEStructuralFeatures().get(1);
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EReference getDeployment_Modules() {
-    return (EReference)deploymentEClass.getEStructuralFeatures().get(2);
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EAttribute getDeployment_Status() {
-    return (EAttribute)deploymentEClass.getEStructuralFeatures().get(3);
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EClass getModule() {
-    return moduleEClass;
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EAttribute getModule_ModID() {
-    return (EAttribute)moduleEClass.getEStructuralFeatures().get(0);
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EAttribute getModule_ModuleName() {
-    return (EAttribute)moduleEClass.getEStructuralFeatures().get(1);
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EReference getModule_Instances() {
-    return (EReference)moduleEClass.getEStructuralFeatures().get(2);
-  }
-
-		/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public EAttribute getModule_InitInstances() {
-    return (EAttribute)moduleEClass.getEStructuralFeatures().get(3);
-  }
-
-		/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1260,7 +1261,6 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     createEAttribute(monitoringProbeEClass, MONITORING_PROBE__UID);
     createEAttribute(monitoringProbeEClass, MONITORING_PROBE__NAME);
     createEAttribute(monitoringProbeEClass, MONITORING_PROBE__DESCRIPTION);
-    createEAttribute(monitoringProbeEClass, MONITORING_PROBE__URL);
     createEAttribute(monitoringProbeEClass, MONITORING_PROBE__METRICS);
 
     resizingActionEClass = createEClass(RESIZING_ACTION);
@@ -1417,8 +1417,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
     initEAttribute(getMonitoringProbe_UID(), theXMLTypePackage.getString(), "uID", null, 1, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMonitoringProbe_Name(), theXMLTypePackage.getString(), "name", null, 1, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMonitoringProbe_Description(), theXMLTypePackage.getString(), "description", null, 1, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMonitoringProbe_URL(), theXMLTypePackage.getString(), "uRL", null, 1, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMonitoringProbe_Metrics(), theXMLTypePackage.getString(), "metrics", null, 0, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMonitoringProbe_Metrics(), theXMLTypePackage.getString(), "metrics", null, 1, 1, MonitoringProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(resizingActionEClass, ResizingAction.class, "ResizingAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getResizingAction_UID(), theXMLTypePackage.getString(), "uID", null, 1, 1, ResizingAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1590,7 +1589,7 @@ public class InfoSystemPackageImpl extends EPackageImpl implements InfoSystemPac
        "namespace", "##targetNamespace"
        });	
     addAnnotation
-      (getMonitoringProbe_URL(), 
+      (getMonitoringProbe_Metrics(), 
        source, 
        new String[] 
        {

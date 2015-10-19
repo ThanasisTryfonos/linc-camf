@@ -51,199 +51,191 @@ import org.example.sybl.SyblPackage;
 public class SyblElasticityRequirementsDescriptionImpl extends EObjectImpl implements SyblElasticityRequirementsDescription
 {
   /**
-   * An array of objects representing the values of non-primitive features.
-   * <!-- begin-user-doc -->
+	 * An array of objects representing the values of non-primitive features.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Object[] eVirtualValues;
 
   /**
-   * A bit field representing the indices of non-primitive feature values.
-   * <!-- begin-user-doc -->
+	 * A bit field representing the indices of non-primitive feature values.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected int eVirtualIndexBits0;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected SyblElasticityRequirementsDescriptionImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return SyblPackage.Literals.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION;
-  }
+		return SyblPackage.Literals.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   public EList<SYBLSpecificationType> getSYBLSpecification()
   {
-    EList<SYBLSpecificationType> sYBLSpecification = (EList<SYBLSpecificationType>)eVirtualGet(SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION);
-    if (sYBLSpecification == null)
-    {
-      eVirtualSet(SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION, sYBLSpecification = new EObjectContainmentEList<SYBLSpecificationType>(SYBLSpecificationType.class, this, SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION));
-    }
-    return sYBLSpecification;
-  }
+		EList<SYBLSpecificationType> sYBLSpecification = (EList<SYBLSpecificationType>)eVirtualGet(SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION);
+		if (sYBLSpecification == null) {
+			eVirtualSet(SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION, sYBLSpecification = new EObjectContainmentEList<SYBLSpecificationType>(SYBLSpecificationType.class, this, SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION));
+		}
+		return sYBLSpecification;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
-        return ((InternalEList<?>)getSYBLSpecification()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
+				return ((InternalEList<?>)getSYBLSpecification()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
-        return getSYBLSpecification();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
+				return getSYBLSpecification();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
-        getSYBLSpecification().clear();
-        getSYBLSpecification().addAll((Collection<? extends SYBLSpecificationType>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
+				getSYBLSpecification().clear();
+				getSYBLSpecification().addAll((Collection<? extends SYBLSpecificationType>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
-        getSYBLSpecification().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
+				getSYBLSpecification().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
-        EList<SYBLSpecificationType> sYBLSpecification = (EList<SYBLSpecificationType>)eVirtualGet(SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION);
-        return sYBLSpecification != null && !sYBLSpecification.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION:
+				EList<SYBLSpecificationType> sYBLSpecification = (EList<SYBLSpecificationType>)eVirtualGet(SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION__SYBL_SPECIFICATION);
+				return sYBLSpecification != null && !sYBLSpecification.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected Object[] eVirtualValues()
   {
-    return eVirtualValues;
-  }
+		return eVirtualValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualValues(Object[] newValues)
   {
-    eVirtualValues = newValues;
-  }
+		eVirtualValues = newValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected int eVirtualIndexBits(int offset)
   {
-    switch (offset)
-    {
-      case 0 :
-        return eVirtualIndexBits0;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualIndexBits(int offset, int newIndexBits)
   {
-    switch (offset)
-    {
-      case 0 :
-        eVirtualIndexBits0 = newIndexBits;
-        break;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
 } //SyblElasticityRequirementsDescriptionImpl

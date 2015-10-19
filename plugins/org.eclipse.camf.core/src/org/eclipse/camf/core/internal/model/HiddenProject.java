@@ -199,7 +199,7 @@ public class HiddenProject extends ResourceCloudContainer implements ICloudProje
       try {
         project.open( null );
       } catch( CoreException exception ) {
-        throw new ProblemException( "eu.cerlar.core.problem.io.openProjectFailed", exception, Activator.PLUGIN_ID ); //$NON-NLS-1$
+        throw new ProblemException( "org.eclipse.camf.core.problem.io.openProjectFailed", exception, Activator.PLUGIN_ID ); //$NON-NLS-1$
       }
     }
     return project;

@@ -37,33 +37,32 @@ public class SyblXMLProcessor extends XMLProcessor
 {
 
   /**
-   * Public constructor to instantiate the helper.
-   * <!-- begin-user-doc -->
+	 * Public constructor to instantiate the helper.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public SyblXMLProcessor()
   {
-    super((EPackage.Registry.INSTANCE));
-    SyblPackage.eINSTANCE.eClass();
-  }
+		super((EPackage.Registry.INSTANCE));
+		SyblPackage.eINSTANCE.eClass();
+	}
   
   /**
-   * Register for "*" and "xml" file extensions the SyblResourceFactoryImpl factory.
-   * <!-- begin-user-doc -->
+	 * Register for "*" and "xml" file extensions the SyblResourceFactoryImpl factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected Map<String, Resource.Factory> getRegistrations()
   {
-    if (registrations == null)
-    {
-      super.getRegistrations();
-      registrations.put(XML_EXTENSION, new SyblResourceFactoryImpl());
-      registrations.put(STAR_EXTENSION, new SyblResourceFactoryImpl());
-    }
-    return registrations;
-  }
+		if (registrations == null) {
+			super.getRegistrations();
+			registrations.put(XML_EXTENSION, new SyblResourceFactoryImpl());
+			registrations.put(STAR_EXTENSION, new SyblResourceFactoryImpl());
+		}
+		return registrations;
+	}
 
 } //SyblXMLProcessor

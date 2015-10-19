@@ -111,35 +111,46 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
   public IAddFeature getAddFeature( final IAddContext context ) {
     if( context.getNewObject() instanceof TNodeTemplate ) {
       return new AddApplicationComponentFeature( this );
-    } 
-//    else if( context.getNewObject() instanceof TRelationshipTemplate
-//               && ( ( TRelationshipTemplate )context.getNewObject() ).getType().toString().compareTo("Bidirected") == 0 ) //$NON-NLS-1$
-//    {
-//      return new AddBidirectionalRelationFeature( this );
-//    }
+    }
+    // else if( context.getNewObject() instanceof TRelationshipTemplate
+    //               && ( ( TRelationshipTemplate )context.getNewObject() ).getType().toString().compareTo("Bidirected") == 0 ) //$NON-NLS-1$
+    // {
+    // return new AddBidirectionalRelationFeature( this );
+    // }
     else if( context.getNewObject() instanceof TRelationshipTemplate ) {
       return new AddDirectedRelationFeature( this );
-    } else if( context.getNewObject() instanceof TDeploymentArtifact ) {      
-      if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "UA" )==0)
-          return new AddUserApplicationFeature( this );
-      else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "SD" )==0)
-          return new AddSoftwareDependencyFeature( this );
-      else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "VMI" )==0)
-          return new AddVirtualMachineFeature( this );
-      else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "KeyPair" )==0)
+    } else if( context.getNewObject() instanceof TDeploymentArtifact ) {
+      if( ( ( TDeploymentArtifact )context.getNewObject() ).getArtifactType()
+        .toString()
+        .compareTo( "UA" ) == 0 )
+        return new AddUserApplicationFeature( this );
+      else if( ( ( TDeploymentArtifact )context.getNewObject() ).getArtifactType()
+        .toString()
+        .compareTo( "SD" ) == 0 )
+        return new AddSoftwareDependencyFeature( this );
+      else if( ( ( TDeploymentArtifact )context.getNewObject() ).getArtifactType()
+        .toString()
+        .compareTo( "VMI" ) == 0 )
+        return new AddVirtualMachineFeature( this );
+      else if( ( ( TDeploymentArtifact )context.getNewObject() ).getArtifactType()
+        .toString()
+        .compareTo( "KeyPair" ) == 0 )
         return new AddKeyPairFeature( this );
-      else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "Network" )==0)
+      else if( ( ( TDeploymentArtifact )context.getNewObject() ).getArtifactType()
+        .toString()
+        .compareTo( "Network" ) == 0 )
         return new AddNetworkFeature( this );
-      else if (((TDeploymentArtifact)context.getNewObject()).getArtifactType().toString().compareTo( "MonitoringProbe" )==0)
+      else if( ( ( TDeploymentArtifact )context.getNewObject() ).getArtifactType()
+        .toString()
+        .compareTo( "MonitoringProbe" ) == 0 )
         return new AddMonitorProbeFeature( this );
-      
-    } else if( context.getNewObject() instanceof ResourceCloudElement) {            
-      return getIFileFeature(context);
-    } else if (context.getNewObject() instanceof VirtualMachineImage ){
+    } else if( context.getNewObject() instanceof ResourceCloudElement ) {
+      return getIFileFeature( context );
+    } else if( context.getNewObject() instanceof VirtualMachineImage ) {
       return new AddVirtualMachineFeature( this );
-    } else if (context.getNewObject() instanceof KeyPair ){
+    } else if( context.getNewObject() instanceof KeyPair ) {
       return new AddKeyPairFeature( this );
-    } else if (context.getNewObject() instanceof VirtualNetwork ){
+    } else if( context.getNewObject() instanceof VirtualNetwork ) {
       return new AddNetworkFeature( this );
     } else if( context.getNewObject() instanceof ResizingAction ) {
       return new AddResizingActionFeature( this );
@@ -149,65 +160,50 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
       return new AddSecurityGroupFeature( this );
     } else if( context.getNewObject() instanceof MonitoringProbe ) {
       return new AddMonitorProbeFeature( this );
-    } 
+    }
     // its a substitutional Service Template
     else if( context.getNewObject() instanceof TServiceTemplate
-        && ( ( TServiceTemplate )context.getNewObject() ).getSubstitutableNodeType() != null )
+             && ( ( TServiceTemplate )context.getNewObject() ).getSubstitutableNodeType() != null )
     {
       return new AddGroupFeature( this );
     } else if( context.getNewObject() instanceof TServiceTemplate ) {
       return new AddServiceTemplateFeature( this );
-    } 
+    }
     return super.getAddFeature( context );
   }
 
   /**
    * @return
    */
-	private AbstractAddShapeFeature getIFileFeature(final IAddContext context) {
-		ResourceCloudElement element = (ResourceCloudElement) context
-				.getNewObject();
-		AbstractAddShapeFeature result = null;
-
-		String extension = element.getResource().getFileExtension();
-		
-		TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE
-				.createTDeploymentArtifact();
-		deploymentArtifact.setName(element.getName());
-		CreateContext createContext = new CreateContext();
-		createContext.setTargetContainer(context.getTargetContainer());
-
-		if (extension.equals("pub")) { //$NON-NLS-1$
-			// Call the Create User Application Feature to create a deployment
-			// artifact for the deployment script and add it to the artifacts
-			// list
-            CreateKeyPairFeature createKPFeature = new CreateKeyPairFeature( new ToscaFeatureProvider( getDiagramTypeProvider() ) );
-
-			deploymentArtifact.setArtifactType(new QName("KeyPair"));
-
-			createKPFeature.setContextObject(deploymentArtifact);
-
-			if (createKPFeature.canCreate(createContext)) {
-				createKPFeature.create(createContext);
-			}
-
-		} else if (extension.equals("sh")) {
-			CreateSoftwareDependencyFeature createSDFeature = new CreateSoftwareDependencyFeature(
-					new ToscaFeatureProvider(getDiagramTypeProvider()));
-
-			deploymentArtifact.setName(element.getName());
-			deploymentArtifact.setArtifactType(new QName("SD"));
-			createSDFeature.setContextObject(deploymentArtifact);
-			
-
-			if (createSDFeature.canCreate(createContext)) {
-				createSDFeature.create(createContext);
-			}
-		}
-
-		return result;
-	}
-  
+  private AbstractAddShapeFeature getIFileFeature( final IAddContext context ) {
+    ResourceCloudElement element = ( ResourceCloudElement )context.getNewObject();
+    AbstractAddShapeFeature result = null;
+    String extension = element.getResource().getFileExtension();
+    TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
+    deploymentArtifact.setName( element.getName() );
+    CreateContext createContext = new CreateContext();
+    createContext.setTargetContainer( context.getTargetContainer() );
+    if( extension.equals( "pub" ) ) { //$NON-NLS-1$
+      // Call the Create User Application Feature to create a deployment
+      // artifact for the deployment script and add it to the artifacts
+      // list
+      CreateKeyPairFeature createKPFeature = new CreateKeyPairFeature( new ToscaFeatureProvider( getDiagramTypeProvider() ) );
+      deploymentArtifact.setArtifactType( new QName( "KeyPair" ) );
+      createKPFeature.setContextObject( deploymentArtifact );
+      if( createKPFeature.canCreate( createContext ) ) {
+        createKPFeature.create( createContext );
+      }
+    } else if( extension.equals( "sh" ) ) {
+      CreateSoftwareDependencyFeature createSDFeature = new CreateSoftwareDependencyFeature( new ToscaFeatureProvider( getDiagramTypeProvider() ) );
+      deploymentArtifact.setName( element.getName() );
+      deploymentArtifact.setArtifactType( new QName( "SD" ) );
+      createSDFeature.setContextObject( deploymentArtifact );
+      if( createSDFeature.canCreate( createContext ) ) {
+        createSDFeature.create( createContext );
+      }
+    }
+    return result;
+  }
 
   // Initializes all create features
   @Override
@@ -218,7 +214,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
       new CreateNetworkFeature( this ),
       new CreateSoftwareDependencyFeature( this ),
       new CreateMonitorProbeFeature( this ),
-      new CreateFlavorFeature(this),
+      new CreateFlavorFeature( this ),
       new CreateServiceTemplateFeature( this ),
       new CreateResizeActionFeature( this ),
       new CreateUserApplicationFeature( this ),
@@ -230,23 +226,20 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
 
   // Custom delete feature for application components and composite components
   @Override
-  public IDeleteFeature getDeleteFeature(IDeleteContext context){
+  public IDeleteFeature getDeleteFeature( IDeleteContext context ) {
     PictogramElement pictogramElement = context.getPictogramElement();
     Object bo = getBusinessObjectForPictogramElement( pictogramElement );
     if( bo instanceof TServiceTemplate ) {
-      //TServiceTemplate representing Composite Component
+      // TServiceTemplate representing Composite Component
       return new DeleteGroupFeature( this );
-    }
-    else if (bo instanceof TNodeTemplate){
+    } else if( bo instanceof TNodeTemplate ) {
       return new DeleteApplicationComponentFeature( this );
-    }
-    else if ( bo instanceof TDeploymentArtifact){
+    } else if( bo instanceof TDeploymentArtifact ) {
       return new DeleteDeploymentArtifactFeature( this );
     }
-      
     return super.getDeleteFeature( context );
   }
-  
+
   // Enables direct editing
   @Override
   public IDirectEditingFeature getDirectEditingFeature( final IDirectEditingContext context )
@@ -255,8 +248,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
     Object bo = getBusinessObjectForPictogramElement( pe );
     if( bo instanceof TNodeTemplate ) {
       return new DirectEditApplicationComponentFeature( this );
-    }
-    else if( bo instanceof TServiceTemplate ) {
+    } else if( bo instanceof TServiceTemplate ) {
       return new DirectEditCompositeComponentFeature( this );
     }
     return super.getDirectEditingFeature( context );
@@ -270,7 +262,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
     if( bo instanceof TNodeTemplate ) {
       return new LayoutApplicationComponentFeature( this );
     }
-    if ( bo instanceof TServiceTemplate ){
+    if( bo instanceof TServiceTemplate ) {
       return new LayoutServiceTemplateFeature( this );
     }
     return super.getLayoutFeature( context );
@@ -284,8 +276,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
       Object bo = getBusinessObjectForPictogramElement( pictogramElement );
       if( bo instanceof TNodeTemplate ) {
         return new UpdateApplicationComponentFeature( this );
-      }
-      else if( bo instanceof TServiceTemplate ) {
+      } else if( bo instanceof TServiceTemplate ) {
         return new UpdateCompositeComponentFeature( this );
       }
     }
@@ -301,7 +292,7 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
     if( bo instanceof TNodeTemplate ) {
       return new MoveApplicationComponentFeature( this );
     }
-    if ( bo instanceof TServiceTemplate ){
+    if( bo instanceof TServiceTemplate ) {
       return new MoveCompositeComponentFeature( this );
     }
     return super.getMoveShapeFeature( context );
@@ -321,21 +312,22 @@ public class ToscaFeatureProvider extends DefaultFeatureProvider {
   public ICreateConnectionFeature[] getCreateConnectionFeatures() {
     return new ICreateConnectionFeature[]{
       new CreateDirectedRelationFeature( this )
-//      ,
-//      new CreateBidirectionalRelationFeature( this )
+    // ,
+    // new CreateBidirectionalRelationFeature( this )
     };
   }
-  
+
   @Override
-  public IResizeShapeFeature getResizeShapeFeature(IResizeShapeContext context) {
-      Shape shape = context.getShape();
-      Object bo = getBusinessObjectForPictogramElement(shape);
-      if (bo instanceof TNodeTemplate) {
-        return new ResizeApplicationComponentFeature(this);
-      }
-      if (bo instanceof TServiceTemplate){
-        return new ResizeCompositeComponentFeature(this);
-      }
-      return super.getResizeShapeFeature(context);
+  public IResizeShapeFeature getResizeShapeFeature( IResizeShapeContext context )
+  {
+    Shape shape = context.getShape();
+    Object bo = getBusinessObjectForPictogramElement( shape );
+    if( bo instanceof TNodeTemplate ) {
+      return new ResizeApplicationComponentFeature( this );
+    }
+    if( bo instanceof TServiceTemplate ) {
+      return new ResizeCompositeComponentFeature( this );
+    }
+    return super.getResizeShapeFeature( context );
   }
 }

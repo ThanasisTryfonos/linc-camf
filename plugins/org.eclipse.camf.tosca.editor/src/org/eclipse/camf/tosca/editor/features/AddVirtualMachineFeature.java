@@ -22,6 +22,7 @@ import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.ToscaFactory;
 import org.eclipse.camf.tosca.editor.diagram.ToscaFeatureProvider;
+import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.impl.CreateContext;
@@ -50,6 +51,8 @@ public class AddVirtualMachineFeature extends AbstractAddShapeFeature {
                                                                               178,
                                                                               170 );
 
+  private String imageType = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getImageArtifactPropertiesType().getName();
+
   public AddVirtualMachineFeature( final IFeatureProvider fp ) {
     super( fp );
   }
@@ -69,7 +72,7 @@ public class AddVirtualMachineFeature extends AbstractAddShapeFeature {
     {
       if( ( ( TDeploymentArtifact )context.getNewObject() ).getArtifactType()
         .toString()
-        .compareTo( "VMI" ) == 0 )
+        .compareTo( imageType ) == 0 )
         result = true;
     } else if( context.getNewObject() instanceof VirtualMachineImage ) {
       result = true;

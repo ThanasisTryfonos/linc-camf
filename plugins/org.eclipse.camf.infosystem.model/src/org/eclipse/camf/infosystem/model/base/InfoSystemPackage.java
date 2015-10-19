@@ -1,20 +1,5 @@
-/*******************************************************************************
- * Copyright (c) 2014 Laboratory for Internet Computing, University of Cyprus.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Initial development of the original code was made for the 
- * CELAR project founded by European Union
- * project number: FP7-317790  http://www.celarcloud.eu
- *
- * Contributors:
- * 	Nicholas Loulloudes - initial API and implementation
- *******************************************************************************/
-/**
- */
 package org.eclipse.camf.infosystem.model.base;
+
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -110,22 +95,13 @@ public interface InfoSystemPackage extends EPackage
   int MONITORING_PROBE__DESCRIPTION = 2;
 
   /**
-   * The feature id for the '<em><b>URL</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MONITORING_PROBE__URL = 3;
-
-  /**
    * The feature id for the '<em><b>Metrics</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MONITORING_PROBE__METRICS = 4;
+  int MONITORING_PROBE__METRICS = 3;
 
   /**
    * The number of structural features of the '<em>Monitoring Probe</em>' class.
@@ -134,7 +110,7 @@ public interface InfoSystemPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MONITORING_PROBE_FEATURE_COUNT = 5;
+  int MONITORING_PROBE_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.ResizingActionImpl <em>Resizing Action</em>}' class.
@@ -256,16 +232,6 @@ public interface InfoSystemPackage extends EPackage
   int SOFTWARE_DEPENDENCY_FEATURE_COUNT = 5;
 
   /**
-   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageImpl <em>Virtual Machine Image</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageImpl
-   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualMachineImage()
-   * @generated
-   */
-  int VIRTUAL_MACHINE_IMAGE = 8;
-
-  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.UserApplicationImpl <em>User Application</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -360,31 +326,31 @@ public interface InfoSystemPackage extends EPackage
   /**
    * The feature id for the '<em><b>Public Key</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int KEY_PAIR__PUBLIC_KEY = 2;
+  int KEY_PAIR__PUBLIC_KEY = 2;
 
-		/**
+  /**
    * The feature id for the '<em><b>Description</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int KEY_PAIR__DESCRIPTION = 3;
+  int KEY_PAIR__DESCRIPTION = 3;
 
-		/**
+  /**
    * The feature id for the '<em><b>URL</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int KEY_PAIR__URL = 4;
+  int KEY_PAIR__URL = 4;
 
-		/**
+  /**
    * The number of structural features of the '<em>Key Pair</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -424,31 +390,31 @@ public interface InfoSystemPackage extends EPackage
   /**
    * The feature id for the '<em><b>Ram</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int VIRTUAL_MACHINE_IMAGE_FLAVOR__RAM = 2;
+  int VIRTUAL_MACHINE_IMAGE_FLAVOR__RAM = 2;
 
-		/**
+  /**
    * The feature id for the '<em><b>Hdd</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int VIRTUAL_MACHINE_IMAGE_FLAVOR__HDD = 3;
+  int VIRTUAL_MACHINE_IMAGE_FLAVOR__HDD = 3;
 
-		/**
+  /**
    * The feature id for the '<em><b>VCPU</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int VIRTUAL_MACHINE_IMAGE_FLAVOR__VCPU = 4;
+  int VIRTUAL_MACHINE_IMAGE_FLAVOR__VCPU = 4;
 
-		/**
+  /**
    * The number of structural features of the '<em>Virtual Machine Image Flavor</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -595,6 +561,16 @@ public interface InfoSystemPackage extends EPackage
   int CLOUD_PROVIDER_FEATURE_COUNT = 7;
 
   /**
+   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageImpl <em>Virtual Machine Image</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageImpl
+   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualMachineImage()
+   * @generated
+   */
+  int VIRTUAL_MACHINE_IMAGE = 8;
+
+  /**
    * The feature id for the '<em><b>UID</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -649,26 +625,226 @@ public interface InfoSystemPackage extends EPackage
   int VIRTUAL_MACHINE_IMAGE_FEATURE_COUNT = 5;
 
   /**
+   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl <em>Deployment</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl
+   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getDeployment()
+   * @generated
+   */
+  int DEPLOYMENT = 9;
+
+  /**
+   * The feature id for the '<em><b>Dep ID</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEPLOYMENT__DEP_ID = 0;
+
+  /**
+   * The feature id for the '<em><b>Deployment Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEPLOYMENT__DEPLOYMENT_NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Modules</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEPLOYMENT__MODULES = 2;
+
+  /**
+   * The feature id for the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEPLOYMENT__STATUS = 3;
+
+  /**
+   * The number of structural features of the '<em>Deployment</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEPLOYMENT_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.ModuleImpl <em>Module</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.camf.infosystem.model.base.impl.ModuleImpl
+   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getModule()
+   * @generated
+   */
+  int MODULE = 10;
+
+  /**
+   * The feature id for the '<em><b>Mod ID</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__MOD_ID = 0;
+
+  /**
+   * The feature id for the '<em><b>Module Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__MODULE_NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Instances</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__INSTANCES = 2;
+
+  /**
+   * The feature id for the '<em><b>Init Instances</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__INIT_INSTANCES = 3;
+
+  /**
+   * The number of structural features of the '<em>Module</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE_FEATURE_COUNT = 4;
+
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualInstanceImpl <em>Virtual Instance</em>}' class.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @see org.eclipse.camf.infosystem.model.base.impl.VirtualInstanceImpl
    * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualInstance()
    * @generated
    */
-	int VIRTUAL_INSTANCE = 11;
+  int VIRTUAL_INSTANCE = 11;
 
-		/**
+  /**
+   * The feature id for the '<em><b>UID</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIRTUAL_INSTANCE__UID = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIRTUAL_INSTANCE__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Status</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIRTUAL_INSTANCE__STATUS = 2;
+
+  /**
+   * The feature id for the '<em><b>IPs</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIRTUAL_INSTANCE__IPS = 3;
+
+  /**
+   * The feature id for the '<em><b>URI</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIRTUAL_INSTANCE__URI = 4;
+
+  /**
+   * The number of structural features of the '<em>Virtual Instance</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VIRTUAL_INSTANCE_FEATURE_COUNT = 5;
+
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.SecurityGroupImpl <em>Security Group</em>}' class.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @see org.eclipse.camf.infosystem.model.base.impl.SecurityGroupImpl
    * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getSecurityGroup()
    * @generated
    */
-	int SECURITY_GROUP = 12;
+  int SECURITY_GROUP = 12;
 
-		/**
+  /**
+   * The feature id for the '<em><b>UID</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SECURITY_GROUP__UID = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SECURITY_GROUP__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Description</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SECURITY_GROUP__DESCRIPTION = 2;
+
+  /**
+   * The number of structural features of the '<em>Security Group</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SECURITY_GROUP_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.RootImpl <em>Root</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -678,7 +854,25 @@ public interface InfoSystemPackage extends EPackage
    */
   int ROOT = 13;
 
-    /**
+  /**
+   * The feature id for the '<em><b>Cloud Providers</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOT__CLOUD_PROVIDERS = 0;
+
+  /**
+   * The number of structural features of the '<em>Root</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOT_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.ImagesImpl <em>Images</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -688,7 +882,25 @@ public interface InfoSystemPackage extends EPackage
    */
   int IMAGES = 14;
 
-    /**
+  /**
+   * The feature id for the '<em><b>Vms</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMAGES__VMS = 0;
+
+  /**
+   * The number of structural features of the '<em>Images</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMAGES_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.NetworksImpl <em>Networks</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -698,7 +910,25 @@ public interface InfoSystemPackage extends EPackage
    */
   int NETWORKS = 15;
 
-    /**
+  /**
+   * The feature id for the '<em><b>Nets</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NETWORKS__NETS = 0;
+
+  /**
+   * The number of structural features of the '<em>Networks</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NETWORKS_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.SecurityImpl <em>Security</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -708,261 +938,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int SECURITY = 16;
 
-    /**
-   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl <em>Deployment</em>}' class.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @see org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl
-   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getDeployment()
-   * @generated
-   */
-	int DEPLOYMENT = 9;
-
-		/**
-   * The feature id for the '<em><b>Dep ID</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT__DEP_ID = 0;
-
-		/**
-   * The feature id for the '<em><b>Deployment Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT__DEPLOYMENT_NAME = 1;
-
-		/**
-   * The feature id for the '<em><b>Modules</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT__MODULES = 2;
-
-		/**
-   * The feature id for the '<em><b>Status</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT__STATUS = 3;
-
-		/**
-   * The number of structural features of the '<em>Deployment</em>' class.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int DEPLOYMENT_FEATURE_COUNT = 4;
-
-		/**
-   * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.ModuleImpl <em>Module</em>}' class.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @see org.eclipse.camf.infosystem.model.base.impl.ModuleImpl
-   * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getModule()
-   * @generated
-   */
-	int MODULE = 10;
-
-		/**
-   * The feature id for the '<em><b>Mod ID</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODULE__MOD_ID = 0;
-
-		/**
-   * The feature id for the '<em><b>Module Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODULE__MODULE_NAME = 1;
-
-		/**
-   * The feature id for the '<em><b>Instances</b></em>' reference list.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODULE__INSTANCES = 2;
-
-		/**
-   * The feature id for the '<em><b>Init Instances</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODULE__INIT_INSTANCES = 3;
-
-		/**
-   * The number of structural features of the '<em>Module</em>' class.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int MODULE_FEATURE_COUNT = 4;
-
-    /**
-   * The feature id for the '<em><b>UID</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int VIRTUAL_INSTANCE__UID = 0;
-
-    /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int VIRTUAL_INSTANCE__NAME = 1;
-
-    /**
-   * The feature id for the '<em><b>Status</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int VIRTUAL_INSTANCE__STATUS = 2;
-
-    /**
-   * The feature id for the '<em><b>IPs</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int VIRTUAL_INSTANCE__IPS = 3;
-
-    /**
-   * The feature id for the '<em><b>URI</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int VIRTUAL_INSTANCE__URI = 4;
-
-    /**
-   * The number of structural features of the '<em>Virtual Instance</em>' class.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int VIRTUAL_INSTANCE_FEATURE_COUNT = 5;
-
-    /**
-   * The feature id for the '<em><b>UID</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SECURITY_GROUP__UID = 0;
-
-    /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SECURITY_GROUP__NAME = 1;
-
-    /**
-   * The feature id for the '<em><b>Description</b></em>' attribute.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SECURITY_GROUP__DESCRIPTION = 2;
-
-    /**
-   * The number of structural features of the '<em>Security Group</em>' class.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-	int SECURITY_GROUP_FEATURE_COUNT = 3;
-
-    /**
-   * The feature id for the '<em><b>Cloud Providers</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT__CLOUD_PROVIDERS = 0;
-
-    /**
-   * The number of structural features of the '<em>Root</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_FEATURE_COUNT = 1;
-
-    /**
-   * The feature id for the '<em><b>Vms</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMAGES__VMS = 0;
-
-    /**
-   * The number of structural features of the '<em>Images</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMAGES_FEATURE_COUNT = 1;
-
-    /**
-   * The feature id for the '<em><b>Nets</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NETWORKS__NETS = 0;
-
-    /**
-   * The number of structural features of the '<em>Networks</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NETWORKS_FEATURE_COUNT = 1;
-
-    /**
+  /**
    * The feature id for the '<em><b>Keys</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -971,7 +947,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int SECURITY__KEYS = 0;
 
-    /**
+  /**
    * The feature id for the '<em><b>Groups</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -980,7 +956,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int SECURITY__GROUPS = 1;
 
-    /**
+  /**
    * The number of structural features of the '<em>Security</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -989,7 +965,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int SECURITY_FEATURE_COUNT = 2;
 
-		/**
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.KeysImpl <em>Keys</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -999,7 +975,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int KEYS = 17;
 
-    /**
+  /**
    * The feature id for the '<em><b>Keypairs</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1008,7 +984,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int KEYS__KEYPAIRS = 0;
 
-    /**
+  /**
    * The number of structural features of the '<em>Keys</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1017,7 +993,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int KEYS_FEATURE_COUNT = 1;
 
-    /**
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.GroupsImpl <em>Groups</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1027,7 +1003,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int GROUPS = 18;
 
-    /**
+  /**
    * The feature id for the '<em><b>Security Groups</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1036,7 +1012,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int GROUPS__SECURITY_GROUPS = 0;
 
-    /**
+  /**
    * The number of structural features of the '<em>Groups</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1045,7 +1021,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int GROUPS_FEATURE_COUNT = 1;
 
-    /**
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.FlavorsImpl <em>Flavors</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1055,7 +1031,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int FLAVORS = 19;
 
-    /**
+  /**
    * The feature id for the '<em><b>Flavors</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1064,7 +1040,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int FLAVORS__FLAVORS = 0;
 
-    /**
+  /**
    * The number of structural features of the '<em>Flavors</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1073,7 +1049,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int FLAVORS_FEATURE_COUNT = 1;
 
-    /**
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringImpl <em>Monitoring</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1083,7 +1059,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int MONITORING = 20;
 
-    /**
+  /**
    * The feature id for the '<em><b>Monitoring Service</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1092,7 +1068,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int MONITORING__MONITORING_SERVICE = 0;
 
-    /**
+  /**
    * The number of structural features of the '<em>Monitoring</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1101,7 +1077,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int MONITORING_FEATURE_COUNT = 1;
 
-    /**
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringServiceImpl <em>Monitoring Service</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1111,7 +1087,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int MONITORING_SERVICE = 21;
 
-    /**
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1120,7 +1096,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int MONITORING_SERVICE__NAME = 0;
 
-    /**
+  /**
    * The feature id for the '<em><b>Probes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1129,7 +1105,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int MONITORING_SERVICE__PROBES = 1;
 
-    /**
+  /**
    * The number of structural features of the '<em>Monitoring Service</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1138,7 +1114,7 @@ public interface InfoSystemPackage extends EPackage
    */
   int MONITORING_SERVICE_FEATURE_COUNT = 2;
 
-    /**
+  /**
    * The meta object id for the '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageType <em>Virtual Machine Image Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1201,17 +1177,6 @@ public interface InfoSystemPackage extends EPackage
    * @generated
    */
   EAttribute getMonitoringProbe_Description();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getURL <em>URL</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>URL</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.MonitoringProbe#getURL()
-   * @see #getMonitoringProbe()
-   * @generated
-   */
-  EAttribute getMonitoringProbe_URL();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.MonitoringProbe#getMetrics <em>Metrics</em>}'.
@@ -1344,71 +1309,6 @@ public interface InfoSystemPackage extends EPackage
   EAttribute getSoftwareDependency_Type();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage <em>Virtual Machine Image</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Virtual Machine Image</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage
-   * @generated
-   */
-  EClass getVirtualMachineImage();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getUID <em>UID</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>UID</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getUID()
-   * @see #getVirtualMachineImage()
-   * @generated
-   */
-  EAttribute getVirtualMachineImage_UID();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getName()
-   * @see #getVirtualMachineImage()
-   * @generated
-   */
-  EAttribute getVirtualMachineImage_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getDescription <em>Description</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Description</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getDescription()
-   * @see #getVirtualMachineImage()
-   * @generated
-   */
-  EAttribute getVirtualMachineImage_Description();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getType()
-   * @see #getVirtualMachineImage()
-   * @generated
-   */
-  EAttribute getVirtualMachineImage_Type();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getURL <em>URL</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>URL</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getURL()
-   * @see #getVirtualMachineImage()
-   * @generated
-   */
-  EAttribute getVirtualMachineImage_URL();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.UserApplication <em>User Application</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1508,37 +1408,37 @@ public interface InfoSystemPackage extends EPackage
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.KeyPair#getPublicKey <em>Public Key</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Public Key</em>'.
    * @see org.eclipse.camf.infosystem.model.base.KeyPair#getPublicKey()
    * @see #getKeyPair()
    * @generated
    */
-	EAttribute getKeyPair_PublicKey();
+  EAttribute getKeyPair_PublicKey();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.KeyPair#getDescription <em>Description</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Description</em>'.
    * @see org.eclipse.camf.infosystem.model.base.KeyPair#getDescription()
    * @see #getKeyPair()
    * @generated
    */
-	EAttribute getKeyPair_Description();
+  EAttribute getKeyPair_Description();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.KeyPair#getURL <em>URL</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>URL</em>'.
    * @see org.eclipse.camf.infosystem.model.base.KeyPair#getURL()
    * @see #getKeyPair()
    * @generated
    */
-	EAttribute getKeyPair_URL();
+  EAttribute getKeyPair_URL();
 
-		/**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor <em>Virtual Machine Image Flavor</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1573,37 +1473,37 @@ public interface InfoSystemPackage extends EPackage
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor#getRam <em>Ram</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Ram</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor#getRam()
    * @see #getVirtualMachineImageFlavor()
    * @generated
    */
-	EAttribute getVirtualMachineImageFlavor_Ram();
+  EAttribute getVirtualMachineImageFlavor_Ram();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor#getHdd <em>Hdd</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Hdd</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor#getHdd()
    * @see #getVirtualMachineImageFlavor()
    * @generated
    */
-	EAttribute getVirtualMachineImageFlavor_Hdd();
+  EAttribute getVirtualMachineImageFlavor_Hdd();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor#getVCPU <em>VCPU</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>VCPU</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImageFlavor#getVCPU()
    * @see #getVirtualMachineImageFlavor()
    * @generated
    */
-	EAttribute getVirtualMachineImageFlavor_VCPU();
+  EAttribute getVirtualMachineImageFlavor_VCPU();
 
-		/**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.VirtualNetwork <em>Virtual Network</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1745,114 +1645,287 @@ public interface InfoSystemPackage extends EPackage
   EReference getCloudProvider_Monitoring();
 
   /**
+   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage <em>Virtual Machine Image</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Virtual Machine Image</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage
+   * @generated
+   */
+  EClass getVirtualMachineImage();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getUID <em>UID</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>UID</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getUID()
+   * @see #getVirtualMachineImage()
+   * @generated
+   */
+  EAttribute getVirtualMachineImage_UID();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getName()
+   * @see #getVirtualMachineImage()
+   * @generated
+   */
+  EAttribute getVirtualMachineImage_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getDescription <em>Description</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Description</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getDescription()
+   * @see #getVirtualMachineImage()
+   * @generated
+   */
+  EAttribute getVirtualMachineImage_Description();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getType()
+   * @see #getVirtualMachineImage()
+   * @generated
+   */
+  EAttribute getVirtualMachineImage_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getURL <em>URL</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>URL</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.VirtualMachineImage#getURL()
+   * @see #getVirtualMachineImage()
+   * @generated
+   */
+  EAttribute getVirtualMachineImage_URL();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Deployment <em>Deployment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Deployment</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Deployment
+   * @generated
+   */
+  EClass getDeployment();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Deployment#getDepID <em>Dep ID</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Dep ID</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Deployment#getDepID()
+   * @see #getDeployment()
+   * @generated
+   */
+  EAttribute getDeployment_DepID();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Deployment#getDeploymentName <em>Deployment Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Deployment Name</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Deployment#getDeploymentName()
+   * @see #getDeployment()
+   * @generated
+   */
+  EAttribute getDeployment_DeploymentName();
+
+  /**
+   * Returns the meta object for the reference list '{@link org.eclipse.camf.infosystem.model.base.Deployment#getModules <em>Modules</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Modules</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Deployment#getModules()
+   * @see #getDeployment()
+   * @generated
+   */
+  EReference getDeployment_Modules();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Deployment#getStatus <em>Status</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Status</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Deployment#getStatus()
+   * @see #getDeployment()
+   * @generated
+   */
+  EAttribute getDeployment_Status();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Module <em>Module</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Module</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Module
+   * @generated
+   */
+  EClass getModule();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Module#getModID <em>Mod ID</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mod ID</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Module#getModID()
+   * @see #getModule()
+   * @generated
+   */
+  EAttribute getModule_ModID();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Module#getModuleName <em>Module Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Module Name</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Module#getModuleName()
+   * @see #getModule()
+   * @generated
+   */
+  EAttribute getModule_ModuleName();
+
+  /**
+   * Returns the meta object for the reference list '{@link org.eclipse.camf.infosystem.model.base.Module#getInstances <em>Instances</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Instances</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Module#getInstances()
+   * @see #getModule()
+   * @generated
+   */
+  EReference getModule_Instances();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Module#getInitInstances <em>Init Instances</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Init Instances</em>'.
+   * @see org.eclipse.camf.infosystem.model.base.Module#getInitInstances()
+   * @see #getModule()
+   * @generated
+   */
+  EAttribute getModule_InitInstances();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance <em>Virtual Instance</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for class '<em>Virtual Instance</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualInstance
    * @generated
    */
-	EClass getVirtualInstance();
+  EClass getVirtualInstance();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getUID <em>UID</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>UID</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualInstance#getUID()
    * @see #getVirtualInstance()
    * @generated
    */
-	EAttribute getVirtualInstance_UID();
+  EAttribute getVirtualInstance_UID();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualInstance#getName()
    * @see #getVirtualInstance()
    * @generated
    */
-	EAttribute getVirtualInstance_Name();
+  EAttribute getVirtualInstance_Name();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getStatus <em>Status</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Status</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualInstance#getStatus()
    * @see #getVirtualInstance()
    * @generated
    */
-	EAttribute getVirtualInstance_Status();
+  EAttribute getVirtualInstance_Status();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getIPs <em>IPs</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>IPs</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualInstance#getIPs()
    * @see #getVirtualInstance()
    * @generated
    */
-	EAttribute getVirtualInstance_IPs();
+  EAttribute getVirtualInstance_IPs();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.VirtualInstance#getURI <em>URI</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>URI</em>'.
    * @see org.eclipse.camf.infosystem.model.base.VirtualInstance#getURI()
    * @see #getVirtualInstance()
    * @generated
    */
-	EAttribute getVirtualInstance_URI();
+  EAttribute getVirtualInstance_URI();
 
-		/**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.SecurityGroup <em>Security Group</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for class '<em>Security Group</em>'.
    * @see org.eclipse.camf.infosystem.model.base.SecurityGroup
    * @generated
    */
-	EClass getSecurityGroup();
+  EClass getSecurityGroup();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.SecurityGroup#getUID <em>UID</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>UID</em>'.
    * @see org.eclipse.camf.infosystem.model.base.SecurityGroup#getUID()
    * @see #getSecurityGroup()
    * @generated
    */
-	EAttribute getSecurityGroup_UID();
+  EAttribute getSecurityGroup_UID();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.SecurityGroup#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
    * @see org.eclipse.camf.infosystem.model.base.SecurityGroup#getName()
    * @see #getSecurityGroup()
    * @generated
    */
-	EAttribute getSecurityGroup_Name();
+  EAttribute getSecurityGroup_Name();
 
-		/**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.SecurityGroup#getDescription <em>Description</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Description</em>'.
    * @see org.eclipse.camf.infosystem.model.base.SecurityGroup#getDescription()
    * @see #getSecurityGroup()
    * @generated
    */
-	EAttribute getSecurityGroup_Description();
+  EAttribute getSecurityGroup_Description();
 
-		/**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Root <em>Root</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1862,7 +1935,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getRoot();
 
-    /**
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Root#getCloudProviders <em>Cloud Providers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1873,7 +1946,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getRoot_CloudProviders();
 
-    /**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Images <em>Images</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1883,7 +1956,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getImages();
 
-    /**
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Images#getVms <em>Vms</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1894,7 +1967,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getImages_Vms();
 
-    /**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Networks <em>Networks</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1904,7 +1977,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getNetworks();
 
-    /**
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Networks#getNets <em>Nets</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1915,7 +1988,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getNetworks_Nets();
 
-    /**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Security <em>Security</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1925,7 +1998,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getSecurity();
 
-    /**
+  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.camf.infosystem.model.base.Security#getKeys <em>Keys</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1936,7 +2009,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getSecurity_Keys();
 
-    /**
+  /**
    * Returns the meta object for the containment reference '{@link org.eclipse.camf.infosystem.model.base.Security#getGroups <em>Groups</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1947,7 +2020,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getSecurity_Groups();
 
-    /**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Keys <em>Keys</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1957,7 +2030,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getKeys();
 
-    /**
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Keys#getKeypairs <em>Keypairs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1968,7 +2041,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getKeys_Keypairs();
 
-    /**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Groups <em>Groups</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1978,7 +2051,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getGroups();
 
-    /**
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Groups#getSecurityGroups <em>Security Groups</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1989,7 +2062,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getGroups_SecurityGroups();
 
-    /**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Flavors <em>Flavors</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1999,7 +2072,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getFlavors();
 
-    /**
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Flavors#getFlavors <em>Flavors</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2010,7 +2083,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getFlavors_Flavors();
 
-    /**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Monitoring <em>Monitoring</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2020,7 +2093,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getMonitoring();
 
-    /**
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.Monitoring#getMonitoringService <em>Monitoring Service</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2031,7 +2104,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getMonitoring_MonitoringService();
 
-    /**
+  /**
    * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.MonitoringService <em>Monitoring Service</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2041,7 +2114,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EClass getMonitoringService();
 
-    /**
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.MonitoringService#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2052,7 +2125,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EAttribute getMonitoringService_Name();
 
-    /**
+  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.camf.infosystem.model.base.MonitoringService#getProbes <em>Probes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2063,115 +2136,7 @@ public interface InfoSystemPackage extends EPackage
    */
   EReference getMonitoringService_Probes();
 
-    /**
-   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Deployment <em>Deployment</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Deployment</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Deployment
-   * @generated
-   */
-	EClass getDeployment();
-
-		/**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Deployment#getDepID <em>Dep ID</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Dep ID</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Deployment#getDepID()
-   * @see #getDeployment()
-   * @generated
-   */
-	EAttribute getDeployment_DepID();
-
-		/**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Deployment#getDeploymentName <em>Deployment Name</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Deployment Name</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Deployment#getDeploymentName()
-   * @see #getDeployment()
-   * @generated
-   */
-	EAttribute getDeployment_DeploymentName();
-
-		/**
-   * Returns the meta object for the reference list '{@link org.eclipse.camf.infosystem.model.base.Deployment#getModules <em>Modules</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Modules</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Deployment#getModules()
-   * @see #getDeployment()
-   * @generated
-   */
-	EReference getDeployment_Modules();
-
-		/**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Deployment#getStatus <em>Status</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Status</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Deployment#getStatus()
-   * @see #getDeployment()
-   * @generated
-   */
-	EAttribute getDeployment_Status();
-
-		/**
-   * Returns the meta object for class '{@link org.eclipse.camf.infosystem.model.base.Module <em>Module</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Module</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Module
-   * @generated
-   */
-	EClass getModule();
-
-		/**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Module#getModID <em>Mod ID</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Mod ID</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Module#getModID()
-   * @see #getModule()
-   * @generated
-   */
-	EAttribute getModule_ModID();
-
-		/**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Module#getModuleName <em>Module Name</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Module Name</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Module#getModuleName()
-   * @see #getModule()
-   * @generated
-   */
-	EAttribute getModule_ModuleName();
-
-		/**
-   * Returns the meta object for the reference list '{@link org.eclipse.camf.infosystem.model.base.Module#getInstances <em>Instances</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Instances</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Module#getInstances()
-   * @see #getModule()
-   * @generated
-   */
-	EReference getModule_Instances();
-
-		/**
-   * Returns the meta object for the attribute '{@link org.eclipse.camf.infosystem.model.base.Module#getInitInstances <em>Init Instances</em>}'.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Init Instances</em>'.
-   * @see org.eclipse.camf.infosystem.model.base.Module#getInitInstances()
-   * @see #getModule()
-   * @generated
-   */
-	EAttribute getModule_InitInstances();
-
-		/**
+  /**
    * Returns the meta object for enum '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageType <em>Virtual Machine Image Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2249,14 +2214,6 @@ public interface InfoSystemPackage extends EPackage
      * @generated
      */
     EAttribute MONITORING_PROBE__DESCRIPTION = eINSTANCE.getMonitoringProbe_Description();
-
-    /**
-     * The meta object literal for the '<em><b>URL</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MONITORING_PROBE__URL = eINSTANCE.getMonitoringProbe_URL();
 
     /**
      * The meta object literal for the '<em><b>Metrics</b></em>' attribute feature.
@@ -2359,56 +2316,6 @@ public interface InfoSystemPackage extends EPackage
     EAttribute SOFTWARE_DEPENDENCY__TYPE = eINSTANCE.getSoftwareDependency_Type();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageImpl <em>Virtual Machine Image</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageImpl
-     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualMachineImage()
-     * @generated
-     */
-    EClass VIRTUAL_MACHINE_IMAGE = eINSTANCE.getVirtualMachineImage();
-
-    /**
-     * The meta object literal for the '<em><b>UID</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VIRTUAL_MACHINE_IMAGE__UID = eINSTANCE.getVirtualMachineImage_UID();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VIRTUAL_MACHINE_IMAGE__NAME = eINSTANCE.getVirtualMachineImage_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VIRTUAL_MACHINE_IMAGE__DESCRIPTION = eINSTANCE.getVirtualMachineImage_Description();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VIRTUAL_MACHINE_IMAGE__TYPE = eINSTANCE.getVirtualMachineImage_Type();
-
-    /**
-     * The meta object literal for the '<em><b>URL</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VIRTUAL_MACHINE_IMAGE__URL = eINSTANCE.getVirtualMachineImage_URL();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.UserApplicationImpl <em>User Application</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2487,28 +2394,28 @@ public interface InfoSystemPackage extends EPackage
     /**
      * The meta object literal for the '<em><b>Public Key</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute KEY_PAIR__PUBLIC_KEY = eINSTANCE.getKeyPair_PublicKey();
+    EAttribute KEY_PAIR__PUBLIC_KEY = eINSTANCE.getKeyPair_PublicKey();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute KEY_PAIR__DESCRIPTION = eINSTANCE.getKeyPair_Description();
+    EAttribute KEY_PAIR__DESCRIPTION = eINSTANCE.getKeyPair_Description();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>URL</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute KEY_PAIR__URL = eINSTANCE.getKeyPair_URL();
+    EAttribute KEY_PAIR__URL = eINSTANCE.getKeyPair_URL();
 
-				/**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageFlavorImpl <em>Virtual Machine Image Flavor</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2537,28 +2444,28 @@ public interface InfoSystemPackage extends EPackage
     /**
      * The meta object literal for the '<em><b>Ram</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute VIRTUAL_MACHINE_IMAGE_FLAVOR__RAM = eINSTANCE.getVirtualMachineImageFlavor_Ram();
+    EAttribute VIRTUAL_MACHINE_IMAGE_FLAVOR__RAM = eINSTANCE.getVirtualMachineImageFlavor_Ram();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>Hdd</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute VIRTUAL_MACHINE_IMAGE_FLAVOR__HDD = eINSTANCE.getVirtualMachineImageFlavor_Hdd();
+    EAttribute VIRTUAL_MACHINE_IMAGE_FLAVOR__HDD = eINSTANCE.getVirtualMachineImageFlavor_Hdd();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>VCPU</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute VIRTUAL_MACHINE_IMAGE_FLAVOR__VCPU = eINSTANCE.getVirtualMachineImageFlavor_VCPU();
+    EAttribute VIRTUAL_MACHINE_IMAGE_FLAVOR__VCPU = eINSTANCE.getVirtualMachineImageFlavor_VCPU();
 
-				/**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualNetworkImpl <em>Virtual Network</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2667,90 +2574,224 @@ public interface InfoSystemPackage extends EPackage
     EReference CLOUD_PROVIDER__MONITORING = eINSTANCE.getCloudProvider_Monitoring();
 
     /**
+     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageImpl <em>Virtual Machine Image</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.camf.infosystem.model.base.impl.VirtualMachineImageImpl
+     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualMachineImage()
+     * @generated
+     */
+    EClass VIRTUAL_MACHINE_IMAGE = eINSTANCE.getVirtualMachineImage();
+
+    /**
+     * The meta object literal for the '<em><b>UID</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VIRTUAL_MACHINE_IMAGE__UID = eINSTANCE.getVirtualMachineImage_UID();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VIRTUAL_MACHINE_IMAGE__NAME = eINSTANCE.getVirtualMachineImage_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VIRTUAL_MACHINE_IMAGE__DESCRIPTION = eINSTANCE.getVirtualMachineImage_Description();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VIRTUAL_MACHINE_IMAGE__TYPE = eINSTANCE.getVirtualMachineImage_Type();
+
+    /**
+     * The meta object literal for the '<em><b>URL</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VIRTUAL_MACHINE_IMAGE__URL = eINSTANCE.getVirtualMachineImage_URL();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl <em>Deployment</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl
+     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getDeployment()
+     * @generated
+     */
+    EClass DEPLOYMENT = eINSTANCE.getDeployment();
+
+    /**
+     * The meta object literal for the '<em><b>Dep ID</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DEPLOYMENT__DEP_ID = eINSTANCE.getDeployment_DepID();
+
+    /**
+     * The meta object literal for the '<em><b>Deployment Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DEPLOYMENT__DEPLOYMENT_NAME = eINSTANCE.getDeployment_DeploymentName();
+
+    /**
+     * The meta object literal for the '<em><b>Modules</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DEPLOYMENT__MODULES = eINSTANCE.getDeployment_Modules();
+
+    /**
+     * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DEPLOYMENT__STATUS = eINSTANCE.getDeployment_Status();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.ModuleImpl <em>Module</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.camf.infosystem.model.base.impl.ModuleImpl
+     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getModule()
+     * @generated
+     */
+    EClass MODULE = eINSTANCE.getModule();
+
+    /**
+     * The meta object literal for the '<em><b>Mod ID</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODULE__MOD_ID = eINSTANCE.getModule_ModID();
+
+    /**
+     * The meta object literal for the '<em><b>Module Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODULE__MODULE_NAME = eINSTANCE.getModule_ModuleName();
+
+    /**
+     * The meta object literal for the '<em><b>Instances</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODULE__INSTANCES = eINSTANCE.getModule_Instances();
+
+    /**
+     * The meta object literal for the '<em><b>Init Instances</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODULE__INIT_INSTANCES = eINSTANCE.getModule_InitInstances();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.VirtualInstanceImpl <em>Virtual Instance</em>}' class.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see org.eclipse.camf.infosystem.model.base.impl.VirtualInstanceImpl
      * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getVirtualInstance()
      * @generated
      */
-		EClass VIRTUAL_INSTANCE = eINSTANCE.getVirtualInstance();
+    EClass VIRTUAL_INSTANCE = eINSTANCE.getVirtualInstance();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>UID</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute VIRTUAL_INSTANCE__UID = eINSTANCE.getVirtualInstance_UID();
+    EAttribute VIRTUAL_INSTANCE__UID = eINSTANCE.getVirtualInstance_UID();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute VIRTUAL_INSTANCE__NAME = eINSTANCE.getVirtualInstance_Name();
+    EAttribute VIRTUAL_INSTANCE__NAME = eINSTANCE.getVirtualInstance_Name();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute VIRTUAL_INSTANCE__STATUS = eINSTANCE.getVirtualInstance_Status();
+    EAttribute VIRTUAL_INSTANCE__STATUS = eINSTANCE.getVirtualInstance_Status();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>IPs</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute VIRTUAL_INSTANCE__IPS = eINSTANCE.getVirtualInstance_IPs();
+    EAttribute VIRTUAL_INSTANCE__IPS = eINSTANCE.getVirtualInstance_IPs();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>URI</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute VIRTUAL_INSTANCE__URI = eINSTANCE.getVirtualInstance_URI();
+    EAttribute VIRTUAL_INSTANCE__URI = eINSTANCE.getVirtualInstance_URI();
 
-				/**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.SecurityGroupImpl <em>Security Group</em>}' class.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @see org.eclipse.camf.infosystem.model.base.impl.SecurityGroupImpl
      * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getSecurityGroup()
      * @generated
      */
-		EClass SECURITY_GROUP = eINSTANCE.getSecurityGroup();
+    EClass SECURITY_GROUP = eINSTANCE.getSecurityGroup();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>UID</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute SECURITY_GROUP__UID = eINSTANCE.getSecurityGroup_UID();
+    EAttribute SECURITY_GROUP__UID = eINSTANCE.getSecurityGroup_UID();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute SECURITY_GROUP__NAME = eINSTANCE.getSecurityGroup_Name();
+    EAttribute SECURITY_GROUP__NAME = eINSTANCE.getSecurityGroup_Name();
 
-				/**
+    /**
      * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EAttribute SECURITY_GROUP__DESCRIPTION = eINSTANCE.getSecurityGroup_Description();
+    EAttribute SECURITY_GROUP__DESCRIPTION = eINSTANCE.getSecurityGroup_Description();
 
-				/**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.RootImpl <em>Root</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2760,7 +2801,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass ROOT = eINSTANCE.getRoot();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Cloud Providers</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2768,7 +2809,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference ROOT__CLOUD_PROVIDERS = eINSTANCE.getRoot_CloudProviders();
 
-        /**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.ImagesImpl <em>Images</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2778,7 +2819,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass IMAGES = eINSTANCE.getImages();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Vms</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2786,7 +2827,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference IMAGES__VMS = eINSTANCE.getImages_Vms();
 
-        /**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.NetworksImpl <em>Networks</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2796,7 +2837,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass NETWORKS = eINSTANCE.getNetworks();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Nets</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2804,7 +2845,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference NETWORKS__NETS = eINSTANCE.getNetworks_Nets();
 
-        /**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.SecurityImpl <em>Security</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2814,7 +2855,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass SECURITY = eINSTANCE.getSecurity();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Keys</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2822,7 +2863,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference SECURITY__KEYS = eINSTANCE.getSecurity_Keys();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Groups</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2830,7 +2871,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference SECURITY__GROUPS = eINSTANCE.getSecurity_Groups();
 
-        /**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.KeysImpl <em>Keys</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2840,7 +2881,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass KEYS = eINSTANCE.getKeys();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Keypairs</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2848,7 +2889,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference KEYS__KEYPAIRS = eINSTANCE.getKeys_Keypairs();
 
-        /**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.GroupsImpl <em>Groups</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2858,7 +2899,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass GROUPS = eINSTANCE.getGroups();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Security Groups</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2866,7 +2907,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference GROUPS__SECURITY_GROUPS = eINSTANCE.getGroups_SecurityGroups();
 
-        /**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.FlavorsImpl <em>Flavors</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2876,7 +2917,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass FLAVORS = eINSTANCE.getFlavors();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Flavors</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2884,7 +2925,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference FLAVORS__FLAVORS = eINSTANCE.getFlavors_Flavors();
 
-        /**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringImpl <em>Monitoring</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2894,7 +2935,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass MONITORING = eINSTANCE.getMonitoring();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Monitoring Service</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2902,7 +2943,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference MONITORING__MONITORING_SERVICE = eINSTANCE.getMonitoring_MonitoringService();
 
-        /**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.MonitoringServiceImpl <em>Monitoring Service</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2912,7 +2953,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EClass MONITORING_SERVICE = eINSTANCE.getMonitoringService();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2920,7 +2961,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EAttribute MONITORING_SERVICE__NAME = eINSTANCE.getMonitoringService_Name();
 
-        /**
+    /**
      * The meta object literal for the '<em><b>Probes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2928,91 +2969,7 @@ public interface InfoSystemPackage extends EPackage
      */
     EReference MONITORING_SERVICE__PROBES = eINSTANCE.getMonitoringService_Probes();
 
-        /**
-     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl <em>Deployment</em>}' class.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @see org.eclipse.camf.infosystem.model.base.impl.DeploymentImpl
-     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getDeployment()
-     * @generated
-     */
-		EClass DEPLOYMENT = eINSTANCE.getDeployment();
-
-				/**
-     * The meta object literal for the '<em><b>Dep ID</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute DEPLOYMENT__DEP_ID = eINSTANCE.getDeployment_DepID();
-
-				/**
-     * The meta object literal for the '<em><b>Deployment Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute DEPLOYMENT__DEPLOYMENT_NAME = eINSTANCE.getDeployment_DeploymentName();
-
-				/**
-     * The meta object literal for the '<em><b>Modules</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EReference DEPLOYMENT__MODULES = eINSTANCE.getDeployment_Modules();
-
-				/**
-     * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute DEPLOYMENT__STATUS = eINSTANCE.getDeployment_Status();
-
-				/**
-     * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.impl.ModuleImpl <em>Module</em>}' class.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @see org.eclipse.camf.infosystem.model.base.impl.ModuleImpl
-     * @see org.eclipse.camf.infosystem.model.base.impl.InfoSystemPackageImpl#getModule()
-     * @generated
-     */
-		EClass MODULE = eINSTANCE.getModule();
-
-				/**
-     * The meta object literal for the '<em><b>Mod ID</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute MODULE__MOD_ID = eINSTANCE.getModule_ModID();
-
-				/**
-     * The meta object literal for the '<em><b>Module Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute MODULE__MODULE_NAME = eINSTANCE.getModule_ModuleName();
-
-				/**
-     * The meta object literal for the '<em><b>Instances</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EReference MODULE__INSTANCES = eINSTANCE.getModule_Instances();
-
-				/**
-     * The meta object literal for the '<em><b>Init Instances</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		EAttribute MODULE__INIT_INSTANCES = eINSTANCE.getModule_InitInstances();
-
-				/**
+    /**
      * The meta object literal for the '{@link org.eclipse.camf.infosystem.model.base.VirtualMachineImageType <em>Virtual Machine Image Type</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

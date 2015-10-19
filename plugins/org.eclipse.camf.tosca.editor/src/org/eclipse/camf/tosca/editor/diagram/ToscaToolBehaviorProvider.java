@@ -36,6 +36,7 @@ import org.eclipse.camf.infosystem.model.base.UserApplication;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImage;
 import org.eclipse.camf.infosystem.model.base.VirtualMachineImageType;
 import org.eclipse.camf.infosystem.model.base.VirtualNetwork;
+import org.eclipse.camf.tosca.TArtifactTemplate;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.TNodeTemplate;
 import org.eclipse.camf.tosca.ToscaFactory;
@@ -54,6 +55,7 @@ import org.eclipse.camf.tosca.editor.features.RenameCompositeComponentFeature;
 import org.eclipse.camf.tosca.elasticity.TNodeTemplateExtension;
 import org.eclipse.camf.tosca.elasticity.TServiceTemplateExtension;
 import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsFactory;
+import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -101,8 +103,15 @@ import org.json.JSONObject;
 
 public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
 
-  MockUpInfoSystem mockUpInfoSystemInstance; 
+	MockUpInfoSystem mockUpInfoSystemInstance; 
+	  
+	private String typesPrefix = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getNsPrefix();
+  
+	private String typesNamespace = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getNsURI();
+  
+	private String imageType = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getImageArtifactPropertiesType().getName();
 
+	private String scriptArtifactType = Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getScriptArtifactPropertiesType().getName();
   
   public ToscaToolBehaviorProvider( final IDiagramTypeProvider dtp ) {
     super( dtp );
@@ -145,31 +154,31 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
   /**
    * 
    */
-  private void fetchResources() {
-    Job job = new Job( "Resource Fetching" ) { //$NON-NLS-1$
-
-      @Override
-      protected IStatus run( final IProgressMonitor monitor ) {
-        monitor.beginTask( "Fetching Resources from Cloud Provider", 100 );
-        MockUpInfoSystem.getInstance();
-        for( int i = 0; i < 5; i++ ) {
-          try {
-            // sleep a second
-            TimeUnit.SECONDS.sleep( 1 );
-            monitor.subTask( "Resource bundle #" + i );
-            // report that 20 additional units are done
-            monitor.worked( 20 );
-          } catch( InterruptedException e1 ) {
-            e1.printStackTrace();
-            return Status.CANCEL_STATUS;
-          }
-        }
-        System.out.println( "Called save" );
-        return Status.OK_STATUS;
-      }
-    };
-    job.schedule();
-  }
+//  private void fetchResources() {
+//    Job job = new Job( "Resource Fetching" ) { //$NON-NLS-1$
+//
+//      @Override
+//      protected IStatus run( final IProgressMonitor monitor ) {
+//        monitor.beginTask( "Fetching Resources from Cloud Provider", 100 );
+//        MockUpInfoSystem.getInstance();
+//        for( int i = 0; i < 5; i++ ) {
+//          try {
+//            // sleep a second
+//            TimeUnit.SECONDS.sleep( 1 );
+//            monitor.subTask( "Resource bundle #" + i );
+//            // report that 20 additional units are done
+//            monitor.worked( 20 );
+//          } catch( InterruptedException e1 ) {
+//            e1.printStackTrace();
+//            return Status.CANCEL_STATUS;
+//          }
+//        }
+//        System.out.println( "Called save" );
+//        return Status.OK_STATUS;
+//      }
+//    };
+//    job.schedule();
+//  }
 
   // Creates the Palette. Palette entries are retrieved from an SQL database.
   @Override
@@ -266,10 +275,11 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
           deploymentArtifact.setArtifactType( new QName( "Network" ) );
           vnCF.setContextObject( deploymentArtifact );
 
-          ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( vn.getUID(),
-                                                                                         vnCF.getName(),
-                                                                                         vnCF.getCreateImageId(),
-                                                                                         vnCF.getCreateLargeImageId(),
+          ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( 
+        		  																		vn.getName(),
+        		  																		vn.getUID(),
+                                                                                         null,
+                                                                                         null,
                                                                                          vnCF );
           stackEntry.addCreationToolEntry( objectCreationToolEntry );
           
@@ -277,15 +287,17 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
       }
       
       // add all create-connection-features to the new stack-entry
-      ICreateConnectionFeature[] createConnectionFeatures = featureProvider.getCreateConnectionFeatures();
-      for( ICreateConnectionFeature cf : createConnectionFeatures ) {
-        ConnectionCreationToolEntry connectionCreationToolEntry = new ConnectionCreationToolEntry( vn.getName(),
-                                                                                                   cf.getName(),
-                                                                                                   cf.getCreateImageId(),
-                                                                                                   cf.getCreateLargeImageId() );
-        connectionCreationToolEntry.addCreateConnectionFeature( cf );
-        stackEntry.addCreationToolEntry( connectionCreationToolEntry );
-      }
+//      ICreateConnectionFeature[] createConnectionFeatures = featureProvider.getCreateConnectionFeatures();
+//      for( ICreateConnectionFeature cf : createConnectionFeatures ) {
+//        ConnectionCreationToolEntry connectionCreationToolEntry = new ConnectionCreationToolEntry( 
+//        		//vn.getName(),
+//        		vn.getUID(),
+//                                                                                                   cf.getName(),
+//                                                                                                   cf.getCreateImageId(),
+//                                                                                                   cf.getCreateLargeImageId() );
+//        connectionCreationToolEntry.addCreateConnectionFeature( cf );
+//        stackEntry.addCreationToolEntry( connectionCreationToolEntry );
+//      }
     }    
   }
 
@@ -298,17 +310,21 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
   {
     ArrayList<TNodeTemplateExtension> appComponents = new ArrayList<TNodeTemplateExtension>();
     TNodeTemplateExtension applicationServerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
-    applicationServerComponent.setType( new QName( "appserver" ) );
-    applicationServerComponent.setName( "ApplicationServer" );
+    applicationServerComponent.setType( new QName( "SimpleComponent" ) );
+    applicationServerComponent.setName( "Component" );
     appComponents.add( applicationServerComponent );
-    TNodeTemplateExtension databaseServerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
-    databaseServerComponent.setType( new QName( "dbserver" ) );
-    databaseServerComponent.setName( "DatabaseServer" );
-    appComponents.add( databaseServerComponent );
-    TNodeTemplateExtension loadBalancerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
-    loadBalancerComponent.setType( new QName( "loadbalancer" ) );
-    loadBalancerComponent.setName( "LoadBalancer" );
-    appComponents.add( loadBalancerComponent );
+//    TNodeTemplateExtension applicationServerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
+//    applicationServerComponent.setType( new QName( "appserver" ) );
+//    applicationServerComponent.setName( "ApplicationServer" );
+//    appComponents.add( applicationServerComponent );
+//    TNodeTemplateExtension databaseServerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
+//    databaseServerComponent.setType( new QName( "dbserver" ) );
+//    databaseServerComponent.setName( "DatabaseServer" );
+//    appComponents.add( databaseServerComponent );
+//    TNodeTemplateExtension loadBalancerComponent = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createTNodeTemplateExtension();
+//    loadBalancerComponent.setType( new QName( "loadbalancer" ) );
+//    loadBalancerComponent.setName( "LoadBalancer" );
+//    appComponents.add( loadBalancerComponent );
     
     // add new compartment at the end of the existing compartments
     PaletteCompartmentEntry compartmentEntry = new PaletteCompartmentEntry( "Application Components", null ); //$NON-NLS-1$
@@ -333,6 +349,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                          appCompCF.getCreateLargeImageId(),
                                                                                          appCompCF );
           stackEntry.addCreationToolEntry( objectCreationToolEntry );
+          break;
         }
       }
     }
@@ -358,6 +375,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                        groupCF.getCreateLargeImageId(),
                                                                                        groupCF );
         stackEntry.addCreationToolEntry( objectCreationToolEntry );
+        break;
       }
     }
   }
@@ -403,10 +421,14 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
           if( cf instanceof CreateSoftwareDependencyFeature ) {
             CreateSoftwareDependencyFeature sdCF = ( CreateSoftwareDependencyFeature )cf;
  
-            TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
-            deploymentArtifact.setName( script.getName() );
-            deploymentArtifact.setArtifactType( new QName( "SD" ) );
-            sdCF.setContextObject( deploymentArtifact );
+            
+            TArtifactTemplate artifactTemplate = ToscaFactory.eINSTANCE.createTArtifactTemplate();
+            artifactTemplate.setName( "SD"+script.getName() );
+            artifactTemplate.setId( script.getName() );
+            artifactTemplate.setType( new QName( typesNamespace, scriptArtifactType, typesPrefix ) );
+            sdCF.setContextObject( artifactTemplate );
+                        
+            
             // add new stack entry to new compartment
             IToolEntry entry = new ObjectCreationToolEntry( script.getName(),
                                                             script.getDescription(),
@@ -414,6 +436,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                             null,
                                                             sdCF );
             compartmentEntry.addToolEntry( entry );
+            break;
           }
         }
       }
@@ -541,6 +564,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                             null,
                                                             kpCF );
             compartmentEntry.addToolEntry( entry );
+            break;
           }
         }
       }
@@ -633,28 +657,20 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
           TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
           deploymentArtifact.setName( vmi.getUID() );
           deploymentArtifact.setArtifactRef( new QName(vmi.getUID()) );
-          deploymentArtifact.setArtifactType( new QName( "VMI" ) );
+          //deploymentArtifact.setArtifactType( new QName( "VMI" ) );
+          deploymentArtifact.setArtifactType( new QName( typesNamespace, imageType, typesPrefix ));
           vmiCF.setContextObject( deploymentArtifact );
 
-          ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry( vmi.getUID(),
+          ObjectCreationToolEntry objectCreationToolEntry = new ObjectCreationToolEntry(  vmi.getName(),
+        		  //vmi.getUID(),
                                                                                          vmiCF.getName(),
                                                                                          vmiCF.getCreateImageId(),
                                                                                          vmiCF.getCreateLargeImageId(),
                                                                                          vmiCF );
           stackEntry.addCreationToolEntry( objectCreationToolEntry );
+          break;
         }
       }
-      
-    // add all create-connection-features to the new stack-entry    
-    ICreateConnectionFeature[] createConnectionFeatures = featureProvider.getCreateConnectionFeatures();
-    for( ICreateConnectionFeature connFeat : createConnectionFeatures ) {
-      ConnectionCreationToolEntry connectionCreationToolEntry = new ConnectionCreationToolEntry( vmi.getName(),
-                                                                                                 connFeat.getName(),
-                                                                                                 connFeat.getCreateImageId(),
-                                                                                                 connFeat.getCreateLargeImageId() );
-      connectionCreationToolEntry.addCreateConnectionFeature( connFeat );
-      stackEntry.addCreationToolEntry( connectionCreationToolEntry );
-    }
     }
   }
   
@@ -725,6 +741,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                            mpCF.getCreateLargeImageId(),
                                                                                            mpCF );
             stackEntry.addCreationToolEntry( objectCreationToolEntry );
+            break;
           }
         }
         
@@ -750,7 +767,8 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                              mpCF );
               
               stackEntry.addCreationToolEntry( objectCreationToolEntry );
-            }
+              break;
+            }            
           }
           
         }
@@ -776,7 +794,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                           null,
                                                           mpCF );
           compartmentEntry.addToolEntry( entry );
-
+          break;
         }
       }
     }
@@ -835,6 +853,7 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
                                                                                          raCF.getCreateLargeImageId(),
                                                                                          raCF );
           stackEntry.addCreationToolEntry( objectCreationToolEntry );
+          break;
         }
       }
     }
@@ -1028,7 +1047,12 @@ public class ToscaToolBehaviorProvider extends DefaultToolBehaviorProvider {
   public GraphicsAlgorithm[] getClickArea( final PictogramElement pe ) {
     IFeatureProvider featureProvider = getFeatureProvider();
     Object bo = featureProvider.getBusinessObjectForPictogramElement( pe );
-    if( bo instanceof TNodeTemplate ) {
+    
+    if (bo instanceof TNodeTemplate)
+      if ( ((TNodeTemplate) bo)==null || ((TNodeTemplate) bo).getType() == null)
+        return null;
+    
+    if( bo instanceof TNodeTemplate && ((TNodeTemplate) bo).getType().toString().contains("substituteNode")==false) {
       GraphicsAlgorithm invisible = pe.getGraphicsAlgorithm();
       GraphicsAlgorithm rectangle = invisible.getGraphicsAlgorithmChildren()
         .get( 0 );

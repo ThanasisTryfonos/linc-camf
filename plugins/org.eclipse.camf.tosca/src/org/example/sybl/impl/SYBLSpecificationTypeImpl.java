@@ -57,336 +57,327 @@ import org.example.sybl.SyblPackage;
 public class SYBLSpecificationTypeImpl extends EObjectImpl implements SYBLSpecificationType
 {
   /**
-   * An array of objects representing the values of non-primitive features.
-   * <!-- begin-user-doc -->
+	 * An array of objects representing the values of non-primitive features.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Object[] eVirtualValues;
 
   /**
-   * A bit field representing the indices of non-primitive feature values.
-   * <!-- begin-user-doc -->
+	 * A bit field representing the indices of non-primitive feature values.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected int eVirtualIndexBits0;
 
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getId()
-   * @generated
-   * @ordered
-   */
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String ID_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String TYPE_EDEFAULT = null;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected SYBLSpecificationTypeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return SyblPackage.Literals.SYBL_SPECIFICATION_TYPE;
-  }
+		return SyblPackage.Literals.SYBL_SPECIFICATION_TYPE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   public EList<Constraint> getConstraint()
   {
-    EList<Constraint> constraint = (EList<Constraint>)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT);
-    if (constraint == null)
-    {
-      eVirtualSet(SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT, constraint = new EObjectContainmentEList<Constraint>(Constraint.class, this, SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT));
-    }
-    return constraint;
-  }
+		EList<Constraint> constraint = (EList<Constraint>)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT);
+		if (constraint == null) {
+			eVirtualSet(SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT, constraint = new EObjectContainmentEList<Constraint>(Constraint.class, this, SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT));
+		}
+		return constraint;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   public EList<Strategy> getStrategy()
   {
-    EList<Strategy> strategy = (EList<Strategy>)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY);
-    if (strategy == null)
-    {
-      eVirtualSet(SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY, strategy = new EObjectContainmentEList<Strategy>(Strategy.class, this, SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY));
-    }
-    return strategy;
-  }
+		EList<Strategy> strategy = (EList<Strategy>)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY);
+		if (strategy == null) {
+			eVirtualSet(SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY, strategy = new EObjectContainmentEList<Strategy>(Strategy.class, this, SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY));
+		}
+		return strategy;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getId()
   {
-    return (String)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__ID, ID_EDEFAULT);
-  }
+		return (String)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__ID, ID_EDEFAULT);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setId(String newId)
   {
-    String id = newId;
-    Object oldId = eVirtualSet(SyblPackage.SYBL_SPECIFICATION_TYPE__ID, id);
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.SYBL_SPECIFICATION_TYPE__ID, oldId == EVIRTUAL_NO_VALUE ? ID_EDEFAULT : oldId, id));
-  }
+		String id = newId;
+		Object oldId = eVirtualSet(SyblPackage.SYBL_SPECIFICATION_TYPE__ID, id);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.SYBL_SPECIFICATION_TYPE__ID, oldId == EVIRTUAL_NO_VALUE ? ID_EDEFAULT : oldId, id));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getType()
   {
-    return (String)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, TYPE_EDEFAULT);
-  }
+		return (String)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, TYPE_EDEFAULT);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setType(String newType)
   {
-    String type = newType;
-    Object oldType = eVirtualSet(SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, type);
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, oldType == EVIRTUAL_NO_VALUE ? TYPE_EDEFAULT : oldType, type));
-  }
+		String type = newType;
+		Object oldType = eVirtualSet(SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, type);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, oldType == EVIRTUAL_NO_VALUE ? TYPE_EDEFAULT : oldType, type));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
-        return ((InternalEList<?>)getConstraint()).basicRemove(otherEnd, msgs);
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
-        return ((InternalEList<?>)getStrategy()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
+				return ((InternalEList<?>)getConstraint()).basicRemove(otherEnd, msgs);
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
+				return ((InternalEList<?>)getStrategy()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
-        return getConstraint();
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
-        return getStrategy();
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__ID:
-        return getId();
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE:
-        return getType();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
+				return getConstraint();
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
+				return getStrategy();
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__ID:
+				return getId();
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE:
+				return getType();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
-        getConstraint().clear();
-        getConstraint().addAll((Collection<? extends Constraint>)newValue);
-        return;
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
-        getStrategy().clear();
-        getStrategy().addAll((Collection<? extends Strategy>)newValue);
-        return;
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__ID:
-        setId((String)newValue);
-        return;
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE:
-        setType((String)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
+				getConstraint().clear();
+				getConstraint().addAll((Collection<? extends Constraint>)newValue);
+				return;
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
+				getStrategy().clear();
+				getStrategy().addAll((Collection<? extends Strategy>)newValue);
+				return;
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__ID:
+				setId((String)newValue);
+				return;
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE:
+				setType((String)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
-        getConstraint().clear();
-        return;
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
-        getStrategy().clear();
-        return;
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__ID:
-        setId(ID_EDEFAULT);
-        return;
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE:
-        setType(TYPE_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
+				getConstraint().clear();
+				return;
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
+				getStrategy().clear();
+				return;
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__ID:
+				setId(ID_EDEFAULT);
+				return;
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
-        EList<Constraint> constraint = (EList<Constraint>)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT);
-        return constraint != null && !constraint.isEmpty();
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
-        EList<Strategy> strategy = (EList<Strategy>)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY);
-        return strategy != null && !strategy.isEmpty();
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__ID:
-        String id = (String)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__ID, ID_EDEFAULT);
-        return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-      case SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE:
-        String type = (String)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, TYPE_EDEFAULT);
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT:
+				EList<Constraint> constraint = (EList<Constraint>)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__CONSTRAINT);
+				return constraint != null && !constraint.isEmpty();
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY:
+				EList<Strategy> strategy = (EList<Strategy>)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__STRATEGY);
+				return strategy != null && !strategy.isEmpty();
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__ID:
+				String id = (String)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__ID, ID_EDEFAULT);
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE:
+				String type = (String)eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, TYPE_EDEFAULT);
+				return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected Object[] eVirtualValues()
   {
-    return eVirtualValues;
-  }
+		return eVirtualValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualValues(Object[] newValues)
   {
-    eVirtualValues = newValues;
-  }
+		eVirtualValues = newValues;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected int eVirtualIndexBits(int offset)
   {
-    switch (offset)
-    {
-      case 0 :
-        return eVirtualIndexBits0;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				return eVirtualIndexBits0;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected void eSetVirtualIndexBits(int offset, int newIndexBits)
   {
-    switch (offset)
-    {
-      case 0 :
-        eVirtualIndexBits0 = newIndexBits;
-        break;
-      default :
-        throw new IndexOutOfBoundsException();
-    }
-  }
+		switch (offset) {
+			case 0 :
+				eVirtualIndexBits0 = newIndexBits;
+				break;
+			default :
+				throw new IndexOutOfBoundsException();
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (id: ");
-    result.append(eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__ID, ID_EDEFAULT));
-    result.append(", type: ");
-    result.append(eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, TYPE_EDEFAULT));
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (id: ");
+		result.append(eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__ID, ID_EDEFAULT));
+		result.append(", type: ");
+		result.append(eVirtualGet(SyblPackage.SYBL_SPECIFICATION_TYPE__TYPE, TYPE_EDEFAULT));
+		result.append(')');
+		return result.toString();
+	}
 
 } //SYBLSpecificationTypeImpl

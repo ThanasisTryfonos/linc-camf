@@ -22,3 +22,4 @@ Export-Package: org.eclipse.camf.core,
  org.eclipse.camf.core.project,
  org.eclipse.camf.core.security,
  org.eclipse.camf.core.util
+Import-Package: org.json

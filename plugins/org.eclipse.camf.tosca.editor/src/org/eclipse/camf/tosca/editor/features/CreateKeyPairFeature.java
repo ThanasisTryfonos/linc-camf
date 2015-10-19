@@ -16,10 +16,22 @@
  *******************************************************************************/
 package org.eclipse.camf.tosca.editor.features;
 
+import org.eclipse.camf.tosca.DefinitionsType;
+import org.eclipse.camf.tosca.PropertiesType;
+import org.eclipse.camf.tosca.TArtifactTemplate;
 import org.eclipse.camf.tosca.TDeploymentArtifact;
 import org.eclipse.camf.tosca.TDeploymentArtifacts;
 import org.eclipse.camf.tosca.TNodeTemplate;
 import org.eclipse.camf.tosca.ToscaFactory;
+import org.eclipse.camf.tosca.editor.ModelHandler;
+import org.eclipse.camf.tosca.editor.ToscaModelLayer;
+import org.eclipse.camf.tosca.elasticity.ImageArtifactPropertiesType;
+import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsFactory;
+import org.eclipse.camf.tosca.elasticity.Tosca_Elasticity_ExtensionsPackage;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.FeatureMapUtil;
+import org.eclipse.emf.ecore.util.FeatureMap.Entry;
+import org.eclipse.emf.ecore.xml.type.internal.QName;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -46,7 +58,7 @@ public class CreateKeyPairFeature extends AbstractCreateFeature {
   // business object
   @Override
   public boolean canCreate( final ICreateContext context ) {
-    if( context.getTargetContainer() instanceof Diagram ){
+    if( context.getTargetContainer() instanceof Diagram ) {
       return false;
     }
     Object parentBo = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
@@ -58,24 +70,22 @@ public class CreateKeyPairFeature extends AbstractCreateFeature {
 
   // Creates the business object for the user application
   @Override
-  public Object[] create( final ICreateContext context ) {    
+  public Object[] create( final ICreateContext context ) {
     if( this.contextObject == null )
       return null;
     Object parentObject = getFeatureProvider().getBusinessObjectForPictogramElement( context.getTargetContainer() );
     TNodeTemplate tNode = null;
-    
     if( parentObject == null )
       return null;
-    
     if( parentObject instanceof TNodeTemplate ) {
       tNode = ( TNodeTemplate )parentObject;
     }
-    
-    if (tNode.getName()==null){
-      MessageDialog.openError(null, "Error", "Give a Name to the selected Component and try again.");
+    if( tNode.getName() == null ) {
+      MessageDialog.openError( null,
+                               "Error",
+                               "Give a Name to the selected Component and try again." );
       return null;
     }
-    
     if( tNode.getDeploymentArtifacts() == null ) {
       final TNodeTemplate node = tNode;
       TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( parentObject );
@@ -89,11 +99,14 @@ public class CreateKeyPairFeature extends AbstractCreateFeature {
     }
     // Add the new deployment artifact to the list
     final TDeploymentArtifacts deploymentArtifacts = tNode.getDeploymentArtifacts();
-    TDeploymentArtifact tempDeploymentArtifact = ( TDeploymentArtifact ) this.contextObject;
+    TDeploymentArtifact tempDeploymentArtifact = ( TDeploymentArtifact )this.contextObject;
     TDeploymentArtifact deploymentArtifact = ToscaFactory.eINSTANCE.createTDeploymentArtifact();
     deploymentArtifact.setName( tempDeploymentArtifact.getName() );
     deploymentArtifact.setArtifactType( tempDeploymentArtifact.getArtifactType() );
-    
+    String deploymentArtifactName = "K"
+                                    + ( tempDeploymentArtifact.getName() ).replaceAll( "[^a-zA-Z0-9\\s]",
+                                                                                       "" );
+    deploymentArtifact.setArtifactRef( new QName( deploymentArtifactName ) );
     final TDeploymentArtifact tempArtifact = deploymentArtifact;
     TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( parentObject );
     editingDomain.getCommandStack()
@@ -105,6 +118,13 @@ public class CreateKeyPairFeature extends AbstractCreateFeature {
       } );
     // ///////////////////////////////////////////
     addGraphicalRepresentation( context, deploymentArtifact );
+    // Create Key Pair Artifact Template
+    String deploymentArtifactRef = "K"
+                                   + ( deploymentArtifact.getArtifactRef().toString() ).replaceAll( "[^a-zA-Z0-9\\s]",
+                                                                                                    "" );
+    createArtifactTemplate( "not_specified",
+                            deploymentArtifactName,
+                            deploymentArtifactRef );
     // ///////////////////////////////////////////
     // activate direct editing after object creation
     getFeatureProvider().getDirectEditingInfo().setActive( true );
@@ -112,5 +132,50 @@ public class CreateKeyPairFeature extends AbstractCreateFeature {
     return new Object[]{
       deploymentArtifact
     };
+  }
+
+  private void createArtifactTemplate( String description,
+                                       String artifactRef,
+                                       String imageId )
+  {
+    final ToscaModelLayer model = ModelHandler.getModel( EcoreUtil.getURI( getDiagram() ) );
+    for( TArtifactTemplate tempArtifactTemplate : model.getDocumentRoot()
+      .getDefinitions()
+      .getArtifactTemplate() )
+    {
+      if( tempArtifactTemplate.getId().equals( imageId ) )
+        return;
+    }
+    // Create Artifact Template
+    final TArtifactTemplate artifactTemplate = ToscaFactory.eINSTANCE.createTArtifactTemplate();
+    // Create Image Artifact Properties
+    ImageArtifactPropertiesType imageProperties = Tosca_Elasticity_ExtensionsFactory.eINSTANCE.createImageArtifactPropertiesType();
+    imageProperties.setDescription( description );
+    if( imageId != null ) {
+      imageProperties.setId( imageId );
+    }
+    // Set the Properties of the Policy Template
+    PropertiesType properties = ToscaFactory.eINSTANCE.createPropertiesType();
+    // Add the SYBL Policy to the FeatureMap of the Policy's Properties element
+    Entry e = FeatureMapUtil.createEntry( Tosca_Elasticity_ExtensionsPackage.eINSTANCE.getDocumentRoot_ImageArtifactProperties(),
+                                          imageProperties );
+    properties.getAny().add( e );
+    artifactTemplate.setProperties( properties );
+    // artifactTemplate.setId( imageId );
+    artifactTemplate.setId( artifactRef );
+    // Add the new Artifact Template to the TOSCA Definitions element
+    DefinitionsType definitions = model.getDocumentRoot().getDefinitions();
+    TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain( definitions );
+    editingDomain.getCommandStack()
+      .execute( new RecordingCommand( editingDomain ) {
+
+        @Override
+        protected void doExecute() {
+          model.getDocumentRoot()
+            .getDefinitions()
+            .getArtifactTemplate()
+            .add( artifactTemplate );
+        }
+      } );
   }
 }

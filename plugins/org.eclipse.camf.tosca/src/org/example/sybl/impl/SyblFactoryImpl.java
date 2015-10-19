@@ -36,242 +36,238 @@ import org.example.sybl.*;
 public class SyblFactoryImpl extends EFactoryImpl implements SyblFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static SyblFactory init()
   {
-    try
-    {
-      SyblFactory theSyblFactory = (SyblFactory)EPackage.Registry.INSTANCE.getEFactory(SyblPackage.eNS_URI);
-      if (theSyblFactory != null)
-      {
-        return theSyblFactory;
-      }
-    }
-    catch (Exception exception)
-    {
-      EcorePlugin.INSTANCE.log(exception);
-    }
-    return new SyblFactoryImpl();
-  }
+		try {
+			SyblFactory theSyblFactory = (SyblFactory)EPackage.Registry.INSTANCE.getEFactory(SyblPackage.eNS_URI);
+			if (theSyblFactory != null) {
+				return theSyblFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new SyblFactoryImpl();
+	}
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public SyblFactoryImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EObject create(EClass eClass)
   {
-    switch (eClass.getClassifierID())
-    {
-      case SyblPackage.BINARY_RESTRICTION: return createBinaryRestriction();
-      case SyblPackage.CONDITION_TYPE: return createConditionType();
-      case SyblPackage.CONDITION_TYPE1: return createConditionType1();
-      case SyblPackage.CONSTRAINT: return createConstraint();
-      case SyblPackage.DOCUMENT_ROOT: return createDocumentRoot();
-      case SyblPackage.LEFT_HAND_SIDE_TYPE: return createLeftHandSideType();
-      case SyblPackage.REFERENCE_TO_TYPE: return createReferenceToType();
-      case SyblPackage.RIGHT_HAND_SIDE_TYPE: return createRightHandSideType();
-      case SyblPackage.STRATEGY: return createStrategy();
-      case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION: return createSyblElasticityRequirementsDescription();
-      case SyblPackage.SYBL_SPECIFICATION_TYPE: return createSYBLSpecificationType();
-      case SyblPackage.TO_ENFORCE_TYPE: return createToEnforceType();
-      case SyblPackage.TO_ENFORCE_TYPE1: return createToEnforceType1();
-      case SyblPackage.UNARY_RESTRICTION: return createUnaryRestriction();
-      default:
-        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eClass.getClassifierID()) {
+			case SyblPackage.BINARY_RESTRICTION: return createBinaryRestriction();
+			case SyblPackage.CONDITION_TYPE: return createConditionType();
+			case SyblPackage.CONDITION_TYPE1: return createConditionType1();
+			case SyblPackage.CONSTRAINT: return createConstraint();
+			case SyblPackage.DOCUMENT_ROOT: return createDocumentRoot();
+			case SyblPackage.LEFT_HAND_SIDE_TYPE: return createLeftHandSideType();
+			case SyblPackage.REFERENCE_TO_TYPE: return createReferenceToType();
+			case SyblPackage.RIGHT_HAND_SIDE_TYPE: return createRightHandSideType();
+			case SyblPackage.STRATEGY: return createStrategy();
+			case SyblPackage.SYBL_ELASTICITY_REQUIREMENTS_DESCRIPTION: return createSyblElasticityRequirementsDescription();
+			case SyblPackage.SYBL_SPECIFICATION_TYPE: return createSYBLSpecificationType();
+			case SyblPackage.TO_ENFORCE_TYPE: return createToEnforceType();
+			case SyblPackage.TO_ENFORCE_TYPE1: return createToEnforceType1();
+			case SyblPackage.UNARY_RESTRICTION: return createUnaryRestriction();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public BinaryRestriction createBinaryRestriction()
   {
-    BinaryRestrictionImpl binaryRestriction = new BinaryRestrictionImpl();
-    return binaryRestriction;
-  }
+		BinaryRestrictionImpl binaryRestriction = new BinaryRestrictionImpl();
+		return binaryRestriction;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ConditionType createConditionType()
   {
-    ConditionTypeImpl conditionType = new ConditionTypeImpl();
-    return conditionType;
-  }
+		ConditionTypeImpl conditionType = new ConditionTypeImpl();
+		return conditionType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ConditionType1 createConditionType1()
   {
-    ConditionType1Impl conditionType1 = new ConditionType1Impl();
-    return conditionType1;
-  }
+		ConditionType1Impl conditionType1 = new ConditionType1Impl();
+		return conditionType1;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Constraint createConstraint()
   {
-    ConstraintImpl constraint = new ConstraintImpl();
-    return constraint;
-  }
+		ConstraintImpl constraint = new ConstraintImpl();
+		return constraint;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DocumentRoot createDocumentRoot()
   {
-    DocumentRootImpl documentRoot = new DocumentRootImpl();
-    return documentRoot;
-  }
+		DocumentRootImpl documentRoot = new DocumentRootImpl();
+		return documentRoot;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public LeftHandSideType createLeftHandSideType()
   {
-    LeftHandSideTypeImpl leftHandSideType = new LeftHandSideTypeImpl();
-    return leftHandSideType;
-  }
+		LeftHandSideTypeImpl leftHandSideType = new LeftHandSideTypeImpl();
+		return leftHandSideType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ReferenceToType createReferenceToType()
   {
-    ReferenceToTypeImpl referenceToType = new ReferenceToTypeImpl();
-    return referenceToType;
-  }
+		ReferenceToTypeImpl referenceToType = new ReferenceToTypeImpl();
+		return referenceToType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public RightHandSideType createRightHandSideType()
   {
-    RightHandSideTypeImpl rightHandSideType = new RightHandSideTypeImpl();
-    return rightHandSideType;
-  }
+		RightHandSideTypeImpl rightHandSideType = new RightHandSideTypeImpl();
+		return rightHandSideType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Strategy createStrategy()
   {
-    StrategyImpl strategy = new StrategyImpl();
-    return strategy;
-  }
+		StrategyImpl strategy = new StrategyImpl();
+		return strategy;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public SyblElasticityRequirementsDescription createSyblElasticityRequirementsDescription()
   {
-    SyblElasticityRequirementsDescriptionImpl syblElasticityRequirementsDescription = new SyblElasticityRequirementsDescriptionImpl();
-    return syblElasticityRequirementsDescription;
-  }
+		SyblElasticityRequirementsDescriptionImpl syblElasticityRequirementsDescription = new SyblElasticityRequirementsDescriptionImpl();
+		return syblElasticityRequirementsDescription;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public SYBLSpecificationType createSYBLSpecificationType()
   {
-    SYBLSpecificationTypeImpl syblSpecificationType = new SYBLSpecificationTypeImpl();
-    return syblSpecificationType;
-  }
+		SYBLSpecificationTypeImpl syblSpecificationType = new SYBLSpecificationTypeImpl();
+		return syblSpecificationType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ToEnforceType createToEnforceType()
   {
-    ToEnforceTypeImpl toEnforceType = new ToEnforceTypeImpl();
-    return toEnforceType;
-  }
+		ToEnforceTypeImpl toEnforceType = new ToEnforceTypeImpl();
+		return toEnforceType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ToEnforceType1 createToEnforceType1()
   {
-    ToEnforceType1Impl toEnforceType1 = new ToEnforceType1Impl();
-    return toEnforceType1;
-  }
+		ToEnforceType1Impl toEnforceType1 = new ToEnforceType1Impl();
+		return toEnforceType1;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public UnaryRestriction createUnaryRestriction()
   {
-    UnaryRestrictionImpl unaryRestriction = new UnaryRestrictionImpl();
-    return unaryRestriction;
-  }
+		UnaryRestrictionImpl unaryRestriction = new UnaryRestrictionImpl();
+		return unaryRestriction;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public SyblPackage getSyblPackage()
   {
-    return (SyblPackage)getEPackage();
-  }
+		return (SyblPackage)getEPackage();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @deprecated
-   * @generated
-   */
+	 * @deprecated
+	 * @generated
+	 */
   @Deprecated
   public static SyblPackage getPackage()
   {
-    return SyblPackage.eINSTANCE;
-  }
+		return SyblPackage.eINSTANCE;
+	}
 
 } //SyblFactoryImpl

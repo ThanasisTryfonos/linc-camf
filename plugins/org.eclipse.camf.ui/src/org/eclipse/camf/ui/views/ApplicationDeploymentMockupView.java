@@ -16,6 +16,7 @@
 package org.eclipse.camf.ui.views;
 import org.eclipse.camf.connectors.openstack.operation.OpenStackOpTerminateApplication;
 import org.eclipse.camf.core.Preferences;
+import org.eclipse.camf.core.Preferences;
 import org.eclipse.camf.ui.internal.Activator;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -215,7 +216,7 @@ class MyTreeLabelProvider extends DecoratingLabelProvider implements ITableLabel
     Deployment person = ( Deployment )element;
     if(columnIndex == 0){
       if( person.getChildren() != null && person.getChildren().length > 0 && person.getCloudProvider() != null ) {
-          if (person.getCloudProvider().equals( Deployment.AWS )){
+    	  if (person.getCloudProvider().equals( Deployment.AWS )){
               return this.imgReg.get( "aws" ); //$NON-NLS-1$
             } else if (person.getCloudProvider().equals( Deployment.OPENSTACK )) {
               return this.imgReg.get( "openstack" ); //$NON-NLS-1$

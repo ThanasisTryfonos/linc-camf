@@ -33,194 +33,190 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class Tosca_Elasticity_ExtensionsFactoryImpl extends EFactoryImpl implements Tosca_Elasticity_ExtensionsFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static Tosca_Elasticity_ExtensionsFactory init()
   {
-    try
-    {
-      Tosca_Elasticity_ExtensionsFactory theTosca_Elasticity_ExtensionsFactory = (Tosca_Elasticity_ExtensionsFactory)EPackage.Registry.INSTANCE.getEFactory(Tosca_Elasticity_ExtensionsPackage.eNS_URI);
-      if (theTosca_Elasticity_ExtensionsFactory != null)
-      {
-        return theTosca_Elasticity_ExtensionsFactory;
-      }
-    }
-    catch (Exception exception)
-    {
-      EcorePlugin.INSTANCE.log(exception);
-    }
-    return new Tosca_Elasticity_ExtensionsFactoryImpl();
-  }
+		try {
+			Tosca_Elasticity_ExtensionsFactory theTosca_Elasticity_ExtensionsFactory = (Tosca_Elasticity_ExtensionsFactory)EPackage.Registry.INSTANCE.getEFactory(Tosca_Elasticity_ExtensionsPackage.eNS_URI);
+			if (theTosca_Elasticity_ExtensionsFactory != null) {
+				return theTosca_Elasticity_ExtensionsFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new Tosca_Elasticity_ExtensionsFactoryImpl();
+	}
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Tosca_Elasticity_ExtensionsFactoryImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EObject create(EClass eClass)
   {
-    switch (eClass.getClassifierID())
-    {
-      case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT: return createDocumentRoot();
-      case Tosca_Elasticity_ExtensionsPackage.IMAGE_ARTIFACT_PROPERTIES_TYPE: return createImageArtifactPropertiesType();
-      case Tosca_Elasticity_ExtensionsPackage.MONITORING_PROBES_TYPE1: return createMonitoringProbesType1();
-      case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE: return createNodePropertiesType();
-      case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE: return createScriptArtifactPropertiesType();
-      case Tosca_Elasticity_ExtensionsPackage.SERVICE_PROPERTIES_TYPE: return createServicePropertiesType();
-      case Tosca_Elasticity_ExtensionsPackage.TBOUNDARY_DEFINITIONS_EXTENSION: return createTBoundaryDefinitionsExtension();
-      case Tosca_Elasticity_ExtensionsPackage.TMONITORING_PROBE: return createTMonitoringProbe();
-      case Tosca_Elasticity_ExtensionsPackage.TNODE_TEMPLATE_EXTENSION: return createTNodeTemplateExtension();
-      case Tosca_Elasticity_ExtensionsPackage.TSERVICE_TEMPLATE_EXTENSION: return createTServiceTemplateExtension();
-      default:
-        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eClass.getClassifierID()) {
+			case Tosca_Elasticity_ExtensionsPackage.DOCUMENT_ROOT: return createDocumentRoot();
+			case Tosca_Elasticity_ExtensionsPackage.IMAGE_ARTIFACT_PROPERTIES_TYPE: return createImageArtifactPropertiesType();
+			case Tosca_Elasticity_ExtensionsPackage.MONITORING_PROBES_TYPE1: return createMonitoringProbesType1();
+			case Tosca_Elasticity_ExtensionsPackage.NODE_PROPERTIES_TYPE: return createNodePropertiesType();
+			case Tosca_Elasticity_ExtensionsPackage.SCRIPT_ARTIFACT_PROPERTIES_TYPE: return createScriptArtifactPropertiesType();
+			case Tosca_Elasticity_ExtensionsPackage.SERVICE_PROPERTIES_TYPE: return createServicePropertiesType();
+			case Tosca_Elasticity_ExtensionsPackage.TBOUNDARY_DEFINITIONS_EXTENSION: return createTBoundaryDefinitionsExtension();
+			case Tosca_Elasticity_ExtensionsPackage.TMONITORING_PROBE: return createTMonitoringProbe();
+			case Tosca_Elasticity_ExtensionsPackage.TNODE_TEMPLATE_EXTENSION: return createTNodeTemplateExtension();
+			case Tosca_Elasticity_ExtensionsPackage.TSERVICE_TEMPLATE_EXTENSION: return createTServiceTemplateExtension();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DocumentRoot createDocumentRoot()
   {
-    DocumentRootImpl documentRoot = new DocumentRootImpl();
-    return documentRoot;
-  }
+		DocumentRootImpl documentRoot = new DocumentRootImpl();
+		return documentRoot;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ImageArtifactPropertiesType createImageArtifactPropertiesType()
   {
-    ImageArtifactPropertiesTypeImpl imageArtifactPropertiesType = new ImageArtifactPropertiesTypeImpl();
-    return imageArtifactPropertiesType;
-  }
+		ImageArtifactPropertiesTypeImpl imageArtifactPropertiesType = new ImageArtifactPropertiesTypeImpl();
+		return imageArtifactPropertiesType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public MonitoringProbesType1 createMonitoringProbesType1()
   {
-    MonitoringProbesType1Impl monitoringProbesType1 = new MonitoringProbesType1Impl();
-    return monitoringProbesType1;
-  }
+		MonitoringProbesType1Impl monitoringProbesType1 = new MonitoringProbesType1Impl();
+		return monitoringProbesType1;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NodePropertiesType createNodePropertiesType()
   {
-    NodePropertiesTypeImpl nodePropertiesType = new NodePropertiesTypeImpl();
-    return nodePropertiesType;
-  }
+		NodePropertiesTypeImpl nodePropertiesType = new NodePropertiesTypeImpl();
+		return nodePropertiesType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ScriptArtifactPropertiesType createScriptArtifactPropertiesType()
   {
-    ScriptArtifactPropertiesTypeImpl scriptArtifactPropertiesType = new ScriptArtifactPropertiesTypeImpl();
-    return scriptArtifactPropertiesType;
-  }
+		ScriptArtifactPropertiesTypeImpl scriptArtifactPropertiesType = new ScriptArtifactPropertiesTypeImpl();
+		return scriptArtifactPropertiesType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ServicePropertiesType createServicePropertiesType()
   {
-    ServicePropertiesTypeImpl servicePropertiesType = new ServicePropertiesTypeImpl();
-    return servicePropertiesType;
-  }
+		ServicePropertiesTypeImpl servicePropertiesType = new ServicePropertiesTypeImpl();
+		return servicePropertiesType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public TBoundaryDefinitionsExtension createTBoundaryDefinitionsExtension()
   {
-    TBoundaryDefinitionsExtensionImpl tBoundaryDefinitionsExtension = new TBoundaryDefinitionsExtensionImpl();
-    return tBoundaryDefinitionsExtension;
-  }
+		TBoundaryDefinitionsExtensionImpl tBoundaryDefinitionsExtension = new TBoundaryDefinitionsExtensionImpl();
+		return tBoundaryDefinitionsExtension;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public TMonitoringProbe createTMonitoringProbe()
   {
-    TMonitoringProbeImpl tMonitoringProbe = new TMonitoringProbeImpl();
-    return tMonitoringProbe;
-  }
+		TMonitoringProbeImpl tMonitoringProbe = new TMonitoringProbeImpl();
+		return tMonitoringProbe;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public TNodeTemplateExtension createTNodeTemplateExtension()
   {
-    TNodeTemplateExtensionImpl tNodeTemplateExtension = new TNodeTemplateExtensionImpl();
-    return tNodeTemplateExtension;
-  }
+		TNodeTemplateExtensionImpl tNodeTemplateExtension = new TNodeTemplateExtensionImpl();
+		return tNodeTemplateExtension;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public TServiceTemplateExtension createTServiceTemplateExtension()
   {
-    TServiceTemplateExtensionImpl tServiceTemplateExtension = new TServiceTemplateExtensionImpl();
-    return tServiceTemplateExtension;
-  }
+		TServiceTemplateExtensionImpl tServiceTemplateExtension = new TServiceTemplateExtensionImpl();
+		return tServiceTemplateExtension;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Tosca_Elasticity_ExtensionsPackage getTosca_Elasticity_ExtensionsPackage()
   {
-    return (Tosca_Elasticity_ExtensionsPackage)getEPackage();
-  }
+		return (Tosca_Elasticity_ExtensionsPackage)getEPackage();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @deprecated
-   * @generated
-   */
+	 * @deprecated
+	 * @generated
+	 */
   @Deprecated
   public static Tosca_Elasticity_ExtensionsPackage getPackage()
   {
-    return Tosca_Elasticity_ExtensionsPackage.eINSTANCE;
-  }
+		return Tosca_Elasticity_ExtensionsPackage.eINSTANCE;
+	}
 
 } //Tosca_Elasticity_ExtensionsFactoryImpl
